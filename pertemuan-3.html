@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 3: Jenis-Jenis Karya Ilmiah | MK Penulisan Karya Ilmiah</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --book-blue: #407BFF;
+      --book-dark: #1E293B;
+      --book-yellow: #FBBF24;
+      --book-orange: #F97316;
+      --book-pink: #F43F5E;
+      --book-teal: #2DD4BF;
+      --bg-cream: #F8FAFC;
+      --border-soft: #E2E8F0;
+      --radius-xl: 24px;
+    }
+
+     { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: #0F172A; line-height: 1.7; }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-soft);
+      padding: 0.85rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: #0F172A; font-weight: 700; }
+    .nav-brand-icon { background: var(--book-blue); color: white; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem;
+      font-size: 0.88rem; font-weight: 600; border-radius: 9999px; border: none; cursor: pointer; text-decoration: none;
+    }
+    .btn-slide { background: var(--book-blue); color: white; }
+    .btn-worksheet { background: var(--book-pink); color: white; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+
+    .hero-book {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); color: white;
+      border-radius: var(--radius-xl); padding: 3rem 2.5rem; margin-bottom: 2.5rem;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center;
+    }
+    .hero-badge { background: rgba(255, 255, 255, 0.12); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; }
+
+    .timeline-wrapper {
+      background: white; border: 1px solid var(--border-soft); border-radius: 18px; padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .timeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .slot-box { background: #F8FAFC; border-radius: 14px; padding: 1rem; border-left: 5px solid var(--book-blue); }
+    .slot-box.pink { border-left-color: var(--book-pink); }
+    .slot-box.yellow { border-left-color: var(--book-yellow); }
+    .slot-box.teal { border-left-color: var(--book-teal); }
+    .slot-time { font-size: 0.75rem; font-weight: 700; color: #64748B; text-transform: uppercase; }
+    .slot-heading { font-weight: 700; font-size: 0.95rem; margin-top: 0.2rem; }
+
+    .study-card {
+      background: white; border-radius: var(--radius-xl); border: 1px solid var(--border-soft);
+      padding: 2.5rem 2rem; margin-bottom: 2rem;
+    }
+    .tag-category { display: inline-block; padding: 0.3rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.8rem; background: #EEF2FF; color: var(--book-blue); }
+
+    .concept-box { background: #EFF6FF; border-left: 4px solid var(--book-blue); padding: 1.2rem; border-radius: 0 14px 14px 0; margin: 1.2rem 0; font-size: 0.95rem; }
+    
+    .grid-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .type-card { background: #F8FAFC; border: 1px solid var(--border-soft); border-radius: 16px; padding: 1.25rem; }
+    .type-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; color: #1E3A8A; }
+
+    .game-container {
+      background: linear-gradient(135deg, #0F172A, #1E3A8A); color: white; border-radius: var(--radius-xl); padding: 2.2rem; margin: 2.5rem 0;
+    }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem; }
+    .quiz-btn { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 1rem; color: white; text-align: left; cursor: pointer; }
+    .quiz-btn:hover { background: rgba(255, 255, 255, 0.18); }
+    .quiz-result { margin-top: 1.2rem; padding: 1rem; border-radius: 12px; display: none; font-size: 0.95rem; }
+
+    / Modal Presentation /
+    #slideModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0B1120; color: white; z-index: 100; display: none; flex-direction: column; }
+    .slide-topbar { padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.85); }
+    .slide-stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .slide-box { background: #1E293B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 28px; max-width: 900px; width: 100%; min-height: 440px; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+    .slide-bottombar { padding: 1.2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.85); }
+
+    / Worksheet Modal /
+    #worksheetModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 90; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+    .worksheet-card { background: white; width: 100%; max-width: 860px; max-height: 90vh; overflow-y: auto; border-radius: var(--radius-xl); padding: 2.5rem; }
+
+    @media print {
+      body  { visibility: hidden; }
+      #printArea, #printArea  { visibility: visible; }
+      #printArea { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; }
+      .no-print { display: none !important; }
+    }
+
+    @media (max-width: 860px) {
+      .hero-book { grid-template-columns: 1fr; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-icon"><i class="fa-solid fa-book"></i></div>
+      <div>
+        <span>Karya Ilmiah</span>
+        <span style="font-size: 0.75rem; color: var(--book-blue); display: block;">Pertemuan 3: Bab 3 Jenis Karya Ilmiah</span>
+      </div>
+    </a>
+    <div style="display: flex; gap: 0.75rem;">
+      <button class="btn btn-slide" onclick="openSlidePresentation()"><i class="fa-solid fa-desktop"></i> Mode Presentasi</button>
+      <button class="btn btn-worksheet" onclick="openWorksheetModal()"><i class="fa-solid fa-file-pdf"></i> Worksheet PDF</button>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO SECTION -->
+    <header class="hero-book">
+      <div>
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          <span class="hero-badge">2 SKS (100 Menit)</span>
+          <span class="hero-badge">Bab 3 Halaman 39–50</span>
+        </div>
+        <h1 style="font-size: 2.3rem; margin-bottom: 0.8rem;">Jenis-Jenis Karya Ilmiah</h1>
+        <p style="color: #CBD5E1;">Memahami ragam bentuk komunikasi akademik mulai dari makalah, artikel jurnal (IMRAD), ulasan literatur, studi kasus, prosiding konferensi, monograf, hingga skripsi sarjana.</p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <button class="btn btn-slide" onclick="openSlidePresentation()"><i class="fa-solid fa-play"></i> Buka Slide Layar Penuh</button>
+          <button class="btn btn-worksheet" onclick="openWorksheetModal()"><i class="fa-solid fa-print"></i> Lembar Kerja Siswa</button>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <svg viewBox="0 0 400 300" style="width: 100%; max-width: 340px;">
+          <ellipse cx="200" cy="270" rx="180" ry="20" fill="#0A0F1D" opacity="0.5"/>
+          <circle cx="310" cy="130" r="50" fill="#93C5FD"/>
+          <rect x="260" y="170" width="110" height="30" rx="5" fill="#F97316"/>
+          <rect x="255" y="202" width="120" height="32" rx="5" fill="#1E293B"/>
+          <rect x="260" y="236" width="125" height="35" rx="5" fill="#F43F5E"/>
+          <path d="M120 180 L280 180 L300 250 L100 250 Z" fill="#407BFF"/>
+          <rect x="150" y="100" width="100" height="90" rx="4" fill="#FFFFFF"/>
+          <line x1="165" y1="120" x2="235" y2="120" stroke="#CBD5E1" stroke-width="4"/>
+          <line x1="165" y1="135" x2="235" y2="135" stroke="#CBD5E1" stroke-width="4"/>
+          <line x1="165" y1="150" x2="215" y2="150" stroke="#CBD5E1" stroke-width="4"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ALOKASI WAKTU 2 SKS -->
+    <section class="timeline-wrapper">
+      <h3 style="font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-clock" style="color: var(--book-blue);"></i> Rencana Pembelajaran 2 SKS (100 Menit)</h3>
+      <div class="timeline-grid">
+        <div class="slot-box">
+          <div class="slot-time">10 Menit</div>
+          <div class="slot-heading">Pendahuluan</div>
+          <p style="font-size: 0.8rem; color: #64748B;">Peran karya ilmiah dalam melatih pemikiran kritis dan komunikasi sains.</p>
+        </div>
+        <div class="slot-box pink">
+          <div class="slot-time">45 Menit</div>
+          <div class="slot-heading">Materi Inti</div>
+          <p style="font-size: 0.8rem; color: #64748B;">Analisis komprehensif makalah, artikel jurnal, monograf, dan skripsi.</p>
+        </div>
+        <div class="slot-box yellow">
+          <div class="slot-time">5 Menit</div>
+          <div class="slot-heading">Games Interaktif</div>
+          <p style="font-size: 0.8rem; color: #64748B;">Kuis cepat seputar ciri khas dan format naskah akademik.</p>
+        </div>
+        <div class="slot-box teal">
+          <div class="slot-time">40 Menit</div>
+          <div class="slot-heading">Diskusi & Tugas</div>
+          <p style="font-size: 0.8rem; color: #64748B;">Sesi tanya jawab, pengisian lembar kerja, dan kesimpulan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 1: PENDAHULUAN (10 MENIT) -->
+    <article class="study-card">
+      <span class="tag-category">Bagian I • Pendahuluan (10 Menit)</span>
+      <h2>A. Hakikat Ragam Media Ilmiah</h2>
+      <p>Karya ilmiah merupakan sarana penting untuk menyampaikan hasil kajian, analisis, serta pemikiran kritis kepada masyarakat luas. Setiap format naskah memiliki target pembaca, tujuan, dan kedalaman analisis yang berbeda-beda[cite: 1].</p>
+      
+      <div class="concept-box">
+        <strong>Fungsi Esensial Penulisan Ilmiah:</strong>
+        <p>Buku rujukan menjelaskan bahwa aktivitas menulis karya ilmiah bukan sekadar mendokumentasikan hasil pengamatan, melainkan wahana untuk melatih ketajaman berpikir logis, membiasakan evaluasi fakta secara obyektif, serta menyusun pembuktian yang terstruktur[cite: 1].</p>
+      </div>
+    </article>
+
+    <!-- BAGIAN 2: MATERI INTI (45 MENIT) -->
+    <article class="study-card">
+      <span class="tag-category">Bagian II • Materi Inti (45 Menit)</span>
+      <h2>B. Makalah</h2>
+      <p>Makalah dapat dikaji dari dua perspektif utama: karya resmi yang dipersiapkan untuk dipaparkan dalam forum atau sidang ilmiah, serta karya tulis yang disusun peserta didik untuk memenuhi tugas pembelajaran[cite: 1]. Makalah menuntut kemampuan penulis dalam meramu dan mensintesis berbagai referensi, bukan hanya meringkas sumber yang dibaca[cite: 1].</p>
+
+      <h2 style="margin-top: 2rem;">C & D. Artikel Ilmiah dan Varian Formatnya</h2>
+      <p>Artikel ilmiah umumnya diterbitkan dalam berkala ilmiah atau jurnal dengan menggunakan struktur baku <strong>IMRAD</strong>: <em>Introduction</em> (pendahuluan), <em>Methods</em> (metodologi), <em>Results</em> (hasil penelitian), dan <em>Discussion</em> (pembahasan)[cite: 1]. Bab 3 merinci beberapa variasi bentuk artikel jurnal[cite: 1]:</p>
+
+      <div class="grid-types">
+        <div class="type-card">
+          <h4><i class="fa-solid fa-flask"></i> Penelitian Asli</h4>
+          <p>Menyajikan data empiris langsung dari investigasi lapangan atau eksperimen baru yang belum pernah dipublikasikan sebelumnya[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-envelope"></i> Laporan Singkat (Brief Report)</h4>
+          <p>Memaparkan temuan awal atau gagasan krusial secara ringkas dengan batas panjang tulisan yang ketat[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-list-check"></i> Artikel Ulasan (Review Article)</h4>
+          <p>Menghimpun dan mensintesis puluhan hingga ratusan literatur utama guna memetakan arah perkembangan ilmu dan celah riset[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-gears"></i> Artikel Metodologi</h4>
+          <p>Menjelaskan pembaruan pada alat ukur, teknik pengumpulan, atau prosedur analitis agar dapat diaplikasikan peneliti lain[cite: 1].</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2rem;">E, F, & G. Studi Kasus, Artikel Populer, dan Prosiding</h2>
+      <div class="grid-types">
+        <div class="type-card">
+          <h4><i class="fa-solid fa-magnifying-glass"></i> Studi Kasus</h4>
+          <p>Menganalisis fenomena khusus pada unit tertentu secara terperinci guna mengungkap kompleksitas situasi nyata[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-newspaper"></i> Artikel Populer (Opini)</h4>
+          <p>Mengulas topik sains atau kebijakan publik melalui media massa dengan gaya bahasa yang luwes dan mudah dicerna masyarakat luas[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-users"></i> Prosiding Konferensi</h4>
+          <p>Dokumentasi resmi dari kumpulan makalah yang telah disajikan dalam forum seminar ilmiah untuk pertukaran gagasan cepat[cite: 1].</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2rem;">H, I, & J. Monograf, Laporan Penelitian, dan Skripsi</h2>
+      <div class="grid-types">
+        <div class="type-card">
+          <h4><i class="fa-solid fa-book-journal-whills"></i> Monograf</h4>
+          <p>Buku akademis yang mengkaji satu pokok bahasan secara mendalam, menyeluruh, dan berfokus pada spesialisasi tertentu[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-clipboard-check"></i> Laporan Penelitian</h4>
+          <p>Catatan komprehensif bagi pemberi dana atau institusi mengenai proses pelaksanaan proyek riset dan pencapaian hasilnya[cite: 1].</p>
+        </div>
+        <div class="type-card">
+          <h4><i class="fa-solid fa-user-graduate"></i> Skripsi</h4>
+          <p>Karya ilmiah terstruktur yang disusun mahasiswa sarjana untuk menunjukkan kompetensi penelitian mandiri dan kontribusi keilmuan[cite: 1].</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- BAGIAN 3: GAMES INTERAKTIF (5 MENIT) -->
+    <div class="game-container">
+      <span style="background: var(--book-yellow); color: #78350F; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 700; font-size: 0.75rem;">KUIS KILAT 5 MENIT</span>
+      <h3 style="margin-top: 0.5rem;">Uji Cepat Pemahaman: Struktur IMRAD</h3>
+      <p style="color: #CBD5E1;">Berdasarkan Bab 3, komponen apa saja yang membentuk akronim baku format IMRAD pada artikel jurnal ilmiah[cite: 1]?</p>
+
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="checkAnswer(1)">A. Introduction, Material, Reasoning, and Deduction</button>
+        <button class="quiz-btn" onclick="checkAnswer(2)">B. Introduction, Methods, Results, and Discussion[cite: 1]</button>
+        <button class="quiz-btn" onclick="checkAnswer(3)">C. Identification, Measurement, Review, and Analysis</button>
+      </div>
+      <div id="quizResult" class="quiz-result"></div>
+    </div>
+
+    <!-- BAGIAN 4: DISKUSI & PENUTUP -->
+    <article class="study-card">
+      <span class="tag-category">Bagian IV • Tanya Jawab & Penutup</span>
+      <h2>Sesi Diskusi & Refleksi Kelas</h2>
+      <p>Gunakan pertanyaan berikut untuk memantik pertukaran ide pada sesi 40 menit terakhir perkuliahan:</p>
+      <ul style="padding-left: 1.5rem; margin: 1rem 0;">
+        <li><em>Kapan seorang peneliti sebaiknya memilih menulis artikel ulasan (review article) dibandingkan melakukan penelitian asli?</em>[cite: 1]</li>
+        <li><em>Bagaimana membedakan batasan antara artikel populer berbasis data dengan sekadar artikel opini tanpa dasar sains?</em>[cite: 1]</li>
+      </ul>
+
+      <div class="concept-box" style="margin-top: 1.5rem;">
+        <strong>Kesimpulan Perkuliahan:</strong><br>
+        Setiap karya ilmiah memiliki fungsi, media, dan konvensi penulisan tersendiri[cite: 1]. Memilih jenis naskah yang tepat membantu peneliti menyalurkan temuannya secara efektif sesuai target sasaran dan standar keilmuan yang berlaku[cite: 1].
+      </div>
+    </article>
+
+  </div>
+
+  <!-- SLIDE MODAL (UNTUK DOSEN) -->
+  <div id="slideModal">
+    <div class="slide-topbar">
+      <div style="font-weight: 700;"><i class="fa-solid fa-tv" style="color: var(--book-yellow);"></i> Slide Kuliah: Bab 3</div>
+      <button class="btn" style="background: rgba(255,255,255,0.15); color: white;" onclick="closeSlidePresentation()">Tutup</button>
+    </div>
+    <div class="slide-stage">
+      <div class="slide-box">
+        <span class="tag-category" id="slideTag" style="width: fit-content;">Slide 1</span>
+        <h2 id="slideTitle" style="margin-top: 0.5rem; color: white;">Judul</h2>
+        <div id="slideBody" style="color: #CBD5E1; margin-top: 1rem; font-size: 1.1rem;"></div>
+      </div>
+    </div>
+    <div class="slide-bottombar">
+      <button class="btn btn-worksheet" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Sebelumnya</button>
+      <div id="slideCount" style="color: #94A3B8; font-weight: 700;">1 / 5</div>
+      <button class="btn btn-slide" onclick="nextSlide()">Berikutnya <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- WORKSHEET MODAL (UNTUK MAHASISWA) -->
+  <div id="worksheetModal">
+    <div class="worksheet-card" id="printArea">
+      <div class="no-print" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+        <h3><i class="fa-solid fa-file-pen" style="color: var(--book-blue);"></i> Lembar Kerja Mahasiswa (Pertemuan 3)</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-slide" onclick="window.print()"><i class="fa-solid fa-print"></i> Cetak / PDF</button>
+          <button class="btn" style="background: #E2E8F0;" onclick="closeWorksheetModal()">Tutup</button>
+        </div>
+      </div>
+
+      <div style="border-bottom: 2px solid #0F172A; padding-bottom: 0.5rem; margin-bottom: 1rem; text-align: center;">
+        <h2>LEMBAR KERJA MAHASISWA: IDENTIFIKASI KARYA ILMIAH</h2>
+        <p style="color: #64748B; font-size: 0.9rem;">Mata Kuliah: Penulisan Karya Ilmiah • Rujukan Bab 3</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.9rem; margin-bottom: 1.5rem;">
+        <div>Nama: ___________________________</div>
+        <div>NIM: ___________________________</div>
+        <div>Prodi: __________________________</div>
+        <div>Tanggal: ________________________</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem;">
+        <div style="border: 1px solid var(--border-soft); padding: 0.8rem; border-radius: 8px;">
+          <strong>1. Karakteristik Makalah:</strong>
+          <p style="font-size: 0.8rem; color: #64748B;">Jelaskan fungsi sintesis dalam makalah dan bedakan dengan sekadar ringkasan pustaka:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
+        </div>
+        <div style="border: 1px solid var(--border-soft); padding: 0.8rem; border-radius: 8px;">
+          <strong>2. Komponen IMRAD:</strong>
+          <p style="font-size: 0.8rem; color: #64748B;">Sebutkan empat elemen IMRAD beserta fokus isi dari masing-masing bagian tersebut:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
+        </div>
+        <div style="border: 1px solid var(--border-soft); padding: 0.8rem; border-radius: 8px;">
+          <strong>3. Perbedaan Monograf dan Artikel Ilmiah:</strong>
+          <p style="font-size: 0.8rem; color: #64748B;">Uraikan perbedaan dari segi ruang lingkup topik dan kedalaman pembahasannya:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slidesData = [
+      {
+        tag: "SLIDE 1 • PENDAHULUAN",
+        title: "Keragaman Komunikasi Akademik",
+        body: "Karya ilmiah hadir dalam berbagai format dengan tujuan spesifik, mulai dari diseminasi hasil riset hingga pengembangan kemampuan analisis kritis."
+      },
+      {
+        tag: "SLIDE 2 • MAKALAH",
+        title: "Konsep Dasar Makalah",
+        body: "Makalah berfungsi sebagai laporan kajian ilmiah untuk forum akademik atau pemenuhan tugas pendidikan, yang menuntut integrasi pemikiran kritis atas berbagai sumber."
+      },
+      {
+        tag: "SLIDE 3 • ARTIKEL JURNAL",
+        title: "Format Standar IMRAD",
+        body: "Artikel jurnal umumnya terbagi menjadi empat pilar: Pendahuluan (Introduction), Metode (Methods), Hasil (Results), dan Pembahasan (Discussion)."
+      },
+      {
+        tag: "SLIDE 4 • VARIAN ARTIKEL",
+        title: "Ragam Bentuk Publikasi",
+        body: "Meliputi penelitian asli berbasis data primer, laporan singkat ide baru, ulasan literatur menyeluruh, artikel penjelasan metode, hingga studi kasus mendalam."
+      },
+      {
+        tag: "SLIDE 5 • FORMAT LAINNYA",
+        title: "Monograf, Laporan, & Skripsi",
+        body: "Monograf membahas topik tunggal secara tuntas, laporan mendokumentasikan progres proyek riset, dan skripsi menguji kemandirian riset calon sarjana."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function openSlidePresentation() {
+      document.getElementById('slideModal').style.display = 'flex';
+      renderSlide();
+    }
+    function closeSlidePresentation() {
+      document.getElementById('slideModal').style.display = 'none';
+    }
+    function renderSlide() {
+      const item = slidesData[currentSlide];
+      document.getElementById('slideTag').innerText = item.tag;
+      document.getElementById('slideTitle').innerText = item.title;
+      document.getElementById('slideBody').innerText = item.body;
+      document.getElementById('slideCount').innerText = `${currentSlide + 1} / ${slidesData.length}`;
+    }
+    function nextSlide() {
+      if (currentSlide < slidesData.length - 1) { currentSlide++; renderSlide(); }
+    }
+    function prevSlide() {
+      if (currentSlide > 0) { currentSlide--; renderSlide(); }
+    }
+
+    function openWorksheetModal() { document.getElementById('worksheetModal').style.display = 'flex'; }
+    function closeWorksheetModal() { document.getElementById('worksheetModal').style.display = 'none'; }
+
+    function checkAnswer(ans) {
+      const box = document.getElementById('quizResult');
+      box.style.display = 'block';
+      if (ans === 2) {
+        box.style.background = "rgba(45, 212, 191, 0.2)";
+        box.style.color = "#5EEAD4";
+        box.innerHTML = "<strong>Benar!</strong> Format baku IMRAD merujuk pada Introduction, Methods, Results, and Discussion.";
+      } else {
+        box.style.background = "rgba(244, 63, 94, 0.2)";
+        box.style.color = "#FDA4AF";
+        box.innerHTML = "<strong>Kurang Tepat.</strong> Format IMRAD mengacu pada Introduction, Methods, Results, and Discussion.";
+      }
+    }
+  </script>
+</body>
+</html>
