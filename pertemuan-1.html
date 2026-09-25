@@ -3,668 +3,702 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pertemuan 1: Hakikat &amp; Karakteristik Karya Ilmiah</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Pertemuan 1: Hakikat dan Karakteristik Karya Ilmiah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    / Variasi Palet Gen Z Cerah & Fresh /
     :root {
-      --gz-blue: #0284c7;
-      --gz-blue-light: #f0f9ff;
-      --gz-lime: #10b981;
-      --gz-lime-light: #ecfdf5;
-      --gz-pink: #ec4899;
-      --gz-pink-light: #fdf2f8;
-      --gz-purple: #8b5cf6;
-      --gz-purple-light: #f5f3ff;
-      --gz-orange: #f97316;
-      --gz-orange-light: #fff7ed;
-      --gz-dark: #0f172a;
-      --gz-bg: #f8fafc;
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-full: 9999px;
-      --transition: all 0.2s ease-in-out;
+      --primary-teal: #059669;
+      --teal-light: #d1fae5;
+      --teal-text: #065f46;
+      --purple-badge-bg: #ede9fe;
+      --purple-badge-text: #6d28d9;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-soft: #e2e8f0;
+      --radius-hero: 24px;
+      --radius-card: 20px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      background-color: var(--gz-bg);
-      color: #334155;
+      background-color: var(--bg-page);
+      color: var(--text-main);
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.55;
-      font-size: 0.88rem;
+      font-size: 1rem; /* Ukuran terbaca nyaman di laptop & HP */
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    / Top Navigation Bar Ringkas /
+    /* ==================== HEADER PERSIS SCREENSHOT ==================== */
     .site-header {
       background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--border-soft);
       position: sticky;
       top: 0;
-      z-index: 50;
-      padding: 0.5rem 1rem;
+      z-index: 100;
+      padding: 0.85rem 1.5rem;
     }
+
     .nav-container {
-      max-width: 800px;
+      max-width: 920px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    .brand-badge {
+
+    .brand-group {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.65rem;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
       font-weight: 800;
-      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      color: var(--primary-teal);
+      text-transform: uppercase;
     }
-    .pill {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: var(--radius-full);
-      font-size: 0.7rem;
-      font-weight: 700;
+
+    .badge-pert-teal {
+      background: var(--teal-light);
+      color: var(--teal-text);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
-    .badge-blue { background: var(--gz-blue-light); color: #0369a1; }
-    .badge-lime { background: var(--gz-lime-light); color: #047857; }
-    .badge-pink { background: var(--gz-pink-light); color: #be185d; }
-    .badge-purple { background: var(--gz-purple-light); color: #6d28d9; }
-    .badge-orange { background: var(--gz-orange-light); color: #c2410c; }
 
     .view-tabs {
       display: flex;
-      gap: 0.25rem;
+      gap: 0.35rem;
       background: #f1f5f9;
-      padding: 0.2rem;
-      border-radius: var(--radius-full);
+      padding: 0.28rem;
+      border-radius: var(--radius-pill);
     }
+
     .tab-btn {
       border: none;
       background: transparent;
-      padding: 0.35rem 0.75rem;
-      border-radius: var(--radius-full);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-pill);
       font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #64748b;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.2s ease;
     }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
     .tab-btn.active {
       background: #ffffff;
-      color: var(--gz-blue);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      color: var(--text-main);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    / Kontainer Konten Fokus (Lebar Tidak Meluber) /
+    /* ==================== LAYOUT UTAMA ==================== */
     .content-wrapper {
-      max-width: 780px;
-      margin: 1.25rem auto 2.5rem auto;
-      padding: 0 0.85rem;
+      max-width: 920px;
+      margin: 2rem auto 4rem auto;
+      padding: 0 1.25rem;
     }
-    .view-section { display: none; }
-    .view-section.active { display: block; }
 
-    / HERO BANNER MENARIK DENGAN KARAKTER SVG GEN Z /
-    .hero-box {
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-      border: 1px solid #e0f2fe;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 55%, #fdf2f8 100%);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.04);
+    .view-section {
+      display: none;
     }
-    .hero-text {
-      flex: 1;
+
+    .view-section.active {
+      display: block;
     }
-    .hero-text h1 {
-      font-size: 1.25rem;
-      margin: 0.35rem 0;
-      line-height: 1.35;
+
+    /* ==================== HERO BOX IDENTIK ==================== */
+    .hero-card {
+      background: linear-gradient(145deg, #f5f3ff 0%, #f0fdf4 50%, #eff6ff 100%);
+      border: 1px solid #e0e7ff;
+      border-radius: var(--radius-hero);
+      padding: 2.75rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .pill-module-purple {
+      display: inline-block;
+      background: var(--purple-badge-bg);
+      color: var(--purple-badge-text);
+      font-size: 0.75rem;
       font-weight: 800;
-      color: var(--gz-dark);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 1.25rem;
     }
-    .hero-text p {
-      font-size: 0.82rem;
+
+    .hero-card h1 {
+      font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+      font-weight: 800;
+      line-height: 1.3;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
       color: #475569;
-      margin: 0 0 0.75rem 0;
-      line-height: 1.5;
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      max-width: 820px;
     }
-    .hero-meta {
+
+    .hero-tags-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem 0.75rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #64748b;
-    }
-    .hero-character-box {
-      width: 140px;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      gap: 0.75rem;
     }
 
-    / Kartu Materi Ramping & Padat /
-    .content-card {
+    .hero-tag {
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
+      border: 1px solid var(--border-soft);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    /* ==================== CONTENT CARDS ==================== */
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 2.25rem 2.25rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+    }
+
+    .content-card h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0.85rem 0 1rem 0;
+      line-height: 1.35;
+    }
+
+    .content-card p {
+      font-size: 1.02rem;
+      color: #334155;
+      line-height: 1.75;
       margin-bottom: 1.25rem;
     }
-    .content-card h2 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin: 0.3rem 0 0.5rem 0;
-      color: var(--gz-dark);
-    }
+
     .quote-box {
-      padding: 0.7rem 0.9rem;
-      border-left: 3px solid var(--gz-blue);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 0.8rem 0;
+      border-left: 4px solid var(--primary-teal);
+      background: #f0fdf4;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.5rem 0;
       font-style: italic;
-      color: #334155;
-      font-size: 0.82rem;
+      color: #1e293b;
+      font-size: 1.02rem;
+      line-height: 1.7;
     }
+
     .quote-box footer {
-      margin-top: 0.25rem;
+      margin-top: 0.6rem;
       font-style: normal;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.88rem;
+      color: #047857;
     }
+
     .grid-two-col {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 0.75rem;
-      margin: 0.8rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
     }
+
     .accent-card {
-      padding: 0.75rem 0.9rem;
-      border-radius: var(--radius-sm);
-    }
-    .card-blue-bright { border-left: 3px solid var(--gz-blue); background: var(--gz-blue-light); }
-    .card-purple-bright { border-left: 3px solid var(--gz-purple); background: var(--gz-purple-light); }
-
-    / SVG Diagram Ringkas /
-    .diagram-container {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius-sm);
-      padding: 0.75rem;
-      margin: 1rem 0;
-      text-align: center;
-    }
-    .diagram-caption {
-      margin-top: 0.4rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #64748b;
+      padding: 1.35rem 1.45rem;
+      border-radius: 14px;
+      line-height: 1.65;
     }
 
-    / Game Skenario Interaktif /
-    .game-card {
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      margin-top: 0.5rem;
+    .card-teal {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
     }
-    .sound-toggle-bar {
-      display: flex;
-      justify-content: flex-end;
+
+    .card-purple {
+      background: #f5f3ff;
+      border-left: 4px solid #8b5cf6;
+    }
+
+    .accent-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
       margin-bottom: 0.5rem;
     }
-    .sound-btn {
+
+    .accent-card p {
+      font-size: 0.95rem;
+      color: #475569;
+      margin: 0;
+    }
+
+    /* Diagram Taksonomi */
+    .diagram-container {
       background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 0.25rem 0.6rem;
-      border-radius: var(--radius-full);
-      font-size: 0.72rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.75rem 0;
+      text-align: center;
+    }
+
+    .diagram-caption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
       font-weight: 700;
-      cursor: pointer;
+      color: var(--text-muted);
     }
-    .sound-btn.active {
-      background: var(--gz-pink-light);
-      border-color: var(--gz-pink);
-      color: #be185d;
+
+    /* Mini Game */
+    .game-card {
+      background: #fdf2f8;
+      border: 1.5px dashed #fbcfe8;
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-top: 1rem;
     }
+
     .quiz-option {
       display: block;
       width: 100%;
       text-align: left;
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 0.55rem 0.8rem;
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.35rem;
+      border: 1.5px solid #e2e8f0;
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      margin-bottom: 0.65rem;
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #334155;
       cursor: pointer;
-    }
-    .quiz-option:hover {
-      border-color: var(--gz-pink);
-      background: #fff5f9;
-    }
-    .quiz-feedback {
-      display: none;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--radius-sm);
-      margin-top: 0.55rem;
-      font-size: 0.8rem;
-      line-height: 1.5;
+      transition: all 0.2s ease;
+      line-height: 1.6;
     }
 
-    / Lembar Kerja & 10 Soal PG /
-    .print-action-bar {
+    .quiz-option:hover {
+      border-color: #ec4899;
+      background: #fff5f9;
+      transform: translateX(4px);
+    }
+
+    .quiz-feedback {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ==================== WORKSHEET VIEW ==================== */
+    .print-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #ffffff;
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-md);
-      border: 1px solid #e2e8f0;
-      margin-bottom: 1rem;
-      gap: 0.5rem;
-    }
-    .btn-download-pdf {
-      border: none;
-      color: #ffffff;
-      padding: 0.38rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-family: inherit;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .worksheet-paper {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 1.25rem 1.75rem;
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    / Presentasi Dosen Nyaman /
-    .presentation-frame-colorful {
+    .btn-pdf {
+      background: var(--primary-teal);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+    }
+
+    .worksheet-sheet {
       background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: var(--radius-md);
-      padding: 1.35rem;
-      min-height: 380px;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 2.75rem 2.25rem;
+    }
+
+    .lecturer-key {
+      display: none;
+      margin-top: 0.65rem;
+      padding: 0.75rem 1rem;
+      background: #ecfdf5;
+      border-left: 4px solid var(--primary-teal);
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: #065f46;
+      line-height: 1.6;
+    }
+
+    /* ==================== PRESENTASI VIEW ==================== */
+    .presentation-frame {
+      background: #ffffff;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-hero);
+      padding: 2.5rem 2.25rem;
+      min-height: 480px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     }
+
     .slide-item { display: none; }
     .slide-item.active { display: block; }
-    .presentation-frame-colorful h2 {
-      font-size: 1.25rem;
-      margin: 0.35rem 0 0.7rem 0;
-      line-height: 1.3;
+
+    .slide-item h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-bottom: 1.25rem;
+      color: #0f172a;
     }
-    .presentation-frame-colorful .slide-body {
-      font-size: 0.85rem;
-      line-height: 1.6;
+
+    .slide-body {
+      font-size: 1.08rem;
+      line-height: 1.8;
       color: #334155;
     }
-    .presentation-frame-colorful .slide-body li {
-      margin-bottom: 0.45rem;
+
+    .slide-body li {
+      margin-bottom: 0.85rem;
       position: relative;
-      padding-left: 1.2rem;
+      padding-left: 1.85rem;
       list-style: none;
     }
-    .presentation-frame-colorful .slide-body li::before {
-      content: "•";
+
+    .slide-body li::before {
+      content: "✦";
       position: absolute;
       left: 0;
       font-weight: 800;
-      color: var(--gz-blue);
-      font-size: 1.15rem;
-      line-height: 1;
+      color: var(--primary-teal);
     }
+
     .slide-nav-dock {
       display: flex;
       justify-content: center;
-      gap: 0.35rem;
-      margin-top: 0.85rem;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
     }
+
     .dock-btn {
-      width: 28px;
-      height: 28px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      border: 1px solid #cbd5e1;
+      border: 1.5px solid #cbd5e1;
       background: #ffffff;
       color: #475569;
-      font-size: 0.72rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.2s ease;
     }
+
     .dock-btn.active {
-      background: var(--gz-blue);
-      border-color: var(--gz-blue);
+      background: var(--primary-teal);
+      border-color: var(--primary-teal);
       color: #ffffff;
     }
+
     .slide-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 0.65rem;
-      border-top: 1px solid #e2e8f0;
-      margin-top: 0.65rem;
-    }
-    .btn-ctrl {
-      border: none;
-      padding: 0.35rem 0.8rem;
-      border-radius: var(--radius-full);
-      font-family: inherit;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: #ffffff;
-    }
-    .btn-ctrl.secondary {
-      background: #f1f5f9;
-      color: #475569;
-    }
-    .speaker-notes-colorful {
-      margin-top: 0.85rem;
-      background: #f0f9ff;
-      border-left: 3px solid var(--gz-blue);
-      padding: 0.6rem 0.8rem;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      font-size: 0.78rem;
-      color: #0369a1;
-      display: none;
-    }
-    .lecturer-key-box {
-      display: none;
-      margin-top: 0.35rem;
-      padding: 0.45rem 0.7rem;
-      background: #ecfdf5;
-      border-left: 3px solid var(--gz-lime);
-      border-radius: 4px;
-      font-size: 0.75rem;
-      color: #065f46;
-      line-height: 1.5;
-    }
-    .q-number {
-      font-weight: 800;
-      color: var(--gz-blue);
-      margin-right: 0.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-soft);
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
-    @media (max-width: 640px) {
-      .hero-box { flex-direction: column-reverse; text-align: center; }
-      .hero-character-box { width: 100px; margin: 0 auto; }
-      .hero-meta { justify-content: center; }
+    .btn-ctrl {
+      border: none;
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-ctrl.prev { background: #f1f5f9; color: #475569; }
+    .btn-ctrl.next { background: var(--primary-teal); color: #ffffff; }
+
+    .speaker-notes-box {
+      margin-top: 1.25rem;
+      background: #f0fdf4;
+      border-left: 4px solid var(--primary-teal);
+      padding: 0.9rem 1.15rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: #065f46;
+      display: none;
     }
 
     @media print {
-      body { background: #ffffff; font-size: 10pt; }
-      .site-header, .print-action-bar, .slide-nav-dock, .slide-controls, .btn-ctrl { display: none !important; }
+      body { background: #ffffff; font-size: 11pt; }
+      .site-header, .print-bar, .slide-nav-dock, .slide-controls { display: none !important; }
       .content-wrapper { max-width: 100%; margin: 0; padding: 0; }
       .view-section { display: none !important; }
       #worksheet-view { display: block !important; }
-      .worksheet-paper { border: none !important; padding: 0 !important; }
-      .lecturer-key-box { display: block !important; border-left: 2px solid #000; color: #000; }
+      .worksheet-sheet { border: none !important; padding: 0 !important; }
+      .lecturer-key { display: block !important; border-left: 2px solid #000; color: #000; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ==================== HEADER NAVIGASI ==================== -->
+  <!-- ==================== HEADER PERSIS SCREENSHOT ==================== -->
   <header class="site-header">
     <div class="nav-container">
-      <div class="brand-badge">
-        <span style="color: var(--gz-blue);">KARYA ILMIAH</span>
-        <span class="pill badge-blue">Pertemuan 1</span>
+      <div class="brand-group">
+        <span class="brand-title">KARYA TULIS ILMIAH</span>
+        <span class="badge-pert-teal">PERTEMUAN 1</span>
       </div>
       <nav class="view-tabs" role="tablist">
-        <button class="tab-btn active" onclick="switchView('reading-view', this)">Modul</button>
-        <button class="tab-btn" onclick="switchView('worksheet-view', this)">LKM &amp; 10 Soal</button>
-        <button class="tab-btn" onclick="switchView('presentation-view', this)">Slide Dosen</button>
+        <button class="tab-btn active" onclick="switchView('reading-view', this)">Modul Bacaan</button>
+        <button class="tab-btn" onclick="switchView('worksheet-view', this)">Lembar Kerja Siswa</button>
+        <button class="tab-btn" onclick="switchView('presentation-view', this)">Presentasi Dosen</button>
       </nav>
     </div>
   </header>
 
   <main class="content-wrapper">
 
-    <!-- ==================== BAGIAN 1: MODUL BACAAN LENGKAP ==================== -->
+    <!-- ==================== BAGIAN 1: MODUL BACAAN (SCREENSHOT LAYOUT) ==================== -->
     <section id="reading-view" class="view-section active">
-      
-      <!-- HERO BANNER DENGAN KARAKTER PENELITI MUDA (SVG ASLI) -->
-      <header class="hero-box">
-        <div class="hero-text">
-          <span class="pill badge-blue">Sesi Pembuka</span>
-          <h1>Hakikat, Karakteristik Utama, &amp; Prinsip Karya Ilmiah</h1>
-          <p>Kajian Bab 1: Epistemologi karya ilmiah, objektivitas data, replikasi metode, verifikasi sejawat (peer review), serta kepatuhan etika akademik[cite: 1].</p>
-          <div class="hero-meta">
-            <span>⏱ 2 SKS (100 Menit)</span>
-            <span>📚 Bab 1 (Mahmudi dkk., 2023)[cite: 1]</span>
-            <span>🎯 10 Unsur Karya Ilmiah[cite: 1]</span>
-          </div>
-        </div>
 
-        <!-- Karakter Maskot Cendekiawan Muda Gen Z -->
-        <div class="hero-character-box">
-          <svg viewBox="0 0 160 160" width="100%" height="auto">
-            <!-- Lingkaran Latar Belakang -->
-            <circle cx="80" cy="80" r="72" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2.5"/>
-            <circle cx="80" cy="80" r="62" fill="#ffffff" opacity="0.6"/>
-            <!-- Tubuh & Jaket Hoodie Gen Z -->
-            <path d="M42 145 C42 115, 60 108, 80 108 C100 108, 118 115, 118 145 Z" fill="#0284c7"/>
-            <path d="M72 108 L80 125 L88 108 Z" fill="#38bdf8"/>
-            <!-- Leher & Kepala -->
-            <rect x="74" y="94" width="12" height="14" fill="#fed7aa" rx="3"/>
-            <ellipse cx="80" cy="74" rx="24" ry="26" fill="#fde68a"/>
-            <!-- Rambut Modern -->
-            <path d="M56 70 C54 50, 72 40, 88 40 C102 40, 108 52, 104 65 C98 56, 85 54, 76 58 C68 62, 62 66, 56 70 Z" fill="#1e293b"/>
-            <!-- Kacamata Cerdas Gen Z -->
-            <rect x="64" y="68" width="13" height="10" rx="3" fill="none" stroke="#0f172a" stroke-width="2"/>
-            <rect x="83" y="68" width="13" height="10" rx="3" fill="none" stroke="#0f172a" stroke-width="2"/>
-            <line x1="77" y1="73" x2="83" y2="73" stroke="#0f172a" stroke-width="2"/>
-            <!-- Mata & Senyum Antusias -->
-            <circle cx="70.5" cy="73" r="1.5" fill="#0f172a"/>
-            <circle cx="89.5" cy="73" r="1.5" fill="#0f172a"/>
-            <path d="M75 85 Q80 90 85 85" stroke="#be185d" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <!-- Topi Toga Akademik / Simbol Ilmiah -->
-            <polygon points="80,24 116,36 80,48 44,36" fill="#0f172a"/>
-            <rect x="68" y="44" width="24" height="7" fill="#1e293b" rx="2"/>
-            <path d="M106 38 L109 56" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="109" cy="58" r="2.5" fill="#f59e0b"/>
-            <!-- Kilau Bintang Ide Kreatif -->
-            <path d="M126 50 L129 57 L136 60 L129 63 L126 70 L123 63 L116 60 L123 57 Z" fill="#ec4899"/>
-            <path d="M34 85 L36 90 L41 92 L36 94 L34 99 L32 94 L27 92 L32 90 Z" fill="#10b981"/>
-          </svg>
+      <!-- HERO BANNER IDENTIK DENGAN SCREENSHOT -->
+      <header class="hero-card">
+        <span class="pill-module-purple">MODUL PEMBELAJARAN MANDIRI</span>
+        <h1>Orientasi Perkuliahan, Hakikat Karya Ilmiah, dan Karakteristik Utama</h1>
+        <p class="hero-desc">
+          Kajian kritis Bab 1: Eksplorasi epistemologis karya tulis ilmiah, pilar objektivitas data tanpa bias pribadi, penegakan prosedur metode ilmiah yang dapat diuji ulang (replikasi), telaah sejawat (peer review), serta kepatuhan etika akademik[cite: 1].
+        </p>
+        <div class="hero-tags-row">
+          <div class="hero-tag">⏱ Durasi: 2 SKS (100 Menit)</div>
+          <div class="hero-tag">📚 Rujukan: Bab 1 Buku Mahmudi dkk. (2023)[cite: 1]</div>
+          <div class="hero-tag">🎯 Capaian: Penguasaan 10 Karakteristik Ilmiah[cite: 1]</div>
         </div>
       </header>
 
-      <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+      <!-- FASE 1: ORIENTASI & WARMING UP (10 MENIT) -->
       <article class="content-card">
-        <span class="pill badge-lime">Fase 1: Pendahuluan (10 Menit)</span>
-        <h2>1. Hakikat Karya Ilmiah Sebagai Wahana Ilmu Pengetahuan</h2>
-        <p style="margin-top: 0.35rem;">
-          Karya ilmiah merupakan bentuk ekspresi pengetahuan manusia yang memegang peranan sentral dalam ekspansi ilmu pengetahuan dan pemahaman dunia empiris (Ismail Nurdin &amp; Sri Hartati, 2019 dalam Mahmudi dkk., 2023)[cite: 1]. Karya ilmiah menjadi wahana formal untuk mendiseminasikan hasil riset, analisis komprehensif, serta pemikiran kritis[cite: 1].
+        <span class="pill-module-purple" style="background: #ede9fe; color: #6d28d9;">FASE 1: ORIENTASI &amp; WARMING UP (10 MENIT)</span>
+        <h2>1. Hakikat Karya Ilmiah Sebagai Wahana Pengembangan Ilmu</h2>
+        <p>
+          Selamat datang di perkuliahan Penulisan Karya Tulis Ilmiah! Karya ilmiah merupakan salah satu bentuk ekspresi pengetahuan manusia yang memegang peranan sentral dalam ekspansi ilmu pengetahuan dan pemahaman dunia empiris (Ismail Nurdin &amp; Sri Hartati, 2019 dalam Mahmudi dkk., 2023)[cite: 1]. Karya ilmiah bertransformasi menjadi instrumen formal paling efektif untuk mengomunikasikan hasil riset, telaah teoretis, dan pemikiran kritis kepada publik luas[cite: 1].
         </p>
 
-        <div class="quote-box" style="background: #f0f9ff;">
+        <div class="quote-box">
           “Karya ilmiah adalah sebuah karya tertulis yang dibuat dengan tujuan untuk mengungkapkan hasil penelitian, analisis, pemikiran, atau konsep yang telah diuji dan diverifikasi secara ilmiah (Rahim, 2020).”
           <footer>— Mohammad Ali Mahmudi dkk. (2023, Bab 1, hlm. 3)[cite: 1]</footer>
         </div>
 
         <div class="grid-two-col">
-          <div class="accent-card card-blue-bright">
-            <h3 style="font-size: 0.85rem; margin: 0 0 0.2rem 0; color: #0369a1;">Metode Ilmiah Baku</h3>
-            <p style="font-size: 0.78rem; color: #475569; margin: 0;">
-              Wajib disusun melalui prosedur ilmiah yang teratur dan objektif agar dapat direplikasi serta diverifikasi pihak lain (Rahim, 2020)[cite: 1].
+          <div class="accent-card card-teal">
+            <h3 style="color: #047857;">Pondasi Metode Ilmiah &amp; Replikasi</h3>
+            <p>
+              Setiap proposisi dalam karya ilmiah wajib berakar pada prosedur penelitian yang ketat, teratur, dan objektif agar hasilnya dapat direplikasi serta diverifikasi oleh ilmuwan lain secara mandiri (Rahim, 2020)[cite: 1].
             </p>
           </div>
-          <div class="accent-card card-purple-bright">
-            <h3 style="font-size: 0.85rem; margin: 0 0 0.2rem 0; color: #6d28d9;">Integritas &amp; Etika</h3>
-            <p style="font-size: 0.78rem; color: #475569; margin: 0;">
-              Menjunjung transparansi data, mencegah plagiarisme, dan bebas benturan kepentingan (Hawin &amp; Riswandi, 2020)[cite: 1].
+          <div class="accent-card card-purple">
+            <h3 style="color: #6d28d9;">Kepatuhan Etika &amp; Integritas Moral</h3>
+            <p>
+              Integritas data lapangan, kejujuran atribusi sumber rujukan (anti-plagiarisme), pengungkapan konflik kepentingan, serta objektivitas adalah mahkota moral tertinggi seorang penulis ilmiah (Hawin &amp; Riswandi, 2020)[cite: 1].
             </p>
           </div>
         </div>
       </article>
 
-      <!-- SESI 2: MATERI INTI (45 MENIT) -->
+      <!-- FASE 2: TELAAH KONSEPTUAL MENDALAM (45 MENIT) -->
       <article class="content-card">
-        <span class="pill badge-purple">Fase 2: Telaah Materi Inti (45 Menit)</span>
-        <h2>2. Sepuluh Unsur Esensial Karya Ilmiah</h2>
-        <p style="margin-top: 0.35rem;">
-          Bab 1 (Mahmudi dkk., 2023, hlm. 3–27) menetapkan 10 unsur yang wajib dipenuhi dalam sebuah karya ilmiah[cite: 1]:
+        <span class="pill-module-purple" style="background: #fce7f3; color: #be185d;">FASE 2: TELAAH KONSEPTUAL MENDALAM (45 MENIT)</span>
+        <h2>2. Sepuluh Unsur Penting dalam Hakikat Karya Ilmiah</h2>
+        <p>
+          Berdasarkan kajian Bab 1 (Mahmudi dkk., 2023, hlm. 3–27), sebuah naskah akademik diakui memenuhi kualifikasi ilmiah yang sahih apabila mengintegrasikan sepuluh unsur esensial berikut[cite: 1]:
         </p>
 
-        <!-- DIAGRAM KOMPAK & BERSIH -->
+        <!-- DIAGRAM 10 UNSUR KARYA ILMIAH -->
         <div class="diagram-container">
-          <svg viewBox="0 0 720 195" width="100%" height="auto" style="max-height: 215px; font-family: 'Plus Jakarta Sans', sans-serif;">
+          <svg viewBox="0 0 880 230" width="100%" height="auto" style="max-height: 250px; font-family: 'Plus Jakarta Sans', sans-serif;">
             <defs>
-              <linearGradient id="gB" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0284c7"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
-              <linearGradient id="gL" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
-              <linearGradient id="gP" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#f472b6"/></linearGradient>
-              <linearGradient id="gV" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#c084fc"/></linearGradient>
-              <linearGradient id="gO" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#fb923c"/></linearGradient>
+              <linearGradient id="tG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
+              <linearGradient id="tG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0284c7"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
+              <linearGradient id="tG3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#a855f7"/></linearGradient>
             </defs>
 
             <!-- Baris 1 -->
-            <rect x="5" y="8" width="135" height="78" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
-            <rect x="5" y="8" width="135" height="20" rx="6" fill="url(#gB)"/>
-            <text x="72" y="22" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">1. OBJEKTIVITAS</text>
-            <text x="72" y="48" fill="#0369a1" font-size="8.5" font-weight="700" text-anchor="middle">Bebas Bias Pribadi</text>
-            <text x="72" y="66" fill="#64748b" font-size="7.5" text-anchor="middle">Fakta &amp; bukti empiris</text>
+            <rect x="15" y="15" width="160" height="90" rx="8" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.5"/>
+            <rect x="15" y="15" width="160" height="26" rx="8" fill="url(#tG1)"/>
+            <text x="95" y="32" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">1. OBJEKTIVITAS</text>
+            <text x="95" y="62" fill="#047857" font-size="10.5" font-weight="700" text-anchor="middle">Bebas Bias Pribadi</text>
+            <text x="95" y="82" fill="#475569" font-size="9" text-anchor="middle">Fakta empiris &amp; terbukti</text>
 
-            <rect x="148" y="8" width="135" height="78" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
-            <rect x="148" y="8" width="135" height="20" rx="6" fill="url(#gL)"/>
-            <text x="215" y="22" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">2. METODE ILMIAH</text>
-            <text x="215" y="48" fill="#047857" font-size="8.5" font-weight="700" text-anchor="middle">Alur Baku Teruji</text>
-            <text x="215" y="66" fill="#64748b" font-size="7.5" text-anchor="middle">Siklus riset sistematis</text>
+            <rect x="185" y="15" width="160" height="90" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+            <rect x="185" y="15" width="160" height="26" rx="8" fill="url(#tG2)"/>
+            <text x="265" y="32" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">2. METODE ILMIAH</text>
+            <text x="265" y="62" fill="#0369a1" font-size="10.5" font-weight="700" text-anchor="middle">Prosedur Terstruktur</text>
+            <text x="265" y="82" fill="#475569" font-size="9" text-anchor="middle">Siklus riset sistematis</text>
 
-            <rect x="291" y="8" width="135" height="78" rx="6" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1"/>
-            <rect x="291" y="8" width="135" height="20" rx="6" fill="url(#gP)"/>
-            <text x="358" y="22" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">3. TRANSPARANSI</text>
-            <text x="358" y="48" fill="#be185d" font-size="8.5" font-weight="700" text-anchor="middle">Metodologi Terbuka</text>
-            <text x="358" y="66" fill="#64748b" font-size="7.5" text-anchor="middle">Prosedur dapat diulang</text>
+            <rect x="355" y="15" width="160" height="90" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="355" y="15" width="160" height="26" rx="8" fill="url(#tG3)"/>
+            <text x="435" y="32" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">3. TRANSPARANSI</text>
+            <text x="435" y="62" fill="#6d28d9" font-size="10.5" font-weight="700" text-anchor="middle">Metodologi Terbuka</text>
+            <text x="435" y="82" fill="#475569" font-size="9" text-anchor="middle">Dapat diulang pihak lain</text>
 
-            <rect x="434" y="8" width="135" height="78" rx="6" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
-            <rect x="434" y="8" width="135" height="20" rx="6" fill="url(#gV)"/>
-            <text x="501" y="22" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">4. NOVELTY</text>
-            <text x="501" y="48" fill="#6d28d9" font-size="8.5" font-weight="700" text-anchor="middle">Kontribusi Baru</text>
-            <text x="501" y="66" fill="#64748b" font-size="7.5" text-anchor="middle">Solusi &amp; teori baru</text>
+            <rect x="525" y="15" width="160" height="90" rx="8" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.5"/>
+            <rect x="525" y="15" width="160" height="26" rx="8" fill="url(#tG1)"/>
+            <text x="605" y="32" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">4. NOVELTY</text>
+            <text x="605" y="62" fill="#047857" font-size="10.5" font-weight="700" text-anchor="middle">Kontribusi Baru</text>
+            <text x="605" y="82" fill="#475569" font-size="9" text-anchor="middle">Solusi &amp; pemikiran baru</text>
 
-            <rect x="577" y="8" width="135" height="78" rx="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
-            <rect x="577" y="8" width="135" height="20" rx="6" fill="url(#gO)"/>
-            <text x="644" y="22" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">5. VERIFIKASI</text>
-            <text x="644" y="48" fill="#c2410c" font-size="8.5" font-weight="700" text-anchor="middle">Dapat Direplikasi</text>
-            <text x="644" y="66" fill="#64748b" font-size="7.5" text-anchor="middle">Uji independen</text>
+            <rect x="695" y="15" width="160" height="90" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+            <rect x="695" y="15" width="160" height="26" rx="8" fill="url(#tG2)"/>
+            <text x="775" y="32" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">5. VERIFIKASI</text>
+            <text x="775" y="62" fill="#0369a1" font-size="10.5" font-weight="700" text-anchor="middle">Uji Replikasi</text>
+            <text x="775" y="82" fill="#475569" font-size="9" text-anchor="middle">Dapat diuji ulang pakar</text>
 
             <!-- Baris 2 -->
-            <rect x="5" y="100" width="135" height="78" rx="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
-            <rect x="5" y="100" width="135" height="20" rx="6" fill="url(#gO)"/>
-            <text x="72" y="114" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">6. FORMAT BAKU</text>
-            <text x="72" y="140" fill="#c2410c" font-size="8.5" font-weight="700" text-anchor="middle">Sistematika Jelas</text>
-            <text x="72" y="158" fill="#64748b" font-size="7.5" text-anchor="middle">Gaya selingkung konsisten</text>
+            <rect x="15" y="120" width="160" height="90" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+            <rect x="15" y="120" width="160" height="26" rx="8" fill="url(#tG2)"/>
+            <text x="95" y="137" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">6. FORMAT BAKU</text>
+            <text x="95" y="167" fill="#0369a1" font-size="10.5" font-weight="700" text-anchor="middle">Gaya Selingkung</text>
+            <text x="95" y="187" fill="#475569" font-size="9" text-anchor="middle">Tata letak &amp; sitasi tertib</text>
 
-            <rect x="148" y="100" width="135" height="78" rx="6" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
-            <rect x="148" y="100" width="135" height="20" rx="6" fill="url(#gV)"/>
-            <text x="215" y="114" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">7. KOMUNIKASI</text>
-            <text x="215" y="140" fill="#6d28d9" font-size="8.5" font-weight="700" text-anchor="middle">Diseminasi Temuan</text>
-            <text x="215" y="158" fill="#64748b" font-size="7.5" text-anchor="middle">Bagi komunitas akademik</text>
+            <rect x="185" y="120" width="160" height="90" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="185" y="120" width="160" height="26" rx="8" fill="url(#tG3)"/>
+            <text x="265" y="137" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">7. KOMUNIKASI</text>
+            <text x="265" y="167" fill="#6d28d9" font-size="10.5" font-weight="700" text-anchor="middle">Diseminasi Ilmu</text>
+            <text x="265" y="187" fill="#475569" font-size="9" text-anchor="middle">Bagi masyarakat akademik</text>
 
-            <rect x="291" y="100" width="135" height="78" rx="6" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1"/>
-            <rect x="291" y="100" width="135" height="20" rx="6" fill="url(#gP)"/>
-            <text x="358" y="114" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">8. PEER REVIEW</text>
-            <text x="358" y="140" fill="#be185d" font-size="8.5" font-weight="700" text-anchor="middle">Uji Mitra Bestari</text>
-            <text x="358" y="158" fill="#64748b" font-size="7.5" text-anchor="middle">Evaluasi mutu pakar</text>
+            <rect x="355" y="120" width="160" height="90" rx="8" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.5"/>
+            <rect x="355" y="120" width="160" height="26" rx="8" fill="url(#tG1)"/>
+            <text x="435" y="137" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">8. PEER REVIEW</text>
+            <text x="435" y="167" fill="#047857" font-size="10.5" font-weight="700" text-anchor="middle">Uji Mitra Bestari</text>
+            <text x="435" y="187" fill="#475569" font-size="9" text-anchor="middle">Penilaian kritis pakar</text>
 
-            <rect x="434" y="100" width="135" height="78" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
-            <rect x="434" y="100" width="135" height="20" rx="6" fill="url(#gL)"/>
-            <text x="501" y="114" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">9. ETIKA KETAT</text>
-            <text x="501" y="140" fill="#047857" font-size="8.5" font-weight="700" text-anchor="middle">Bebas Plagiasi</text>
-            <text x="501" y="158" fill="#64748b" font-size="7.5" text-anchor="middle">Integritas moral data</text>
+            <rect x="525" y="120" width="160" height="90" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+            <rect x="525" y="120" width="160" height="26" rx="8" fill="url(#tG2)"/>
+            <text x="605" y="137" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">9. KEPATUHAN ETIKA</text>
+            <text x="605" y="167" fill="#0369a1" font-size="10.5" font-weight="700" text-anchor="middle">Bebas Plagiasi</text>
+            <text x="605" y="187" fill="#475569" font-size="9" text-anchor="middle">Kejujuran data mutlak</text>
 
-            <rect x="577" y="100" width="135" height="78" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
-            <rect x="577" y="100" width="135" height="20" rx="6" fill="url(#gB)"/>
-            <text x="644" y="114" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">10. KETERBACAAN</text>
-            <text x="644" y="140" fill="#0369a1" font-size="8.5" font-weight="700" text-anchor="middle">Bahasa Baku</text>
-            <text x="644" y="158" fill="#64748b" font-size="7.5" text-anchor="middle">Lugas &amp; tidak ambigu</text>
+            <rect x="695" y="120" width="160" height="90" rx="8" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1.5"/>
+            <rect x="695" y="120" width="160" height="26" rx="8" fill="url(#tG3)"/>
+            <text x="775" y="137" fill="#fff" font-size="9.5" font-weight="800" text-anchor="middle">10. KETERBACAAN</text>
+            <text x="775" y="167" fill="#6d28d9" font-size="10.5" font-weight="700" text-anchor="middle">Bahasa Baku Lugas</text>
+            <text x="775" y="187" fill="#475569" font-size="9" text-anchor="middle">Jelas &amp; terstruktur</text>
           </svg>
-          <div class="diagram-caption">Diagram 1: Taksonomi 10 Unsur Karya Ilmiah (Bab 1, Mahmudi dkk., 2023)[cite: 1]</div>
+          <div class="diagram-caption">Diagram 1: Taksonomi 10 Unsur Esensial Karya Ilmiah Menurut Bab 1 (Mahmudi dkk., 2023)[cite: 1]</div>
         </div>
 
-        <h3 style="margin-top: 1rem; margin-bottom: 0.3rem; color: var(--gz-blue); font-size: 0.95rem;">2.1. Objektivitas Tanpa Bias</h3>
-        <p style="font-size: 0.82rem; color: #475569;">
-          Objektivitas menuntut penulis terbebas dari opini subjektif, kepentingan sponsor komersial, ataupun keberpihakan doktrinal (Hermawan &amp; Amirullah, 2016)[cite: 1]. Seluruh klaim wajib didukung fakta empiris yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.1. Objektivitas Tanpa Bias Personal</h3>
+        <p>
+          Objektivitas menuntut penulis mendekati masalah penelitian tanpa memihak sudut pandang pribadi, kepentingan finansial sponsor, ataupun tekanan doktrinal tertentu (Hermawan &amp; Amirullah, 2016)[cite: 1]. Seluruh klaim wajib berpijak pada fakta yang dapat dibuktikan, eksperimen terukur, dan data empiris yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].
         </p>
 
-        <h3 style="margin-top: 0.85rem; margin-bottom: 0.3rem; color: var(--gz-lime); font-size: 0.95rem;">2.2. Langkah Siklus Metode Ilmiah</h3>
-        <p style="font-size: 0.82rem; color: #475569;">
-          Metode ilmiah adalah pendekatan bertahap dalam mengeksekusi riset: (1) Perumusan pertanyaan riset terukur[cite: 1], (2) Pengumpulan data valid[cite: 1], (3) Analisis data objektif[cite: 1], (4) Uji hipotesis[cite: 1], (5) Penarikan kesimpulan berbasis bukti[cite: 1], (6) Penulisan laporan[cite: 1], (7) Uji mitra bestari (peer review)[cite: 1], (8) Publikasi jurnal[cite: 1], serta (9) Replikasi independen (Suyono, 2015)[cite: 1].
+        <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.2. Siklus Baku Prosedur Metode Ilmiah</h3>
+        <p>
+          Metode ilmiah adalah proses sistematis yang wajib dilalui peneliti: (1) Perumusan pertanyaan riset yang spesifik dan terukur[cite: 1], (2) Pengumpulan data valid[cite: 1], (3) Analisis data objektif[cite: 1], (4) Uji hipotesis[cite: 1], (5) Penarikan kesimpulan berbasis bukti[cite: 1], (6) Penyusunan naskah terstruktur[cite: 1], (7) Penelaahan sejawat (*peer review*)[cite: 1], (8) Publikasi jurnal resmi[cite: 1], dan (9) Replikasi independen oleh peneliti lain (Suyono, 2015)[cite: 1].
         </p>
 
-        <h3 style="margin-top: 0.85rem; margin-bottom: 0.3rem; color: var(--gz-pink); font-size: 0.95rem;">2.3. Peer Review &amp; Kepatuhan Etika</h3>
-        <p style="font-size: 0.82rem; color: #475569;">
-          Uji mitra bestari menyaring keabsahan metodologi sebelum publikasi (Efendi &amp; Ibrahim, 2018)[cite: 1]. Kepatuhan etika menuntut kejujuran pelaporan tanpa manipulasi data, perlindungan subjek, serta pencegahan mutlak tindakan plagiarisme (Wiradi, 2020)[cite: 1].
+        <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.3. Evaluasi Sejawat (*Peer Review*) dan Kepatuhan Etika</h3>
+        <p>
+          Uji mitra bestari berfungsi sebagai gerbang penyaring keabsahan metodologis dan validitas data naskah sebelum disebarluaskan (Efendi &amp; Ibrahim, 2018)[cite: 1]. Kepatuhan etika menuntut kejujuran pelaporan apa adanya tanpa manipulasi angka, pengakuan kontribusi penulis, perlindungan hak cipta, serta sanksi tegas atas tindakan plagiarisme (Wiradi, 2020)[cite: 1].
         </p>
       </article>
 
-      <!-- SESI 3: GAME INTERAKTIF (5 MENIT) -->
+      <!-- FASE 3: GAME INTERAKTIF (5 MENIT) -->
       <article class="content-card">
-        <span class="pill badge-pink">Fase 3: Game Audit Kasus (5 Menit)</span>
-        <h2>Uji Kasus Integritas Penelitian</h2>
-        <p style="margin-top: 0.3rem; font-size: 0.82rem;">Analisis kasus berikut dan tentukan keputusan akademik berdasarkan kaidah Bab 1:</p>
+        <span class="pill-module-purple" style="background: #fdf2f8; color: #be185d;">FASE 3: GAME AUDIT KASUS INTERAKTIF (5 MENIT)</span>
+        <h2>Uji Kasus Kritis: "Audit Integritas &amp; Objektivitas Karya Ilmiah"</h2>
+        <p>Analisis skenario penelitian berikut dan tentukan keputusan akademik yang paling sesuai dengan kaidah Bab 1:</p>
 
-        <div class="game-card" style="border: 1px dashed #fbcfe8; background: #fdf2f8;">
-          <div class="sound-toggle-bar">
-            <button id="sound-btn" class="sound-btn active" onclick="toggleAudioFx()">🔊 Suara: Aktif</button>
-          </div>
-
-          <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 6px; padding: 0.75rem; margin-bottom: 0.6rem;">
-            <p style="font-weight: 700; color: #be185d; margin: 0 0 0.2rem 0; font-size: 0.78rem;">SKENARIO AUDIT:</p>
-            <p style="font-size: 0.8rem; color: #1e293b; margin: 0; line-height: 1.5;">
-              "Seorang peneliti mendapati data uji metode mengajarnya di kelas ternyata tidak memberikan peningkatan hasil belajar yang signifikan. Khawatir kontrak penelitian diputus sponsor, peneliti sengaja menghapus nilai-nilai siswa yang rendah agar kesimpulan laporannya tampak sangat berhasil."
+        <div class="game-card">
+          <div style="background: #ffffff; border: 1.5px solid #fbcfe8; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem;">
+            <p style="font-weight: 700; color: #be185d; margin-bottom: 0.4rem;">SKENARIO KASUS:</p>
+            <p style="font-size: 0.95rem; color: #1e293b; line-height: 1.6; margin: 0;">
+              "Seorang peneliti menguji efektivitas metode pembelajaran inovatif di ruang kelas. Namun, saat analisis selesai, data empiris menunjukkan metode tersebut tidak meningkatkan pemahaman siswa secara signifikan. Khawatir kontrak riset dibatalkan sponsor komersial, peneliti sengaja menghapus nilai siswa yang rendah agar kesimpulan laporannya tampak sangat berhasil."
             </p>
           </div>
 
-          <p style="font-size: 0.8rem; margin-bottom: 0.45rem; font-weight: 700; color: #be185d;">Tindakan peneliti tersebut melanggar unsur:</p>
+          <p style="font-size: 0.95rem; font-weight: 700; color: #be185d; margin-bottom: 0.65rem;">Berdasarkan Bab 1 (Mahmudi dkk., 2023), tindakan peneliti tersebut melanggar unsur fundamental:</p>
 
           <button class="quiz-option" onclick="evaluateHakikatGame('a')">
-            A. Dibenarkan agar naskah dapat diterima oleh sponsor penelitian.
+            A. Dibenarkan demi menjaga kemitraan dan reputasi dengan pihak penyandang dana riset.
           </button>
           <button class="quiz-option" onclick="evaluateHakikatGame('b')">
-            B. Melanggar Objektivitas, mencederai Transparansi, dan melanggar Kepatuhan Etika Penelitian karena memanipulasi data empiris[cite: 1].
+            B. Melanggar prinsip Objektivitas (adanya bias personal), merusak Transparansi, dan melanggar Kepatuhan Etika Penelitian karena data tidak dilaporkan secara jujur dan faktual[cite: 1].
           </button>
           <button class="quiz-option" onclick="evaluateHakikatGame('c')">
-            C. Hanya melanggar format pengetikan jarak spasi.
+            C. Peneliti hanya melakukan pelanggaran kecil pada pengaturan spasi pengetikan.
           </button>
           <button class="quiz-option" onclick="evaluateHakikatGame('d')">
-            D. Diperbolehkan jika peneliti berjanji tidak mengulanginya lagi.
+            D. Tindakan tersebut diperbolehkan agar naskah lekas lolos proses penelaahan peer review.
           </button>
 
           <div id="game-feedback" class="quiz-feedback"></div>
         </div>
       </article>
 
-      <!-- SESI 4: PENUTUP -->
+      <!-- FASE 4: REFLEKSI AKHIR -->
       <article class="content-card">
-        <span class="pill badge-lime">Fase 4: Penutup</span>
-        <h2>Refleksi Akhir: Menjaga Kredibilitas Ilmu</h2>
-        <p style="margin-top: 0.35rem; font-size: 0.82rem;">
-          Karya ilmiah bertumpu pada ketelitian metode dan kejujuran tanpa pamrih dalam menyajikan kebenaran fakta empiris di hadapan publik akademik (Mahmudi dkk., 2023)[cite: 1].
+        <span class="pill-module-purple" style="background: #ecfdf5; color: #047857;">FASE 4: TANYA JAWAB &amp; REFLEKSI PENUTUP</span>
+        <h2>Refleksi Akhir: Menegakkan Kejujuran dan Standar Ilmiah</h2>
+        <p>
+          Menulis karya ilmiah bukan sekadar merangkai kata demi menyelesaikan tuntutan angka kredit atau tugas semester, melainkan sebuah ikhtiar intelektual di hadapan masyarakat ilmu pengetahuan (Mahmudi dkk., 2023)[cite: 1]. Kekuatan sejati karya ilmiah bertumpu pada ketelitian metode, keterbukaan pengujian, dan kejujuran tanpa pamrih dalam menyajikan kebenaran fakta empiris[cite: 1].
         </p>
-        <div class="quote-box" style="background: #ecfdf5; border-left-color: var(--gz-lime);">
-          “Hasil penelitian harus dilaporkan dengan jujur, bahkan jika hasil tersebut tidak sesuai dengan harapan penulis... Kepatuhan terhadap etika adalah tanggung jawab moral tertinggi setiap peneliti.”
+        <div class="quote-box">
+          “Hasil penelitian harus dilaporkan dengan jujur, bahkan jika hasil tersebut tidak sesuai dengan harapan penulis... Kepatuhan terhadap prinsip etika adalah tanggung jawab moral tertinggi setiap peneliti.”
           <footer>— Bab 1, Hakikat Karya Ilmiah (Mahmudi dkk., 2023, hlm. 22–24)[cite: 1]</footer>
         </div>
       </article>
@@ -673,244 +707,252 @@
 
     <!-- ==================== BAGIAN 2: WORKSHEET & 10 SOAL PG ==================== -->
     <section id="worksheet-view" class="view-section">
-      <div class="print-action-bar">
+      <div class="print-bar">
         <div>
-          <h3 style="color: #0369a1; margin: 0; font-size: 0.92rem;">LKM 1: 10 Soal Analisis Hakikat Karya Ilmiah</h3>
-          <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Selesaikan soal pilihan ganda berikut, lalu simpan / cetak ke format PDF.</p>
+          <h3 style="color: #065f46; font-size: 1.1rem; margin-bottom: 0.2rem;">Lembar Portofolio Mahasiswa: 10 Soal Analisis Kasus Bab 1 (LKM 1)</h3>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 0;">Selesaikan butir soal pilihan ganda evaluasi berikut, lalu simpan atau cetak dalam format PDF.</p>
         </div>
-        <button class="btn-download-pdf" style="background: var(--gz-blue);" onclick="window.print()">
-          🖨️ Cetak PDF
+        <button class="btn-pdf" onclick="window.print()">
+          🖨️ Cetak / Unduh Dokumen (PDF)
         </button>
       </div>
 
-      <div class="worksheet-paper">
-        <header style="border-bottom: 1.5px solid #0f172a; padding-bottom: 0.7rem; margin-bottom: 0.9rem;">
-          <h2 style="text-align: center; text-transform: uppercase; font-size: 1rem; color: #0f172a; margin: 0 0 0.2rem 0;">LEMBAR KERJA MAHASISWA: BAB 1 HAKIKAT KARYA ILMIAH</h2>
-          <p style="text-align: center; font-size: 0.75rem; color: #475569; margin: 0;">Mata Kuliah: Penulisan Karya Tulis Ilmiah (2 SKS) • Rujukan: Bab 1 (Mahmudi dkk., 2023)[cite: 1]</p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.65rem; font-size: 0.78rem; background: #f8fafc; padding: 0.55rem; border-radius: 4px;">
-            <div><strong>Nama:</strong> ________________________________</div>
-            <div><strong>NIM:</strong> ________________________________</div>
+      <div class="worksheet-sheet">
+        <header style="border-bottom: 2.5px solid #0f172a; padding-bottom: 1.25rem; margin-bottom: 2rem;">
+          <h2 style="text-align: center; text-transform: uppercase; font-size: 1.25rem; color: #0f172a; margin-bottom: 0.35rem;">LEMBAR KERJA MAHASISWA: HAKIKAT &amp; KARAKTERISTIK KARYA ILMIAH (LKM 1)</h2>
+          <p style="text-align: center; font-size: 0.9rem; color: #475569; margin: 0;">Mata Kuliah: Penulisan Karya Tulis Ilmiah (2 SKS) • Rujukan: Bab 1 (Mahmudi dkk., 2023)[cite: 1]</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; font-size: 0.92rem; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+            <div><strong>Nama Calon Peneliti:</strong> ____________________________________</div>
+            <div><strong>NIM / Rombel:</strong> ____________________________________</div>
+            <div><strong>Program Studi:</strong> ____________________________________</div>
+            <div><strong>Skor Evaluasi (100):</strong> ____________________________________</div>
           </div>
         </header>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; margin-bottom: 0.75rem;">
-          <strong style="font-size: 0.85rem; color: #0f172a;">10 Soal Evaluasi Pemahaman Bab 1:</strong>
-          <button type="button" class="btn-ctrl secondary" style="font-size: 0.7rem; padding: 0.25rem 0.55rem; background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd;" onclick="promptLecturerAuth()">
-            🔒 Buka Kunci Jawaban
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.6rem; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.15rem; color: #0f172a; margin: 0;">UJI KOMPETENSI: 10 SOAL PILIHAN GANDA (BAB 1)</h3>
+          <button type="button" class="tab-btn" style="background: #ecfdf5; color: #047857; font-weight: 700;" onclick="promptLecturerAuth()">
+            🔒 Buka Kunci Jawaban Dosen
           </button>
         </div>
 
-        <!-- 10 SOAL PG RINGKAS -->
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">1.</span> Menurut Bab 1, apa hakikat mendasar dari karya ilmiah?</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Karya fiksi bebas tanpa bukti<br>
-            B. Karya tertulis yang mengungkapkan hasil penelitian, analisis, atau konsep yang teruji dan terverifikasi secara ilmiah (Rahim, 2020)[cite: 1]<br>
-            C. Kolom opini pribadi media massa<br>
-            D. Catatan harian informal
+        <!-- 10 SOAL PG DENGAN PEMBAHASAN -->
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">1. Menurut Bab 1 buku rujukan, apakah pengertian esensial dari karya ilmiah?</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Karya tulis bebas yang mengekspresikan imajinasi dan perasaan pribadi tanpa pembuktian fakta<br>
+            B. Karya tertulis yang dibuat untuk mengungkapkan hasil penelitian, analisis, pemikiran, atau konsep yang telah diuji dan diverifikasi secara ilmiah (Rahim, 2020)[cite: 1]<br>
+            C. Tulisan opini redaksi media massa yang bertujuan menghibur khalayak ramai<br>
+            D. Laporan kegiatan administratif harian tanpa memerlukan metodologi penelitian
           </p>
-          <div id="key-p1-1" class="lecturer-key-box"><strong>Kunci: B</strong> — Bab 1 mendefinisikan karya ilmiah sebagai tulisan hasil riset/pemikiran yang teruji dan terverifikasi ilmiah (Mahmudi dkk., 2023, hlm. 3)[cite: 1].</div>
+          <div id="key-1" class="lecturer-key"><strong>Kunci: B</strong> — Bab 1 secara eksplisit mendefinisikan karya ilmiah sebagai tulisan yang menyajikan hasil penelitian, analisis, atau pemikiran yang telah diuji dan diverifikasi secara ilmiah (Mahmudi dkk., 2023, hlm. 3)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">2.</span> Unsur objektivitas menuntut penulis karya ilmiah untuk:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Menyesuaikan temuan dengan kepentingan pribadi<br>
-            B. Menyajikan informasi berlandaskan bukti empiris tanpa memihak sudut pandang subjektif[cite: 1]<br>
-            C. Menggunakan bahasa emosional sastrawi<br>
-            D. Menolak kritik metode dari pakar lain
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">2. Unsur objektivitas dalam karya ilmiah menuntut seorang penulis untuk:</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Menyesuaikan hasil data riset dengan kepentingan politik dan keyakinan sponsor tertentu<br>
+            B. Menyajikan informasi berlandaskan fakta yang dapat diverifikasi dan bukti empiris tanpa memihak sudut pandang pribadi (Hermawan &amp; Amirullah, 2016)[cite: 1]<br>
+            C. Menulis menggunakan gaya sastra metaforis agar pembaca merasa terharu<br>
+            D. Menolak kritik metode dari peneliti lain yang memiliki disiplin ilmu sejenis
           </p>
-          <div id="key-p1-2" class="lecturer-key-box"><strong>Kunci: B</strong> — Objektivitas bertumpu pada fakta empiris yang terverifikasi tanpa bias personal (Mahmudi dkk., 2023, hlm. 5)[cite: 1].</div>
+          <div id="key-2" class="lecturer-key"><strong>Kunci: B</strong> — Objektivitas berarti mendekati masalah tanpa memihak, bebas dari pengaruh bias pribadi/politik/agama, dan bertumpu pada fakta empiris (Mahmudi dkk., 2023, hlm. 5)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">3.</span> Mengapa transparansi metodologi sangat krusial dalam karya ilmiah?</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Agar peneliti lain dapat mereplikasi dan memverifikasi temuan secara independen[cite: 1]<br>
-            B. Untuk merahasiakan data riset<br>
-            C. Supaya tulisan menjadi sangat tebal<br>
-            D. Membatasi pembacaan naskah
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">3. Mengapa keterbukaan dan transparansi metodologi dipandang sangat krusial dalam sebuah karya ilmiah?</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Supaya peneliti lain dapat mereplikasi penelitian dan memverifikasi kebenaran temuan secara independen[cite: 1]<br>
+            B. Agar peneliti lain dapat merahasiakan data penelitian secara eksklusif<br>
+            C. Agar jumlah halaman karya ilmiah menjadi sangat tebal dan rumit<br>
+            D. Untuk menghindari penyebaran ilmu pengetahuan kepada masyarakat umum
           </p>
-          <div id="key-p1-3" class="lecturer-key-box"><strong>Kunci: A</strong> — Keterbukaan menjamin bahwa prosedur dapat diulang dan diuji keabsahannya oleh pihak lain (Mahmudi dkk., 2023, hlm. 9)[cite: 1].</div>
+          <div id="key-3" class="lecturer-key"><strong>Kunci: A</strong> — Keterbukaan menjelaskan prosedur pengumpulan dan analisis data secara detail agar penelitian dapat diulang dan diverifikasi oleh orang lain (Mahmudi dkk., 2023, hlm. 9)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">4.</span> Unsur kontribusi baru (novelty) bertujuan untuk:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Menyalin teks terdahulu secara utuh<br>
-            B. Menghasilkan temuan baru, pemecahan masalah, atau pengembangan teori yang belum ada sebelumnya[cite: 1]<br>
-            C. Membatasi penerapan sains<br>
-            D. Menghindari pembuktian empiris
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">4. Unsur kontribusi baru (*novelty*) dalam karya ilmiah yang berkualitas memiliki peran untuk:</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Menyalin teks penelitian terdahulu sebanyak-banyaknya tanpa modifikasi konsep<br>
+            B. Menghasilkan pengetahuan baru, memvalidasi/menyangkal teori, atau menawarkan solusi atas masalah yang ada[cite: 1]<br>
+            C. Memastikan bahwa penelitian tidak pernah dibaca oleh peneliti dari disiplin ilmu lain<br>
+            D. Mengganti seluruh rumus ilmiah baku dengan spekulasi intuitif
           </p>
-          <div id="key-p1-4" class="lecturer-key-box"><strong>Kunci: B</strong> — Kebaharuan memberikan nilai tambah keilmuan atau solusi konkret bagi masyarakat (Mahmudi dkk., 2023, hlm. 11)[cite: 1].</div>
+          <div id="key-4" class="lecturer-key"><strong>Kunci: B</strong> — Kontribusi baru adalah esensi karya ilmiah yang menghasilkan penemuan baru, pemecahan masalah global, serta pengembangan teori maupun metode baru (Mahmudi dkk., 2023, hlm. 11–12)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">5.</span> Peran utama telaah sejawat (peer review) adalah:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Menilai kelayakan, mutu metodologi, dan akurasi naskah oleh pakar sebidang sebelum dipublikasikan[cite: 1]<br>
-            B. Mengambil royalti komersial penulis<br>
-            C. Mengganti nama penulis utama<br>
-            D. Mempercepat cetak tanpa koreksi
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">5. Apa tujuan utama dilakukannya peninjauan sejawat (*peer review*) sebelum karya ilmiah diterbitkan?</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Untuk menilai kelayakan naskah oleh pakar sebidang guna menjamin kualitas, validitas metodologi, dan akurasi temuan (Efendi &amp; Ibrahim, 2018)[cite: 1]<br>
+            B. Memberikan hak royalti komersial sebesar-besarnya kepada tim penilai naskah<br>
+            C. Mengubah nama penulis naskah dengan nama reviewer jurnal secara sepihak<br>
+            D. Mempercepat proses cetak tanpa perlu membaca isi naskah secara mendalam
           </p>
-          <div id="key-p1-5" class="lecturer-key-box"><strong>Kunci: A</strong> — Peer review berfungsi sebagai kontrol kualitas naskah sebelum diterbitkan resmi (Mahmudi dkk., 2023, hlm. 20)[cite: 1].</div>
+          <div id="key-5" class="lecturer-key"><strong>Kunci: A</strong> — Peer review dilakukan oleh para ahli sebidang untuk memeriksa metodologi, data, kepatuhan etika, serta memberikan kritik konstruktif sebelum publikasi (Mahmudi dkk., 2023, hlm. 20–21)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">6.</span> Mengambil ide atau data orang lain tanpa menyebutkan sumber yang sah disebut:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Plagiarisme[cite: 1]<br>
-            B. Sintesis mandiri<br>
-            C. Replikasi metodologis<br>
-            D. Verifikasi data
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">6. Dalam kepatuhan etika penulisan karya ilmiah, tindakan menyajikan hasil karya atau ide orang lain tanpa atribusi rujukan yang pantas disebut sebagai:</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Plagiarisme (Wiradi, 2020)[cite: 1]<br>
+            B. Replikasi mandiri<br>
+            C. Resiprositas ilmiah<br>
+            D. Evaluasi sejawat
           </p>
-          <div id="key-p1-6" class="lecturer-key-box"><strong>Kunci: A</strong> — Plagiarisme adalah pelanggaran etika berat berupa pencurian intelektual tanpa sitasi (Mahmudi dkk., 2023, hlm. 23)[cite: 1].</div>
+          <div id="key-6" class="lecturer-key"><strong>Kunci: A</strong> — Plagiat/plagiarisme adalah tindakan mengambil ide, teks, atau hasil penelitian pihak lain tanpa pengakuan/sitasi yang sah (Mahmudi dkk., 2023, hlm. 23)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">7.</span> Sikap etis yang benar jika hasil eksperimen tidak mendukung hipotesis adalah:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Mengubah angka agar hipotesis terbukti<br>
-            B. Menghapus grafik temuan yang tidak sesuai<br>
-            C. Melaporkan hasil apa adanya secara jujur dan membahas alasannya secara ilmiah[cite: 1]<br>
-            D. Membatalkan penelitian diam-diam
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">7. Manakah sikap etis yang wajib diambil peneliti apabila temuan data lapangan ternyata tidak mendukung hipotesis awal?</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Mengubah angka data statistik secara sepihak agar hipotesis terbukti benar<br>
+            B. Menghapus grafik data yang bertentangan dan menyembunyikannya dari pembaca<br>
+            C. Melaporkan data temuan secara jujur dan transparan apa adanya serta mendiskusikan faktor penyebabnya secara teoretis[cite: 1]<br>
+            D. Membatalkan penulisan dan memalsukan instrumen kuesioner baru
           </p>
-          <div id="key-p1-7" class="lecturer-key-box"><strong>Kunci: C</strong> — Etika mewajibkan pelaporan jujur kendati hasil tidak sejalan dengan hipotesis awal (Mahmudi dkk., 2023, hlm. 15, 23)[cite: 1].</div>
+          <div id="key-7" class="lecturer-key"><strong>Kunci: C</strong> — Etika penelitian mewajibkan kejujuran pelaporan data secara akurat tanpa manipulasi, sekalipun hasil temuan tidak sejalan dengan hipotesis awal peneliti (Mahmudi dkk., 2023, hlm. 15, 23)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">8.</span> Aspek keterbacaan (readability) karya ilmiah terwujud melalui:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Kalimat panjang dan istilah pergaulan bebas<br>
-            B. Tata bahasa baku, lugas, padu, serta definisi istilah teknis yang jelas[cite: 1]<br>
-            C. Huruf dan spasi yang tidak beraturan<br>
-            D. Banyak singkatan asing tanpa keterangan
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">8. Aspek keterbacaan (*readability*) dalam penulisan karya ilmiah tercapai apabila penulis menerapkan:</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Kalimat yang sangat panjang, berbelit-belit, dan sarat dengan istilah gaul/kolokial<br>
+            B. Bahasa baku yang jelas, alur paragraf terorganisir logis, serta penjelasan memadai pada setiap istilah teknis[cite: 1]<br>
+            C. Huruf dan margin yang berganti-ganti secara acak di setiap halaman<br>
+            D. Penggunaan banyak singkatan tanpa memberikan kepanjangan atau definisi
           </p>
-          <div id="key-p1-8" class="lecturer-key-box"><strong>Kunci: B</strong> — Keterbacaan menuntut kejelasan bahasa baku dan struktur logis agar mudah dipahami (Mahmudi dkk., 2023, hlm. 25)[cite: 1].</div>
+          <div id="key-8" class="lecturer-key"><strong>Kunci: B</strong> — Keterbacaan ditopang oleh gaya tulis lugas, struktur terorganisir, definisi istilah teknis yang jelas, paragraf padu, serta penggunaan bahasa Indonesia baku (Mahmudi dkk., 2023, hlm. 25–26)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">9.</span> Penerapan format baku (gaya selingkung) bertujuan untuk:</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Menstandarkan tata letak, notasi sitasi, dan daftar pustaka agar tertib ditelusuri[cite: 1]<br>
-            B. Menghambat kebebasan penulis<br>
-            C. Menghilangkan daftar referensi<br>
-            D. Mengharuskan teks disalin ulang
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">9. Penerapan format baku (seperti panduan APA, MLA, atau Chicago) dalam karya ilmiah bertujuan untuk:</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Membatasi ruang kreativitas penulis dalam berpendapat secara mutlak<br>
+            B. Mengorganisasi tata letak, notasi kutipan, dan daftar pustaka secara terstandar agar mudah ditelusuri pembaca[cite: 1]<br>
+            C. Memastikan bahwa karya ilmiah hanya dapat dipahami oleh mesin komputer<br>
+            D. Menghilangkan kewajiban penulisan sumber rujukan literatur
           </p>
-          <div id="key-p1-9" class="lecturer-key-box"><strong>Kunci: A</strong> — Format baku mempermudah pembaca menelusuri sumber rujukan dan membaca naskah (Mahmudi dkk., 2023, hlm. 16)[cite: 1].</div>
+          <div id="key-9" class="lecturer-key"><strong>Kunci: B</strong> — Format baku membantu menstrukturkan ide, memudahkan pembaca menavigasi isi, serta memverifikasi sumber kutipan secara konsisten (Mahmudi dkk., 2023, hlm. 16–17)[cite: 1].</div>
         </div>
 
-        <div style="margin-bottom: 0.75rem;">
-          <p style="margin: 0 0 0.15rem 0;"><span class="q-number">10.</span> Mengapa kemampuan replikasi (reproducibility) menjadi penentu mutu karya ilmiah?</p>
-          <p style="padding-left: 0.8rem; font-size: 0.78rem; margin: 0; line-height: 1.5;">
-            A. Menunjukkan bahwa hasil riset sahih dan andal, bukan kebetulan semata[cite: 1]<br>
-            B. Agar karya dapat diakui pihak lain<br>
-            C. Untuk mencari kesalahan kecil tata bahasa<br>
-            D. Memperlambat publikasi akademik
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-weight: 700;">10. Mengapa replikasi penelitian oleh peneliti independen lain menjadi landasan utama kepercayaan dalam dunia ilmiah?</p>
+          <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
+            A. Karena temuan yang dapat diulang dengan hasil serupa membuktikan keandalan dan validitas metode yang digunakan[cite: 1]<br>
+            B. Agar hasil karya cipta penulis asli dapat diambil alih hak ciptanya oleh orang lain<br>
+            C. Replikasi dilakukan hanya untuk mencari-cari kesalahan kecil tata bahasa naskah<br>
+            D. Sebagai sarana memperlambat penemuan ilmu pengetahuan di masa depan
           </p>
-          <div id="key-p1-10" class="lecturer-key-box"><strong>Kunci: A</strong> — Replikasi membuktikan keandalan dan validitas metode yang digunakan penulis (Mahmudi dkk., 2023, hlm. 8, 14)[cite: 1].</div>
+          <div id="key-10" class="lecturer-key"><strong>Kunci: A</strong> — Replikasi independen memberikan bukti konfirmasi bahwa hasil penelitian bukan kebetulan semata atau kekeliruan metodologis, melainkan fenomena yang sahih dan andal (Mahmudi dkk., 2023, hlm. 8, 14)[cite: 1].</div>
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== BAGIAN 3: SLIDE PRESENTASI DOSEN ==================== -->
+    <!-- ==================== BAGIAN 3: PRESENTASI DOSEN ==================== -->
     <section id="presentation-view" class="view-section">
-      <div class="presentation-frame-colorful">
+      <div class="presentation-frame">
         
         <!-- SLIDE 1 -->
         <div class="slide-item active">
-          <span class="pill badge-blue">Slide 1 dari 6 • Orientasi</span>
-          <h2 style="color: #0284c7;">Hakikat Karya Tulis Ilmiah</h2>
+          <span class="pill-module-purple" style="background: #e0f2fe; color: #0369a1;">Slide 1 dari 6 • Orientasi Keilmuan</span>
+          <h2>Hakikat &amp; Makna Karya Tulis Ilmiah</h2>
           <div class="slide-body">
+            <p>Membuka Cakrawala Intelektual Melalui Prosedur Akademik Baku:</p>
             <ul>
-              <li>Karya tulis yang menyajikan hasil riset, konsep, atau pemikiran kritis secara ilmiah (Rahim, 2020)[cite: 1].</li>
-              <li>Pondasi epistemologis: Pendekatan sistematis berbasis data empiris (Ismail Nurdin &amp; Sri Hartati, 2019)[cite: 1].</li>
-              <li>Wahana komunikasi gagasan intelektual bagi kemajuan peradaban sains[cite: 1].</li>
+              <li>Karya tulis yang menyajikan hasil riset, analisis, atau konsep yang teruji dan terverifikasi secara ilmiah (Rahim, 2020)[cite: 1].</li>
+              <li>Pondasi epistemologis: Berpijak kokoh pada metode ilmiah yang terukur dan objektif[cite: 1].</li>
+              <li>Wahana utama komunikasi temuan penelitian bagi kemajuan peradaban sains[cite: 1].</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Buka dengan pemahaman: "Karya ilmiah bukan karangan bebas, melainkan pembuktian faktual yang dapat diuji ulang oleh pihak lain[cite: 1]."
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Buka sesi dengan pertanyaan pemantik: "Mengapa sebuah karya ilmiah wajib dapat diverifikasi oleh orang lain, dan apa yang membedakannya secara mutlak dari tulisan opini populer?[cite: 1]"
           </div>
         </div>
 
         <!-- SLIDE 2 -->
         <div class="slide-item">
-          <span class="pill badge-lime">Slide 2 dari 6 • Objektivitas</span>
-          <h2 style="color: #047857;">Objektivitas &amp; Fakta Empiris</h2>
+          <span class="pill-module-purple" style="background: #ecfdf5; color: #047857;">Slide 2 dari 6 • Pilar Objektivitas</span>
+          <h2>Objektivitas &amp; Fakta Empiris</h2>
           <div class="slide-body">
+            <p>Membebaskan Hasil Riset dari Distorsi dan Kepentingan Subjektif:</p>
             <ul>
-              <li>Bebas dari prasangka pribadi, politik, atau kepentingan sponsor (Hermawan &amp; Amirullah, 2016)[cite: 1].</li>
-              <li>Setiap kesimpulan bersandar pada bukti, data, dan eksperimen yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].</li>
-              <li>Transparansi penuh terhadap potensi benturan kepentingan riset (Suyono, 2015)[cite: 1].</li>
+              <li>Bebas dari prasangka pribadi, preferensi politik, doktrin agama, atau kepentingan pendonor riset (Hermawan &amp; Amirullah, 2016)[cite: 1].</li>
+              <li>Seluruh proposisi dan kesimpulan wajib bersandar pada fakta empiris dan bukti yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].</li>
+              <li>Transparansi penuh terhadap potensi benturan kepentingan (*conflict of interest*)[cite: 1].</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Ingatkan mahasiswa bahwa kejujuran intelektual tercermin saat peneliti tidak memanipulasi data yang tidak sesuai harapan[cite: 1].
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Tekankan bahwa jika data riset tidak sejalan dengan hipotesis awal, peneliti wajib melaporkannya secara jujur tanpa mengubah angka (Mahmudi dkk., 2023, hlm. 15)[cite: 1].
           </div>
         </div>
 
         <!-- SLIDE 3 -->
         <div class="slide-item">
-          <span class="pill badge-pink">Slide 3 dari 6 • Metode Baku</span>
-          <h2 style="color: #be185d;">Metode Ilmiah &amp; Replikasi</h2>
+          <span class="pill-module-purple" style="background: #fdf2f8; color: #be185d;">Slide 3 dari 6 • Metode Baku</span>
+          <h2>Metode Ilmiah &amp; Replikasi</h2>
           <div class="slide-body">
+            <p>Alur Berpikir Terstruktur yang Memungkinkan Pengujian Ulang:</p>
             <ul>
-              <li>Langkah terstruktur: rumusan masalah, pengumpulan data, analisis, hingga kesimpulan (Suyono, 2015)[cite: 1].</li>
-              <li>Dokumentasi instrumen dan metodologi yang terbuka dan rinci[cite: 1].</li>
-              <li>Replikasi: Memungkinkan peneliti lain menguji ulang keabsahan temuan di lapangan[cite: 1].</li>
+              <li>Langkah teratur: rumusan masalah, pengumpulan data valid, analisis, hingga kesimpulan (Suyono, 2015)[cite: 1].</li>
+              <li>Keterbukaan instrumen dan pencatatan metodologi yang rinci[cite: 1].</li>
+              <li>Replikasi: Memastikan hasil penelitian dapat diuji ulang secara independen oleh ilmuwan lain[cite: 1].</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Jelaskan bahwa tanpa metodologi yang transparan, temuan riset tidak akan diakui komunitas ilmiah internasional[cite: 1].
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Jelaskan prinsip *replicability*: sebuah penelitian baru dipercaya keandalannya bila diulang oleh pihak lain menghasilkan kesimpulan yang konsisten[cite: 1].
           </div>
         </div>
 
         <!-- SLIDE 4 -->
         <div class="slide-item">
-          <span class="pill badge-purple">Slide 4 dari 6 • Evaluasi Sejawat</span>
-          <h2 style="color: #6d28d9;">Verifikasi &amp; Peer Review</h2>
+          <span class="pill-module-purple" style="background: #faf5ff; color: #6d28d9;">Slide 4 dari 6 • Evaluasi Sejawat</span>
+          <h2>Verifikasi &amp; Telaah Sejawat (Peer Review)</h2>
           <div class="slide-body">
+            <p>Menjamin Mutu Melalui Penilaian Kritis Pakar Sebidang:</p>
             <ul>
-              <li>Penilaian kelayakan naskah secara ketat oleh pakar sebidang sebelum terbit (Efendi &amp; Ibrahim, 2018)[cite: 1].</li>
-              <li>Penyaringan kesalahan logika, kelemahan data, dan kepatuhan etis[cite: 1].</li>
-              <li>Umpan balik konstruktif untuk meningkatkan mutu tulisan akademik[cite: 1].</li>
+              <li>Evaluasi naskah secara ketat oleh mitra bestari sebelum naskah diterbitkan resmi (Efendi &amp; Ibrahim, 2018)[cite: 1].</li>
+              <li>Penyaringan kesalahan logika, kelemahan metodologis, dan bias data[cite: 1].</li>
+              <li>Penyempurnaan kualitas laporan melalui umpan balik konstruktif[cite: 1].</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Reviewer bukan lawan, melainkan filter pelindung integritas sains penulis[cite: 1].
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Berikan pengertian bahwa proses telaah sejawat adalah benteng penjaga integritas publikasi sains[cite: 1].
           </div>
         </div>
 
         <!-- SLIDE 5 -->
         <div class="slide-item">
-          <span class="pill badge-orange">Slide 5 dari 6 • Etika Riset</span>
-          <h2 style="color: #c2410c;">Kepatuhan Etika &amp; Integritas</h2>
+          <span class="pill-module-purple" style="background: #fff7ed; color: #c2410c;">Slide 5 dari 6 • Etika Riset</span>
+          <h2>Kepatuhan Etika &amp; Integritas Penulis</h2>
           <div class="slide-body">
+            <p>Tanggung Jawab Moral Tertinggi Komunitas Akademik:</p>
             <ul>
-              <li>Nol toleransi terhadap plagiarisme dan manipulasi data penelitian (Wiradi, 2020)[cite: 1].</li>
-              <li>Kewajiban sitasi dan pemberian atribusi hak cipta yang adil[cite: 1].</li>
-              <li>Perlindungan subjek penelitian dan pelaporan secara jujur apa adanya[cite: 1].</li>
+              <li>Nol toleransi terhadap fabrikasi data, falsifikasi informasi, dan plagiarisme (Wiradi, 2020)[cite: 1].</li>
+              <li>Kewajiban sitasi dan pemberian penghargaan (*credit*) terhadap rujukan literatur yang sah[cite: 1].</li>
+              <li>Perlindungan privasi subjek penelitian dan kepatuhan kode etik institusional[cite: 1].</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Bahas sanksi akademik plagiarisme: mulai dari kegagalan mata kuliah hingga pencabutan ijazah[cite: 1].
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Diskusikan sanksi berat pelanggaran etika dan plagiarisme di perguruan tinggi: pembatalan ijazah hingga sanksi pidana hak cipta[cite: 1].
           </div>
         </div>
 
         <!-- SLIDE 6 -->
         <div class="slide-item">
-          <span class="pill badge-blue">Slide 6 dari 6 • Format Baku</span>
-          <h2 style="color: #0284c7;">Gaya Selingkung &amp; Keterbacaan</h2>
+          <span class="pill-module-purple" style="background: #e0f2fe; color: #0369a1;">Slide 6 dari 6 • Format Baku</span>
+          <h2>Gaya Selingkung &amp; Keterbacaan Bahasa</h2>
           <div class="slide-body">
+            <p>Mengomunikasikan Pengetahuan Secara Terang dan Tertib:</p>
             <ul>
-              <li>Penggunaan bahasa Indonesia baku, lugas, dan bebas dari ambiguitas (Mahmudi dkk., 2023)[cite: 1].</li>
+              <li>Penerapan ragam bahasa Indonesia baku yang lugas, terhindar dari ungkapan ambigu atau kolokial[cite: 1].</li>
               <li>Konsistensi format tata letak, margin, notasi kutipan, dan daftar pustaka[cite: 1].</li>
-              <li>Tugas Mahasiswa: Kerjakan evaluasi 10 soal pada tab LKM[cite: 1]!</li>
+              <li>Tugas Mahasiswa: Selesaikan portofolio evaluasi 10 soal PG pada tab Lembar Kerja Siswa[cite: 1]!</li>
             </ul>
           </div>
-          <div class="speaker-notes-colorful">
-            <strong>Catatan Dosen:</strong> Arahkan mahasiswa menyelesaikan lembar LKM 1 sebelum mengakhiri sesi kuliah.
+          <div class="speaker-notes-box">
+            <strong>Catatan Pemateri:</strong> Instruksikan mahasiswa untuk beralih ke tab Lembar Kerja Siswa dan menguji pemahaman materi Bab 1.
           </div>
         </div>
 
@@ -926,11 +968,11 @@
           </div>
 
           <footer class="slide-controls">
-            <div style="display: flex; gap: 0.35rem;">
-              <button class="btn-ctrl secondary" onclick="changeSlide(-1)">❮ Sebelumnya</button>
-              <button class="btn-ctrl" style="background: var(--gz-blue);" onclick="changeSlide(1)">Selanjutnya ❯</button>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn-ctrl prev" onclick="changeSlide(-1)">❮ Sebelumnya</button>
+              <button class="btn-ctrl next" onclick="changeSlide(1)">Selanjutnya ❯</button>
             </div>
-            <button class="btn-ctrl secondary" onclick="toggleSpeakerNotes()">🎙️ Catatan Dosen</button>
+            <button class="btn-ctrl prev" onclick="toggleSpeakerNotes()">🎙️ Catatan Dosen</button>
           </footer>
         </div>
 
@@ -941,115 +983,70 @@
 
   <!-- ==================== LOGIKA JAVASCRIPT ==================== -->
   <script>
-    // 1. Ganti Tampilan Tab
-    function switchView(targetViewId, buttonElement) {
-      document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    // 1. Tab Navigasi
+    function switchView(viewId, btn) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
 
-      document.getElementById(targetViewId).classList.add('active');
-      buttonElement.classList.add('active');
+      document.getElementById(viewId).classList.add('active');
+      btn.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. Audio Mini Game (Synthesizer Browser Bawaan)
-    let audioFxEnabled = true;
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    function playTone(type) {
-      if (!audioFxEnabled) return;
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      if (type === 'success') {
-        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.25);
-      } else {
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(130.81, audioCtx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.25);
-      }
-    }
-
-    function toggleAudioFx() {
-      audioFxEnabled = !audioFxEnabled;
-      const btn = document.getElementById('sound-btn');
-      if (audioFxEnabled) {
-        btn.classList.add('active');
-        btn.textContent = '🔊 Suara: Aktif';
-      } else {
-        btn.classList.remove('active');
-        btn.textContent = '🔇 Suara: Hening';
-      }
-    }
-
-    // 3. Evaluasi Mini Game
+    // 2. Evaluasi Game Kasus
     function evaluateHakikatGame(choice) {
-      const feedback = document.getElementById('game-feedback');
-      feedback.style.display = 'block';
+      const fb = document.getElementById('game-feedback');
+      fb.style.display = 'block';
 
       if (choice === 'b') {
-        playTone('success');
-        feedback.style.background = '#ecfdf5';
-        feedback.style.color = '#065f46';
-        feedback.innerHTML = '<strong>Tepat Sekali!</strong><br>Menghapus data demi sponsor melanggar asas Objektivitas dan Kepatuhan Etika. Data wajib dilaporkan secara faktual apa adanya.';
+        fb.style.background = '#ecfdf5';
+        fb.style.color = '#065f46';
+        fb.innerHTML = '<strong>Tepat Sekali! (Skor 100)</strong><br>Berdasarkan Bab 1 (Mahmudi dkk., 2023), menghapus data yang tidak sesuai harapan merupakan pelanggaran berat terhadap prinsip Objektivitas dan Kejujuran Ilmiah. Peneliti wajib melaporkan hasil empiris apa adanya secara transparan.';
       } else {
-        playTone('error');
-        feedback.style.background = '#fff1f2';
-        feedback.style.color = '#9f1239';
-        feedback.innerHTML = '<strong>Kurang Tepat!</strong><br>Manipulasi data empiris merupakan pelanggaran integritas akademik serius dalam karya ilmiah.';
+        fb.style.background = '#fff1f2';
+        fb.style.color = '#9f1239';
+        fb.innerHTML = '<strong>Kurang Tepat!</strong><br>Pilar utama karya ilmiah adalah objektivitas dan kejujuran data. Memanipulasi data empiris mencederai integritas sains.';
       }
     }
 
-    // 4. Autentikasi Kunci Jawaban Dosen
+    // 3. Autentikasi Dosen untuk Kunci Jawaban
     function promptLecturerAuth() {
-      const pwd = prompt("Masukkan kata sandi dosen:");
+      const pwd = prompt("Masukkan kata sandi dosen pengampu:");
       if (pwd === "dosenilmiah" || pwd === "karyatulis") {
-        document.querySelectorAll('.lecturer-key-box').forEach(box => box.style.display = 'block');
-        alert("Kunci jawaban dan pembahasan berhasil dibuka.");
+        document.querySelectorAll('.lecturer-key').forEach(el => el.style.display = 'block');
+        alert("Autentikasi berhasil. Kunci jawaban dan pembahasan soal Bab 1 telah terbuka.");
       } else if (pwd !== null) {
         alert("Kata sandi salah.");
       }
     }
 
-    // 5. Navigasi Slide
+    // 4. Slide Presentasi Dosen
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-item');
     const dockBtns = document.querySelectorAll('.dock-btn');
 
-    function updateSlideDisplay() {
-      slides.forEach((slide, idx) => slide.classList.toggle('active', idx === currentSlide));
-      dockBtns.forEach((btn, idx) => btn.classList.toggle('active', idx === currentSlide));
+    function updateSlide() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      dockBtns.forEach((b, i) => b.classList.toggle('active', i === currentSlide));
     }
 
-    function changeSlide(dir) {
-      currentSlide += dir;
+    function changeSlide(direction) {
+      currentSlide += direction;
       if (currentSlide < 0) currentSlide = 0;
       if (currentSlide >= slides.length) currentSlide = slides.length - 1;
-      updateSlideDisplay();
+      updateSlide();
     }
 
-    function jumpToSlide(idx) {
-      currentSlide = idx;
-      updateSlideDisplay();
+    function jumpToSlide(index) {
+      currentSlide = index;
+      updateSlide();
     }
 
     function toggleSpeakerNotes() {
       const activeSlide = slides[currentSlide];
-      const notes = activeSlide.querySelector('.speaker-notes-colorful');
-      if (notes) {
-        notes.style.display = (notes.style.display === 'block') ? 'none' : 'block';
+      const box = activeSlide.querySelector('.speaker-notes-box');
+      if (box) {
+        box.style.display = (box.style.display === 'block') ? 'none' : 'block';
       }
     }
 
