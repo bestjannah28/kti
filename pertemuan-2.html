@@ -5,66 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pertemuan 2: Perencanaan Karya Ilmiah | MK Penulisan Karya Ilmiah</title>
   
-  <!-- Font Modern & Ramah Mobile (Google Fonts) -->
+  <!-- Font Google: Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary: #6366f1;         / Indigo trendy /
-      --primary-dark: #4f46e5;
-      --secondary: #ec4899;       / Pink berry Gen-Z /
-      --accent: #8b5cf6;          / Violet /
-      --accent-light: #ede9fe;
-      --emerald: #10b981;
-      --amber: #f59e0b;
-      --dark-slate: #0f172a;
-      --surface: #ffffff;
-      --bg-soft: #f8fafc;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --radius-lg: 16px;
+      /* Palet warna retro-modern ala ilustrasi sampul buku rujukan */
+      --book-typewriter-blue: #407BFF;
+      --book-typewriter-dark: #1E3A8A;
+      --book-yellow-feather: #FBBF24;
+      --book-orange: #F97316;
+      --book-pink-red: #F43F5E;
+      --book-teal-cactus: #2DD4BF;
+      --book-paper-sheet: #FFFFFF;
+      --book-ink-base: #334155;
+      --bg-cream: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --border-soft: #E2E8F0;
+      --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 10px 25px -5px rgba(64, 123, 255, 0.1), 0 8px 10px -6px rgba(64, 123, 255, 0.05);
       --radius-xl: 24px;
     }
 
-     {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-soft);
-      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
       line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, .brand-font {
+    h1, h2, h3, h4 {
       font-family: 'Space Grotesk', sans-serif;
-      color: var(--dark-slate);
-      line-height: 1.3;
+      color: var(--text-dark);
     }
 
-    / Top Navbar /
+    /* TOP NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 0.85rem 1.5rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -75,23 +71,25 @@
       align-items: center;
       gap: 0.75rem;
       font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--dark-slate);
+      font-size: 1.05rem;
+      color: var(--text-dark);
       text-decoration: none;
     }
 
-    .nav-brand .badge-tag {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    .nav-brand-icon {
+      background: linear-gradient(135deg, var(--book-typewriter-blue), var(--book-typewriter-dark));
       color: white;
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(64, 123, 255, 0.3);
     }
 
     .nav-actions {
       display: flex;
-      align-items: center;
       gap: 0.75rem;
     }
 
@@ -99,405 +97,394 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.6rem 1.15rem;
-      font-size: 0.875rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.88rem;
       font-weight: 600;
       border-radius: 9999px;
       border: none;
       cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.25s ease;
       text-decoration: none;
+      font-family: inherit;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+    .btn-slide {
+      background: linear-gradient(135deg, var(--book-typewriter-blue), #2563EB);
       color: white;
-      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
     }
 
-    .btn-primary:hover {
+    .btn-slide:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--dark-slate);
-      border: 1px solid var(--border-color);
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg-soft);
-      border-color: var(--primary);
-    }
-
-    .btn-pink {
-      background: linear-gradient(135deg, var(--secondary), #f43f5e);
+    .btn-worksheet {
+      background: linear-gradient(135deg, var(--book-pink-red), #E11D48);
       color: white;
-      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35);
+      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.3);
     }
 
-    .btn-pink:hover {
+    .btn-worksheet:hover {
       transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(244, 63, 94, 0.4);
     }
 
-    / Container /
+    /* CONTAINER UTAMA */
     .container {
-      max-width: 1040px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 5rem;
+      padding: 2rem 1.25rem 5rem;
     }
 
-    / Hero Banner /
-    .hero {
-      background: linear-gradient(135deg, #1e1b4b, #312e81, #4338ca);
+    /* HERO BANNER BERGAYA ILUSTRASI BUKU */
+    .hero-book {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
       color: white;
       border-radius: var(--radius-xl);
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
       margin-bottom: 2.5rem;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
     }
 
-    .hero::before {
+    .hero-book::after {
       content: '';
       position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.35), transparent 70%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(64, 123, 255, 0.25) 0%, transparent 70%);
+      top: -60px;
+      right: -60px;
       border-radius: 50%;
     }
 
-    .hero-badges {
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero-badge {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 0.35rem 0.85rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 9999px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
+      color: #E2E8F0;
     }
 
-    .hero h1 {
+    .hero-book h1 {
       color: white;
       font-size: 2.3rem;
       margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
     }
 
-    .hero p {
-      color: #c7d2fe;
-      font-size: 1.05rem;
-      max-width: 680px;
+    .hero-book p {
+      color: #CBD5E1;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
-    .hero-buttons {
-      margin-top: 1.75rem;
+    /* ILUSTRASI VECTOR SVG SESUAI GAMBAR */
+    .illustration-wrapper {
+      position: relative;
+      z-index: 2;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
+      justify-content: center;
+      align-items: center;
     }
 
-    / Lesson Outline Card /
-    .timeline-card {
+    .svg-artwork {
+      width: 100%;
+      max-width: 380px;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+      transition: transform 0.3s ease;
+    }
+
+    .svg-artwork:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* TIMELINE ALOKASI 2 SKS */
+    .timeline-wrapper {
       background: white;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
       padding: 1.5rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       box-shadow: var(--shadow-sm);
     }
 
     .timeline-title {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--dark-slate);
-      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .timeline-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1rem;
     }
 
-    .time-slot {
-      background: var(--bg-soft);
+    .slot-box {
+      background: #F8FAFC;
+      border-radius: 14px;
       padding: 1rem;
-      border-radius: 12px;
-      border-left: 4px solid var(--primary);
+      border-left: 5px solid var(--book-typewriter-blue);
     }
 
-    .time-slot.pink { border-left-color: var(--secondary); }
-    .time-slot.emerald { border-left-color: var(--emerald); }
-    .time-slot.amber { border-left-color: var(--amber); }
+    .slot-box.pink { border-left-color: var(--book-pink-red); }
+    .slot-box.yellow { border-left-color: var(--book-yellow-feather); }
+    .slot-box.teal { border-left-color: var(--book-teal-cactus); }
 
-    .time-slot .time {
+    .slot-time {
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    .time-slot .title {
+    .slot-heading {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--dark-slate);
       margin-top: 0.2rem;
     }
 
-    / Content Cards /
-    .content-section {
+    /* KONTEN ARTIKEL LENGKAP */
+    .study-card {
       background: white;
       border-radius: var(--radius-xl);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border-soft);
       padding: 2.5rem 2rem;
       margin-bottom: 2rem;
       box-shadow: var(--shadow-sm);
-      position: relative;
     }
 
-    .section-tag {
+    .tag-category {
       display: inline-block;
-      color: var(--primary-dark);
-      background: var(--accent-light);
       padding: 0.3rem 0.85rem;
       border-radius: 9999px;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
+      background: #EEF2FF;
+      color: var(--book-typewriter-blue);
     }
 
-    .content-section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .quote-box {
-      background: #faf5ff;
-      border-left: 4px solid var(--accent);
-      padding: 1.25rem 1.5rem;
+    .verbatim-quote {
+      background: #F0FDF4;
+      border-left: 4px solid #16A34A;
+      padding: 1.2rem 1.5rem;
       border-radius: 0 16px 16px 0;
       margin: 1.25rem 0;
       font-style: italic;
-      color: #4c1d95;
+      color: #14532D;
     }
 
-    .quote-author {
+    .verbatim-quote.blue {
+      background: #EFF6FF;
+      border-left-color: var(--book-typewriter-blue);
+      color: #1E3A8A;
+    }
+
+    .quote-ref {
       display: block;
       font-style: normal;
       font-weight: 700;
-      font-size: 0.85rem;
-      color: #6d28d9;
+      font-size: 0.82rem;
       margin-top: 0.5rem;
+      color: var(--text-dark);
     }
 
-    .callout-genz {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08));
-      border: 1px dashed var(--accent);
+    .callout-box {
+      background: linear-gradient(135deg, rgba(64, 123, 255, 0.06), rgba(244, 63, 94, 0.06));
+      border: 1px dashed var(--book-typewriter-blue);
       border-radius: 16px;
-      padding: 1.25rem 1.5rem;
+      padding: 1.4rem;
       margin: 1.5rem 0;
     }
 
-    .callout-title {
-      font-weight: 700;
-      color: var(--dark-slate);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
-    }
-
-    / Structured List /
-    .step-list {
-      list-style: none;
-      counter-reset: custom-counter;
+    .step-grid {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       margin: 1.5rem 0;
     }
 
-    .step-item {
+    .step-row {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      background: var(--bg-soft);
-      padding: 1.15rem;
+      background: #F8FAFC;
+      border: 1px solid var(--border-soft);
       border-radius: 14px;
-      border: 1px solid #edf2f7;
+      padding: 1.15rem;
     }
 
-    .step-number {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      width: 32px;
-      height: 32px;
+    .step-circle {
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
+      background: var(--book-typewriter-blue);
+      color: white;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
       flex-shrink: 0;
     }
 
-    .step-text strong {
-      display: block;
-      color: var(--dark-slate);
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    / Comparison Box /
-    .grid-2 {
+    .two-cols {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.25rem;
       margin: 1.5rem 0;
     }
 
-    .card-mini {
-      background: var(--bg-soft);
-      border-radius: 14px;
+    .mini-panel {
+      background: #F8FAFC;
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
       padding: 1.25rem;
-      border: 1px solid var(--border-color);
     }
 
-    .card-mini h4 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
+    .mini-panel h4 {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    / Interactive Game Section /
-    .game-box {
-      background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    /* GAME INTERAKTIF (5 MENIT) */
+    .game-container {
+      background: linear-gradient(135deg, #0F172A, #1E3A8A);
       color: white;
       border-radius: var(--radius-xl);
-      padding: 2rem;
+      padding: 2.2rem;
       margin: 2.5rem 0;
-      box-shadow: var(--shadow-xl);
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
     }
 
     .game-badge {
-      background: var(--secondary);
-      color: white;
-      padding: 0.25rem 0.75rem;
+      background: var(--book-yellow-feather);
+      color: #78350F;
+      padding: 0.25rem 0.8rem;
       border-radius: 9999px;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       display: inline-block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
     }
 
-    .game-box h3 {
+    .game-container h3 {
       color: white;
       font-size: 1.4rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .quiz-options {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
     }
 
-    .quiz-option {
+    .quiz-btn {
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 1rem;
+      padding: 1rem 1.2rem;
       color: white;
-      cursor: pointer;
       text-align: left;
-      font-size: 0.95rem;
       font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
       transition: all 0.2s;
     }
 
-    .quiz-option:hover {
-      background: rgba(255, 255, 255, 0.16);
-      transform: translateX(4px);
+    .quiz-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateX(6px);
     }
 
-    .quiz-feedback {
-      margin-top: 1.25rem;
+    .quiz-result {
+      margin-top: 1.2rem;
       padding: 1rem;
       border-radius: 12px;
       display: none;
       font-size: 0.95rem;
     }
 
-    .quiz-feedback.success {
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid var(--emerald);
-      color: #6ee7b7;
+    .quiz-result.correct {
+      background: rgba(45, 212, 191, 0.2);
+      border: 1px solid var(--book-teal-cactus);
+      color: #5EEAD4;
     }
 
-    .quiz-feedback.error {
+    .quiz-result.incorrect {
       background: rgba(244, 63, 94, 0.2);
-      border: 1px solid #f43f5e;
-      color: #fda4af;
+      border: 1px solid var(--book-pink-red);
+      color: #FDA4AF;
     }
 
-    / Modal Presentation Page /
+    /* MODAL: PRESENTASI DOSEN (FULL SCREEN SLIDES) */
     #slideModal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #090d16;
+      background: #0B1120;
       color: white;
       z-index: 100;
       display: none;
       flex-direction: column;
     }
 
-    .slide-header {
-      padding: 1rem 2rem;
+    .slide-topbar {
+      padding: 1rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(15, 23, 42, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
     }
 
-    .slide-body {
+    .slide-stage {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      overflow-y: auto;
     }
 
-    .slide-card {
-      background: #111827;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .slide-box {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 28px;
-      max-width: 920px;
+      max-width: 950px;
       width: 100%;
       min-height: 480px;
       padding: 3.5rem;
@@ -508,42 +495,30 @@
       position: relative;
     }
 
-    .slide-card h2 {
+    .slide-box h2 {
       color: white;
       font-size: 2.2rem;
       margin-bottom: 1.25rem;
     }
 
-    .slide-card p {
-      font-size: 1.2rem;
-      color: #94a3b8;
-      line-height: 1.7;
-    }
-
-    .slide-footer {
-      padding: 1.2rem 2rem;
+    .slide-bottombar {
+      padding: 1.2rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(15, 23, 42, 0.85);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(15, 23, 42, 0.8);
     }
 
-    .slide-counter {
-      color: #94a3b8;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    / Worksheet Modal / Print View /
+    /* MODAL: WORKSHEET MAHASISWA & PRINT TO PDF */
     #worksheetModal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
       z-index: 90;
       display: none;
       align-items: center;
@@ -551,24 +526,23 @@
       padding: 1.5rem;
     }
 
-    .worksheet-content {
+    .worksheet-card {
       background: white;
       width: 100%;
-      max-width: 850px;
+      max-width: 860px;
       max-height: 90vh;
       overflow-y: auto;
       border-radius: var(--radius-xl);
       padding: 2.5rem;
-      box-shadow: var(--shadow-xl);
-      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
     }
 
-    / Print-Only Style for PDF Generation /
+    /* PRINT STYLES FOR PDF */
     @media print {
-      body  {
+      body * {
         visibility: hidden;
       }
-      #printArea, #printArea  {
+      #printArea, #printArea * {
         visibility: visible;
       }
       #printArea {
@@ -576,7 +550,6 @@
         left: 0;
         top: 0;
         width: 100%;
-        margin: 0;
         padding: 20px;
       }
       .no-print {
@@ -584,365 +557,468 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 1.75rem; }
-      .slide-card { padding: 2rem 1.5rem; min-height: 380px; }
-      .slide-card h2 { font-size: 1.5rem; }
-      .slide-card p { font-size: 1rem; }
+    @media (max-width: 860px) {
+      .hero-book {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .hero-meta {
+        justify-content: center;
+      }
+      .slide-box {
+        padding: 2rem 1.5rem;
+        min-height: 380px;
+      }
+      .slide-box h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. TOP NAVIGATION -->
+  <!-- TOP BAR -->
   <nav class="navbar">
     <a href="#" class="nav-brand">
-      <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
-      <span>MK Karya Ilmiah</span>
-      <span class="badge-tag">Pertemuan 2</span>
+      <div class="nav-brand-icon">
+        <i class="fa-solid fa-feather-pointed"></i>
+      </div>
+      <div>
+        <span>Karya Ilmiah</span>
+        <span style="font-size: 0.75rem; color: var(--book-typewriter-blue); display: block; font-weight: 500;">Pertemuan 2: Bab 2 Perencanaan</span>
+      </div>
     </a>
     <div class="nav-actions">
-      <!-- Tombol Interactive Presentation Slide -->
-      <button class="btn btn-primary" onclick="openSlidePresentation()">
-        <i class="fa-solid fa-play"></i>
-        <span>Presentation Mode</span>
+      <button class="btn btn-slide" onclick="openSlidePresentation()">
+        <i class="fa-solid fa-desktop"></i> Mode Presentasi Dosen
       </button>
-      <!-- Tombol Worksheet & Tugas PDF -->
-      <button class="btn btn-pink" onclick="openWorksheetModal()">
-        <i class="fa-solid fa-file-arrow-down"></i>
-        <span>Lembar Kerja & Tugas PDF</span>
+      <button class="btn btn-worksheet" onclick="openWorksheetModal()">
+        <i class="fa-solid fa-file-pdf"></i> Worksheet & Tugas PDF
       </button>
     </div>
   </nav>
 
   <div class="container">
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-      <div class="hero-badges">
-        <span class="hero-badge"><i class="fa-regular fa-clock"></i> 2 SKS (100 Menit)</span>
-        <span class="hero-badge"><i class="fa-solid fa-book-open"></i> Bab 2: Perencanaan Karya Ilmiah</span>
-        <span class="hero-badge"><i class="fa-solid fa-user-graduate"></i> Modul Kuliah Dosen & Mahasiswa</span>
+    <!-- HERO HEADER DENGAN ADAPTASI ILUSTRASI BUKU RUJUKAN -->
+    <header class="hero-book">
+      <div class="hero-content">
+        <div class="hero-meta">
+          <span class="hero-badge"><i class="fa-regular fa-clock"></i> 2 SKS (100 Menit)</span>
+          <span class="hero-badge"><i class="fa-solid fa-book"></i> Bab 2 Halaman 29–38</span>
+          <span class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> Jurus Mahir Penulisan</span>
+        </div>
+        <h1>Perencanaan Karya Ilmiah</h1>
+        <p>Pedoman komprehensif penulisan naskah akademik tingkat sarjana: dari formulasi topik berbasis minat dan keahlian, langkah-langkah perencanaan sistematis, tata kelola data, hingga anatomi pelaporan dan revisi.</p>
+        
+        <div style="margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 0.8rem;">
+          <button class="btn btn-slide" onclick="openSlidePresentation()">
+            <i class="fa-solid fa-play"></i> Mulai Paparan Slide
+          </button>
+          <button class="btn btn-worksheet" onclick="openWorksheetModal()">
+            <i class="fa-solid fa-print"></i> Buka Lembar Kerja PDF
+          </button>
+        </div>
       </div>
-      <h1>Perencanaan Karya Ilmiah</h1>
-      <p>Kajian komprehensif tahapan awal menyusun karya ilmiah: mulai dari penetapan topik berbasis minat-keahlian, perumusan rencana, tata kelola data, penyusunan laporan, hingga proses revisi naskah.</p>
-      
-      <div class="hero-buttons">
-        <button class="btn btn-pink" onclick="openWorksheetModal()">
-          <i class="fa-solid fa-pencil"></i> Buka Worksheet Mahasiswa
-        </button>
-        <button class="btn btn-secondary" onclick="openSlidePresentation()">
-          <i class="fa-solid fa-desktop"></i> Mode Tayang Presentasi Dosen
-        </button>
+
+      <!-- REKONSTRUKSI ELEMEN ILUSTRASI MESIN TIK & ATRIBUT RETRO -->
+      <div class="illustration-wrapper">
+        <svg class="svg-artwork" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bayangan Dasar -->
+          <ellipse cx="250" cy="360" rx="220" ry="25" fill="#0A0F1D" opacity="0.6"/>
+
+          <!-- Bola Dunia / Globe Mini di Kanan Belakang -->
+          <circle cx="390" cy="180" r="60" fill="#93C5FD"/>
+          <path d="M340 180 Q390 140 440 180" stroke="#3B82F6" stroke-width="4" fill="none"/>
+          <path d="M340 180 Q390 220 440 180" stroke="#3B82F6" stroke-width="4" fill="none"/>
+          <path d="M390 120 Q360 180 390 240" stroke="#3B82F6" stroke-width="4" fill="none"/>
+
+          <!-- Tumpukan Buku di Sebelah Kanan -->
+          <!-- Buku 1: Oranye -->
+          <rect x="330" y="225" width="130" height="35" rx="6" fill="#F97316"/>
+          <rect x="335" y="235" width="120" height="15" fill="#FED7AA"/>
+          <path d="M380 220 L380 260" stroke="#C2410C" stroke-width="3"/>
+          <!-- Buku 2: Biru Dongker -->
+          <rect x="325" y="262" width="140" height="38" rx="6" fill="#1E293B"/>
+          <rect x="330" y="272" width="130" height="18" fill="#CBD5E1"/>
+          <!-- Buku 3: Merah Muda / Coral -->
+          <rect x="335" y="303" width="145" height="42" rx="7" fill="#F43F5E"/>
+          <rect x="340" y="315" width="135" height="20" fill="#FFE4E6"/>
+
+          <!-- Amplop Surat Biru Muda & Hati Pink di Kanan Bawah -->
+          <polygon points="360,335 440,335 400,370" fill="#BFDBFE"/>
+          <rect x="360" y="335" width="80" height="40" rx="4" fill="#93C5FD"/>
+          <circle cx="400" cy="355" r="7" fill="#F43F5E"/>
+
+          <!-- Pot Tanaman Kaktus di Kiri Belakang -->
+          <ellipse cx="140" cy="275" rx="28" ry="12" fill="#E11D48"/>
+          <path d="M120 275 L125 315 Q140 325 155 315 L160 275 Z" fill="#FB7185"/>
+          <!-- Batang Kaktus -->
+          <rect x="130" y="210" width="22" height="65" rx="11" fill="#2DD4BF"/>
+          <rect x="120" y="230" width="15" height="20" rx="7" fill="#2DD4BF"/>
+          <rect x="147" y="225" width="15" height="20" rx="7" fill="#2DD4BF"/>
+
+          <!-- Botol Tinta & Pena Bulu Kuning Emas di Kiri Depan -->
+          <path d="M80 320 L75 355 L105 355 L100 320 Z" fill="#1E3A8A"/>
+          <rect x="73" y="315" width="34" height="6" rx="2" fill="#3B82F6"/>
+          <!-- Pena Bulu Kuning -->
+          <path d="M55 240 Q75 270 88 320 Q70 290 55 240 Z" fill="#FBBF24"/>
+          <path d="M55 240 L88 320" stroke="#D97706" stroke-width="2"/>
+
+          <!-- Kertas & Sketsa Gambar di Dekat Pena -->
+          <rect x="30" y="310" width="45" height="40" rx="3" fill="#E2E8F0" transform="rotate(-15 30 310)"/>
+
+          <!-- MESIN TIK UTAMA (Typewriter Biru Retro) -->
+          <!-- Lembaran Kertas Putih Keluar dari Mesin Tik -->
+          <rect x="195" y="110" width="110" height="120" rx="4" fill="#FFFFFF"/>
+          <line x1="210" y1="135" x2="290" y2="135" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+          <line x1="210" y1="150" x2="290" y2="150" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+          <line x1="210" y1="165" x2="270" y2="165" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+
+          <!-- Rol Penggulung Silinder Kertas -->
+          <rect x="175" y="195" width="150" height="22" rx="10" fill="#334155"/>
+          <circle cx="170" cy="206" r="10" fill="#64748B"/>
+          <circle cx="330" cy="206" r="10" fill="#64748B"/>
+
+          <!-- Bodi Mesin Tik Biru -->
+          <path d="M170 220 L330 220 L360 320 Q365 335 345 335 L155 335 Q135 335 140 320 Z" fill="#407BFF"/>
+          <path d="M150 250 L350 250 L355 320 L145 320 Z" fill="#2563EB"/>
+
+          <!-- Keyboard / Tombol Mesin Tik Bulat Putih -->
+          <g fill="#FFFFFF" opacity="0.95">
+            <circle cx="180" cy="275" r="7"/><circle cx="205" cy="275" r="7"/><circle cx="230" cy="275" r="7"/><circle cx="255" cy="275" r="7"/><circle cx="280" cy="275" r="7"/><circle cx="305" cy="275" r="7"/><circle cx="325" cy="275" r="7"/>
+            <circle cx="188" cy="295" r="7"/><circle cx="213" cy="295" r="7"/><circle cx="238" cy="295" r="7"/><circle cx="263" cy="295" r="7"/><circle cx="288" cy="295" r="7"/><circle cx="313" cy="295" r="7"/>
+            <!-- Spacebar -->
+            <rect x="210" y="312" width="85" height="10" rx="5" fill="#FFFFFF"/>
+          </g>
+
+          <!-- GELEMBUNG HURUF ACAK RETRO DI ATAS KIRI (W, I, A, J, B, K, Q, F, V, D) -->
+          <path d="M110 130 Q80 120 70 145 Q50 160 70 185 Q90 205 130 195 Q160 190 165 165 Q165 135 130 130 Z" fill="#1E293B" opacity="0.85"/>
+          <text x="80" y="155" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">W</text>
+          <text x="100" y="148" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">I</text>
+          <text x="115" y="152" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15">A</text>
+          <text x="135" y="160" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">J</text>
+          <text x="150" y="150" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">B</text>
+          <text x="85" y="178" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15">Q</text>
+          <text x="110" y="182" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">F</text>
+          <text x="130" y="180" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">V</text>
+          <text x="145" y="175" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">D</text>
+
+          <!-- Bintang-Bintang Kuning Kilau (Sparkles) -->
+          <path d="M465 140 L470 150 L480 155 L470 160 L465 170 L460 160 L450 155 L460 150 Z" fill="#FBBF24"/>
+          <path d="M435 200 L438 208 L446 211 L438 214 L435 222 L432 214 L424 211 L432 208 Z" fill="#FBBF24"/>
+          <path d="M25 280 L28 286 L34 288 L28 290 L25 296 L22 290 L16 288 L22 286 Z" fill="#FBBF24"/>
+        </svg>
       </div>
     </header>
 
-    <!-- LESSON TIMELINE (RPS 2 SKS / 100 MENIT) -->
-    <section class="timeline-card">
+    <!-- LESSON BREAKDOWN TIMELINE (2 SKS / 100 MENIT) -->
+    <section class="timeline-wrapper">
       <div class="timeline-title">
-        <i class="fa-solid fa-list-check" style="color: var(--primary);"></i>
-        Alokasi Waktu Perkuliahan Tatap Muka (Total 100 Menit / 2 SKS)
+        <i class="fa-solid fa-stopwatch" style="color: var(--book-typewriter-blue);"></i>
+        Rencana Pembelajaran 2 SKS (Total 100 Menit Tatap Muka)
       </div>
       <div class="timeline-grid">
-        <div class="time-slot">
-          <div class="time">10 Menit</div>
-          <div class="title">Pendahuluan & Apersepsi</div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Hakikat perencanaan & refleksi topik awal.</p>
+        <div class="slot-box">
+          <div class="slot-time">10 Menit</div>
+          <div class="slot-heading">Pendahuluan & Refleksi</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Hakikat perencanaan naskah & pencegahan plagiasi.</p>
         </div>
-        <div class="time-slot pink">
-          <div class="time">45 Menit</div>
-          <div class="title">Pendalaman Materi Inti</div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Kajian mendalam sub-bab B hingga G Bab 2.</p>
+        <div class="slot-box pink">
+          <div class="slot-time">45 Menit</div>
+          <div class="slot-heading">Pendalaman Materi Inti</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Kajian mendalam sub-bab B hingga G Bab 2 buku rujukan.</p>
         </div>
-        <div class="time-slot emerald">
-          <div class="time">5 Menit</div>
-          <div class="title">Games Interaktif (Quiz)</div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Check pemahaman konsep cepat mahasiswa.</p>
+        <div class="slot-box yellow">
+          <div class="slot-time">5 Menit</div>
+          <div class="slot-heading">Games Interaktif</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Kuis verifikasi cepat konsep masalah ilmiah.</p>
         </div>
-        <div class="time-slot amber">
-          <div class="time">40 Menit</div>
-          <div class="title">Tanya Jawab & Penugasan</div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Bedah studi topik mandiri & closing statement.</p>
+        <div class="slot-box teal">
+          <div class="slot-time">40 Menit</div>
+          <div class="slot-heading">Q&A, Workshop & Closing</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Eksplorasi topik, pengisian LKM & pesan penutup.</p>
         </div>
       </div>
     </section>
 
     <!-- BAGIAN 1: PENDAHULUAN (10 MENIT) -->
-    <article class="content-section">
-      <span class="section-tag">Bagian I • Pendahuluan (10 Menit)</span>
-      <h2>Hakikat dan Esensi Perencanaan Karya Ilmiah</h2>
+    <article class="study-card">
+      <span class="tag-category">Bagian I • Pendahuluan (10 Menit)</span>
+      <h2>A. Pendahuluan: Urgensi Perencanaan dalam Penulisan Ilmiah</h2>
       
-      <p>Perencanaan karya ilmiah merupakan fondasi terpenting sebelum seorang akademisi menuangkan pengetahuannya ke dalam bentuk tulisan formal. Bab 2 menegaskan posisi sentral tahapan ini bagi mutu tulisan akademik:</p>
+      <p>Perencanaan merupakan pilar permulaan yang mutlak dilakukan oleh setiap penulis sebelum menuangkan gagasannya ke dalam bentuk karya tulis ilmiah formal[cite: 1]. Teks rujukan Bab 2 menegaskan:</p>
 
-      <div class="quote-box">
-        "Perencanaan karya ilmiah merupakan tahapan pertama yang penulis lakukan dalam menyusun sebuah karya ilmiah seperti laporan, makalah, proposal, skripsi, tesis, disertasi, jurnal, artikel dan buku ilmiah."
-        <span class="quote-author">— Buku Rujukan Bab 2, Hal. 29</span>
+      <div class="verbatim-quote blue">
+        "Perencanaan karya ilmiah merupakan tahapan pertama yang penulis lakukan dalam menyusun sebuah karya ilmiah seperti laporan, makalah, proposal, skripsi, tesis, disertasi, jurnal, artikel dan buku ilmiah."[cite: 1]
+        <span class="quote-ref">— Buku Bab 2, Hal. 29[cite: 1]</span>
       </div>
 
-      <p>Mengapa perencanaan menjadi prasyarat mutlak yang tidak boleh dilewati? Tulisan akademik menuntut akurasi dan ketertiban logika. Peneliti menegaskan urgensi tahapan ini secara gamblang:</p>
+      <p>Mengapa perencanaan menjadi tahapan yang sangat menentukan kualitas akhir suatu karya ilmiah? Winarto et al. (2016) sebagaimana dikutip dalam buku rujukan menguraikan fungsi sentral perencanaan sebagai berikut[cite: 1]:</p>
 
-      <div class="quote-box">
-        "Perencanaan dalam Menyusun karya ilmiah dapat membantu penulis untuk mengembangkan ide-ide, menunjukkan alur pemikiran yang jelas dan terorganisir, membuat struktur tulisan yang jelas dan teratur, serta dapat meningkatkan ketrampilan dalam mengorganisasi dan menyajikan data dan fakta secara jelas dan sistematis, membantu penulis untuk menghindari kesalahan dalam penulisan seperti kecurangan lainnya dan plagiarism."
-        <span class="quote-author">— Winarto et al. (2016) dalam Bab 2, Hal. 29–30</span>
+      <div class="verbatim-quote">
+        "Perencanaan dalam Menyusun karya ilmiah dapat membantu penulis untuk mengembangkan ide-ide, menunjukkan alur pemikiran yang jelas dan terorganisir, membuat struktur tulisan yang jelas dan teratur, serta dapat meningkatkan ketrampilan dalam mengorganisasi dan menyajikan data dan fakta secara jelas dan sistematis, membantu penulis untuk menghindari kesalahan dalam penulisan seperti kecurangan lainnya dan plagiarism."[cite: 1]
+        <span class="quote-ref">— Winarto et al., (2016) dalam Bab 2, Hal. 29–30[cite: 1]</span>
       </div>
 
-      <div class="callout-genz">
-        <div class="callout-title">
-          <i class="fa-solid fa-lightbulb" style="color: var(--secondary);"></i>
-          Poin Kunci Apersepsi Perkuliahan
-        </div>
-        <p>Karya ilmiah adalah wadah komunikasi pengetahuan yang terikat kesepakatan kaidah. Menurut <strong>Hermawan (2019)</strong>, karya ilmiah harus menggunakan sistematika penulisan yang disepakati oleh komunitas keilmuan. Tanpa perencanaan, penulis mudah terjebak dalam pembiasan data, alur gagasan yang rancu, hingga plagiarisme.</p>
-      </div>
+      <p>Buku ini juga menegaskan bahwa karya ilmiah berfungsi sebagai sarana komunikasi ilmu pengetahuan yang dapat diterima oleh komunitas keilmuan dengan menggunakan sistematika penulisan yang disepakati (Hermawan, 2019)[cite: 1].</p>
     </article>
 
     <!-- BAGIAN 2: MATERI INTI (45 MENIT) -->
-    <article class="content-section">
-      <span class="section-tag">Bagian II • Materi Inti Bab 2 (45 Menit)</span>
-      <h2>1. Pemilihan Topik yang Relevan dan Terarah</h2>
+    <article class="study-card">
+      <span class="tag-category">Bagian II • Materi Inti (45 Menit)</span>
+      <h2>B. Memilih Topik yang Tepat dan Signifikan</h2>
+      <p>Pemilihan topik tidak boleh dilakukan secara sembarangan[cite: 1]. Buku rujukan menggarisbawahi pentingnya keselarasan antara minat, keahlian, dan ketersediaan bahan pustaka awal[cite: 1]:</p>
+
+      <div class="verbatim-quote">
+        "Menurut Suyono et al., (2015) bahwa penulis senang dan tertarik membahas setiap bagian dalam tulisan secara mendetail jika penulis senang dengan topik tersebut, namun jika penulis tidak menguasai topik yang dipilih dengan baik maka pembahasan yang ditulispun terbatas."[cite: 1]
+        <span class="quote-ref">— Bab 2, Hal. 31[cite: 1]</span>
+      </div>
+
+      <div class="two-cols">
+        <div class="mini-panel">
+          <h4><i class="fa-solid fa-compass" style="color: var(--book-typewriter-blue);"></i> Relevansi Topik</h4>
+          <p>Relevansi topik karya ilmiah berarti keterkaitan atau kesesuaian topik dengan bidang ilmu, tujuan, dan permasalahan yang ingin dijawab[cite: 1].</p>
+        </div>
+        <div class="mini-panel">
+          <h4><i class="fa-solid fa-book-bookmark" style="color: var(--book-pink-red);"></i> Tinjauan Pustaka Awal</h4>
+          <p>Tinjauan pustaka awal merupakan literatur dasar untuk menentukan topik karya ilmiah sehingga bahan-bahan literatur tersebut harus relevan dan berkaitan dengan topik, serta dapat memberi manfaat nyata bagi masyarakat[cite: 1].</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2.2rem;">C. Menyusun Rencana Karya Ilmiah & 7 Langkah Operasional</h2>
+      <p>Teks buku rujukan mendefinisikan masalah secara lugas[cite: 1]:</p>
       
-      <p>Menentukan tema riset bukan semata mencari judul yang terdengar canggih, melainkan berpijak pada minat, kapasitas intelektual, serta ketersediaan referensi dasar:</p>
-
-      <div class="quote-box">
-        "Menurut Suyono et al., (2015) bahwa penulis senang dan tertarik membahas setiap bagian dalam tulisan secara mendetail jika penulis senang dengan topik tersebut, namun jika penulis tidak menguasai topik yang dipilih dengan baik maka pembahasan yang ditulispun terbatas."
-        <span class="quote-author">— Bab 2, Hal. 31</span>
+      <div class="verbatim-quote blue">
+        "Masalah merujuk pada fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan."[cite: 1]
+        <span class="quote-ref">— Bab 2, Hal. 31[cite: 1]</span>
       </div>
 
-      <div class="grid-2">
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-heart" style="color: var(--secondary);"></i> Minat & Keahlian</h4>
-          <p>Karya ilmiah menuntut pembahasan mendalam. Penulis yang menyukai dan menguasai bidang ilmunya akan mampu mengupas argumen secara tuntas tanpa terjebak pembahasan dangkal.</p>
-        </div>
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-magnifying-glass" style="color: var(--primary);"></i> Tinjauan Pustaka Awal</h4>
-          <p>Tinjauan literatur awal merupakan dasar penentuan topik untuk memastikan relevansi topik dengan permasalahan nyata serta menjamin ketersediaan referensi pembanding.</p>
-        </div>
-      </div>
+      <p>Perumusan masalah yang cermat mempermudah pengembangan kerangka teoritis, penyusunan tujuan, pengujian hipotesis, dan penarikan kesimpulan[cite: 1]. Rencana tujuan karya ilmiah disusun melalui 7 langkah berikut[cite: 1]:</p>
 
-      <h2 style="margin-top: 2rem;">2. Menyusun Rencana dan Langkah-Langkah Karya Ilmiah</h2>
-      <p>Perumusan masalah adalah jangkar utama sebuah penelitian. Bab 2 menyebutkan bahwa <em>"Masalah merujuk pada fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan"</em> (Hal. 31). Rumusan masalah yang presisi akan mempermudah pengembangan kerangka teoritis, perumusan tujuan, hipotesis, hingga penarikan simpulan.</p>
-
-      <p>Sistematika penetapan rencana dan tujuan ilmiah dirinci dalam 7 langkah konkret berikut:</p>
-
-      <ul class="step-list">
-        <li class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-text">
+      <div class="step-grid">
+        <div class="step-row">
+          <div class="step-circle">1</div>
+          <div>
             <strong>Melakukan observasi dan menetapkan masalah dan tujuan</strong>
-            Melakukan pengamatan atas objek yang diteliti serta menetapkan masalah pokok dan tujuan yang hendak dicapai.
+            Langkah awal dalam penulisan ilmiah yaitu melakukan pengamatan atas objek yang diteliti dan menetapkan masalah dan tujuan yang akan diteliti[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-text">
+        </div>
+        <div class="step-row">
+          <div class="step-circle">2</div>
+          <div>
             <strong>Menyusun hipotesis</strong>
-            Menyusun dugaan-dugaan sementara yang menjadi kemungkinan penyebab dari objek kajian yang diteliti.
+            Menyusun dugaan-dugaan yang menjadi penyebab dari objek kajian[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">3</div>
-          <div class="step-text">
+        </div>
+        <div class="step-row">
+          <div class="step-circle">3</div>
+          <div>
             <strong>Menyusun rancangan karya ilmiah</strong>
-            Menyusun rencana matang tentang tata cara mengumpulkan data, menganalisis data, dan menyajikan hasil secara metodologis.
+            Menyusun rencana tentang bagaimana mengumpulkan data, menganalisis data dan menyajikan hasil[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">4</div>
-          <div class="step-text">
+        </div>
+        <div class="step-row">
+          <div class="step-circle">4</div>
+          <div>
             <strong>Menentukan jenis karya ilmiah yang akan ditulis</strong>
-            Memutuskan bentuk naskah: apakah makalah, skripsi, tesis, disertasi, atau format karya lainnya.
+            Menentukan apakah karya ilmiah tersebut berupa makalah, skripsi, tesis, disertasi atau jenis lainnya[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">5</div>
-          <div class="step-text">
+        </div>
+        <div class="step-row">
+          <div class="step-circle">5</div>
+          <div>
             <strong>Mengidentifikasi permasalahan dan judul karya ilmiah</strong>
-            Mengidentifikasi masalah utama pemecahan masalah dan menetapkan judul yang mencerminkan isi karya secara lugas.
+            Mengidentifikasi masalah utama yang ingin dipecahkan melalui kajian karya ilmiah dan menulis judul yang mencerminkan isi karya ilmiah[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">6</div>
-          <div class="step-text">
+        </div>
+        <div class="step-row">
+          <div class="step-circle">6</div>
+          <div>
             <strong>Mengumpulkan bahan-bahan (Pustaka) yang dibutuhkan</strong>
-            Mengumpulkan sumber informasi relevan dari jurnal, buku teks, prosiding, hingga dokumen resmi kredibel.
+            Mengumpulkan sumber-sumber informasi yang relevan dengan topik, baik buku, jurnal, prosiding atau dokumen lainnya[cite: 1].
           </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">7</div>
-          <div class="step-text">
-            <strong>Memahami rambu, isi, dan komponen karya tulis ilmiah</strong>
-            Mematuhi aturan teknis penulisan: gaya bahasa formal, tata kutipan, referensi, nomor halaman, margin, spasi, serta ukuran dan jenis huruf.
+        </div>
+        <div class="step-row">
+          <div class="step-circle">7</div>
+          <div>
+            <strong>Memahami rambu, isi dan komponen karya tulis ilmiah</strong>
+            Memahami aturan-aturan penulisan seperti gaya bahasa, kutipan, referensi, tata letak halaman, nomor halaman, margin, spasi, jenis huruf, dan ukuran huruf[cite: 1].
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
 
-      <h2 style="margin-top: 2rem;">3. Tata Kelola Pengumpulan dan Analisis Data</h2>
-      <p>Pengumpulan data tidak boleh dilakukan secara acak. Dalam Bab 2 diterangkan 4 prinsip pengumpulan data empiris:</p>
+      <h2 style="margin-top: 2.2rem;">D & E. Pengumpulan dan Analisis Data</h2>
+      <p>Pengumpulan data dan teori dalam karya ilmiah harus valid dan sesuai dengan fakta di lapangan[cite: 1]. Empat hal yang ditegaskan dalam buku rujukan meliputi[cite: 1]:</p>
       
-      <div class="callout-genz">
+      <div class="callout-box">
         <ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
-          <li><strong>Penetapan Variabel:</strong> Data ditentukan oleh variabel pengamatan. Setelah terkumpul, data harus diolah secara sistematis agar memiliki makna ilmiah.</li>
-          <li><strong>Relevansi Data:</strong> Data yang diolah dipilih berdasarkan keterkaitannya dengan konsep atau kejadian kajian, berwujud angka, huruf, simbol, maupun gambar.</li>
-          <li><strong>Pembuktian Hipotesis:</strong> Pengumpulan data ditujukan untuk menjawab hipotesis sebagai jawaban sementara terhadap pertanyaan penelitian.</li>
-          <li><strong>Ketepatan Sampel:</strong> Data dikumpulkan melalui sampel yang telah ditetapkan sebelumnya untuk menganalisis sasaran penulisan.</li>
+          <li><strong>Penentuan Variabel:</strong> Data biasanya sudah ditentukan oleh beberapa variabel pengamatan[cite: 1]. Ketika terkumpul, langkah berikutnya adalah mengolah data secara sistematis agar memiliki arti[cite: 1].</li>
+          <li><strong>Bentuk Data:</strong> Data yang diolah dipilih berdasarkan keterkaitan atau relevansinya dengan konsep, kejadian, atau objek kajian[cite: 1]. Datanya bisa berbentuk huruf, angka, simbol, gambar, dan lainnya[cite: 1].</li>
+          <li><strong>Jawaban Sementara:</strong> Pengumpulan data dilakukan untuk memperoleh informasi yang dibutuhkan dalam rangka mencapai tujuan penulisan karya ilmiah yang diungkap dalam bentuk hipotesis yaitu jawaban sementara terhadap pertanyaan[cite: 1].</li>
+          <li><strong>Penetapan Sampel:</strong> Data dikumpulkan dalam bentuk sampel yang sudah ditentukan sebelumnya dan sampelnya digunakan untuk menganalisis sasaran penulisan karya ilmiah[cite: 1].</li>
         </ul>
       </div>
 
-      <p>Sementara itu, <strong>Analisis Data</strong> memegang peran kunci dalam mempertanggungjawabkan informasi. Penulis dituntut cermat dan objektif dalam menentukan metode analisis yang relevan dengan tipe data dan tujuan penelitian.</p>
+      <p>Pada tahap <strong>Analisis Data</strong>, data yang dianalisis harus dilakukan secara cermat dan objektif agar hasilnya dapat dipertanggungjawabkan[cite: 1]. Pemilihan metode analisis yang tepat sangat krusial dalam membantu penulis memahami dan menginterpretasikan data sesuai tipe karya ilmiah[cite: 1].</p>
 
-      <h2 style="margin-top: 2rem;">4. Anatomi Pelaporan & 5 Prinsip Revisi Naskah</h2>
-      <p>Buku rujukan menguraikan struktur baku laporan ilmiah yang terdiri atas 9 unsur: <strong>(1) Halaman Judul, (2) Abstrak, (3) Pendahuluan, (4) Kajian Pustaka, (5) Metode Ilmiah, (6) Hasil dan Pembahasan, (7) Kesimpulan & Saran, (8) Daftar Pustaka,</strong> serta <strong>(9) Lampiran</strong>.</p>
-      
-      <p>Setelah naskah selesai, penulis wajib menerapkan 5 langkah revisi dan pengeditan berikut:</p>
+      <h2 style="margin-top: 2.2rem;">F. Menyusun Laporan Karya Ilmiah</h2>
+      <p>Secara umum, struktur karya ilmiah menurut Bab 2 terdiri atas 9 unsur berikut[cite: 1]:</p>
+      <div class="two-cols">
+        <div class="mini-panel">
+          <p><strong>1. Halaman Judul:</strong> Identitas formal penulis dan penanda dokumen terstruktur resmi[cite: 1].</p>
+          <p><strong>2. Abstrak:</strong> Ringkasan singkat naskah (deskriptif, indikatif, kritis, sorot, atau informatif)[cite: 1].</p>
+          <p><strong>3. Pendahuluan:</strong> Memuat 10% dari total karya (latar belakang, rumusan masalah, tujuan, manfaat)[cite: 1].</p>
+          <p><strong>4. Kajian Pustaka:</strong> Tinjauan teori dan hasil kajian terdahulu untuk membuktikan kebaruan teori[cite: 1].</p>
+          <p><strong>5. Metode Ilmiah:</strong> Uraian teknik pengumpulan data, instrumen, dan analisis data sistematis[cite: 1].</p>
+        </div>
+        <div class="mini-panel">
+          <p><strong>6. Hasil & Pembahasan:</strong> Penjabaran temuan pengamatan dan penjelasan alasan atas temuan tersebut[cite: 1].</p>
+          <p><strong>7. Kesimpulan & Saran:</strong> Simpulan ringkas pembuktian dugaan awal serta rekomendasi spesifik[cite: 1].</p>
+          <p><strong>8. Daftar Pustaka:</strong> Referensi sumber yang dikutip guna meningkatkan wawasan pembaca[cite: 1].</p>
+          <p><strong>9. Lampiran:</strong> Data atau dokumen pendukung yang tidak dimuat dalam teks utama naskah[cite: 1].</p>
+        </div>
+      </div>
 
-      <div class="grid-2">
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-diagram-project" style="color: var(--primary);"></i> 1. Struktur yang Logis</h4>
-          <p>Memastikan seluruh alur sajian tersusun runtut dan logis agar pembaca memahami keterkaitan antar bagian dengan mudah.</p>
+      <h2 style="margin-top: 2.2rem;">G. Merevisi dan Mengedit Laporan</h2>
+      <p>Tahapan akhir perencanaan adalah evaluasi dan pengeditan menyeluruh[cite: 1]:</p>
+      <div class="two-cols">
+        <div class="mini-panel">
+          <strong>1. Strukturasi Logis:</strong> Laporan harus terstruktur agar informasi dipahami secara logis oleh pembaca[cite: 1].<br><br>
+          <strong>2. Kesesuaian Hasil & Tujuan:</strong> Penulis harus memastikan hasil yang diperoleh telah sesuai dengan tujuan kajian[cite: 1]. Jika tidak cocok, lakukan evaluasi dan perbaikan metode[cite: 1].
         </div>
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-bullseye" style="color: var(--secondary);"></i> 2. Keselarasan Hasil & Tujuan</h4>
-          <p>Memeriksa benang merah hasil kajian. Jika hasil tidak menjawab tujuan, metode dan instrumen harus segera dievaluasi ulang.</p>
-        </div>
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-spell-check" style="color: var(--emerald);"></i> 3. Uji Kebahasaan & Tipografi</h4>
-          <p>Menyisir kesalahan tata bahasa baku, penempatan tanda baca, dan salah ketik (typo) demi menjaga profesionalitas tulisan.</p>
-        </div>
-        <div class="card-mini">
-          <h4><i class="fa-solid fa-arrows-spin" style="color: var(--amber);"></i> 4. Konsistensi Format & Istilah</h4>
-          <p>Memastikan penggunaan istilah keilmuan, penulisan singkatan, margin, serta gaya penulisan seragam dari awal sampai akhir naskah.</p>
+        <div class="mini-panel">
+          <strong>3. Tata Bahasa & Ejaan:</strong> Memeriksa tata bahasa, tanda baca, dan salah ketik agar kredibilitas penulis tidak berkurang[cite: 1].<br><br>
+          <strong>4. Konsistensi & Kejelasan:</strong> Memeriksa kejelasan kalimat efektif serta konsistensi istilah, format, dan gaya tulisan[cite: 1].<br><br>
+          <strong>5. Mengikuti Saran:</strong> Melakukan revisi sesuai saran untuk memenuhi standar akademik tanpa mengubah makna informasi[cite: 1].
         </div>
       </div>
     </article>
 
     <!-- BAGIAN 3: GAMES INTERAKTIF (5 MENIT) -->
-    <div class="game-box">
-      <span class="game-badge"><i class="fa-solid fa-gamepad"></i> Quick Quiz Time (5 Menit)</span>
-      <h3>Uji Pemahaman Cepat: Logika Perencanaan Ilmiah</h3>
-      <p>Pilihlah satu pernyataan di bawah ini yang paling tepat menggambarkan <strong>definisi "Masalah"</strong> menurut teks Bab 2:</p>
-      
+    <div class="game-container">
+      <span class="game-badge"><i class="fa-solid fa-gamepad"></i> Kuis Kilat 5 Menit</span>
+      <h3>Kuis Cepat Pemahaman: Definisi Masalah Ilmiah</h3>
+      <p>Berdasarkan buku rujukan Bab 2 Halaman 31, manakah pernyataan berikut yang secara tepat mendefinisikan istilah <strong>"Masalah"</strong>?[cite: 1]</p>
+
       <div class="quiz-options">
-        <button class="quiz-option" onclick="checkAnswer(1)">
-          A. Segala kesulitan pribadi yang dihadapi peneliti dalam membiayai penelitiannya di lapangan.
+        <button class="quiz-btn" onclick="checkQuizAnswer(1)">
+          A. Rintangan tak terduga yang timbul akibat keterbatasan biaya dan alat pengujian di laboratorium.
         </button>
-        <button class="quiz-option" onclick="checkAnswer(2)">
+        <button class="quiz-btn" onclick="checkQuizAnswer(2)">
           B. Fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan.
         </button>
-        <button class="quiz-option" onclick="checkAnswer(3)">
-          C. Dugaan sementara yang belum teruji kebenarannya sebelum dilakukan pengumpulan data.
+        <button class="quiz-btn" onclick="checkQuizAnswer(3)">
+          C. Dugaan sementara terhadap penyebab suatu kejadian sebelum data empiris dikumpulkan.
         </button>
       </div>
 
-      <div id="quizFeedback" class="quiz-feedback"></div>
+      <div id="quizResultBox" class="quiz-result"></div>
     </div>
 
-    <!-- BAGIAN 4: DISKUSI, TANYA JAWAB & CLOSING STATEMENT -->
-    <article class="content-section">
-      <span class="section-tag">Bagian IV • Diskusi, Q&A & Penutup</span>
-      <h2>Panduan Sesi Tanya Jawab & Refleksi Kelas</h2>
+    <!-- BAGIAN 4: TANYA JAWAB & CLOSING STATEMENT -->
+    <article class="study-card">
+      <span class="tag-category">Bagian IV • Tanya Jawab & Penutup</span>
+      <h2>Sesi Diskusi & Closing Statement Dosen</h2>
       
-      <p>Dalam 40 menit terakhir, dosen memfasilitasi diskusi kritis bersama mahasiswa dengan fokus pemantik diskusi:</p>
-
+      <p>Gunakan pertanyaan reflektif berikut dalam sesi tanya jawab kelas:</p>
       <ul style="padding-left: 1.5rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><em>"Bagaimana menyiasati jika topik yang sangat Anda minati ternyata memiliki literatur rujukan terdahulu yang sangat terbatas?"</em></li>
-        <li><em>"Mengapa hipotesis hanya berlaku sebagai jawaban sementara dan bagaimana jika data lapangan menunjukkan penolakan hipotesis?"</em></li>
+        <li><em>"Mengapa jika seorang peneliti tidak menguasai topik dengan baik, pembahasan tulisan menjadi sangat terbatas?"</em> (Kutipan pemikiran Suyono et al., 2015 dalam Bab 2)[cite: 1]</li>
+        <li><em>"Bagaimana menyelaraskan kembali metode penelitian apabila hasil pengamatan di lapangan ternyata tidak sesuai dengan tujuan awal yang telah dirumuskan?"</em>[cite: 1]</li>
       </ul>
 
-      <div class="quote-box" style="margin-top: 1.5rem; border-left-color: var(--primary); background: #eef2ff; color: #312e81;">
+      <div class="verbatim-quote blue" style="margin-top: 1.5rem;">
         <strong>Closing Statement Dosen:</strong><br>
-        "Karya ilmiah bukanlah sekadar deretan kata di atas kertas, melainkan wujud integritas dan kejernihan cara berpikir seorang sarjana. Perencanaan yang matang bukan memperlambat penulisan, melainkan kompas penyelamat agar riset Anda tidak tersesat dalam manipulasi data dan plagiarisme."
+        "Perencanaan karya ilmiah adalah jaminan mutu dan benteng integritas bagi seorang akademisi[cite: 1]. Menulis karya ilmiah bukan sekadar merangkai kalimat, melainkan proses bernalar yang sistematis, transparan, dan dapat dipertanggungjawabkan di hadapan masyarakat ilmiah[cite: 1]."
       </div>
     </article>
 
   </div>
 
-  <!-- MODAL: INTERACTIVE PRESENTATION MODE (UNTUK DOSEN KE MAHASISWA) -->
+  <!-- MODAL: PRESENTASI DOSEN (SLIDE PRESENTATION) -->
   <div id="slideModal">
-    <div class="slide-header">
-      <div style="font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
-        <i class="fa-solid fa-tv" style="color: var(--secondary);"></i>
-        <span>Presentasi Kelas: Bab 2 Perencanaan Karya Ilmiah</span>
+    <div class="slide-topbar">
+      <div style="font-weight: 700; display: flex; align-items: center; gap: 0.6rem;">
+        <i class="fa-solid fa-chalkboard-user" style="color: var(--book-yellow-feather);"></i>
+        <span>Paparan Slide Kelas: Bab 2 Perencanaan Karya Ilmiah</span>
       </div>
-      <button class="btn btn-secondary" onclick="closeSlidePresentation()">
-        <i class="fa-solid fa-xmark"></i> Tutup Mode Layar Penuh
+      <button class="btn" style="background: rgba(255,255,255,0.15); color: white;" onclick="closeSlidePresentation()">
+        <i class="fa-solid fa-xmark"></i> Keluar Layar Penuh
       </button>
     </div>
 
-    <div class="slide-body">
-      <div class="slide-card">
-        <span class="section-tag" id="slideTag">SLIDE 1 DARI 6</span>
-        <h2 id="slideTitle">Judul Slide</h2>
-        <div id="slideContent">Isi presentasi muncul di sini.</div>
+    <div class="slide-stage">
+      <div class="slide-box">
+        <span class="tag-category" id="modalSlideTag" style="width: fit-content;">SLIDE 1 DARI 5</span>
+        <h2 id="modalSlideTitle">Judul Slide</h2>
+        <div id="modalSlideBody" style="color: #CBD5E1; font-size: 1.15rem;"></div>
       </div>
     </div>
 
-    <div class="slide-footer">
-      <button class="btn btn-secondary" onclick="prevSlide()">
-        <i class="fa-solid fa-arrow-left"></i> Slide Sebelumnya
+    <div class="slide-bottombar">
+      <button class="btn btn-worksheet" onclick="prevSlideItem()">
+        <i class="fa-solid fa-chevron-left"></i> Sebelumnya
       </button>
-      <div class="slide-counter" id="slideCounterText">1 / 6</div>
-      <button class="btn btn-primary" onclick="nextSlide()">
-        Slide Berikutnya <i class="fa-solid fa-arrow-right"></i>
+      <div id="modalSlideCounter" style="color: #94A3B8; font-weight: 700;">1 / 5</div>
+      <button class="btn btn-slide" onclick="nextSlideItem()">
+        Selanjutnya <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
   </div>
 
-  <!-- MODAL: WORKSHEET & TUGAS MAHASISWA (PDF EXPORTABLE) -->
+  <!-- MODAL: WORKSHEET & TUGAS PDF MAHASISWA -->
   <div id="worksheetModal">
-    <div class="worksheet-content" id="printArea">
+    <div class="worksheet-card" id="printArea">
       <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-        <h3 style="font-size: 1.25rem;"><i class="fa-solid fa-file-lines" style="color: var(--primary);"></i> Lembar Kerja & Tugas Kuliah</h3>
+        <h3 style="font-size: 1.25rem;"><i class="fa-solid fa-file-signature" style="color: var(--book-typewriter-blue);"></i> Lembar Kerja Mahasiswa (LKM)</h3>
         <div style="display: flex; gap: 0.5rem;">
-          <button class="btn btn-primary" onclick="window.print()">
+          <button class="btn btn-slide" onclick="window.print()">
             <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
           </button>
-          <button class="btn btn-secondary" onclick="closeWorksheetModal()">
+          <button class="btn" style="background: #E2E8F0; color: var(--text-dark);" onclick="closeWorksheetModal()">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
       </div>
 
-      <!-- KOP TUGAS RESMI MAHASISWA -->
-      <div style="border-bottom: 2px solid var(--dark-slate); padding-bottom: 1rem; margin-bottom: 1.5rem; text-align: center;">
-        <h2 style="font-size: 1.3rem; text-transform: uppercase;">LEMBAR KERJA MAHASISWA (LKM) - PERTEMUAN KE-2</h2>
-        <h3 style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">Mata Kuliah: Penulisan Karya Ilmiah (2 SKS) • Topik: Perencanaan Karya Ilmiah</h3>
+      <!-- KOP TUGAS RESMI -->
+      <div style="border-bottom: 2px solid var(--text-dark); padding-bottom: 1rem; margin-bottom: 1.5rem; text-align: center;">
+        <h2 style="font-size: 1.25rem; text-transform: uppercase;">LEMBAR KERJA PERENCANAAN KARYA ILMIAH</h2>
+        <h3 style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">Mata Kuliah: Penulisan Karya Ilmiah (2 SKS) • Rujukan: Bab 2</h3>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
         <div><strong>Nama Mahasiswa:</strong> ____________________________________</div>
         <div><strong>NIM:</strong> ________________________</div>
         <div><strong>Program Studi:</strong> ___________________________________</div>
-        <div><strong>Hari / Tanggal:</strong> ________________________</div>
+        <div><strong>Tanggal:</strong> ________________________</div>
       </div>
 
-      <div style="margin-bottom: 1.5rem;">
-        <h4 style="margin-bottom: 0.5rem; font-size: 1rem; color: var(--primary-dark);">Instruksi Tugas Mandiri (Berdasarkan Bab 2 Buku Ajar):</h4>
-        <p style="font-size: 0.88rem; color: var(--text-muted);">Kerjakan lembar perencanaan riset ini dengan mengaplikasikan 7 langkah penyusunan rencana karya ilmiah yang telah dipelajari hari ini.</p>
-      </div>
-
-      <!-- FORMULIR ISIAN MAHASISWA -->
+      <!-- FORMULIR KERJA BERBASIS BAB 2 -->
       <div style="display: flex; flex-direction: column; gap: 1.2rem; font-size: 0.9rem;">
-        <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px;">
-          <strong>1. Identifikasi Minat dan Keahlian Bidang Ilmu</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tuliskan topik kajian yang Anda sukai dan kuasai sesuai program studi Anda (Rujukan: Suyono et al., 2015).</p>
-          <div style="min-height: 45px; border-bottom: 1px dashed #cbd5e1;"></div>
+        <div style="border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
+          <strong>1. Identifikasi Minat dan Keahlian Bidang Ilmu (Bab 2, Sub B)[cite: 1]</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tuliskan topik riset yang Anda sukai dan kuasai agar pembahasan tidak terbatas (Suyono et al., 2015)[cite: 1]:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
         </div>
 
-        <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px;">
-          <strong>2. Perumusan Masalah (Kesenjangan Realitas vs Harapan)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Jelaskan fakta ketidaksesuaian antara kenyataan di lapangan dan harapan yang melatarbelakangi ide Anda.</p>
-          <div style="min-height: 55px; border-bottom: 1px dashed #cbd5e1;"></div>
+        <div style="border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
+          <strong>2. Perumusan Masalah Ilmiah (Kesenjangan Realitas vs Harapan)[cite: 1]</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tuliskan fakta ketidaksesuaian antara kenyataan di lapangan dan harapan yang melatarbelakangi kajian Anda[cite: 1]:</p>
+          <div style="min-height: 50px; border-bottom: 1px dashed #CBD5E1;"></div>
         </div>
 
-        <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px;">
-          <strong>3. Rumusan Judul & Hipotesis Awal</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tuliskan draf judul karya ilmiah serta dugaan sementara (jawaban sementara atas masalah).</p>
-          <div style="min-height: 45px; border-bottom: 1px dashed #cbd5e1;"></div>
+        <div style="border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
+          <strong>3. Rumusan Judul Karya Ilmiah & Hipotesis Awal[cite: 1]</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tuliskan draf judul naskah serta dugaan sementara (jawaban sementara terhadap pertanyaan)[cite: 1]:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
         </div>
 
-        <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px;">
-          <strong>4. Rencana Variabel & Sumber Data</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Sebutkan jenis data yang akan dikumpulkan serta sampel yang dibidik untuk menjawab hipotesis.</p>
-          <div style="min-height: 45px; border-bottom: 1px dashed #cbd5e1;"></div>
+        <div style="border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
+          <strong>4. Rencana Variabel & Sampel Pengamatan (Bab 2, Sub D)[cite: 1]</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Tentukan variabel pengamatan dan sampel yang akan digunakan untuk menganalisis sasaran penulisan[cite: 1]:</p>
+          <div style="min-height: 40px; border-bottom: 1px dashed #CBD5E1;"></div>
         </div>
       </div>
 
@@ -956,134 +1032,123 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- SCRIPT LOGIKA PRESENTASI & KUIS -->
   <script>
-    // Data Slide Presentasi (Berbasis Bab 2 Secara Komprehensif)
-    const presentationSlides = [
+    const deckSlides = [
       {
-        tag: "SLIDE 1 • PENDAHULUAN & APERSEPSI",
+        tag: "SLIDE 1 • HAKIKAT & PENDAHULUAN",
         title: "Hakikat Perencanaan Karya Ilmiah",
         html: `
-          <p style="font-size: 1.15rem; color: #cbd5e1; margin-bottom: 1rem;">
+          <p style="margin-bottom: 1rem; color: #E2E8F0;">
             <em>"Perencanaan karya ilmiah merupakan tahapan pertama yang penulis lakukan dalam menyusun sebuah karya ilmiah..."</em> (Bab 2, Hal. 29)
           </p>
-          <div style="background: rgba(255,255,255,0.06); padding: 1.25rem; border-radius: 14px; border-left: 4px solid #6366f1;">
-            <strong style="color: white;">Fungsi Fundamental Perencanaan (Winarto et al., 2016):</strong>
-            <ul style="margin-top: 0.5rem; padding-left: 1.2rem; color: #94a3b8; font-size: 1rem;">
-              <li>Mengembangkan ide dan menunjukkan alur pemikiran yang logis-terorganisir.</li>
-              <li>Membangun struktur tulisan yang jelas dan teratur.</li>
-              <li>Mencegah kesalahan fatal, manipulasi fakta, dan kecurangan plagiarisme.</li>
+          <div style="background: rgba(255,255,255,0.06); padding: 1.2rem; border-radius: 14px; border-left: 4px solid #407BFF;">
+            <strong style="color: white;">Fungsi Perencanaan (Winarto et al., 2016):</strong>
+            <ul style="margin-top: 0.5rem; padding-left: 1.2rem; color: #94A3B8; font-size: 1rem;">
+              <li>Mengembangkan ide dan alur pemikiran yang jelas serta terorganisir.</li>
+              <li>Membuat struktur tulisan yang jelas dan teratur.</li>
+              <li>Meningkatkan keterampilan penyajian fakta dan data secara sistematis.</li>
+              <li>Menghindarkan penulis dari kecurangan penulisan dan plagiarisme.</li>
             </ul>
           </div>
         `
       },
       {
         tag: "SLIDE 2 • PEMILIHAN TOPIK",
-        title: "Fondasi Topik: Minat, Keahlian & Pustaka Awal",
+        title: "Pemilihan Topik: Minat & Penguasaan",
         html: `
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-            <div style="background: rgba(236,72,153,0.1); border: 1px solid rgba(236,72,153,0.3); padding: 1.2rem; border-radius: 14px;">
-              <h4 style="color: #f472b6; margin-bottom: 0.5rem;">Kaidah Penguasaan (Suyono et al., 2015)</h4>
-              <p style="font-size: 0.95rem; color: #e2e8f0;">Penulis senang membahas detail jika ia meminati topiknya. Sebaliknya, tanpa penguasaan topik yang baik, pembahasan naskah akan sangat terbatas dan dangkal.</p>
-            </div>
-            <div style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); padding: 1.2rem; border-radius: 14px;">
-              <h4 style="color: #818cf8; margin-bottom: 0.5rem;">Tinjauan Pustaka Awal</h4>
-              <p style="font-size: 0.95rem; color: #e2e8f0;">Tinjauan literatur awal merupakan dasar penentuan topik untuk memastikan relevansi topik dengan permasalahan nyata serta menjamin ketersediaan referensi pembanding.</p>
-            </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 1.25rem; border-radius: 14px; margin-bottom: 1rem; border-left: 4px solid #F43F5E;">
+            <strong style="color: #F43F5E;">Suyono et al. (2015):</strong>
+            <p style="margin-top: 0.4rem; color: #E2E8F0;">
+              Penulis senang membahas setiap bagian secara mendetail jika tertarik pada topik tersebut. Sebaliknya, bila tidak menguasai topik dengan baik, maka pembahasan naskah menjadi sangat terbatas.
+            </p>
           </div>
-        `
-      },
-      {
-        tag: "SLIDE 3 • METODE PERENCANAAN",
-        title: "Perumusan Masalah & 7 Langkah Rencana",
-        html: `
-          <p style="color: #e2e8f0; font-size: 1.05rem; margin-bottom: 1rem;">
-            <strong>Definisi Kunci:</strong> <em>"Masalah merujuk pada fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan."</em> (Hal. 31)
+          <p style="color: #94A3B8; font-size: 1rem;">
+            Topik wajib relevan dengan bidang ilmu dan didukung oleh tinjauan pustaka awal sebagai dasar literatur yang memberikan manfaat nyata.
           </p>
-          <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; font-size: 0.95rem; color: #cbd5e1;">
-            <strong>7 Langkah Sistematis (Bab 2, Hal. 32):</strong><br>
-            1. Observasi objek & tetapkan masalah | 2. Susun hipotesis (dugaan penyebab) | 3. Rancang pengumpulan & analisis data | 4. Tentukan jenis karya ilmiah | 5. Identifikasi masalah & judul | 6. Kumpulkan bahan pustaka relevan | 7. Pahami rambu teknis penulisan (font, margin, spasi, sitasi).
+        `
+      },
+      {
+        tag: "SLIDE 3 • 7 LANGKAH OPERASIONAL",
+        title: "7 Langkah Rencana Karya Ilmiah",
+        html: `
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 0.95rem; color: #CBD5E1;">
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">1. Observasi objek, tetapkan masalah & tujuan.</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">2. Susun hipotesis (dugaan penyebab).</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">3. Susun rancangan data & analisis.</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">4. Tentukan jenis naskah (makalah/skripsi/dll).</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">5. Identifikasi masalah & tetapkan judul.</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 10px;">6. Kumpulkan bahan pustaka relevan.</div>
+            <div style="grid-column: span 2; background: rgba(64,123,255,0.15); border: 1px solid #407BFF; padding: 0.8rem; border-radius: 10px; text-align: center;">
+              7. Pahami aturan teknis: gaya bahasa, kutipan, referensi, margin, spasi, font.
+            </div>
           </div>
         `
       },
       {
-        tag: "SLIDE 4 • PENGUMPULAN & ANALISIS DATA",
-        title: "Prinsip Validitas Data dan Analisis",
+        tag: "SLIDE 4 • DATA & LAPORAN",
+        title: "Pengumpulan Data & Sistematika Laporan",
         html: `
-          <ul style="padding-left: 1.25rem; color: #cbd5e1; font-size: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-            <li><strong>Variabel Pengamatan:</strong> Data yang dihimpun harus terikat pada variabel agar ketika diolah memiliki makna ilmiah.</li>
-            <li><strong>Wujud Data:</strong> Dapat berupa angka, huruf, simbol, ataupun gambar yang relevan dengan objek kajian.</li>
-            <li><strong>Uji Hipotesis:</strong> Pengumpulan data ditujukan untuk menguji keabsahan dugaan sementara di lapangan.</li>
-            <li><strong>Objektivitas Analisis:</strong> Analisis data dilakukan secara cermat dan objektif agar hasilnya dapat dipertanggungjawabkan kepada komunitas keilmuan.</li>
+          <p style="color: #E2E8F0; margin-bottom: 0.8rem;">
+            <strong>Data Empiris:</strong> Ditentukan oleh variabel, dikumpulkan via sampel tertentu, dan dianalisis secara cermat dan objektif untuk membuktikan hipotesis.
+          </p>
+          <div style="background: rgba(255,255,255,0.06); padding: 1.2rem; border-radius: 14px;">
+            <strong style="color: #FBBF24;">9 Komponen Pokok Laporan Ilmiah:</strong>
+            <p style="color: #94A3B8; font-size: 0.95rem; margin-top: 0.4rem;">
+              (1) Halaman Judul, (2) Abstrak, (3) Pendahuluan [±10% isi], (4) Kajian Pustaka, (5) Metode Ilmiah, (6) Hasil & Pembahasan, (7) Kesimpulan & Saran, (8) Daftar Pustaka, (9) Lampiran.
+            </p>
+          </div>
+        `
+      },
+      {
+        tag: "SLIDE 5 • REVISI & PENUTUP",
+        title: "5 Tahap Revisi & Pengeditan Laporan",
+        html: `
+          <ul style="padding-left: 1.2rem; color: #CBD5E1; font-size: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><strong>Strukturasi Logis:</strong> Sajian informasi tertata secara runtut dan masuk akal.</li>
+            <li><strong>Kesesuaian Hasil & Tujuan:</strong> Periksa keterkaitan; evaluasi teknik jika hasil meleset dari tujuan.</li>
+            <li><strong>Ketelitian Bahasa:</strong> Koreksi ejaan, tanda baca, dan typo demi menjaga reputasi penulis.</li>
+            <li><strong>Konsistensi Istilah:</strong> Gaya penulisan, istilah, dan format harus konsisten.</li>
+            <li><strong>Revisi Berbasis Saran:</strong> Menindaklanjuti masukan tanpa merusak substansi data.</li>
           </ul>
-        `
-      },
-      {
-        tag: "SLIDE 5 • PELAPORAN & REVISI",
-        title: "Anatomi Naskah & 5 Rambu Evaluasi",
-        html: `
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
-            <div style="background: rgba(255,255,255,0.06); padding: 1rem; border-radius: 12px;">
-              <strong style="color: #a5b4fc;">9 Komponen Laporan:</strong>
-              <p style="color: #94a3b8; margin-top: 0.3rem;">Judul, Abstrak, Pendahuluan, Kajian Pustaka, Metode Ilmiah, Hasil & Pembahasan, Kesimpulan & Saran, Daftar Pustaka, Lampiran.</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.06); padding: 1rem; border-radius: 12px;">
-              <strong style="color: #f472b6;">5 Tahap Revisi & Edit:</strong>
-              <p style="color: #94a3b8; margin-top: 0.3rem;">1. Uji struktur logis | 2. Keselarasan hasil & tujuan | 3. Pengecekan tata bahasa & typo | 4. Konsistensi gaya penulisan | 5. Revisi berdasarkan masukan/saran.</p>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "SLIDE 6 • REFLEKSI & CLOSING",
-        title: "Refleksi & Pesan Penutup Perkuliahan",
-        html: `
-          <div style="background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(236,72,153,0.2)); padding: 2rem; border-radius: 18px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
-            <p style="font-size: 1.3rem; font-weight: 600; color: white; margin-bottom: 1rem;">
-              "Perencanaan yang disiplin adalah garansi orisinalitas dan kejujuran ilmiah."
-            </p>
-            <p style="font-size: 1rem; color: #cbd5e1;">
-              Silakan unduh Lembar Kerja Mahasiswa (LKM), rumuskan topik Anda, dan diskusikan pada sesi workshop pekan depan!
-            </p>
-          </div>
         `
       }
     ];
 
-    let currentSlide = 0;
+    let currentSlideIdx = 0;
 
     function openSlidePresentation() {
       document.getElementById('slideModal').style.display = 'flex';
-      renderSlide();
+      displaySlide();
     }
 
     function closeSlidePresentation() {
       document.getElementById('slideModal').style.display = 'none';
     }
 
-    function renderSlide() {
-      const slide = presentationSlides[currentSlide];
-      document.getElementById('slideTag').innerText = slide.tag;
-      document.getElementById('slideTitle').innerText = slide.title;
-      document.getElementById('slideContent').innerHTML = slide.html;
-      document.getElementById('slideCounterText').innerText = `${currentSlide + 1} / ${presentationSlides.length}`;
+    function displaySlide() {
+      const slide = deckSlides[currentSlideIdx];
+      document.getElementById('modalSlideTag').innerText = slide.tag;
+      document.getElementById('modalSlideTitle').innerText = slide.title;
+      document.getElementById('modalSlideBody').innerHTML = slide.html;
+      document.getElementById('modalSlideCounter').innerText = `${currentSlideIdx + 1} / ${deckSlides.length}`;
     }
 
-    function nextSlide() {
-      if (currentSlide < presentationSlides.length - 1) {
-        currentSlide++;
-        renderSlide();
+    function nextSlideItem() {
+      if (currentSlideIdx < deckSlides.length - 1) {
+        currentSlideIdx++;
+        displaySlide();
       }
     }
 
-    function prevSlide() {
-      if (currentSlide > 0) {
-        currentSlide--;
-        renderSlide();
+    function prevSlideItem() {
+      if (currentSlideIdx > 0) {
+        currentSlideIdx--;
+        displaySlide();
       }
     }
 
-    // Modal Worksheet
+    // Worksheet Modal
     function openWorksheetModal() {
       document.getElementById('worksheetModal').style.display = 'flex';
     }
@@ -1093,24 +1158,24 @@
     }
 
     // Kuis Interaktif
-    function checkAnswer(option) {
-      const feedback = document.getElementById('quizFeedback');
-      feedback.style.display = 'block';
-      if (option === 2) {
-        feedback.className = 'quiz-feedback success';
-        feedback.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Tepat Sekali!</strong> Sesuai kutipan langsung Bab 2 (Hal. 31), <em>"Masalah merujuk pada fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan."</em>';
+    function checkQuizAnswer(choice) {
+      const box = document.getElementById('quizResultBox');
+      box.style.display = 'block';
+      if (choice === 2) {
+        box.className = 'quiz-result correct';
+        box.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Benar!</strong> Kutipan langsung Bab 2 (Hal. 31): <em>"Masalah merujuk pada fakta untuk menggambarkan ketidaksesuaian antara kenyataan dan harapan."</em>';
       } else {
-        feedback.className = 'quiz-feedback error';
-        feedback.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> <strong>Kurang Tepat.</strong> Buka kembali teks Bab 2 Hal. 31, perumusan masalah ilmiah adalah identifikasi kesenjangan antara kenyataan (das Sein) dan harapan (das Sollen).';
+        box.className = 'quiz-result incorrect';
+        box.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> <strong>Kurang Tepat!</strong> Buka kembali teks Bab 2 Halaman 31, masalah dirumuskan dari ketidaksesuaian antara kenyataan dan harapan.';
       }
     }
 
-    // Keyboard navigation untuk slide presentasi
-    document.addEventListener('keydown', function(e) {
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', function(event) {
       if (document.getElementById('slideModal').style.display === 'flex') {
-        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'Escape') closeSlidePresentation();
+        if (event.key === 'ArrowRight' || event.key === ' ') nextSlideItem();
+        if (event.key === 'ArrowLeft') prevSlideItem();
+        if (event.key === 'Escape') closeSlidePresentation();
       }
     });
   </script>
