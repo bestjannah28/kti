@@ -24,7 +24,7 @@
       --radius-pill: 9999px;
     }
 
-    * {
+     {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -34,12 +34,12 @@
       background-color: var(--bg-page);
       color: var(--text-main);
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      font-size: 1rem; /* Ukuran terbaca nyaman di laptop & HP */
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ==================== HEADER PERSIS SCREENSHOT ==================== */
+    / ==================== HEADER PERSIS SCREENSHOT ==================== /
     .site-header {
       background: #ffffff;
       border-bottom: 1px solid var(--border-soft);
@@ -115,7 +115,7 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
-    /* ==================== LAYOUT UTAMA ==================== */
+    / ==================== LAYOUT UTAMA ==================== /
     .content-wrapper {
       max-width: 920px;
       margin: 2rem auto 4rem auto;
@@ -130,7 +130,7 @@
       display: block;
     }
 
-    /* ==================== HERO BOX IDENTIK ==================== */
+    / ==================== HERO BOX PERSIS SCREENSHOT ==================== /
     .hero-card {
       background: linear-gradient(145deg, #f5f3ff 0%, #f0fdf4 50%, #eff6ff 100%);
       border: 1px solid #e0e7ff;
@@ -188,7 +188,7 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
 
-    /* ==================== CONTENT CARDS ==================== */
+    / ==================== CONTENT CARDS ==================== /
     .content-card {
       background: var(--bg-card);
       border: 1px solid var(--border-soft);
@@ -268,7 +268,61 @@
       margin: 0;
     }
 
-    /* Diagram Taksonomi */
+    / KOTAK SUB-ELEMEN 10 UNSUR /
+    .element-item-box {
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 1.25rem;
+      background: #fafcfb;
+    }
+
+    .element-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .element-number-badge {
+      background: #0f172a;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .element-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .element-item-box p {
+      font-size: 0.98rem;
+      color: #334155;
+      margin-bottom: 0.65rem;
+      line-height: 1.7;
+    }
+
+    .element-item-box ul {
+      padding-left: 1.35rem;
+      font-size: 0.94rem;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .element-item-box li {
+      margin-bottom: 0.4rem;
+    }
+
+    / Diagram Taksonomi /
     .diagram-container {
       background: #ffffff;
       border: 1px solid var(--border-soft);
@@ -285,7 +339,7 @@
       color: var(--text-muted);
     }
 
-    /* Mini Game */
+    / Mini Game /
     .game-card {
       background: #fdf2f8;
       border: 1.5px dashed #fbcfe8;
@@ -327,7 +381,7 @@
       line-height: 1.65;
     }
 
-    /* ==================== WORKSHEET VIEW ==================== */
+    / ==================== WORKSHEET VIEW ==================== /
     .print-bar {
       display: flex;
       justify-content: space-between;
@@ -376,7 +430,7 @@
       line-height: 1.6;
     }
 
-    /* ==================== PRESENTASI VIEW ==================== */
+    / ==================== PRESENTASI VIEW ==================== /
     .presentation-frame {
       background: #ffffff;
       border: 2px solid var(--border-soft);
@@ -496,7 +550,7 @@
 </head>
 <body>
 
-  <!-- ==================== HEADER PERSIS SCREENSHOT ==================== -->
+  <!-- ==================== HEADER ==================== -->
   <header class="site-header">
     <div class="nav-container">
       <div class="brand-group">
@@ -513,15 +567,15 @@
 
   <main class="content-wrapper">
 
-    <!-- ==================== BAGIAN 1: MODUL BACAAN (SCREENSHOT LAYOUT) ==================== -->
+    <!-- ==================== BAGIAN 1: MODUL BACAAN LENGKAP ==================== -->
     <section id="reading-view" class="view-section active">
 
-      <!-- HERO BANNER IDENTIK DENGAN SCREENSHOT -->
+      <!-- HERO BANNER -->
       <header class="hero-card">
         <span class="pill-module-purple">MODUL PEMBELAJARAN MANDIRI</span>
         <h1>Orientasi Perkuliahan, Hakikat Karya Ilmiah, dan Karakteristik Utama</h1>
         <p class="hero-desc">
-          Kajian kritis Bab 1: Eksplorasi epistemologis karya tulis ilmiah, pilar objektivitas data tanpa bias pribadi, penegakan prosedur metode ilmiah yang dapat diuji ulang (replikasi), telaah sejawat (peer review), serta kepatuhan etika akademik[cite: 1].
+          Kajian kritis Bab 1: Eksplorasi epistemologis karya tulis ilmiah, pilar objektivitas data tanpa bias pribadi, penegakan prosedur metode ilmiah yang dapat diuji ulang (replikasi), telaah sejawat (peer review), serta kepatuhan etika akademik[cite: 1, 3].
         </p>
         <div class="hero-tags-row">
           <div class="hero-tag">⏱ Durasi: 2 SKS (100 Menit)</div>
@@ -641,20 +695,177 @@
           <div class="diagram-caption">Diagram 1: Taksonomi 10 Unsur Esensial Karya Ilmiah Menurut Bab 1 (Mahmudi dkk., 2023)[cite: 1]</div>
         </div>
 
-        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.1. Objektivitas Tanpa Bias Personal</h3>
-        <p>
-          Objektivitas menuntut penulis mendekati masalah penelitian tanpa memihak sudut pandang pribadi, kepentingan finansial sponsor, ataupun tekanan doktrinal tertentu (Hermawan &amp; Amirullah, 2016)[cite: 1]. Seluruh klaim wajib berpijak pada fakta yang dapat dibuktikan, eksperimen terukur, dan data empiris yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].
-        </p>
+        <!-- URAIAN MENDALAM LENGKAP 10 UNSUR (BAB 1) -->
+        <div style="margin-top: 2rem;">
 
-        <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.2. Siklus Baku Prosedur Metode Ilmiah</h3>
-        <p>
-          Metode ilmiah adalah proses sistematis yang wajib dilalui peneliti: (1) Perumusan pertanyaan riset yang spesifik dan terukur[cite: 1], (2) Pengumpulan data valid[cite: 1], (3) Analisis data objektif[cite: 1], (4) Uji hipotesis[cite: 1], (5) Penarikan kesimpulan berbasis bukti[cite: 1], (6) Penyusunan naskah terstruktur[cite: 1], (7) Penelaahan sejawat (*peer review*)[cite: 1], (8) Publikasi jurnal resmi[cite: 1], dan (9) Replikasi independen oleh peneliti lain (Suyono, 2015)[cite: 1].
-        </p>
+          <!-- UNSUR 1 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">1</span>
+              <span class="element-title">Objektivitas (Objectivity)</span>
+            </div>
+            <p>
+              Objektivitas adalah pilar fundamental karya ilmiah yang menuntut penulis mendekati masalah penelitian tanpa memihak sudut pandang atau kepentingan tertentu (Sugiarti, 2020)[cite: 1]. Poin operasionalnya meliputi[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Bebas Bias Personal:</strong> Menjauhkan hasil analisis dari preferensi politik, dogma agama, keuntungan finansial, atau asumsi subjektif peneliti (Hermawan &amp; Amirullah, 2016)[cite: 1].</li>
+              <li><strong>Dukungan Fakta &amp; Bukti:</strong> Setiap proposisi dan simpulan wajib berpijak pada data empiris, observasi lapangan yang terukur, atau hasil pengujian konkret yang dapat diuji kebenarannya (Rahim, 2020)[cite: 1].</li>
+              <li><strong>Transparansi Konflik Kepentingan:</strong> Penulis wajib menyatakan secara terbuka jika terdapat hubungan kemitraan dengan penyandang dana riset guna menjamin netralitas temuan ilmiah (Suyono, 2015)[cite: 1].</li>
+            </ul>
+          </div>
 
-        <h3 style="margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0f172a; font-size: 1.15rem;">2.3. Evaluasi Sejawat (*Peer Review*) dan Kepatuhan Etika</h3>
-        <p>
-          Uji mitra bestari berfungsi sebagai gerbang penyaring keabsahan metodologis dan validitas data naskah sebelum disebarluaskan (Efendi &amp; Ibrahim, 2018)[cite: 1]. Kepatuhan etika menuntut kejujuran pelaporan apa adanya tanpa manipulasi angka, pengakuan kontribusi penulis, perlindungan hak cipta, serta sanksi tegas atas tindakan plagiarisme (Wiradi, 2020)[cite: 1].
-        </p>
+          <!-- UNSUR 2 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">2</span>
+              <span class="element-title">Penerapan Metode Ilmiah (Scientific Method)</span>
+            </div>
+            <p>
+              Karya ilmiah dibangun di atas landasan metode ilmiah yang terstruktur, ketat, dan logis (Suyono, 2015)[cite: 1]. Bab 1 merinci sembilan siklus operasional yang wajib dilalui peneliti[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>(1) Rumusan Masalah:</strong> Menetapkan pertanyaan penelitian yang spesifik, fokus, dan terukur secara ilmiah[cite: 1].</li>
+              <li><strong>(2) Pengumpulan Data:</strong> Mengambil data menggunakan instrumen yang sahih (kuesioner, tes, observasi, atau panduan wawancara)[cite: 1].</li>
+              <li><strong>(3) Analisis Data:</strong> Menganalisis bukti mentah menggunakan teknik kuantitatif statistik atau kualitatif tematik secara cermat[cite: 1].</li>
+              <li><strong>(4) Uji Hipotesis:</strong> Menguji dugaan teoretis awal secara empiris berdasarkan data riil yang diperoleh[cite: 1].</li>
+              <li><strong>(5) Simpulan Berbasis Bukti:</strong> Menarik kesimpulan yang murni mencerminkan fakta lapangan tanpa rekayasa[cite: 1].</li>
+              <li><strong>(6) Pelaporan Sistematis:</strong> Mendokumentasikan alur riset ke dalam naskah terstandar agar alur berpikir dapat dilacak[cite: 1].</li>
+              <li><strong>(7) Peer Review:</strong> Menyerahkan naskah untuk dievaluasi oleh para pakar independen[cite: 1].</li>
+              <li><strong>(8) Publikasi Ilmiah:</strong> Menyebarluaskan hasil temuan melalui jurnal atau prosiding berwasit[cite: 1].</li>
+              <li><strong>(9) Replikasi:</strong> Membuka kesempatan bagi peneliti sejawat untuk membuktikan kembali konsistensi temuan tersebut[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 3 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">3</span>
+              <span class="element-title">Keterbukaan dan Transparansi (Openness and Transparency)</span>
+            </div>
+            <p>
+              Keterbukaan menuntut peneliti untuk secara gamblang memaparkan metodologi, proses pemilihan sampel, instrumen riset, dan prosedur analisis data secara terperinci tanpa ada yang disembunyikan (Mahmudi dkk., 2023, hlm. 9–10)[cite: 1]. Poin esensial transparansi meliputi[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Aksesibilitas Metodologi:</strong> Menyajikan deskripsi operasional yang cukup jelas sehingga pihak lain dapat menguji validitas prosedur yang digunakan[cite: 1].</li>
+              <li><strong>Kejujuran Anomali Data:</strong> Melaporkan seluruh data yang terkumpul, termasuk temuan ganjil atau data yang tidak sejalan dengan hipotesis awal, tanpa ditutup-tutupi[cite: 1].</li>
+              <li><strong>Keterbukaan Batasan Riset:</strong> Menjelaskan keterbatasan jangkauan penelitian dan potensi kelemahan instrumen secara jujur bagi perbaikan di masa depan[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 4 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">4</span>
+              <span class="element-title">Kontribusi Baru terhadap Pengetahuan (Novelty)</span>
+            </div>
+            <p>
+              Sebuah karya ilmiah yang berkualitas harus memberikan sumbangsih orisinal (novelty) bagi korpus keilmuan dan menghindari pengulangan yang bersifat duplikatif tanpa nilai tambah (Mahmudi dkk., 2023, hlm. 11–13)[cite: 1]. Kontribusi ini dapat berwujud tiga ranah[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Penemuan Baru (Discovery):</strong> Mengungkap fakta baru, variasi fenomena empiris, atau data lapangan yang belum pernah dipublikasikan sebelumnya[cite: 1].</li>
+              <li><strong>Pengembangan Teori (Theoretical Advancement):</strong> Memperluas cakupan teori lama, memodifikasi model konseptual, atau menyangkal asumsi mapan yang sudah tidak relevan[cite: 1].</li>
+              <li><strong>Pemecahan Masalah Nyata (Problem Solving):</strong> Menawarkan terobosan metodologis, instrumen baru, atau solusi aplikatif terhadap persoalan mendesak di masyarakat dan industri[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 5 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">5</span>
+              <span class="element-title">Kemampuan untuk Diverifikasi dan Direplikasi (Reproducibility)</span>
+            </div>
+            <p>
+              Salah satu tolok ukur utama validitas karya ilmiah adalah kemampuannya untuk diverifikasi oleh ilmuwan lain (Mahmudi dkk., 2023, hlm. 14–15)[cite: 1]. Prinsip replikasi mensyaratkan[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Konsistensi Temuan:</strong> Apabila peneliti independen mengulang prosedur eksperimen atau survei menggunakan kondisi dan parameter yang sama, temuan yang dihasilkan harus konsisten[cite: 1].</li>
+              <li><strong>Eliminasi Kebetulan:</strong> Replikasi membuktikan bahwa hasil penelitian bukan kebetulan semata (fluke), bukan akibat cacat instrumen, dan bukan manipulasi statistik[cite: 1].</li>
+              <li><strong>Validitas Eksternal:</strong> Memastikan temuan dapat digeneralisasikan pada populasi atau konteks situasi yang relevan[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 6 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">6</span>
+              <span class="element-title">Struktur dan Format Baku (Gaya Selingkung)</span>
+            </div>
+            <p>
+              Karya ilmiah wajib disusun berdasarkan konvensi tata tulis baku yang telah disepakati secara akademik (seperti gaya APA, MLA, IEEE, atau pedoman selingkung institusi) (Mahmudi dkk., 2023, hlm. 16–18)[cite: 1]. Ketertiban format ini mengatur[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Sistematika Logis:</strong> Struktur bab yang berurutan mulai dari pendahuluan, landasan teori, metode, hasil dan pembahasan, hingga kesimpulan dan saran[cite: 1].</li>
+              <li><strong>Tata Letak Standar:</strong> Kerapian tipografi, margin kertas, spasi pengetikan, penomoran halaman Romawi/Arab, serta hierarki penomoran subbab[cite: 1].</li>
+              <li><strong>Standarisasi Notasi Sitasi:</strong> Keseragaman sistem kutipan dalam teks (in-text citations) dan korespondensi daftar pustaka secara presisi[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 7 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">7</span>
+              <span class="element-title">Tujuan Komunikasi dan Diseminasi Ilmiah</span>
+            </div>
+            <p>
+              Hakikat penyusunan karya ilmiah adalah mendiseminasikan pengetahuan baru agar dapat diakses, dinilai, dan dimanfaatkan oleh masyarakat luas (Mahmudi dkk., 2023, hlm. 18–19)[cite: 1]. Aspek komunikasi ilmiah mencakup[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Dialog Intelektual:</strong> Menjadi jembatan komunikasi antara penulis dengan komunitas saintifik global untuk memicu debat ilmiah yang konstruktif[cite: 1].</li>
+              <li><strong>Pemanfaatan Praktis:</strong> Mengalirkan temuan akademis ke dunia industri, ruang kelas, atau pembuat kebijakan publik (evidence-based policy)[cite: 1].</li>
+              <li><strong>Inspirasi Riset Lanjutan:</strong> Memberikan pijakan kajian baru bagi peneliti lain untuk meneliti aspek-aspek yang belum terjawab[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 8 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">8</span>
+              <span class="element-title">Peninjauan Sejawat (Peer Review)</span>
+            </div>
+            <p>
+              Sebelum diterbitkan secara resmi dalam jurnal ilmiah, naskah harus melewati tahapan uji kritis penelaahan sejawat (peer review) oleh para pakar independen sebidang (Efendi &amp; Ibrahim, 2018 dalam Mahmudi dkk., 2023)[cite: 1]. Fungsi telaah sejawat ini meliputi[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Filtrasi Kualitas:</strong> Memeriksa keabsahan metodologi, kecukupan data, serta ketepatan analisis sebelum karya dikonsumsi masyarakat luas[cite: 1].</li>
+              <li><strong>Deteksi Kekeliruan:</strong> Mengidentifikasi bias analisis, cacat logika perumusan simpulan, atau kelemahan penarikan inferensi[cite: 1].</li>
+              <li><strong>Umpan Balik Konstruktif:</strong> Memberikan rekomendasi revisi guna menyempurnakan kejelasan dan bobot akademis naskah[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 9 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">9</span>
+              <span class="element-title">Kepatuhan Etika Penelitian dan Penulisan</span>
+            </div>
+            <p>
+              Kepatuhan etika adalah standar moral tertinggi yang mutlak dipatuhi peneliti dalam seluruh siklus penelitian (Wiradi, 2020 dalam Mahmudi dkk., 2023)[cite: 1]. Batasan etika mencakup[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Bebas Plagiarisme:</strong> Larangan keras mengambil ide, frasa, bagan, atau hasil riset pihak lain tanpa atribusi rujukan yang sah[cite: 1].</li>
+              <li><strong>Anti-Fabrikasi &amp; Falsifikasi:</strong> Dilarang mengarang data palsu (fabrikasi) atau mengubah angka data lapangan demi keuntungan personal (falsifikasi)[cite: 1].</li>
+              <li><strong>Perlindungan Subjek Riset:</strong> Menjamin kerahasiaan identitas responden (anonymity), persetujuan sukarela (informed consent), dan bebas dari bahaya fisik/psikologis[cite: 1].</li>
+            </ul>
+          </div>
+
+          <!-- UNSUR 10 -->
+          <div class="element-item-box">
+            <div class="element-header">
+              <span class="element-number-badge">10</span>
+              <span class="element-title">Keterbacaan dan Ketepatan Bahasa (Readability &amp; Style)</span>
+            </div>
+            <p>
+              Karya ilmiah harus disajikan menggunakan ragam bahasa tulis baku yang denotatif, lugas, efektif, dan terstruktur rapi (Mahmudi dkk., 2023, hlm. 25–27)[cite: 1]. Kriteria kebahasaan meliputi[cite: 1]:
+            </p>
+            <ul>
+              <li><strong>Kejelasan dan Kepaduan:</strong> Kalimat disusun secara logis dengan kohesi dan koherensi antarkalimat dan antarparagraf yang padu[cite: 1].</li>
+              <li><strong>Bebas Gaya Sastra &amp; Kolokial:</strong> Menghindari gaya metaforis yang puitis, ungkapan ambigu, serta ragam bahasa percakapan sehari-hari[cite: 1].</li>
+              <li><strong>Ketepatan Diksi Teknis:</strong> Istilah teknis khusus atau singkatan asing wajib didefinisikan secara eksplisit agar pembaca tidak keliru menafsirkan konsep[cite: 1].</li>
+            </ul>
+          </div>
+
+        </div>
+
       </article>
 
       <!-- FASE 3: GAME INTERAKTIF (5 MENIT) -->
@@ -736,7 +947,7 @@
           </button>
         </div>
 
-        <!-- 10 SOAL PG DENGAN PEMBAHASAN -->
+        <!-- 10 SOAL PG DENGAN PEMBAHASAN LENGKAP -->
         <div style="margin-bottom: 1.5rem;">
           <p style="font-weight: 700;">1. Menurut Bab 1 buku rujukan, apakah pengertian esensial dari karya ilmiah?</p>
           <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
@@ -771,7 +982,7 @@
         </div>
 
         <div style="margin-bottom: 1.5rem;">
-          <p style="font-weight: 700;">4. Unsur kontribusi baru (*novelty*) dalam karya ilmiah yang berkualitas memiliki peran untuk:</p>
+          <p style="font-weight: 700;">4. Unsur kontribusi baru (novelty) dalam karya ilmiah yang berkualitas memiliki peran untuk:</p>
           <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
             A. Menyalin teks penelitian terdahulu sebanyak-banyaknya tanpa modifikasi konsep<br>
             B. Menghasilkan pengetahuan baru, memvalidasi/menyangkal teori, atau menawarkan solusi atas masalah yang ada[cite: 1]<br>
@@ -782,7 +993,7 @@
         </div>
 
         <div style="margin-bottom: 1.5rem;">
-          <p style="font-weight: 700;">5. Apa tujuan utama dilakukannya peninjauan sejawat (*peer review*) sebelum karya ilmiah diterbitkan?</p>
+          <p style="font-weight: 700;">5. Apa tujuan utama dilakukannya peninjauan sejawat (peer review) sebelum karya ilmiah diterbitkan?</p>
           <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
             A. Untuk menilai kelayakan naskah oleh pakar sebidang guna menjamin kualitas, validitas metodologi, dan akurasi temuan (Efendi &amp; Ibrahim, 2018)[cite: 1]<br>
             B. Memberikan hak royalti komersial sebesar-besarnya kepada tim penilai naskah<br>
@@ -815,7 +1026,7 @@
         </div>
 
         <div style="margin-bottom: 1.5rem;">
-          <p style="font-weight: 700;">8. Aspek keterbacaan (*readability*) dalam penulisan karya ilmiah tercapai apabila penulis menerapkan:</p>
+          <p style="font-weight: 700;">8. Aspek keterbacaan (readability) dalam penulisan karya ilmiah tercapai apabila penulis menerapkan:</p>
           <p style="padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.7;">
             A. Kalimat yang sangat panjang, berbelit-belit, dan sarat dengan istilah gaul/kolokial<br>
             B. Bahasa baku yang jelas, alur paragraf terorganisir logis, serta penjelasan memadai pada setiap istilah teknis[cite: 1]<br>
@@ -880,7 +1091,7 @@
             <ul>
               <li>Bebas dari prasangka pribadi, preferensi politik, doktrin agama, atau kepentingan pendonor riset (Hermawan &amp; Amirullah, 2016)[cite: 1].</li>
               <li>Seluruh proposisi dan kesimpulan wajib bersandar pada fakta empiris dan bukti yang dapat diverifikasi (Sugiarti, 2020)[cite: 1].</li>
-              <li>Transparansi penuh terhadap potensi benturan kepentingan (*conflict of interest*)[cite: 1].</li>
+              <li>Transparansi penuh terhadap potensi benturan kepentingan (conflict of interest)[cite: 1].</li>
             </ul>
           </div>
           <div class="speaker-notes-box">
@@ -901,7 +1112,7 @@
             </ul>
           </div>
           <div class="speaker-notes-box">
-            <strong>Catatan Pemateri:</strong> Jelaskan prinsip *replicability*: sebuah penelitian baru dipercaya keandalannya bila diulang oleh pihak lain menghasilkan kesimpulan yang konsisten[cite: 1].
+            <strong>Catatan Pemateri:</strong> Jelaskan prinsip replicability: sebuah penelitian baru dipercaya keandalannya bila diulang oleh pihak lain menghasilkan kesimpulan yang konsisten[cite: 1].
           </div>
         </div>
 
@@ -930,7 +1141,7 @@
             <p>Tanggung Jawab Moral Tertinggi Komunitas Akademik:</p>
             <ul>
               <li>Nol toleransi terhadap fabrikasi data, falsifikasi informasi, dan plagiarisme (Wiradi, 2020)[cite: 1].</li>
-              <li>Kewajiban sitasi dan pemberian penghargaan (*credit*) terhadap rujukan literatur yang sah[cite: 1].</li>
+              <li>Kewajiban sitasi dan pemberian penghargaan (credit) terhadap rujukan literatur yang sah[cite: 1].</li>
               <li>Perlindungan privasi subjek penelitian dan kepatuhan kode etik institusional[cite: 1].</li>
             </ul>
           </div>
