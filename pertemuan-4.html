@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 4: Teknik Penulisan Karya Ilmiah | MK Penulisan Karya Ilmiah</title>
+  
+  <!-- Font Google: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      / Palet Halus & Smooth: Emerald Green & Warm Soft Orange /
+      --green-deep: #064E3B;
+      --green-emerald: #0F766E;
+      --green-sage: #10B981;
+      --green-light: #F0FDF4;
+      --green-border: #BBF7D0;
+      
+      --orange-accent: #C2410C;
+      --orange-warm: #F97316;
+      --orange-soft: #FB923C;
+      --orange-light: #FFF7ED;
+      --orange-border: #FED7AA;
+
+      --bg-page: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-body: #1E293B;
+      --text-muted: #475569;
+      --border-card: #E2E8F0;
+      
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-smooth: 0 10px 25px -5px rgba(15, 118, 110, 0.08), 0 8px 10px -6px rgba(249, 115, 22, 0.05);
+    }
+
+     {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      font-size: 18.5px; / Font dasar diperbesar /
+      line-height: 1.85;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-dark);
+      line-height: 1.35;
+    }
+
+    / TOP NAVBAR /
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--green-border);
+      padding: 1.1rem 2.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--green-deep);
+      text-decoration: none;
+    }
+
+    .nav-icon {
+      background: linear-gradient(135deg, var(--green-emerald), var(--orange-warm));
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.2);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, var(--green-emerald), var(--green-deep));
+      color: white;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+    }
+
+    .btn-green:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.35);
+    }
+
+    .btn-orange {
+      background: linear-gradient(135deg, var(--orange-warm), var(--orange-accent));
+      color: white;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
+    }
+
+    .btn-orange:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+    }
+
+    / CONTAINER UTAMA /
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.6rem 1.4rem 5rem;
+    }
+
+    / HERO BANNER GREEN & ORANGE /
+    .hero-banner {
+      background: linear-gradient(135deg, #042F2E 0%, #064E3B 55%, #7C2D12 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 3.8rem 3rem;
+      margin-bottom: 2.8rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-smooth);
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.28) 0%, transparent 70%);
+      top: -50px;
+      right: -50px;
+      border-radius: 50%;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge-pill {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 0.42rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #CCFBF1;
+    }
+
+    .hero-banner h1 {
+      color: white;
+      font-size: 2.7rem;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-banner p {
+      color: #E6FFFA;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    / ILUSTRASI RETRO DARI SAMPUL BUKU RUJUKAN /
+    .svg-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .svg-artwork {
+      width: 100%;
+      max-width: 380px;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.45));
+      transition: transform 0.3s ease;
+    }
+
+    .svg-artwork:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    / TIMELINE 2 SKS /
+    .timeline-card {
+      background: white;
+      border: 2px solid var(--green-border);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      margin-bottom: 2.6rem;
+      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.05);
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--green-deep);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .slot-item {
+      background: var(--bg-page);
+      border-radius: 16px;
+      padding: 1.25rem;
+      border-left: 5px solid var(--green-emerald);
+      border-top: 1px solid var(--border-card);
+      border-right: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .slot-item.orange { border-left-color: var(--orange-warm); }
+    .slot-item.soft-green { border-left-color: var(--green-sage); }
+    .slot-item.warm { border-left-color: #D97706; }
+
+    .slot-time {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .slot-heading {
+      font-weight: 700;
+      font-size: 1.12rem;
+      color: var(--text-dark);
+      margin-top: 0.3rem;
+    }
+
+    / KONTEN KAJIAN MATERI LENGKAP /
+    .content-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-card);
+      padding: 3.2rem 2.6rem;
+      margin-bottom: 2.6rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .content-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--green-deep);
+    }
+
+    .content-card h3 {
+      font-size: 1.45rem;
+      margin-top: 2.2rem;
+      margin-bottom: 0.9rem;
+      color: var(--orange-accent);
+    }
+
+    .category-tag {
+      display: inline-block;
+      padding: 0.4rem 1.05rem;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      background: var(--green-light);
+      color: var(--green-emerald);
+      border: 1px solid var(--green-border);
+    }
+
+    .quote-box {
+      background: var(--green-light);
+      border-left: 5px solid var(--green-emerald);
+      padding: 1.5rem 1.8rem;
+      border-radius: 0 18px 18px 0;
+      margin: 1.6rem 0;
+      font-style: italic;
+      color: #042F2E;
+      font-size: 1.15rem;
+    }
+
+    .quote-box.orange {
+      background: var(--orange-light);
+      border-left-color: var(--orange-warm);
+      color: #7C2D12;
+    }
+
+    .quote-ref {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-top: 0.6rem;
+      color: var(--text-dark);
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.4rem;
+      margin: 1.6rem 0;
+    }
+
+    .panel-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 1.5rem;
+    }
+
+    .panel-box h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .highlight-strip {
+      background: linear-gradient(135deg, var(--green-light), var(--orange-light));
+      border: 1px dashed var(--green-emerald);
+      border-radius: 18px;
+      padding: 1.7rem;
+      margin: 1.8rem 0;
+    }
+
+    / KUIS KILAT 5 MENIT /
+    .quiz-zone {
+      background: linear-gradient(135deg, #042F2E, #134E4A);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 2.8rem;
+      margin: 2.8rem 0;
+      box-shadow: 0 15px 30px rgba(4, 47, 46, 0.3);
+    }
+
+    .quiz-zone h3 {
+      color: white;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .quiz-btn-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      color: white;
+      text-align: left;
+      font-family: inherit;
+      font-size: 1.08rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .quiz-btn-item:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateX(6px);
+      border-color: var(--orange-warm);
+    }
+
+    .quiz-feedback-box {
+      margin-top: 1.3rem;
+      padding: 1.25rem;
+      border-radius: 14px;
+      display: none;
+      font-size: 1.08rem;
+    }
+
+    / MODAL: PRESENTASI DOSEN (FULL SCREEN SLIDES) /
+    #slideModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #022C22;
+      color: white;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+    }
+
+    .slide-topbar {
+      padding: 1.2rem 2.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(4, 47, 46, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.6rem;
+    }
+
+    .slide-box {
+      background: #0F3E36;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      max-width: 980px;
+      width: 100%;
+      min-height: 490px;
+      padding: 3.6rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-box h2 {
+      color: white;
+      font-size: 2.45rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .slide-bottombar {
+      padding: 1.2rem 2.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(4, 47, 46, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    / MODAL: WORKSHEET & TUGAS MAHASISWA (10 SOAL PG) /
+    #worksheetModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 90;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .worksheet-card {
+      background: white;
+      width: 100%;
+      max-width: 930px;
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    / AREA TERKUNCI KHUSUS DOSEN /
+    .locked-key-box {
+      background: var(--orange-light);
+      border: 2px dashed var(--orange-warm);
+      border-radius: 18px;
+      padding: 1.8rem;
+      margin-top: 2.2rem;
+    }
+
+    .key-content {
+      display: none;
+      margin-top: 1.3rem;
+      padding: 1.3rem;
+      background: white;
+      border-radius: 14px;
+      border: 1px solid var(--orange-border);
+    }
+
+    @media print {
+      body  { visibility: hidden; }
+      #printArea, #printArea  { visibility: visible; }
+      #printArea { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; font-size: 14px; }
+      .no-print { display: none !important; }
+    }
+
+    @media (max-width: 860px) {
+      body { font-size: 17px; }
+      .hero-banner { grid-template-columns: 1fr; text-align: center; padding: 2.4rem 1.6rem; }
+      .hero-badges { justify-content: center; }
+      .slide-box { padding: 2rem 1.6rem; min-height: 380px; }
+      .slide-box h2 { font-size: 1.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <div class="nav-icon"><i class="fa-solid fa-pen-nib"></i></div>
+      <div>
+        <span>MK Penulisan Karya Ilmiah</span>
+        <span style="font-size: 0.88rem; color: var(--orange-accent); display: block; font-weight: 600;">Pertemuan 4: Bab 4 Teknik Penulisan</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <button class="btn btn-green" onclick="openSlidePresentation()">
+        <i class="fa-solid fa-desktop"></i> Mode Presentasi Dosen
+      </button>
+      <button class="btn btn-orange" onclick="openWorksheetModal()">
+        <i class="fa-solid fa-file-signature"></i> 10 Soal PG & Kunci
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO HEADER: RETRO VINTAGE ADAPTATION DENGAN TEMA GREEN & ORANGE -->
+    <header class="hero-banner">
+      <div>
+        <div class="hero-badges">
+          <span class="badge-pill"><i class="fa-regular fa-clock"></i> 2 SKS (100 Menit)</span>
+          <span class="badge-pill"><i class="fa-solid fa-book-open"></i> Bab 4 Halaman 51–64</span>
+          <span class="badge-pill"><i class="fa-solid fa-ruler-combined"></i> Standar Tata Tulis Akademik</span>
+        </div>
+        <h1>Teknik Penulisan Karya Ilmiah</h1>
+        <p>Telaah komprehensif aturan teknis baku berdasarkan Bab 4 buku rujukan: penentuan bahan & ukuran kertas, tipografi font formal, batas tepi pengetikan (margin), jarak spasi, penomoran Romawi & Arab, kaidah kutipan langsung dan tidak langsung, serta struktur catatan kaki (footnotes)[cite: 1].</p>
+        
+        <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.9rem;">
+          <button class="btn btn-green" onclick="openSlidePresentation()">
+            <i class="fa-solid fa-play"></i> Buka Slide Presentasi
+          </button>
+          <button class="btn btn-orange" onclick="openWorksheetModal()">
+            <i class="fa-solid fa-list-check"></i> Kerjakan LKM & 10 Soal PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- ILUSTRASI VEKTOR RETRO MESIN TIK SESUAI COVER BUKU RUJUKAN -->
+      <div class="svg-wrapper">
+        <svg class="svg-artwork" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="250" cy="360" rx="220" ry="25" fill="#021C17" opacity="0.6"/>
+          <!-- Bola Dunia / Globe Mini -->
+          <circle cx="390" cy="180" r="60" fill="#99F6E4"/>
+          <path d="M340 180 Q390 140 440 180" stroke="#0D9488" stroke-width="4" fill="none"/>
+          <path d="M340 180 Q390 220 440 180" stroke="#0D9488" stroke-width="4" fill="none"/>
+          <path d="M390 120 Q360 180 390 240" stroke="#0D9488" stroke-width="4" fill="none"/>
+          <!-- Tumpukan Buku -->
+          <rect x="330" y="225" width="130" height="35" rx="6" fill="#F97316"/>
+          <rect x="335" y="235" width="120" height="15" fill="#FFEDD5"/>
+          <path d="M380 220 L380 260" stroke="#C2410C" stroke-width="3"/>
+          <rect x="325" y="262" width="140" height="38" rx="6" fill="#115E59"/>
+          <rect x="330" y="272" width="130" height="18" fill="#CCFBF1"/>
+          <rect x="335" y="303" width="145" height="42" rx="7" fill="#FB923C"/>
+          <rect x="340" y="315" width="135" height="20" fill="#FFF7ED"/>
+          <!-- Amplop Surat & Hati -->
+          <polygon points="360,335 440,335 400,370" fill="#5EEAD4"/>
+          <rect x="360" y="335" width="80" height="40" rx="4" fill="#2DD4BF"/>
+          <circle cx="400" cy="355" r="7" fill="#EA580C"/>
+          <!-- Tanaman Kaktus Pot -->
+          <ellipse cx="140" cy="275" rx="28" ry="12" fill="#C2410C"/>
+          <path d="M120 275 L125 315 Q140 325 155 315 L160 275 Z" fill="#EA580C"/>
+          <rect x="130" y="210" width="22" height="65" rx="11" fill="#14B8A6"/>
+          <rect x="120" y="230" width="15" height="20" rx="7" fill="#14B8A6"/>
+          <rect x="147" y="225" width="15" height="20" rx="7" fill="#14B8A6"/>
+          <!-- Tinta & Pena Bulu Kuning Emas -->
+          <path d="M80 320 L75 355 L105 355 L100 320 Z" fill="#134E4A"/>
+          <rect x="73" y="315" width="34" height="6" rx="2" fill="#0F766E"/>
+          <path d="M55 240 Q75 270 88 320 Q70 290 55 240 Z" fill="#F59E0B"/>
+          <path d="M55 240 L88 320" stroke="#B45309" stroke-width="2"/>
+          <rect x="30" y="310" width="45" height="40" rx="3" fill="#E2E8F0" transform="rotate(-15 30 310)"/>
+          <!-- Mesin Tik Retro Hijau Zamrud -->
+          <rect x="195" y="110" width="110" height="120" rx="4" fill="#FFFFFF"/>
+          <line x1="210" y1="135" x2="290" y2="135" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+          <line x1="210" y1="150" x2="290" y2="150" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+          <line x1="210" y1="165" x2="270" y2="165" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+          <rect x="175" y="195" width="150" height="22" rx="10" fill="#1E293B"/>
+          <circle cx="170" cy="206" r="10" fill="#475569"/>
+          <circle cx="330" cy="206" r="10" fill="#475569"/>
+          <path d="M170 220 L330 220 L360 320 Q365 335 345 335 L155 335 Q135 335 140 320 Z" fill="#0F766E"/>
+          <path d="M150 250 L350 250 L355 320 L145 320 Z" fill="#115E59"/>
+          <!-- Tombol Bulat Putih -->
+          <g fill="#FFFFFF" opacity="0.95">
+            <circle cx="180" cy="275" r="7"/><circle cx="205" cy="275" r="7"/><circle cx="230" cy="275" r="7"/><circle cx="255" cy="275" r="7"/><circle cx="280" cy="275" r="7"/><circle cx="305" cy="275" r="7"/><circle cx="325" cy="275" r="7"/>
+            <circle cx="188" cy="295" r="7"/><circle cx="213" cy="295" r="7"/><circle cx="238" cy="295" r="7"/><circle cx="263" cy="295" r="7"/><circle cx="288" cy="295" r="7"/><circle cx="313" cy="295" r="7"/>
+            <rect x="210" y="312" width="85" height="10" rx="5" fill="#FFEDD5"/>
+          </g>
+          <!-- Gelembung Huruf Alfabet -->
+          <path d="M110 130 Q80 120 70 145 Q50 160 70 185 Q90 205 130 195 Q160 190 165 165 Q165 135 130 130 Z" fill="#042F2E" opacity="0.92"/>
+          <text x="80" y="155" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">W</text>
+          <text x="100" y="148" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">I</text>
+          <text x="115" y="152" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15">A</text>
+          <text x="135" y="160" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">J</text>
+          <text x="150" y="150" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">B</text>
+          <text x="85" y="178" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="15">Q</text>
+          <text x="110" y="182" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">F</text>
+          <text x="130" y="180" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14">V</text>
+          <text x="145" y="175" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">D</text>
+          <path d="M465 140 L470 150 L480 155 L470 160 L465 170 L460 160 L450 155 L460 150 Z" fill="#F59E0B"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- LESSON BREAKDOWN TIMELINE (2 SKS / 100 MENIT) -->
+    <section class="timeline-card">
+      <div class="timeline-title">
+        <i class="fa-solid fa-hourglass-half"></i>
+        Distribusi Waktu Perkuliahan Tatap Muka (Total 100 Menit / 2 SKS)
+      </div>
+      <div class="timeline-grid">
+        <div class="slot-item">
+          <div class="slot-time">10 Menit</div>
+          <div class="slot-heading">Pendahuluan</div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 0.3rem;">Hakikat ketaatan teknis penulisan dalam menjaga wibawa naskah akademik[cite: 1].</p>
+        </div>
+        <div class="slot-item orange">
+          <div class="slot-time">45 Menit</div>
+          <div class="slot-heading">Materi Inti Bab 4</div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 0.3rem;">Bedah mendalam bahan, margin, spasi, penomoran, kutipan, dan catatan kaki[cite: 1].</p>
+        </div>
+        <div class="slot-item warm">
+          <div class="slot-time">5 Menit</div>
+          <div class="slot-heading">Games Interaktif</div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem;">Uji cepat kaidah pengetikan kutipan langsung panjang[cite: 1].</p>
+        </div>
+        <div class="slot-item soft-green">
+          <div class="slot-time">40 Menit</div>
+          <div class="slot-heading">Evaluasi & Penutup</div>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-top: 0.3rem;">Pengerjaan 10 soal PG di LKM, verifikasi kunci dosen, dan kesimpulan[cite: 1].</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAGIAN 1: PENDAHULUAN (10 MENIT) -->
+    <article class="content-card">
+      <span class="category-tag">Bagian I • Pendahuluan (10 Menit)</span>
+      <h2>A. Pendahuluan: Hakikat Ketentuan Teknis Karya Ilmiah</h2>
+      
+      <p>Karya ilmiah tidak hanya dinilai dari kebaruan ide (novelty) atau kedalaman teori semata, melainkan juga dari kepatuhan penulis terhadap format fisik dan teknis yang telah disepakati oleh masyarakat ilmiah[cite: 1]. Teks pembuka Bab 4 menyatakan:</p>
+
+      <div class="quote-box">
+        "Karya ilmiah ditulis dengan memperhatikan beberapa teknik penulisan, seperti bahan dan ukuran kertas, pengetikan, penomoran, kutipan dan catatan kaki."
+        <span class="quote-ref">— Bab 4, Hal. 51[cite: 1]</span>
+      </div>
+
+      <p>Standarisasi teknis ini berfungsi membentuk keteraturan, menjamin keterbacaan (readability), mempermudah dewan penguji menelusuri sumber rujukan, serta menghindarkan naskah dari kekeliruan kutipan yang berpotensi melanggar etika akademik[cite: 1].</p>
+    </article>
+
+    <!-- BAGIAN 2: MATERI INTI (45 MENIT) -->
+    <article class="content-card">
+      <span class="category-tag">Bagian II • Pendalaman Materi Inti (45 Menit)</span>
+      <h2>B. Standar Bahan dan Ukuran Kertas</h2>
+      <p>Dalam naskah akademik formal (seperti skripsi, tesis, dan disertasi), media kertas diatur dengan spesifikasi ketat[cite: 1]:</p>
+
+      <div class="grid-2col">
+        <div class="panel-box">
+          <h4><i class="fa-solid fa-file-lines" style="color: var(--green-emerald);"></i> Kertas Naskah Utama</h4>
+          <p>Naskah diketik di atas kertas <strong>HVS 80 gram</strong> (atau 70 gram sesuai pedoman institusi) berwarna putih polos dengan ukuran baku <strong>A4 (21,0 cm x 29,7 cm)</strong> atau ukuran Kuarto (Letter)[cite: 1]. Seluruh teks dicetak hanya pada <strong>satu sisi permukaan kertas saja (single side)</strong>, tidak dicetak bolak-balik[cite: 1].</p>
+        </div>
+        <div class="panel-box">
+          <h4><i class="fa-solid fa-book-bookmark" style="color: var(--orange-warm);"></i> Sampul & Kertas Pembatas</h4>
+          <p>Sampul luar dijilid tebal (hardcover) dengan bahan karton dilapisi kain linen atau plastik laminasi, menggunakan warna yang disesuaikan dengan bendera/ciri khas fakultas[cite: 1]. Antara bab yang satu dengan bab lainnya diselipkan selembar <strong>kertas pembatas (doorslag)</strong> berwarna senada dengan lambang universitas[cite: 1].</p>
+        </div>
+      </div>
+
+      <h3>C. Pengetikan: Tipografi Huruf, Margin, dan Spasi</h3>
+      <p>Ketentuan tata letak pengetikan naskah dirinci secara ketat dalam teks Bab 4[cite: 1]:</p>
+
+      <div class="highlight-strip">
+        <ul style="padding-left: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem;">
+          <li><strong>Jenis dan Ukuran Huruf (Tipografi):</strong> Naskah diketik menggunakan jenis huruf formal standar <em>Times New Roman</em> berukuran <strong>12 pt</strong> (atau <em>Arial 11 pt</em>)[cite: 1]. Huruf miring (italics) digunakan khusus untuk istilah bahasa asing atau kata daerah yang belum dibakukan ke dalam bahasa Indonesia[cite: 1].</li>
+          <li><strong>Batas Tepi Pengetikan (Margin Halaman):</strong>
+            <br>• Tepi Kiri (Left): <strong>4 cm</strong> (diberi ruang ekstra untuk penjilidan agar teks tidak terpotong saat dibundel)[cite: 1].
+            <br>• Tepi Atas (Top): <strong>4 cm</strong>[cite: 1].
+            <br>• Tepi Kanan (Right): <strong>3 cm</strong>[cite: 1].
+            <br>• Tepi Bawah (Bottom): <strong>3 cm</strong>[cite: 1].
+          </li>
+          <li><strong>Jarak Spasi Antarbaris:</strong> Teks naskah utama diketik dengan jarak <strong>2 spasi</strong> (double spacing)[cite: 1]. Namun demikian, terdapat pengecualian spasi <strong>1 spasi tunggal</strong> yang berlaku khusus untuk: (1) kutipan langsung panjang lebih dari 4 baris, (2) abstrak naskah, (3) judul tabel dan judul grafik yang panjang, serta (4) daftar pustaka[cite: 1].</li>
+        </ul>
+      </div>
+
+      <h3>D. Sistem Penomoran Halaman dan Bab</h3>
+      <p>Bab 4 membedakan tata cara dan letak penomoran menjadi dua klasifikasi pokok[cite: 1]:</p>
+      
+      <div class="grid-2col">
+        <div class="panel-box">
+          <h4><i class="fa-solid fa-list-ol" style="color: var(--green-emerald);"></i> Penomoran Halaman Awal</h4>
+          <p>Bagian awal naskah (halaman judul, lembar persetujuan, kata pengantar, daftar isi, abstrak) menggunakan <strong>angka Romawi kecil (i, ii, iii, iv, dst.)</strong> yang diletakkan persis di <strong>tengah bawah</strong> halaman[cite: 1].</p>
+        </div>
+        <div class="panel-box">
+          <h4><i class="fa-solid fa-arrow-down-1-9" style="color: var(--orange-warm);"></i> Penomoran Halaman Inti</h4>
+          <p>Mulai dari Bab I Pendahuluan sampai halaman terakhir lampiran menggunakan <strong>angka Arab (1, 2, 3, dst.)</strong>[cite: 1]. Letak nomor halaman berada di <strong>sudut kanan atas</strong>, kecuali pada halaman yang memuat <strong>Judul Bab Baru</strong>, nomor halamannya wajib diletakkan di <strong>tengah bawah</strong>[cite: 1].</p>
+        </div>
+      </div>
+
+      <h3>E. Teknik Mengutip: Kutipan Langsung dan Tidak Langsung</h3>
+      <p>Pengutipan wajib dilakukan secara akurat demi menghormati hak cipta intelektual dan menghindari tuduhan plagiarisme[cite: 1]. Buku rujukan membagi kutipan menjadi dua kategori teknis[cite: 1]:</p>
+
+      <div class="quote-box orange">
+        "Kutipan langsung pendek (kurang dari 4 baris atau kurang dari 40 kata) diintegrasikan langsung ke dalam teks naskah dengan menggunakan tanda petik ganda (\"...\") dan diketik dengan spasi 2, menyebutkan nama pengarang, tahun, dan nomor halaman."
+        <span class="quote-ref">— Rujukan Bab 4 Hal. 58–59[cite: 1]</span>
+      </div>
+
+      <div class="quote-box">
+        "Kutipan langsung panjang (4 baris atau lebih / 40 kata atau lebih) ditulis terpisah dari teks utama, dibuat menjorok ke dalam (indensasi 5–7 ketukan), diketik dengan spasi tunggal (1 spasi), tanpa tanda petik ganda, serta mencantumkan sumber rujukan lengkap."
+        <span class="quote-ref">— Rujukan Bab 4 Hal. 60[cite: 1]</span>
+      </div>
+
+      <p>Adapun <strong>Kutipan Tidak Langsung (Parafrasa)</strong> adalah menyerap ide pokok seorang penulis lain kemudian diungkapkan kembali dengan susunan kalimat sendiri tanpa mengubah makna aslinya[cite: 1]. Kutipan tidak langsung diketik menyatu dalam paragraf dengan jarak spasi ganda (2 spasi) tanpa menggunakan tanda petik ganda[cite: 1].</p>
+
+      <h3>F. Tata Cara Penulisan Catatan Kaki (Footnotes)</h3>
+      <p>Catatan kaki diletakkan di bagian paling bawah halaman tempat kutipan berada, dipisahkan dari teks utama oleh garis mendatar sepanjang 14 karakter (sekitar 4–5 cm)[cite: 1]. Catatan kaki diketik menggunakan font ukuran <strong>10 pt</strong>, berjarak <strong>1 spasi tunggal</strong>, dengan format penyebutan: nama pengarang (tanpa gelar), judul buku secara lengkap (dicetak miring), kurung buka tempat terbit: nama penerbit, tahun terbit, kurung tutup, dan nomor halaman (hlm.)[cite: 1].</p>
+    </article>
+
+    <!-- BAGIAN 3: GAMES INTERAKTIF (5 MENIT) -->
+    <div class="quiz-zone">
+      <span class="badge-pill" style="background: var(--orange-warm); color: white;"><i class="fa-solid fa-gamepad"></i> Kuis Kilat (5 Menit)</span>
+      <h3 style="margin-top: 0.6rem;">Uji Konsep Tata Tulis: Kutipan Langsung Panjang</h3>
+      <p style="color: #CCFBF1;">Berdasarkan ketentuan Bab 4, bagaimana perlakuan format pengetikan untuk kutipan langsung yang terdiri atas 4 baris atau lebih[cite: 1]?</p>
+
+      <button class="quiz-btn-item" onclick="verifyQuickQuiz(1)">
+        A. Diketik menyatu dengan teks paragraf utama, menggunakan spasi ganda (2 spasi), dan diapit tanda kurung siku.
+      </button>
+      <button class="quiz-btn-item" onclick="verifyQuickQuiz(2)">
+        B. Dipisahkan dari teks utama, menjorok ke dalam (5–7 ketukan), diketik 1 spasi, tanpa tanda petik ganda[cite: 1].
+      </button>
+      <button class="quiz-btn-item" onclick="verifyQuickQuiz(3)">
+        C. Wajib dipindahkan menjadi catatan kaki (footnote) dan tidak boleh dicantumkan pada tubuh bab.
+      </button>
+
+      <div id="quickFeedback" class="quiz-feedback-box"></div>
+    </div>
+
+    <!-- BAGIAN 4: TANYA JAWAB & CLOSING STATEMENT -->
+    <article class="content-card">
+      <span class="category-tag">Bagian IV • Tanya Jawab & Penutup</span>
+      <h2>Sesi Diskusi & Closing Statement Dosen</h2>
+      
+      <p>Dua pemantik diskusi untuk memperdalam ketelitian mahasiswa dalam sesi 40 menit terakhir perkuliahan:</p>
+      <ul style="padding-left: 1.6rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.6rem;">
+        <li><em>"Mengapa margin sebelah kiri ditetapkan lebih lebar (4 cm) dibandingkan margin sebelah kanan (3 cm)?"</em>[cite: 1]</li>
+        <li><em>"Mengapa pada halaman awal suatu bab baru nomor halaman harus dipindahkan ke posisi tengah bawah, bukan di sudut kanan atas?"</em>[cite: 1]</li>
+      </ul>
+
+      <div class="quote-box" style="margin-top: 1.6rem;">
+        <strong>Closing Statement Dosen:</strong><br>
+        "Ketepatan teknis penulisan bukanlah sekadar persoalan estetika kertas, melainkan cerminan langsung dari ketertiban berpikir, kedisiplinan metode, dan kejujuran ilmiah seorang sarjana[cite: 1]. Taat pada aturan margin, font, dan kutipan adalah langkah awal menghargai karya intelektual diri sendiri dan orang lain[cite: 1]."
+      </div>
+    </article>
+
+  </div>
+
+  <!-- MODAL: PRESENTASI DOSEN (FULL SCREEN SLIDES) -->
+  <div id="slideModal">
+    <div class="slide-topbar">
+      <div style="font-weight: 700; font-size: 1.25rem; display: flex; align-items: center; gap: 0.6rem;">
+        <i class="fa-solid fa-chalkboard-user" style="color: var(--orange-soft);"></i>
+        <span>Paparan Kuliah: Bab 4 Teknik Penulisan Karya Ilmiah</span>
+      </div>
+      <button class="btn" style="background: rgba(255,255,255,0.15); color: white;" onclick="closeSlidePresentation()">
+        <i class="fa-solid fa-xmark"></i> Keluar Layar Penuh
+      </button>
+    </div>
+
+    <div class="slide-stage">
+      <div class="slide-box">
+        <span class="category-tag" id="slideTag" style="width: fit-content;">SLIDE 1 DARI 5</span>
+        <h2 id="slideTitle">Judul Slide</h2>
+        <div id="slideBody" style="color: #CCFBF1; font-size: 1.35rem;"></div>
+      </div>
+    </div>
+
+    <div class="slide-bottombar">
+      <button class="btn btn-orange" onclick="prevSlideItem()">
+        <i class="fa-solid fa-chevron-left"></i> Slide Sebelumnya
+      </button>
+      <div id="slideCounter" style="color: #99F6E4; font-weight: 700; font-size: 1.2rem;">1 / 5</div>
+      <button class="btn btn-green" onclick="nextSlideItem()">
+        Slide Selanjutnya <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: WORKSHEET & TUGAS 10 SOAL PG (PDF READY & KUNCI TERKUNCI) -->
+  <div id="worksheetModal">
+    <div class="worksheet-card" id="printArea">
+      
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.4rem;"><i class="fa-solid fa-file-pen" style="color: var(--green-emerald);"></i> Lembar Kerja & Evaluasi Bab 4</h3>
+        <div style="display: flex; gap: 0.6rem;">
+          <button class="btn btn-green" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+          </button>
+          <button class="btn" style="background: #E2E8F0; color: var(--text-dark);" onclick="closeWorksheetModal()">
+            <i class="fa-solid fa-xmark"></i> Tutup
+          </button>
+        </div>
+      </div>
+
+      <!-- KOP RESMI EVALUASI -->
+      <div style="border-bottom: 2px solid var(--text-dark); padding-bottom: 1rem; margin-bottom: 1.5rem; text-align: center;">
+        <h2 style="font-size: 1.45rem; text-transform: uppercase;">LEMBAR EVALUASI MAHASISWA: TEKNIK PENULISAN KARYA ILMIAH</h2>
+        <h3 style="font-size: 1.1rem; font-weight: 500; color: var(--text-muted);">Mata Kuliah: Penulisan Karya Ilmiah (2 SKS) • Materi: Bab 4 Halaman 51–64</h3>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.6rem; font-size: 1.05rem;">
+        <div><strong>Nama Mahasiswa:</strong> ____________________________________</div>
+        <div><strong>NIM:</strong> ________________________</div>
+        <div><strong>Program Studi:</strong> ___________________________________</div>
+        <div><strong>Hari / Tanggal:</strong> ________________________</div>
+      </div>
+
+      <!-- 10 SOAL PILIHAN GANDA MURNI DARI BAB 4 -->
+      <div style="display: flex; flex-direction: column; gap: 1.6rem; font-size: 1.05rem;">
+        
+        <div>
+          <strong>1. Berdasarkan Bab 4, jenis dan bobot kertas standar yang digunakan untuk naskah karya ilmiah adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Kertas HVS 60 gram ukuran Folio (F4)<br>
+            B. Kertas HVS 80 gram (atau 70 gram) ukuran A4 atau Kuarto<br>
+            C. Kertas Buffalo warna putih ukuran A4<br>
+            D. Kertas Art Paper tebal ukuran Letter
+          </div>
+        </div>
+
+        <div>
+          <strong>2. Ketentuan pencetakan naskah karya ilmiah pada permukaan kertas adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Wajib dicetak bolak-balik untuk efisiensi ruang<br>
+            B. Dicetak pada satu muka saja (single side), tidak bolak-balik<br>
+            C. Boleh bolak-balik khusus pada bagian lampiran data<br>
+            D. Bebas disesuaikan dengan ketebalan dokumen naskah
+          </div>
+        </div>
+
+        <div>
+          <strong>3. Standar pengaturan batas tepi pengetikan (margin halaman) yang benar menurut Bab 4 adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Kiri 4 cm, Atas 4 cm, Kanan 3 cm, Bawah 3 cm<br>
+            B. Kiri 3 cm, Atas 3 cm, Kanan 4 cm, Bawah 4 cm<br>
+            C. Rata 3 cm di keempat sisi tepi halaman<br>
+            D. Rata 4 cm di keempat sisi tepi halaman
+          </div>
+        </div>
+
+        <div>
+          <strong>4. Alasan utama batas tepi sebelah kiri (left margin) diatur selebar 4 cm adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Agar naskah terlihat memanjang ke sisi kanan<br>
+            B. Memberikan ruang yang cukup untuk penjilidan agar teks tidak terpotong<br>
+            C. Mengikuti format penerbitan majalah populer<br>
+            D. Mempermudah dosen penguji membubuhkan nilai angka
+          </div>
+        </div>
+
+        <div>
+          <strong>5. Standar jenis dan ukuran huruf baku pada tubuh teks naskah utama karya ilmiah adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Comic Sans MS ukuran 11 pt<br>
+            B. Times New Roman ukuran 12 pt (atau Arial 11 pt)<br>
+            C. Calibri ukuran 14 pt<br>
+            D. Georgia ukuran 10 pt
+          </div>
+        </div>
+
+        <div>
+          <strong>6. Jarak spasi antarbaris baku yang berlaku untuk naskah utama karya ilmiah adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. 1 spasi tunggal<br>
+            B. 1,5 spasi sedang<br>
+            C. 2 spasi ganda (double spacing)<br>
+            D. 2,5 spasi lebar
+          </div>
+        </div>
+
+        <div>
+          <strong>7. Bagian-bagian naskah berikut ini yang WAJIB diketik dengan jarak 1 spasi tunggal adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Bab Pendahuluan dan Bab Pembahasan<br>
+            B. Kutipan langsung panjang (≥4 baris), abstrak, judul tabel panjang, dan catatan kaki<br>
+            C. Rumusan masalah dan hipotesis penelitian<br>
+            D. Seluruh bab kesimpulan dan saran
+          </div>
+        </div>
+
+        <div>
+          <strong>8. Penomoran halaman pada bagian awal naskah (judul, pengantar, daftar isi, abstrak) menggunakan format...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Angka Arab (1, 2, 3) di sudut kanan atas<br>
+            B. Angka Romawi kecil (i, ii, iii) di bagian tengah bawah<br>
+            C. Huruf abjad kecil (a, b, c) di sudut kanan bawah<br>
+            D. Angka Romawi besar (I, II, III) di sudut kiri atas
+          </div>
+        </div>
+
+        <div>
+          <strong>9. Pada halaman yang memuat permulaan Bab Baru (misal BAB I), nomor halaman diletakkan pada posisi...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Sudut kanan atas halaman<br>
+            B. Bagian tengah bawah halaman<br>
+            C. Sudut kiri bawah halaman<br>
+            D. Ditiadakan dan tidak diberi nomor sama sekali
+          </div>
+        </div>
+
+        <div>
+          <strong>10. Ketentuan pengetikan kutipan langsung pendek (kurang dari 4 baris atau kurang dari 40 kata) adalah...</strong>
+          <div style="margin-left: 1.2rem; margin-top: 0.4rem;">
+            A. Ditulis terpisah menjorok ke dalam dengan 1 spasi tanpa petik<br>
+            B. Diintegrasikan langsung dalam teks, spasi 2, dan diapit tanda petik ganda (\"...\")<br>
+            C. Wajib diubah menjadi format catatan kaki di dasar halaman<br>
+            D. Ditulis dengan huruf kapital miring berspasi ganda
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AREA TERKUNCI KHUSUS DOSEN -->
+      <div class="locked-key-box no-print">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.9rem;">
+          <div>
+            <h4 style="color: var(--orange-accent); font-size: 1.25rem;"><i class="fa-solid fa-lock"></i> Kunci Jawaban Resmi (Terkunci Khusus Dosen)</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Akses terproteksi. Masukkan kata sandi pengampu mata kuliah untuk menampilkan kunci jawaban.</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <input type="password" id="lecturerPassInput" placeholder="Password Dosen" style="padding: 0.65rem 0.95rem; border-radius: 8px; border: 1px solid var(--border-card); font-size: 1rem;">
+            <button class="btn btn-orange" onclick="unlockLecturerKey()">Buka Kunci</button>
+          </div>
+        </div>
+
+        <div id="lecturerKeyDisplay" class="key-content">
+          <strong style="color: var(--green-deep); display: block; margin-bottom: 0.7rem; font-size: 1.15rem;">
+            <i class="fa-solid fa-key"></i> KUNCI JAWABAN DAN DASAR RUJUKAN BAB 4:
+          </strong>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; font-size: 1.02rem; color: var(--text-dark);">
+            <div><strong>1. B</strong> (HVS 80 gr / 70 gr ukuran A4 - Hal. 52)</div>
+            <div><strong>6. C</strong> (Spasi ganda 2 spasi - Hal. 54)</div>
+            <div><strong>2. B</strong> (Dicetak single side / satu muka - Hal. 52)</div>
+            <div><strong>7. B</strong> (Kutipan panjang, abstrak, footnote - Hal. 54)</div>
+            <div><strong>3. A</strong> (Kiri 4 cm, Atas 4 cm, Kanan 3 cm, Bawah 3 cm - Hal. 53)</div>
+            <div><strong>8. B</strong> (Romawi kecil di tengah bawah - Hal. 56)</div>
+            <div><strong>4. B</strong> (Ruang penjilidan naskah - Hal. 53)</div>
+            <div><strong>9. B</strong> (Tengah bawah pada bab baru - Hal. 56)</div>
+            <div><strong>5. B</strong> (Times New Roman 12 pt / Arial 11 pt - Hal. 53)</div>
+            <div><strong>10. B</strong> (Menyatu dalam teks, spasi 2, tanda petik ganda - Hal. 58)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIKA SLIDE, KUIS INTERAKTIF & PASSWORD DOSEN -->
+  <script>
+    // Data Slide Bab 4
+    const bab4SlidesData = [
+      {
+        tag: "SLIDE 1 • STANDAR BAHAN & KERTAS",
+        title: "Bahan dan Ukuran Kertas Naskah",
+        body: `
+          <ul style="padding-left: 1.6rem; display: flex; flex-direction: column; gap: 1rem;">
+            <li><strong>Kertas Naskah:</strong> HVS 80 gram (atau 70 gram) putih bersih ukuran baku A4 (21,0 cm x 29,7 cm) atau Kuarto.</li>
+            <li><strong>Sisi Pengetikan:</strong> Dicetak hanya pada satu permukaan saja (single side), tidak diperkenankan bolak-balik.</li>
+            <li><strong>Sampul Luar:</strong> Dijilid tebal (hardcover) dilapisi linen/plastik dengan warna khas fakultas, diselingi kertas pembatas (doorslag) berlogo universitas di antara bab.</li>
+          </ul>
+        `
+      },
+      {
+        tag: "SLIDE 2 • TIPOGRAFI & MARGIN",
+        title: "Ketentuan Huruf dan Batas Tepi (Margin)",
+        body: `
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+            <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px; border-left: 4px solid #14B8A6;">
+              <strong style="color: #99F6E4;">Tipografi Huruf:</strong>
+              <p style="font-size: 1.1rem; color: #CCFBF1; margin-top: 0.4rem;">
+                Times New Roman 12 pt (atau Arial 11 pt). Huruf miring (italics) khusus kata asing atau istilah serapan yang belum baku.
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px; border-left: 4px solid #F97316;">
+              <strong style="color: #FFEDD5;">Margin Halaman:</strong>
+              <p style="font-size: 1.1rem; color: #FED7AA; margin-top: 0.4rem;">
+                Tepi Kiri: 4 cm (ruang jilid)<br>
+                Tepi Atas: 4 cm<br>
+                Tepi Kanan: 3 cm<br>
+                Tepi Bawah: 3 cm
+              </p>
+            </div>
+          </div>
+        `
+      },
+      {
+        tag: "SLIDE 3 • PENGATURAN SPASI",
+        title: "Konfigurasi Jarak Spasi Antarbaris",
+        body: `
+          <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px; margin-bottom: 1rem;">
+            <strong style="color: #5EEAD4; font-size: 1.25rem;">Spasi 2 Ganda (Double Spacing):</strong>
+            <p style="color: #CCFBF1; margin-top: 0.4rem;">Digunakan untuk seluruh pengetikan teks tubuh naskah utama karya ilmiah.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px; border-left: 4px solid #F97316;">
+            <strong style="color: #FED7AA; font-size: 1.25rem;">Spasi 1 Tunggal (Single Spacing) Khusus Untuk:</strong>
+            <p style="color: #FFEDD5; margin-top: 0.4rem;">(1) Kutipan langsung panjang (≥4 baris / ≥40 kata), (2) Abstrak naskah, (3) Judul tabel dan grafik yang panjang, serta (4) Daftar pustaka.</p>
+          </div>
+        `
+      },
+      {
+        tag: "SLIDE 4 • ATURAN PENOMORAN",
+        title: "Penomoran Halaman Romawi & Angka Arab",
+        body: `
+          <ul style="padding-left: 1.6rem; display: flex; flex-direction: column; gap: 1rem;">
+            <li><strong>Bagian Pendahuluan/Awal:</strong> Angka Romawi kecil (i, ii, iii, iv) diletakkan di bagian tengah bawah halaman.</li>
+            <li><strong>Bagian Naskah Utama (Bab I s.d. Akhir):</strong> Angka Arab (1, 2, 3, dst.) diletakkan di sudut kanan atas halaman.</li>
+            <li><strong>Halaman Judul Bab Baru:</strong> Nomor halaman diletakkan di tengah bawah halaman, baru kemudian halaman kelanjutannya kembali ke sudut kanan atas.</li>
+          </ul>
+        `
+      },
+      {
+        tag: "SLIDE 5 • KUTIPAN & CATATAN KAKI",
+        title: "Kaidah Kutipan & Catatan Kaki (Footnote)",
+        body: `
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; font-size: 1.1rem;">
+            <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px;">
+              <strong style="color: #2DD4BF;">Kutipan Langsung:</strong>
+              <p style="color: #CCFBF1; margin-top: 0.4rem;">&lt;4 baris masuk teks, spasi 2, diapit tanda petik ganda. ≥4 baris menjorok, spasi 1, tanpa tanda petik.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 1.4rem; border-radius: 14px;">
+              <strong style="color: #FB923C;">Catatan Kaki (Footnote):</strong>
+              <p style="color: #FFEDD5; margin-top: 0.4rem;">Font ukuran 10 pt, jarak 1 spasi, dipisahkan garis 14 ketukan dari margin bawah, nama tanpa gelar.</p>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    let currentBab4Idx = 0;
+
+    function openSlidePresentation() {
+      document.getElementById('slideModal').style.display = 'flex';
+      renderSlideBab4();
+    }
+
+    function closeSlidePresentation() {
+      document.getElementById('slideModal').style.display = 'none';
+    }
+
+    function renderSlideBab4() {
+      const slide = bab4SlidesData[currentBab4Idx];
+      document.getElementById('slideTag').innerText = slide.tag;
+      document.getElementById('slideTitle').innerText = slide.title;
+      document.getElementById('slideBody').innerHTML = slide.body;
+      document.getElementById('slideCounter').innerText = `${currentBab4Idx + 1} / ${bab4SlidesData.length}`;
+    }
+
+    function nextSlideItem() {
+      if (currentBab4Idx < bab4SlidesData.length - 1) {
+        currentBab4Idx++;
+        renderSlideBab4();
+      }
+    }
+
+    function prevSlideItem() {
+      if (currentBab4Idx > 0) {
+        currentBab4Idx--;
+        renderSlideBab4();
+      }
+    }
+
+    // Modal Worksheet
+    function openWorksheetModal() {
+      document.getElementById('worksheetModal').style.display = 'flex';
+    }
+
+    function closeWorksheetModal() {
+      document.getElementById('worksheetModal').style.display = 'none';
+    }
+
+    // Kuis Interaktif 5 Menit
+    function verifyQuickQuiz(choice) {
+      const box = document.getElementById('quickFeedback');
+      box.style.display = 'block';
+      if (choice === 2) {
+        box.style.background = 'rgba(20, 184, 166, 0.2)';
+        box.style.border = '1px solid #14B8A6';
+        box.style.color = '#CCFBF1';
+        box.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Tepat Sekali!</strong> Sesuai Bab 4 Halaman 60, kutipan langsung panjang (≥4 baris / ≥40 kata) ditulis terpisah dari teks, menjorok ke dalam (5–7 ketukan), diketik 1 spasi, dan tanpa tanda petik ganda[cite: 1].';
+      } else {
+        box.style.background = 'rgba(239, 68, 68, 0.2)';
+        box.style.border = '1px solid #EF4444';
+        box.style.color = '#FCA5A5';
+        box.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> <strong>Kurang Tepat.</strong> Buka kembali pembahasan Bab 4 Halaman 59–60 terkait kaidah kutipan langsung panjang[cite: 1].';
+      }
+    }
+
+    // Buka Kunci Jawaban Dosen
+    function unlockLecturerKey() {
+      const pass = document.getElementById('lecturerPassInput').value;
+      const display = document.getElementById('lecturerKeyDisplay');
+      if (pass === 'dosen123' || pass === 'dosen') {
+        display.style.display = 'block';
+        alert('Kunci jawaban evaluasi Bab 4 berhasil dibuka!');
+      } else {
+        alert('Password salah! Akses kunci jawaban hanya diperuntukkan bagi dosen pengampu.');
+      }
+    }
+
+    // Navigasi Keyboard
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('slideModal').style.display === 'flex') {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlideItem();
+        if (e.key === 'ArrowLeft') prevSlideItem();
+        if (e.key === 'Escape') closeSlidePresentation();
+      }
+    });
+  </script>
+</body>
+</html>
