@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 1: Konsep Dasar BK bagi Anak Berkebutuhan Khusus</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    / Variasi Tema Cerah Gen Z (Bright Palette) dengan Aksen Ungu, Oranye, dan Biru /
+    :root {
+      --gz-purple: #7c3aed;
+      --gz-purple-light: #f3e8ff;
+      --gz-orange: #f97316;
+      --gz-orange-light: #ffedd5;
+      --gz-blue: #0284c7;
+      --gz-blue-light: #e0f2fe;
+      --gz-bg-bright: #fafcfb;
+      --gz-text-dark: #0f172a;
+    }
+    body {
+      background-color: var(--gz-bg-bright);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--gz-text-dark);
+      margin: 0;
+      padding: 0;
+    }
+    .badge-purple {
+      background: var(--gz-purple-light);
+      color: var(--gz-purple);
+      font-weight: 800;
+    }
+    .badge-orange {
+      background: var(--gz-orange-light);
+      color: #c2410c;
+      font-weight: 800;
+    }
+    .badge-blue {
+      background: var(--gz-blue-light);
+      color: var(--gz-blue);
+      font-weight: 800;
+    }
+    .card-purple-bright {
+      border-left: 4px solid var(--gz-purple);
+      background: #faf5ff;
+    }
+    .card-orange-bright {
+      border-left: 4px solid var(--gz-orange);
+      background: #fff7ed;
+    }
+    .card-blue-bright {
+      border-left: 4px solid var(--gz-blue);
+      background: #f0f9ff;
+    }
+    .presentation-frame-bright {
+      background: #ffffff;
+      color: #1e293b;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .presentation-frame-bright h2 {
+      color: #0f172a;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 1.25rem;
+    }
+    .presentation-frame-bright .slide-body {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: #334155;
+    }
+    .presentation-frame-bright .slide-body li {
+      margin-bottom: 0.85rem;
+      position: relative;
+      padding-left: 1.8rem;
+      list-style: none;
+    }
+    .presentation-frame-bright .slide-body li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gz-purple);
+      font-weight: 800;
+    }
+    .speaker-notes-bright {
+      margin-top: 1.5rem;
+      background: #f8fafc;
+      border-left: 3px solid var(--gz-orange);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: #475569;
+      display: none;
+    }
+    / Kolom Jawaban Mahasiswa yang Ekstra Lebar dan Luas /
+    .large-answer-area {
+      width: 100%;
+      min-height: 230px;
+      padding: 1.25rem;
+      font-family: inherit;
+      font-size: 0.96rem;
+      line-height: 1.65;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+      resize: vertical;
+      margin-top: 0.85rem;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+    .large-answer-area:focus {
+      border-color: var(--gz-purple);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+    .view-section {
+      display: none;
+    }
+    .view-section.active {
+      display: block;
+    }
+    .slide-item {
+      display: none;
+    }
+    .slide-item.active {
+      display: block;
+    }
+    @media print {
+      .site-header, .print-action-bar, nav, .sound-toggle-bar, .slide-controls {
+        display: none !important;
+      }
+      .view-section {
+        display: none !important;
+      }
+      #worksheet-view {
+        display: block !important;
+      }
+      body {
+        background: #fff;
+      }
+    }
+  </style>
+  <script src="auth.js"></script>
+</head>
+<body>
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-badge">
+        <span style="color: var(--gz-purple);">BK ABK</span>
+        <span class="pill badge-purple">Pertemuan 1</span>
+      </div>
+      <nav class="view-tabs" role="tablist">
+        <button class="tab-btn active" onclick="switchView('reading-view', this)">Modul Bacaan Lengkap</button>
+        <button class="tab-btn" onclick="switchView('worksheet-view', this)">Lembar Kerja &amp; Kasus Luas</button>
+        <button class="tab-btn" onclick="switchView('presentation-view', this)">Presentasi Dosen</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+
+    <!-- =========================================================================
+         BAGIAN 1: WEB PAGE PRESENTATION (BACAAN MANDIRI DOSEN & MAHASISWA)
+         ========================================================================= -->
+    <section id="reading-view" class="view-section active">
+      
+      <!-- HERO BANNER -->
+      <header class="hero-box" style="background: linear-gradient(135deg, #f3e8ff 0%, #ffedd5 50%, #e0f2fe 100%); padding: 2.5rem; border-radius: 12px; margin-bottom: 2rem;">
+        <span class="section-label badge-purple" style="padding: 4px 12px; border-radius: 999px;">Konsep Dasar BK ABK</span>
+        <h1 style="color: var(--gz-text-dark); margin: 1rem 0 0.5rem 0;">Hakikat Perkembangan Manusia dan Konsep Dasar Anak Berkebutuhan Khusus</h1>
+        <p style="color: #475569; font-size: 1.05rem; line-height: 1.6;">
+          Kajian fondasional bimbingan dan konseling: memahami hukum dinamika perkembangan individu, telaah komprehensif batasan ABK, pergeseran paradigma dari model medis (Special Education) ke model kebutuhan terpusat pada anak (Special Needs Education), serta peran deteksi dan intervensi dini.
+        </p>
+        <div class="hero-meta" style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.9rem; color: #64748b;">
+          <span>⏱ Durasi: 2 SKS (100 Menit)</span>
+          <span>📚 Rujukan: Febriani, Triyono, Handayani, &amp; Hidayat (2024, Bab I)</span>
+          <span>🎯 Capaian: Analisis Konsep Perkembangan &amp; Rekonseptualisasi Paradigma ABK</span>
+        </div>
+      </header>
+
+      <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+      <article class="content-card" style="background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem;">
+        <span class="section-label badge-orange" style="padding: 4px 12px; border-radius: 999px;">Fase 1: Orientasi &amp; Warming Up (10 Menit)</span>
+        <h2 style="margin-top: 1rem;">1. Meruntuhkan Stigma: Dari "Penyandang Cacat" Menuju "Anak Berkebutuhan Khusus"</h2>
+        <p style="margin-top: 0.75rem; line-height: 1.7; color: #334155;">
+          Dalam sejarah pendidikan di Indonesia, peserta didik yang mengalami keterbatasan fisik, sensori, maupun intelektual kerap dilabeli dengan istilah peyoratif seperti "anak cacat" atau "anak abnormal". Pelabelan ini menempatkan anak sebagai sosok yang serba kekurangan dan dipandang sebagai objek belas kasihan medis semata. Seiring transformasi hak asasi manusia dan kemajuan ilmu bimbingan dan konseling, paradigma ini bergeser secara fundamental menuju pengakuan bahwa setiap anak adalah pribadi utuh yang memiliki keberagaman kebutuhan tumbuh kembang.
+        </p>
+
+        <div class="quote-box" style="border-left: 4px solid var(--gz-blue); background: #f0f9ff; padding: 1rem 1.5rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0;">
+          “Perkembangan manusia merupakan proses yang dinamis, progresif, dan berkelanjutan. Kegagalan atau hambatan di satu fase perkembangan akan membawa dampak berantai bagi fase berikutnya apabila tidak diimbangi dengan intervensi bimbingan yang tepat.”
+          <footer style="margin-top: 0.5rem; font-weight: 700; color: var(--gz-blue);">— Febriani, Triyono, Handayani, &amp; Hidayat (2024, Bab I)</footer>
+        </div>
+
+        <div class="grid-two-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+          <div class="accent-card card-purple-bright" style="padding: 1.25rem; border-radius: 8px;">
+            <h3 style="font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--gz-purple);">Dinamika Perkembangan Holistik</h3>
+            <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+              Anak bukan miniatur orang dewasa. Pertumbuhan fisik berkaitan erat dengan kematangan kognitif, emosional, dan sosial. Hambatan pada satu domain sensorik/motorik menuntut kompensasi optimal melalui fungsi domain lainnya.
+            </p>
+          </div>
+          <div class="accent-card card-orange-bright" style="padding: 1.25rem; border-radius: 8px;">
+            <h3 style="font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--gz-orange);">Kebutuhan Intervensi Dini</h3>
+            <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+              Semakin dini hambatan perkembangan terdeteksi dan diintervensi oleh konselor dan pendidik, semakin besar peluang anak untuk menumbuhkan kompensasi psikologis dan kemandirian perilaku adaptif di masa depannya.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- SESI 2: MATERI INTI (45 MENIT) -->
+      <article class="content-card" style="background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem;">
+        <span class="section-label badge-blue" style="padding: 4px 12px; border-radius: 999px;">Fase 2: Telaah Konseptual Mendalam (45 Menit)</span>
+        <h2 style="margin-top: 1rem;">2. Hakikat Perkembangan dan Taksonomi Kebutuhan Khusus</h2>
+        <p style="margin-top: 0.75rem; line-height: 1.7; color: #334155;">
+          Berdasarkan kajian <strong>Febriani et al. (2024, Bab I)</strong>, Anak Berkebutuhan Khusus (ABK) didefinisikan sebagai anak yang dalam proses tumbuh kembangnya mengalami kelainan, penyimpangan, atau deviasi signifikan dari rata-rata normal—baik secara fisik, mental, intelektual, sosial, maupun emosional—sehingga untuk mencapai potensi optimalnya dibutuhkan pelayanan pendidikan dan bimbingan konseling yang dirancang secara khusus.
+        </p>
+
+        <!-- DIAGRAM 1: PERGESERAN PARADIGMA PENDIDIKAN KHUSUS (SVG CERAH) -->
+        <div class="diagram-container" style="margin: 2rem 0;">
+          <svg viewBox="0 0 940 310" width="100%" height="auto" style="max-height: 330px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <defs>
+              <linearGradient id="medGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#f87171"/></linearGradient>
+              <linearGradient id="humGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#a855f7"/></linearGradient>
+            </defs>
+
+            <!-- Panel Kiri: Paradigma Lama (Model Medis) -->
+            <rect x="25" y="25" width="430" height="260" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+            <rect x="25" y="25" width="430" height="42" rx="12" fill="url(#medGrad)"/>
+            <text x="240" y="52" fill="#ffffff" font-size="12" font-weight="800" text-anchor="middle">PARADIGMA LAMA (SPECIAL EDUCATION)</text>
+            
+            <text x="45" y="95" fill="#0f172a" font-size="11.5" font-weight="700">• Pendekatan Defisit Medis (Medical Model):</text>
+            <text x="60" y="115" fill="#475569" font-size="10.5">Memandang ketunaan semata-mata sebagai patologi biologis dan kecacatan tubuh.</text>
+
+            <text x="45" y="145" fill="#0f172a" font-size="11.5" font-weight="700">• Pelabelan Segregatif (Labeling):</text>
+            <text x="60" y="165" fill="#475569" font-size="10.5">Menggunakan istilah kaku peyoratif (cacat/abnormal) yang mengisolasi anak dari lingkungan normal.</text>
+
+            <text x="45" y="195" fill="#0f172a" font-size="11.5" font-weight="700">• Target Kurikulum Seragam:</text>
+            <text x="60" y="215" fill="#475569" font-size="10.5">Memaksa anak menyesuaikan diri dengan sistem sekolah yang kaku tanpa akomodasi.</text>
+
+            <text x="45" y="245" fill="#0f172a" font-size="11.5" font-weight="700">• Orientasi Layanan Kuratif:</text>
+            <text x="60" y="265" fill="#475569" font-size="10.5">Fokus mengobati kekurangan, mengabaikan eksplorasi potensi keunggulan anak.</text>
+
+            <!-- Panel Kanan: Paradigma Baru (Model Kebutuhan) -->
+            <rect x="485" y="25" width="430" height="260" rx="12" fill="#faf5ff" stroke="#ddd6fe" stroke-width="2"/>
+            <rect x="485" y="25" width="430" height="42" rx="12" fill="url(#humGrad)"/>
+            <text x="700" y="52" fill="#ffffff" font-size="12" font-weight="800" text-anchor="middle">PARADIGMA BARU (SPECIAL NEEDS EDUCATION)</text>
+
+            <text x="505" y="95" fill="#0f172a" font-size="11.5" font-weight="700">• Pendekatan Humanis-Kebutuhan (Needs Model):</text>
+            <text x="520" y="115" fill="#475569" font-size="10.5">Menitikberatkan pada hambatan fungsional belajar dan kebutuhan individual anak.</text>
+
+            <text x="505" y="145" fill="#0f172a" font-size="11.5" font-weight="700">• Penghormatan Keberagaman (Diversity):</text>
+            <text x="520" y="165" fill="#475569" font-size="10.5">Memandang perbedaan individual sebagai spektrum keunikan manusia yang bermartabat.</text>
+
+            <text x="505" y="195" fill="#0f172a" font-size="11.5" font-weight="700">• Pembelajaran Adaptif Terindividualisasi:</text>
+            <text x="520" y="215" fill="#475569" font-size="10.5">Sistem sekolah dan kurikulum dimodifikasi agar adaptif terhadap kapasitas unik anak.</text>
+
+            <text x="505" y="245" fill="#0f172a" font-size="11.5" font-weight="700">• Orientasi Optimalisasi Sisa Kemampuan:</text>
+            <text x="520" y="265" fill="#475569" font-size="10.5">Memaksimalkan kapasitas residual menuju kemandirian aktivitas harian (ADL).</text>
+          </svg>
+          <div class="diagram-caption" style="text-align: center; font-size: 0.88rem; color: #64748b; margin-top: 0.5rem;">Diagram 1: Transformasi Paradigma Pendidikan Khusus (Febriani et al., 2024)</div>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 0.75rem; color: var(--gz-purple);">2.1. Spektrum Dimensi Kebutuhan Khusus</h3>
+        <p style="color: #334155; line-height: 1.7;">
+          Dalam kerangka keilmuan bimbingan konseling dan pendidikan khusus, spektrum deviasi perkembangan anak dipetakan ke dalam beberapa domain esensial:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-top: 0.5rem; color: #475569; line-height: 1.8;">
+          <li><strong>Dimensi Sensomotorik &amp; Fisik:</strong> Meliputi disfungsi penglihatan (tunanetra buta total maupun low vision), pendengaran (tunarungu dan gangguan wicara), serta hambatan alat gerak/ortopedi (tunadaksa dan neuromotorik).</li>
+          <li><strong>Dimensi Intelektual &amp; Kognitif:</strong> Rentang yang membentang dari kapasitas kognitif di bawah rata-rata yang disertai hambatan adaptif (tunagrahita dan lamban belajar / slow learner) hingga kapasitas kecerdasan istimewa di atas rata-rata (anak berbakat / gifted).</li>
+          <li><strong>Dimensi Perilaku, Emosional, &amp; Interaksi Sosial:</strong> Hambatan regulasi diri, deviasi perilaku berulang (tunalaras), gangguan pemusatan perhatian dan hiperaktivitas (ADHD), serta spektrum autisme yang ditandai dengan kekhasan pola komunikasi sosial dan pemrosesan sensori.</li>
+        </ul>
+      </article>
+
+      <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+      <article class="content-card" style="background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem;">
+        <span class="section-label badge-purple" style="padding: 4px 12px; border-radius: 999px;">Fase 3: Game Interaktif Berbasis Suara (5 Menit)</span>
+        <h2 style="margin-top: 1rem;">Uji Kasus Pedagogis: "Audit Paradigma Pendidik Masa Depan"</h2>
+        <p style="margin-top: 0.5rem; color: #475569;">Cermati dilema persepsi di bawah ini, pastikan suara panduan aktif, dan pilih keputusan pedagogis yang tepat:</p>
+
+        <div class="game-card" style="border: 2px dashed #c4b5fd; background: #faf5ff; padding: 1.5rem; border-radius: 10px; margin-top: 1rem;">
+          <div class="sound-toggle-bar" style="margin-bottom: 1rem;">
+            <button id="sound-btn" class="sound-btn active" style="background: #fff; border: 1.5px solid var(--gz-purple); color: var(--gz-purple); padding: 6px 14px; border-radius: 8px; cursor: pointer; font-weight: 700;" onclick="toggleAudioFx()">🔊 Suara Pengarah: Aktif</button>
+          </div>
+
+          <div style="background: #ffffff; border: 1.5px solid #ddd6fe; border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <p style="font-weight: 700; color: var(--gz-purple); margin: 0 0 0.4rem 0;">DILEMA DI RUANG GURU:</p>
+            <p style="font-size: 0.95rem; color: #1e293b; line-height: 1.6; margin: 0;">
+              "Seorang guru berpendapat bahwa siswa bernama Doni (10 tahun, mengalami kelumpuhan motorik dan hambatan artikulasi) sebaiknya tidak usah diajak belajar pelajaran sains atau matematika karena 'otaknya pasti rusak bersamaan dengan cacat fisiknya'. Guru tersebut menyarankan Doni dipisahkan total dari kelas dan cukup diajari mewarnai saja."
+            </p>
+          </div>
+
+          <p style="font-size: 0.95rem; margin-bottom: 0.75rem; font-weight: 700; color: #4c1d95;">Berdasarkan pemahaman Bab I buku Pendidikan Anak Berkebutuhan Khusus (Febriani et al., 2024), bagaimana telaah Anda terhadap pandangan guru tersebut?</p>
+
+          <button class="quiz-option" style="width: 100%; text-align: left; padding: 0.85rem 1rem; margin-bottom: 0.5rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 0.92rem; line-height: 1.5;" onclick="evaluateParadigmGame('a')">
+            A. Pandangan guru tersebut benar karena kelainan fisik otomatis mencerminkan kerusakan kapasitas intelektual anak secara keseluruhan.
+          </button>
+          <button class="quiz-option" style="width: 100%; text-align: left; padding: 0.85rem 1rem; margin-bottom: 0.5rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 0.92rem; line-height: 1.5;" onclick="evaluateParadigmGame('b')">
+            B. Pandangan guru tersebut KELIRU BESAR dan terjebak pada paradigma lama yang sempit. Disfungsi motorik tidak selalu berkorelasi dengan defisit kognitif; Doni membutuhkan asesmen komprehensif dan akomodasi belajar, bukan segregasi yang membatasi hak belajarnya.
+          </button>
+          <button class="quiz-option" style="width: 100%; text-align: left; padding: 0.85rem 1rem; margin-bottom: 0.5rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 0.92rem; line-height: 1.5;" onclick="evaluateParadigmGame('c')">
+            C. Guru tersebut berhak menolak Doni karena sekolah reguler hanya diperuntukkan bagi anak yang sepenuhnya sempurna tanpa hambatan fisik sedikit pun.
+          </button>
+
+          <div id="paradigm-feedback" class="quiz-feedback" style="display: none; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.92rem; line-height: 1.6;"></div>
+        </div>
+      </article>
+
+      <!-- SESI 4: TANYA JAWAB & CLOSING -->
+      <article class="content-card" style="background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem;">
+        <span class="section-label badge-orange" style="padding: 4px 12px; border-radius: 999px;">Fase 4: Refleksi &amp; Pernyataan Penutup</span>
+        <h2 style="margin-top: 1rem;">Refleksi Filosofis: Melihat Manusia di Balik Keberagaman</h2>
+        <p style="margin-top: 0.75rem; line-height: 1.7; color: #334155;">
+          Mata kuliah bimbingan konseling bagi anak berkebutuhan khusus bukan sekadar mempelajari ragam ketunaan atau istilah diagnostik klinis, melainkan melatih cara pandang seorang calon pendidik untuk mampu memandang individu secara utuh. Hambatan perkembangan adalah sebuah kondisi fungsional yang menuntut solusi adaptif lingkungan, bukan alasan untuk meminggirkan martabat kemanusiaan seorang anak.
+        </p>
+        <div class="quote-box" style="border-left: 4px solid var(--gz-orange); background: #fff7ed; padding: 1rem 1.5rem; margin-top: 1.25rem; border-radius: 0 8px 8px 0;">
+          “Tugas mulia konselor dan pendidik adalah membuka sekat-sekat isolasi psikologis, menemukan kilau potensi di tengah keterbatasan, dan mengantarkan anak berkebutuhan khusus mencapai kemandirian hidup yang bermartabat.”
+          <footer style="margin-top: 0.5rem; font-weight: 700; color: #c2410c;">— Tim Penulis Buku Ajar BK ABK (2024)</footer>
+        </div>
+      </article>
+
+    </section>
+
+
+    <!-- =========================================================================
+         BAGIAN 2: WORKSHEET MAHASISWA (TUGAS ANALISIS KASUS LUAS - PRINTABLE PDF)
+         ========================================================================= -->
+    <section id="worksheet-view" class="view-section">
+      <div class="print-action-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; background: #fff; padding: 1.25rem; border-radius: 10px; border: 1px solid #e2e8f0;">
+        <div>
+          <h3 style="color: var(--gz-purple); margin: 0 0 0.3rem 0;">Lembar Aktivitas Mahasiswa: Analisis Filosofis &amp; Kasus Inklusi (LKM 01)</h3>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 0;">Selesaikan analisis dua studi kasus komprehensif di bawah ini. Kolom lembar jawaban telah didesain ekstra lebar untuk telaah analitis mendalam, lalu simpan/cetak dalam format PDF.</p>
+        </div>
+        <button class="btn-download-pdf" style="background: var(--gz-purple); color: #fff; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; cursor: pointer;" onclick="window.print()">
+          <span>🖨️ Cetak / Unduh Dokumen (PDF)</span>
+        </button>
+      </div>
+
+      <div class="worksheet-paper" style="background: #fff; padding: 2.5rem; border-radius: 12px; border: 2px solid #e2e8f0;">
+        <header style="border-bottom: 2.5px solid #0f172a; padding-bottom: 1.25rem; margin-bottom: 2rem;">
+          <h2 style="text-align: center; text-transform: uppercase; font-size: 1.3rem; color: #0f172a; margin: 0 0 0.5rem 0;">LEMBAR KERJA ANALISIS HAKIKAT &amp; PARADIGMA ANAK BERKEBUTUHAN KHUSUS (LKM 01)</h2>
+          <p style="text-align: center; font-size: 0.9rem; color: #475569; margin: 0;">Mata Kuliah: Bimbingan dan Konseling ABK (2 SKS) • Rujukan: Febriani et al. (2024, Bab I)</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; font-size: 0.9rem; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+            <div><strong>Nama Calon Pendidik / Konselor:</strong> ____________________________________</div>
+            <div><strong>NIM / Kelas:</strong> ____________________________________</div>
+            <div><strong>Tanggal Pertemuan:</strong> ____________________________________</div>
+            <div><strong>Nilai / Verifikasi Dosen:</strong> ____________________________________</div>
+          </div>
+        </header>
+
+        <!-- KASUS 1: BEDAH KRITIS PERGESERAN PARADIGMA MEDIS VS PENDIDIKAN INKLUSIF -->
+        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 1.75rem; margin-bottom: 2rem; border-radius: 10px;">
+          <label style="color: var(--gz-purple); font-size: 1.1rem; display: block; margin-bottom: 0.6rem; font-weight: 800;">
+            KASUS ANALISIS 1: KRITIK PARADIGMA MEDIS VS PARADIGMA HUMANIS-KEBUTUHAN (BOBOT 50%)
+          </label>
+          <p style="font-size: 0.92rem; color: #1e293b; line-height: 1.7; margin-bottom: 1.25rem;">
+            <strong>Profil Kasus:</strong> Di sebuah sekolah dasar, seorang siswa baru bernama Rizky (7 tahun) didiagnosis mengalami hambatan sensori pendengaran (tunarungu taraf sedang). Kepala sekolah dan sebagian dewan guru menolak kehadiran Rizky dengan dalih bahwa sekolah mereka "bukan rumah sakit dan bukan SLB", serta menganggap kondisi fisik Rizky sebagai aib yang akan menurunkan rerata capaian akademik sekolah. Padahal orang tua Rizky ingin anaknya tetap belajar di lingkungan reguler agar terbiasa bersosialisasi dengan anak-anak seusianya.
+          </p>
+
+          <p style="font-size: 0.94rem; line-height: 1.6; color: #0f172a; font-weight: 700; margin-bottom: 0.5rem;">
+            Instruksi Tugas Analisis Mahasiswa:
+          </p>
+          <p style="font-size: 0.9rem; color: #334155; line-height: 1.6; margin: 0 0 1rem 0;">
+            Berdasarkan konsep dasar dan filosofi bimbingan konseling ABK (<strong>Febriani et al., 2024, Bab I</strong>):
+            <br>1. Analisis bagaimana pola pikir pihak sekolah dalam kasus di atas merefleksikan kelemahan fatal dari paradigma segregatif/medis lama (<em>Medical Model / Special Education</em>)!
+            <br>2. Bedah bagaimana prinsip <em>Special Needs Education</em> memandang hak belajar Rizky, dan mengapa lingkungan sosial sekolah yang inklusif sangat penting bagi perkembangan psikososial anak!
+            <br>3. Rancanglah argumentasi konseling advokasi yang dapat Anda sampaikan kepada kepala sekolah dan para guru agar mereka bersedia menerima dan memfasilitasi kebutuhan belajar Rizky!
+          </p>
+          
+          <label style="font-weight: 700; font-size: 0.88rem; color: var(--gz-purple); margin-top: 1rem; display: block;">
+            KOLOM LEMBAR JAWABAN MAHASISWA (KASUS 1):
+          </label>
+          <textarea class="large-answer-area" placeholder="Tuliskan analisis kritis paradigma medis, telaah model kebutuhan humanis, serta rumusan strategi advokasi konseling secara komprehensif di sini..."></textarea>
+        </div>
+
+        <!-- KASUS 2: ANALISIS KETERKAITAN TUGAS PERKEMBANGAN DAN INTERVENSI DINI -->
+        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 1.75rem; border-radius: 10px;">
+          <label style="color: var(--gz-orange); font-size: 1.1rem; display: block; margin-bottom: 0.6rem; font-weight: 800;">
+            KASUS ANALISIS 2: REKAYASA PENANGANAN HAMBATAN PERKEMBANGAN DINI (BOBOT 50%)
+          </label>
+          <p style="font-size: 0.92rem; color: #1e293b; line-height: 1.7; margin-bottom: 1.25rem;">
+            <strong>Profil Kasus:</strong> Naila (6 tahun) mengalami hambatan penglihatan berat (<em>low vision</em>). Karena sikap protektif orang tua yang berlebihan, Naila tidak pernah diizinkan berjalan sendiri, makan sendiri, maupun berinteraksi dengan anak-anak di sekitar rumahnya. Akibatnya, pada usia yang seharusnya sudah memasuki masa sekolah dasar, Naila mengalami kecemasan sosial ekstrem, menangis histeris ketika mendengar suara bising, dan kemampuan motorik halusnya sangat tertinggal dibandingkan anak seusianya.
+          </p>
+
+          <p style="font-size: 0.94rem; line-height: 1.6; color: #0f172a; font-weight: 700; margin-bottom: 0.5rem;">
+            Instruksi Tugas Analisis Mahasiswa:
+          </p>
+          <p style="font-size: 0.9rem; color: #334155; line-height: 1.6; margin: 0 0 1rem 0;">
+            Mengacu pada hukum dinamika perkembangan dan prinsip bimbingan ABK (<strong>Febriani et al., 2024</strong>):
+            <br>1. Analisis bagaimana penundaan intervensi dini dan pola asuh over-protective menyebabkan keterpenggalan penuntasan tugas perkembangan (developmental tasks) pada diri Naila!
+            <br>2. Jelaskan dampak psikologis jangka panjang jika hambatan perkembangan pribadi-sosial Naila dibiarkan tanpa intervensi layanan BK khusus!
+            <br>3. Susunlah rancangan rencana program bimbingan awal (mencakup bimbingan pribadi dan bimbingan orang tua) untuk memulihkan kemandirian aktivitas harian (activity in daily living) Naila!
+          </p>
+
+          <label style="font-weight: 700; font-size: 0.88rem; color: var(--gz-orange); margin-top: 1rem; display: block;">
+            KOLOM LEMBAR JAWABAN MAHASISWA (KASUS 2):
+          </label>
+          <textarea class="large-answer-area" placeholder="Tuliskan analisis dinamika hukum perkembangan, dampak psikologis isolasi sosial, serta rancangan program intervensi bimbingan keluarga & kemandirian anak di sini..."></textarea>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         BAGIAN 3: INTERACTIVE PRESENTATION MODE (SLIDE INTERAKTIF DOSEN)
+         ========================================================================= -->
+    <section id="presentation-view" class="view-section">
+      
+      <div class="presentation-frame-bright">
+        
+        <!-- SLIDE 1 -->
+        <div class="slide-item active">
+          <span class="slide-indicator" style="color: var(--gz-purple); font-weight: 700; font-size: 0.9rem;">Slide 1 dari 6 • Orientasi Keilmuan</span>
+          <h2>Konsep Dasar BK ABK</h2>
+          <div class="slide-body">
+            <p>Membuka Horizon Baru dalam Memahami Anak Berkebutuhan Khusus:</p>
+            <ul>
+              <li>Hakikat perkembangan manusia sebagai proses progresif, terarah, dan berkesinambungan.</li>
+              <li>Kegagalan fase perkembangan awal menjadi penentu krusial bagi fase perkembangan berikutnya.</li>
+              <li>Urgensi mata kuliah: menjembatani potensi anak melalui pendekatan bimbingan yang humanis.</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen (Apersepsi 10 Menit):</strong> Buka perkuliahan dengan pertanyaan reflektif: "Apakah ketidakmampuan fisik otomatis menandakan ketidakmampuan berpikir?" Tegaskan bahwa tugas bimbingan konseling adalah memisahkan hambatan fisik dari potensi jiwa dan intelegensi anak.
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide-item">
+          <span class="slide-indicator" style="color: var(--gz-blue); font-weight: 700; font-size: 0.9rem;">Slide 2 dari 6 • Hakikat Perkembangan</span>
+          <h2>Dinamika Hukum Perkembangan</h2>
+          <div class="slide-body">
+            <p>Prinsip Perkembangan Individu (Febriani et al., 2024):</p>
+            <ul>
+              <li><strong>Hukum Keberlanjutan:</strong> Perkembangan fisik, motorik, kognitif, dan sosioemosional saling berjalin kelindan dan tidak berdiri sendiri.</li>
+              <li><strong>Titik Kritis Perkembangan:</strong> Terjadinya deviasi atau keterlambatan sensori/motorik yang tidak tertangani dapat memicu hambatan sekunder (secondary disability).</li>
+              <li><strong>Pentingnya Intervensi Dini:</strong> Mengurangi disparitas kemampuan dan memaksimalkan masa emas plastisitas perkembangan anak.</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen:</strong> Contohkan kasus anak tunanetra yang tidak dilatih mobilitas mandiri sejak dini; hambatan visual primernya akan berkembang menjadi hambatan sekunder berupa kecemasan sosial dan ketergantungan hidup.
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide-item">
+          <span class="slide-indicator" style="color: var(--gz-orange); font-weight: 700; font-size: 0.9rem;">Slide 3 dari 6 • Batasan Terminologi</span>
+          <h2>Definisi Anak Berkebutuhan Khusus</h2>
+          <div class="slide-body">
+            <p>Konstruksi Definisi Berdasarkan Sudut Pandang Edukatif:</p>
+            <ul>
+              <li>ABK adalah anak yang mengalami deviasi/kelainan signifikan dari rata-rata normal (secara fisik, kognitif, emosional, atau perilaku).</li>
+              <li>Penyimpangan tersebut menghalangi pencapaian prestasi dan perkembangan optimal melalui pola pembelajaran biasa.</li>
+              <li>Meniscayakan adanya modifikasi kurikulum, sarana adaptif, dan layanan bimbingan terpersonalisasi.</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen:</strong> Garis bawahi bahwa istilah ABK tidak hanya mencakup anak dengan keterbatasan di bawah rata-rata (disabilitas), tetapi juga anak dengan kemampuan superior di atas rata-rata (anak berbakat/gifted) yang juga butuh bimbingan khusus.
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide-item">
+          <span class="slide-indicator" style="color: var(--gz-purple); font-weight: 700; font-size: 0.9rem;">Slide 4 dari 6 • Pergeseran Paradigma</span>
+          <h2>Transformasi Menuju Special Needs Education</h2>
+          <div class="slide-body">
+            <p>Evolusi Sudut Pandang Layanan Pendidikan:</p>
+            <ul>
+              <li><strong>Model Medis (Special Education):</strong> Berpusat pada kecacatan, bersifat menyembuhkan/mengobati kelainan, cenderung memisahkan anak dari pergaulan sosial (segregasi).</li>
+              <li><strong>Model Humanis (Special Needs Education):</strong> Berpusat pada kebutuhan belajar (child-centered), meruntuhkan sekat lingkungan, memfokuskan pada pemenuhan potensi anak.</li>
+              <li>Penerimaan keberagaman sebagai bagian kodrati dari realitas sosial manusia.</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen:</strong> Tekankan perubahan terminologi bahasa: dari "anak cacat" menjadi "anak berkebutuhan khusus". Perubahan kata mencerminkan perubahan martabat kemanusiaan yang diakui secara global.
+          </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide-item">
+          <span class="slide-indicator" style="color: var(--gz-blue); font-weight: 700; font-size: 0.9rem;">Slide 5 dari 6 • Spektrum Kebutuhan Khusus</span>
+          <h2>Spektrum Domain Kebutuhan Khusus</h2>
+          <div class="slide-body">
+            <p>Pemetaan Karakteristik Kebutuhan Khusus (Bab I):</p>
+            <ul>
+              <li><strong>Kelainan Fisik &amp; Sensorik:</strong> Tunanetra, Tunarungu, Tunawicara, dan Tunadaksa.</li>
+              <li><strong>Kelainan Mental &amp; Emosional:</strong> Tunalaras, Gangguan Perilaku, ADHD, dan Spektrum Autisme.</li>
+              <li><strong>Kelainan Akademik:</strong> Tunagrahita, Slow Learner, Kesulitan Belajar Spesifik, serta Anak Berbakat (Gifted).</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen:</strong> Jelaskan secara ringkas bahwa setiap kategori ini akan dibedah secara mendalam pada bab-bab selanjutnya (Bab III dan Bab IV) dari buku ajar.
+          </div>
+        </div>
+
+        <!-- SLIDE 6 -->
+        <div class="slide-item">
+          <span class="slide-indicator" style="color: var(--gz-orange); font-weight: 700; font-size: 0.9rem;">Slide 6 dari 6 • Aksi &amp; Rangkuman</span>
+          <h2>Closing Thought: Mandat Calon Konselor</h2>
+          <div class="slide-body">
+            <p>Pijakan Filosofis Menuju Sesi Perkuliahan Selanjutnya:</p>
+            <ul>
+              <li>Mendidik ABK bukan meluruskan ketunaan secara fisik, melainkan membangun jiwa mandiri dan berdaya.</li>
+              <li>Optimalisasi sisa kemampuan (residual potential) adalah kunci kemandirian aktivitas harian (ADL).</li>
+              <li>Minggu Depan (Pertemuan 2): Latar Belakang Perlunya BK bagi ABK (Tinjauan Pendidikan, Psikologis, dan Tugas Perkembangan).</li>
+            </ul>
+          </div>
+          <div class="speaker-notes-bright">
+            <strong>Catatan Dosen:</strong> Arahkan mahasiswa untuk membuka tab Lembar Kerja (LKM 01) dan mengerjakan analisis dua studi kasus kritis sebagai tugas mandiri atau diskusi kelompok.
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <footer class="slide-controls" style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn-ctrl secondary" style="color: #475569; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 700;" onclick="changeSlide(-1)">❮ Sebelumnya</button>
+            <button class="btn-ctrl" style="background: var(--gz-purple); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 700;" onclick="changeSlide(1)">Selanjutnya ❯</button>
+          </div>
+          <button class="btn-ctrl secondary" style="color: #475569; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 700;" onclick="toggleSpeakerNotes()">🎙️ Buka/Tutup Catatan Dosen</button>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== LOGIKA JAVASCRIPT ==================== -->
+  <script>
+    // 1. Pengalihan Tab Navigasi Utama
+    function switchView(targetViewId, buttonElement) {
+      document.querySelectorAll('.view-section').forEach(view => {
+        view.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      document.getElementById(targetViewId).classList.add('active');
+      buttonElement.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 2. Web Audio API Synthesizer (Efek Nada Mini Game)
+    let audioFxEnabled = true;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playTone(type) {
+      if (!audioFxEnabled) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      if (type === 'success') {
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+        osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.25); // G5
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } else {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+        osc.frequency.exponentialRampToValueAtTime(130.81, audioCtx.currentTime + 0.25); // C3
+        gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      }
+    }
+
+    function toggleAudioFx() {
+      audioFxEnabled = !audioFxEnabled;
+      const btn = document.getElementById('sound-btn');
+      if (audioFxEnabled) {
+        btn.classList.add('active');
+        btn.textContent = '🔊 Suara Pengarah: Aktif';
+      } else {
+        btn.classList.remove('active');
+        btn.textContent = '🔇 Suara Pengarah: Hening';
+      }
+    }
+
+    // 3. Evaluasi Mini Game Pertemuan 1
+    function evaluateParadigmGame(choice) {
+      const feedback = document.getElementById('paradigm-feedback');
+      feedback.style.display = 'block';
+
+      if (choice === 'b') {
+        playTone('success');
+        feedback.style.background = '#ede9fe';
+        feedback.style.color = '#5b21b6';
+        feedback.style.border = '1px solid #c4b5fd';
+        feedback.innerHTML = '<strong>Tepat Sekali! (Skor 100)</strong><br>Berdasarkan kajian Febriani et al. (2024), disfungsi motorik tidak otomatis mencerminkan kerusakan intelektual. Pendekatan humanis dalam bimbingan konseling memandang potensi anak secara utuh dan memberikan akomodasi belajar yang adil, bukan melakukan pemisahan segregatif.';
+      } else {
+        playTone('error');
+        feedback.style.background = '#ffedd5';
+        feedback.style.color = '#9a3412';
+        feedback.style.border = '1px solid #fed7aa';
+        feedback.innerHTML = '<strong>Kurang Tepat!</strong><br>Pilihan ini mencerminkan prasangka usang dari model medis lama. Setiap anak berhak dinilai dan difasilitasi berdasarkan kapasitas aslinya melalui asesmen terpadu.';
+      }
+    }
+
+    // 4. Pengendali Slide Presentasi Dosen
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-item');
+
+    function updateSlideDisplay() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+      updateSlideDisplay();
+    }
+
+    function toggleSpeakerNotes() {
+      const activeSlide = slides[currentSlide];
+      const notes = activeSlide.querySelector('.speaker-notes-bright');
+      if (notes) {
+        notes.style.display = (notes.style.display === 'block') ? 'none' : 'block';
+      }
+    }
+
+    // Navigasi Keyboard untuk Slide
+    document.addEventListener('keydown', (e) => {
+      const presView = document.getElementById('presentation-view');
+      if (presView && presView.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          changeSlide(1);
+        } else if (e.key === 'ArrowLeft') {
+          changeSlide(-1);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
