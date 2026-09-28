@@ -16,9 +16,9 @@
       --gz-blue-light: #e0f2fe;
       --gz-bg-bright: #fafcfb;
       --gz-text-dark: #0f172a;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
       --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     }
 
@@ -36,7 +36,7 @@
       font-size: 1.05rem;
     }
 
-    / Penataan Pembatas Layar agar tidak terlalu lebar /
+    / Penataan Header & Navigasi Terpusat /
     .site-header {
       background: #ffffff;
       border-bottom: 1.5px solid #e2e8f0;
@@ -46,9 +46,9 @@
     }
 
     .nav-container {
-      max-width: 1080px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 1.1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -57,8 +57,8 @@
     }
 
     .content-wrapper {
-      max-width: 1080px;
-      margin: 2rem auto;
+      max-width: 1040px;
+      margin: 2.5rem auto;
       padding: 0 2rem;
     }
 
@@ -72,13 +72,13 @@
 
     .view-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .tab-btn {
       background: #f1f5f9;
       border: 1px solid #cbd5e1;
-      padding: 0.65rem 1.25rem;
+      padding: 0.7rem 1.35rem;
       border-radius: var(--radius-sm);
       font-weight: 700;
       font-size: 0.95rem;
@@ -91,11 +91,12 @@
       background: var(--gz-purple);
       color: #ffffff;
       border-color: var(--gz-purple);
+      box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
     }
 
     / Pill Badges /
     .pill {
-      padding: 0.35rem 0.95rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
       font-size: 0.85rem;
       display: inline-block;
@@ -119,77 +120,79 @@
       font-weight: 800;
     }
 
-    / Kotak Judul Utama (Hero Box) dengan Space/Padding yang Lega /
+    / PERBAIKAN: Kotak Judul Utama (Hero Box) dengan Space Lega & Tulisan Tidak Mepet /
     .hero-box {
       border-radius: var(--radius-lg);
-      padding: 3rem 2.75rem; / Space lega di pinggir antara border dan tulisan /
-      margin-bottom: 2.25rem;
+      padding: 3.5rem 3.25rem; / Memberikan ruang napas ekstra lapang dari pinggir /
+      margin-bottom: 2.5rem;
       border: 1.5px solid #e2e8f0;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
     }
 
     .hero-box h1 {
-      font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+      font-size: clamp(2rem, 3.2vw, 2.5rem);
       line-height: 1.35;
-      margin: 1.25rem 0 0.85rem 0;
+      margin: 1.5rem 0 1rem 0;
+      max-width: 900px;
     }
 
     .hero-box p {
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       color: #334155;
       margin: 0;
-      line-height: 1.7;
+      line-height: 1.8;
+      max-width: 900px;
     }
 
     .hero-meta {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.75rem;
       flex-wrap: wrap;
-      margin-top: 1.75rem;
-      padding-top: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
       border-top: 1px solid rgba(226, 232, 240, 0.8);
       font-size: 0.95rem;
       color: #475569;
       font-weight: 600;
     }
 
-    / Kartu Konten dengan Padding/Space Nyaman /
+    / PERBAIKAN: Kartu Konten dengan Padding Lega /
     .content-card {
       background: #ffffff;
       border: 1.5px solid #e2e8f0;
       border-radius: var(--radius-lg);
-      padding: 2.75rem 2.5rem; / Jarak pinggir tulisan ke kotak dibuat lapang /
-      margin-bottom: 2.25rem;
+      padding: 3rem 2.75rem; / Jarak tulisan dari garis kotak sangat lega /
+      margin-bottom: 2.5rem;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
     }
 
     .content-card h2 {
       font-size: 1.65rem;
       color: #0f172a;
-      margin-top: 1rem;
-      margin-bottom: 1.15rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
       line-height: 1.4;
     }
 
     .quote-box {
       border-left: 5px solid var(--gz-blue);
       background: #f0f9ff;
-      padding: 1.35rem 1.75rem;
-      margin: 1.75rem 0;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      font-size: 1.05rem;
-      line-height: 1.75;
+      font-size: 1.08rem;
+      line-height: 1.8;
     }
 
     .grid-two-col {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.75rem;
+      gap: 1.75rem;
+      margin-top: 2rem;
     }
 
     .accent-card {
-      padding: 1.65rem;
+      padding: 2rem 1.75rem;
       border-radius: var(--radius-md);
     }
 
@@ -208,13 +211,13 @@
       background: #f0f9ff;
     }
 
-    / Presentasi Slide Dosen /
+    / Frame Slide Presentasi Dosen /
     .presentation-frame-bright {
       background: #ffffff;
       color: #1e293b;
       border: 2px solid #e2e8f0;
       border-radius: var(--radius-lg);
-      padding: 3rem 3rem 2.25rem 3rem;
+      padding: 3.5rem 3.25rem 2.5rem 3.25rem;
       min-height: 560px;
       display: flex;
       flex-direction: column;
@@ -231,7 +234,7 @@
 
     .presentation-frame-bright .slide-body {
       font-size: 1.25rem;
-      line-height: 1.8;
+      line-height: 1.85;
       color: #334155;
       flex-grow: 1;
     }
@@ -258,10 +261,10 @@
     }
 
     .speaker-notes-bright {
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       background: #f8fafc;
       border-left: 4px solid var(--gz-orange);
-      padding: 1.1rem 1.4rem;
+      padding: 1.25rem 1.5rem;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 1rem;
       color: #475569;
@@ -273,14 +276,14 @@
       justify-content: space-between;
       align-items: center;
       border-top: 2px solid #f1f5f9;
-      padding-top: 1.75rem;
-      margin-top: 2rem;
+      padding-top: 2rem;
+      margin-top: 2.25rem;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
     .btn-ctrl {
-      padding: 0.75rem 1.4rem;
+      padding: 0.8rem 1.5rem;
       font-size: 1rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
@@ -303,7 +306,7 @@
       color: #0f172a;
     }
 
-    / Kolom Jawaban Mahasiswa (LKM) /
+    / Kolom Jawaban Mahasiswa (Worksheet) /
     .large-answer-area {
       width: 100%;
       min-height: 240px;
@@ -330,13 +333,13 @@
     .quiz-option {
       width: 100%;
       text-align: left;
-      padding: 1.1rem 1.35rem;
+      padding: 1.15rem 1.4rem;
       margin-bottom: 0.85rem;
       background: #ffffff;
       border: 1.5px solid #cbd5e1;
       border-radius: var(--radius-md);
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.02rem;
       line-height: 1.6;
       font-family: inherit;
       transition: all 0.2s ease;
@@ -349,14 +352,14 @@
 
     .quiz-feedback {
       display: none;
-      padding: 1.25rem 1.5rem;
+      padding: 1.35rem 1.6rem;
       border-radius: var(--radius-md);
-      margin-top: 1.25rem;
-      font-size: 1rem;
+      margin-top: 1.35rem;
+      font-size: 1.02rem;
       line-height: 1.7;
     }
 
-    / Aturan Visibilitas Tab & Slide /
+    / Aturan Visibilitas Tab: Hanya 1 View yang Aktif Sesuai Tab Terpilih /
     .view-section {
       display: none;
     }
@@ -412,19 +415,20 @@
   <main class="content-wrapper">
 
     <!-- =========================================================================
-         BAGIAN 1: WEB PAGE PRESENTATION (BACAAN MANDIRI DOSEN & MAHASISWA)
+         BAGIAN 1: MODUL BACAAN LENGKAP (MURNI MATERI, DIAGRAM, KUIS, & PENUTUP)
+         (Tidak ada kolom tugas/worksheet dan tidak ada slide PPT di bagian ini)
          ========================================================================= -->
     <section id="reading-view" class="view-section active">
       
-      <!-- HERO BANNER (DENGAN SPACE PINGGIR YANG LEGA) -->
+      <!-- HERO BANNER (DENGAN RUANG NAPAS/PADDING LEGA) -->
       <header class="hero-box" style="background: linear-gradient(135deg, #f3e8ff 0%, #ffedd5 50%, #e0f2fe 100%);">
         <span class="section-label pill badge-purple">Modul Keilmuan BK ABK</span>
         <h1 style="color: var(--gz-text-dark);">Hakikat Perkembangan Manusia dan Konsep Dasar Anak Berkebutuhan Khusus</h1>
         <p>Kajian bimbingan dan konseling mendalam: hukum dinamika perkembangan individu, batasan konseptual ABK, pergeseran paradigma dari model defisit medis (Special Education) ke model kebutuhan humanis (Special Needs Education), serta signifikansi intervensi deteksi dini.</p>
         <div class="hero-meta">
           <span>⏱ Durasi: 2 SKS (100 Menit)</span>
-          <span>📚 Rujukan: Rahmi Dwi Febriani, Triyono, Puji Gusri Handayani, &amp; Hafiz Hidayat (2024, Bab I)</span>
-          <span>🎯 Capaian: Analisis Konsep Perkembangan &amp; Rekonseptualisasi Paradigma ABK</span>
+          <span>📚 Rujukan: Rahmi Dwi Febriani, Triyono, Puji Gusri Handayani, &amp; Hafiz Hidayat (2024, Bab I)[cite: 1]</span>
+          <span>🎯 Capaian: Analisis Konsep Perkembangan &amp; Rekonseptualisasi Paradigma ABK[cite: 1]</span>
         </div>
       </header>
 
@@ -443,14 +447,14 @@
 
         <div class="grid-two-col">
           <div class="accent-card card-purple-bright">
-            <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem; color: var(--gz-purple);">Dinamika Perkembangan Holistik</h3>
-            <p style="font-size: 0.98rem; color: #475569; line-height: 1.6; margin: 0;">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--gz-purple);">Dinamika Perkembangan Holistik</h3>
+            <p style="font-size: 1rem; color: #475569; line-height: 1.7; margin: 0;">
               Anak bukan orang dewasa mini[cite: 1]. Pertumbuhan fisik, motorik, kognisi, dan sosioemosional berlangsung beriringan[cite: 1]. Terhambatnya salah satu organ sensorik menuntut optimalisasi kompensasi pada indra lain yang masih berfungsi secara prima[cite: 1].
             </p>
           </div>
           <div class="accent-card card-orange-bright">
-            <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem; color: var(--gz-orange);">Signifikansi Intervensi Dini</h3>
-            <p style="font-size: 0.98rem; color: #475569; line-height: 1.6; margin: 0;">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--gz-orange);">Signifikansi Intervensi Dini</h3>
+            <p style="font-size: 1rem; color: #475569; line-height: 1.7; margin: 0;">
               Semakin dini hambatan pertumbuhan teridentifikasi oleh konselor sekolah dan pendidik, semakin cepat program stimulasi individual disusun untuk mencegah timbulnya hambatan perkembangan sekunder[cite: 1].
             </p>
           </div>
@@ -466,7 +470,7 @@
         </p>
 
         <!-- DIAGRAM 1: PERGESERAN PARADIGMA (SVG CERAH) -->
-        <div class="diagram-container" style="margin: 2rem 0;">
+        <div class="diagram-container" style="margin: 2.25rem 0;">
           <svg viewBox="0 0 940 310" width="100%" height="auto" style="max-height: 330px; font-family: 'Plus Jakarta Sans', sans-serif;">
             <defs>
               <linearGradient id="medGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#f87171"/></linearGradient>
@@ -525,19 +529,19 @@
         <h2>Uji Kasus Pedagogis: "Audit Paradigma Calon Pendidik"</h2>
         <p style="margin-top: 0.5rem; color: #475569;">Cermati dilema ruang kelas di bawah ini, aktifkan suara panduan, dan tentukan sikap profesional konselor:</p>
 
-        <div class="game-card" style="border: 2px dashed #c4b5fd; background: #faf5ff; padding: 1.75rem; border-radius: var(--radius-md); margin-top: 1rem;">
+        <div class="game-card" style="border: 2px dashed #c4b5fd; background: #faf5ff; padding: 2rem; border-radius: var(--radius-md); margin-top: 1.25rem;">
           <div class="sound-toggle-bar" style="margin-bottom: 1.25rem;">
-            <button id="sound-btn" class="sound-btn active" style="background: #ffffff; border: 1.5px solid var(--gz-purple); color: var(--gz-purple); padding: 7px 16px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 700;" onclick="toggleAudioFx()">🔊 Suara Pengarah: Aktif</button>
+            <button id="sound-btn" class="sound-btn active" style="background: #ffffff; border: 1.5px solid var(--gz-purple); color: var(--gz-purple); padding: 8px 18px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 700;" onclick="toggleAudioFx()">🔊 Suara Pengarah: Aktif</button>
           </div>
 
           <div style="background: #ffffff; border: 1.5px solid #ddd6fe; border-radius: var(--radius-sm); padding: 1.5rem; margin-bottom: 1.5rem;">
             <p style="font-weight: 800; color: var(--gz-purple); margin: 0 0 0.5rem 0;">DILEMA DI SEKOLAH REGULER:</p>
-            <p style="font-size: 1rem; color: #1e293b; line-height: 1.65; margin: 0;">
+            <p style="font-size: 1.02rem; color: #1e293b; line-height: 1.7; margin: 0;">
               "Seorang guru kelas menolak kehadiran Doni (9 tahun, tunadaksa dengan kelumpuhan tangan dan artikulasi bicara lambat)[cite: 1]. Guru berargumen: 'Karena tangannya lumpuh dan bicaranya cadel, pasti kemampuan berpikirnya juga terbelakang, sehingga Doni tidak mungkin bisa mengikuti pelajaran membaca dan hitung.' Guru tersebut bersikeras mengeluarkan Doni dari sekolah."
             </p>
           </div>
 
-          <p style="font-size: 1rem; margin-bottom: 1rem; font-weight: 700; color: #4c1d95;">Berdasarkan pemahaman Bab I buku BK ABK (Febriani et al., 2024), bagaimana evaluasi Anda terhadap sikap guru tersebut[cite: 1]?</p>
+          <p style="font-size: 1.02rem; margin-bottom: 1rem; font-weight: 700; color: #4c1d95;">Berdasarkan pemahaman Bab I buku BK ABK (Febriani et al., 2024), bagaimana evaluasi Anda terhadap sikap guru tersebut[cite: 1]?</p>
 
           <button class="quiz-option" onclick="evaluateParadigmGame('a')">
             A. Sikap guru sudah tepat karena kelainan fisik pada anak otomatis menunjukkan kerusakan fungsi kognitif secara menyeluruh.
@@ -553,7 +557,7 @@
         </div>
       </article>
 
-      <!-- SESI 4: TANYA JAWAB & CLOSING (PENUTUP BACAAN) -->
+      <!-- SESI 4: TANYA JAWAB & CLOSING (AKHIR MODUL BACAAN) -->
       <article class="content-card">
         <span class="section-label pill badge-orange">Fase 4: Tanya Jawab &amp; Pernyataan Penutup</span>
         <h2>Refleksi Akhir: Memuliakan Martabat dalam Keberagaman</h2>
@@ -570,12 +574,12 @@
 
 
     <!-- =========================================================================
-         BAGIAN 2: WORKSHEET MAHASISWA (TERPISAH PADA TOMBOL TAB SENDIRI)
+         BAGIAN 2: WORKSHEET MAHASISWA (HANYA MUNCUL DI TAB "LEMBAR KERJA & KASUS LUAS")
          ========================================================================= -->
     <section id="worksheet-view" class="view-section">
-      <div class="print-action-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; background: #ffffff; padding: 1.5rem; border-radius: var(--radius-md); border: 1.5px solid #e2e8f0;">
+      <div class="print-action-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; background: #ffffff; padding: 1.75rem; border-radius: var(--radius-md); border: 1.5px solid #e2e8f0;">
         <div>
-          <h3 style="color: var(--gz-purple); margin: 0 0 0.3rem 0; font-size: 1.25rem;">Lembar Aktivitas Mahasiswa: Analisis Paradigma &amp; Kasus ABK (LKM 01)</h3>
+          <h3 style="color: var(--gz-purple); margin: 0 0 0.35rem 0; font-size: 1.25rem;">Lembar Aktivitas Mahasiswa: Analisis Paradigma &amp; Kasus ABK (LKM 01)</h3>
           <p style="font-size: 0.95rem; color: #64748b; margin: 0;">Selesaikan telaah kritis dua studi kasus di bawah ini. Kolom lembar jawaban telah didesain ekstra luas untuk memfasilitasi argumentasi ilmiah mendalam, lalu cetak dalam format PDF.</p>
         </div>
         <button class="btn-ctrl" style="background: var(--gz-purple); color: #ffffff;" onclick="window.print()">
@@ -583,8 +587,8 @@
         </button>
       </div>
 
-      <div class="worksheet-paper" style="background: #ffffff; padding: 2.75rem; border-radius: var(--radius-lg); border: 2px solid #e2e8f0;">
-        <header style="border-bottom: 2.5px solid #0f172a; padding-bottom: 1.5rem; margin-bottom: 2rem;">
+      <div class="worksheet-paper" style="background: #ffffff; padding: 3rem; border-radius: var(--radius-lg); border: 2px solid #e2e8f0;">
+        <header style="border-bottom: 2.5px solid #0f172a; padding-bottom: 1.5rem; margin-bottom: 2.5rem;">
           <h2 style="text-align: center; text-transform: uppercase; font-size: 1.35rem; color: #0f172a; margin: 0 0 0.5rem 0;">LEMBAR KERJA ANALISIS HAKIKAT &amp; PARADIGMA ANAK BERKEBUTUHAN KHUSUS (LKM 01)</h2>
           <p style="text-align: center; font-size: 0.95rem; color: #475569; margin: 0;">Mata Kuliah: Bimbingan dan Konseling ABK (2 SKS) • Rujukan: Febriani et al. (2024, Bab I)[cite: 1]</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.75rem; font-size: 0.95rem; background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-sm);">
@@ -596,50 +600,50 @@
         </header>
 
         <!-- KASUS 1: ANALISIS PARADIGMA INKLUSI -->
-        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 2rem; margin-bottom: 2rem;">
-          <label style="color: var(--gz-purple); font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 800;">
+        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 2.25rem; margin-bottom: 2.5rem;">
+          <label style="color: var(--gz-purple); font-size: 1.15rem; display: block; margin-bottom: 0.75rem; font-weight: 800;">
             KASUS ANALISIS 1: BEDAH KRITIS MEDICAL MODEL VS NEEDS MODEL DALAM PENERIMAAN SEKOLAH (BOBOT 50%)
           </label>
-          <p style="font-size: 1rem; color: #1e293b; line-height: 1.7; margin-bottom: 1.25rem;">
+          <p style="font-size: 1rem; color: #1e293b; line-height: 1.75; margin-bottom: 1.25rem;">
             <strong>Profil Kasus:</strong> Di awal tahun ajaran baru, seorang anak bernama Rizky (7 tahun) yang memiliki hambatan pendengaran (tunarungu taraf sedang dan telah memakai alat bantu dengar) didaftarkan ke sekolah dasar di dekat rumahnya[cite: 1]. Kepala sekolah menolak mentah-mentah berkas Rizky dengan menyatakan: "Sekolah kami hanya menerima anak yang normal dan sehat walafiat. Sekolah kami tidak punya dokter atau guru khusus, jadi anak cacat seperti ini hanya akan menyusahkan guru kelas."
           </p>
 
           <p style="font-size: 1.05rem; line-height: 1.6; color: #0f172a; font-weight: 700; margin-bottom: 0.5rem;">
             Instruksi Tugas Analisis Mahasiswa:
           </p>
-          <p style="font-size: 0.98rem; color: #334155; line-height: 1.7; margin: 0 0 1rem 0;">
+          <p style="font-size: 0.98rem; color: #334155; line-height: 1.75; margin: 0 0 1rem 0;">
             Berdasarkan konsep dasar bimbingan konseling ABK (<strong>Febriani et al., 2024, Bab I</strong>)[cite: 1]:
             <br>1. Analisis bagaimana penolakan kepala sekolah mencerminkan kelemahan fatal pola pikir <em>Medical Model / Special Education</em> yang memandang disabilitas sebagai kutukan fisik[cite: 1]!
             <br>2. Jelaskan bagaimana sudut pandang <em>Special Needs Education</em> membedah kebutuhan belajar Rizky serta nilai manfaat lingkungan inklusi bagi perkembangan psikososialnya[cite: 1]!
             <br>3. Rumuskan draf konseling advokasi yang dapat Anda berikan kepada kepala sekolah dan para guru untuk membuka wawasan inklusif mereka[cite: 1]!
           </p>
           
-          <label style="font-weight: 700; font-size: 0.95rem; color: var(--gz-purple); margin-top: 1rem; display: block;">
+          <label style="font-weight: 700; font-size: 0.95rem; color: var(--gz-purple); margin-top: 1.25rem; display: block;">
             KOLOM LEMBAR JAWABAN MAHASISWA (KASUS 1):
           </label>
           <textarea class="large-answer-area" placeholder="Tuliskan analisis kritis paradigma defisit medis, prinsip model kebutuhan, serta strategi advokasi konseling secara ilmiah di sini..."></textarea>
         </div>
 
         <!-- KASUS 2: KETERKAITAN TUGAS PERKEMBANGAN & POLA ASUH -->
-        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 2rem;">
-          <label style="color: var(--gz-orange); font-size: 1.15rem; display: block; margin-bottom: 0.6rem; font-weight: 800;">
+        <div class="content-card" style="border: 2px solid #e2e8f0; background: #ffffff; padding: 2.25rem;">
+          <label style="color: var(--gz-orange); font-size: 1.15rem; display: block; margin-bottom: 0.75rem; font-weight: 800;">
             KASUS ANALISIS 2: IMPLIKASI KETERLAMBATAN INTERVENSI DINI DAN OVER-PROTECTIVE PARENTING (BOBOT 50%)
           </label>
-          <p style="font-size: 1rem; color: #1e293b; line-height: 1.7; margin-bottom: 1.25rem;">
+          <p style="font-size: 1rem; color: #1e293b; line-height: 1.75; margin-bottom: 1.25rem;">
             <strong>Profil Kasus:</strong> Naila (6 tahun) mengalami hambatan penglihatan berat (<em>low vision</em>)[cite: 1]. Karena orang tua merasa malu dan takut Naila terluka, Naila tidak pernah diizinkan keluar rumah, tidak dilatih mengenakan pakaian sendiri, dan selalu disuapi makan. Ketika dimasukkan ke jenjang prasekolah, Naila menunjukkan rasa takut berlebih terhadap orang asing, menangis histeris ketika mendengar bunyi ramai, serta tidak mampu melakukan koordinasi motorik kasar dasar.
           </p>
 
           <p style="font-size: 1.05rem; line-height: 1.6; color: #0f172a; font-weight: 700; margin-bottom: 0.5rem;">
             Instruksi Tugas Analisis Mahasiswa:
           </p>
-          <p style="font-size: 0.98rem; color: #334155; line-height: 1.7; margin: 0 0 1rem 0;">
+          <p style="font-size: 0.98rem; color: #334155; line-height: 1.75; margin: 0 0 1rem 0;">
             Mengacu pada prinsip hukum dinamika perkembangan anak (<strong>Febriani et al., 2024</strong>)[cite: 1]:
             <br>1. Analisis bagaimana penundaan intervensi dini dan proteksi berlebihan orang tua mengacaukan pemenuhan tugas perkembangan (developmental tasks) pada diri Naila[cite: 1]!
             <br>2. Identifikasi dampak negatif sekunder (secondary handicap) pada aspek kepribadian dan sosial Naila jika situasi ini dibiarkan terus berlanjut[cite: 1]!
             <br>3. Susunlah prioritas program layanan bimbingan konseling pribadi dan konseling keluarga bagi orang tua Naila guna membangun kemandirian harian (activity in daily living)[cite: 1]!
           </p>
 
-          <label style="font-weight: 700; font-size: 0.95rem; color: var(--gz-orange); margin-top: 1rem; display: block;">
+          <label style="font-weight: 700; font-size: 0.95rem; color: var(--gz-orange); margin-top: 1.25rem; display: block;">
             KOLOM LEMBAR JAWABAN MAHASISWA (KASUS 2):
           </label>
           <textarea class="large-answer-area" placeholder="Tuliskan analisis keterpenggalan tugas perkembangan, bahaya hambatan sekunder, dan program layanan bimbingan mandiri di sini..."></textarea>
@@ -650,7 +654,7 @@
 
 
     <!-- =========================================================================
-         BAGIAN 3: INTERACTIVE PRESENTATION MODE (TERPISAH PADA TOMBOL TAB SENDIRI)
+         BAGIAN 3: PRESENTASI DOSEN (HANYA MUNCUL DI TAB "PRESENTASI DOSEN")
          ========================================================================= -->
     <section id="presentation-view" class="view-section">
       
@@ -754,11 +758,11 @@
             </ul>
           </div>
           <div class="speaker-notes-bright">
-            <strong>Catatan Dosen:</strong> Instruksikan mahasiswa untuk beralih ke tab menu "Lembar Kerja &amp; Kasus Luas" untuk menyelesaikan dua studi kasus analitis[cite: 1].
+            <strong>Catatan Dosen:</strong> Arahkan mahasiswa untuk beralih ke tab menu "Lembar Kerja &amp; Kasus Luas" untuk menyelesaikan dua studi kasus analitis[cite: 1].
           </div>
         </div>
 
-        <!-- CONTROLS DENGAN PENATAAN TOMBOL PRESISI -->
+        <!-- CONTROLS SLIDE PRESENTASI -->
         <footer class="slide-controls">
           <div style="display: flex; gap: 0.75rem;">
             <button class="btn-ctrl secondary" onclick="changeSlide(-1)">❮ Sebelumnya</button>
@@ -774,7 +778,7 @@
 
   <!-- ==================== LOGIKA JAVASCRIPT ==================== -->
   <script>
-    // 1. Pengalihan Tab Navigasi
+    // 1. Pengalihan Tab Navigasi Murni (Menampilkan HANYA 1 Section Sesuai Tab)
     function switchView(targetViewId, buttonElement) {
       document.querySelectorAll('.view-section').forEach(view => {
         view.classList.remove('active');
@@ -788,7 +792,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. Web Audio API Synthesizer (Efek Nada Kuis)
+    // 2. Web Audio API Synthesizer (Efek Nada Kuis Interaktif)
     let audioFxEnabled = true;
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
