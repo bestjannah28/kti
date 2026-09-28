@@ -1,455 +1,496 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+/* ==========================================================================
+   STYLE.CSS - PANDUAN GAYA PEMBELAJARAN INTERAKTIF GEN Z BRIGHT PALETTE
+   Mata Kuliah: Bimbingan dan Konseling ABK / Ortopedagogik
+   ========================================================================== */
 
+/* --- 1. VARIABEL & RESET DASAR --- */
 :root {
---bg-main: #f8fafc;
---bg-card: #ffffff;
---text-primary: #0f172a;
---text-secondary: #475569;
---text-muted: #64748b;
-
-/* Gen-Z Vibrant Palette */
---blue-primary: #2563eb;
---blue-light: #dbeafe;
---blue-dark: #1d4ed8;
-
---green-primary: #10b981;
---green-light: #d1fae5;
---green-dark: #047857;
-
---pink-primary: #ec4899;
---pink-light: #fce7f3;
---pink-dark: #be185d;
-
---border-color: #e2e8f0;
---shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
---shadow-md: 0 10px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.1);
---shadow-lg: 0 20px 30px -10px rgba(16, 185, 129, 0.15);
---radius-lg: 18px;
---radius-md: 12px;
+  --gz-purple: #7c3aed;
+  --gz-purple-light: #f3e8ff;
+  --gz-purple-hover: #6d28d9;
+  --gz-orange: #f97316;
+  --gz-orange-light: #ffedd5;
+  --gz-blue: #0284c7;
+  --gz-blue-light: #e0f2fe;
+  --gz-bg-bright: #fafcfb;
+  --gz-text-dark: #0f172a;
+  --text-muted: #475569;
+  --border-color: #e2e8f0;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 
-{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
--webkit-tap-highlight-color: transparent;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-font-family: 'Plus Jakarta Sans', sans-serif;
-background-color: var(--bg-main);
-color: var(--text-primary);
-line-height: 1.7;
-font-size: 16px;
-overflow-x: hidden;
+  background-color: var(--gz-bg-bright);
+  color: var(--gz-text-dark);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .font-heading {
-font-family: 'Space Grotesk', sans-serif;
-letter-spacing: -0.02em;
-color: var(--text-primary);
+/* --- 2. SISTEM VISIBILITAS TAB (KUNCI AGAR HALAMAN TIDAK MENUMPUK) --- */
+.view-section {
+  display: none !important;
 }
 
-/* Navbar */
-.navbar {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(255, 255, 255, 0.85);
-backdrop-filter: blur(14px);
-border-bottom: 2px solid var(--border-color);
-padding: 1rem 1.5rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+.view-section.active {
+  display: block !important;
+}
+
+.slide-item {
+  display: none !important;
+}
+
+.slide-item.active {
+  display: block !important;
+}
+
+/* --- 3. STRUKTUR HEADER & NAVIGASI ATAS --- */
+.site-header {
+  background: #ffffff;
+  border-bottom: 1.5px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .brand-badge {
-display: flex;
-align-items: center;
-gap: 0.6rem;
-font-weight: 800;
-font-size: 1.15rem;
-background: linear-gradient(135deg, var(--blue-primary), var(--pink-primary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
 }
 
-.nav-actions {
-display: flex;
-gap: 0.8rem;
-align-items: center;
+.view-tabs {
+  display: flex;
+  gap: 0.6rem;
 }
 
-/* Button Variants */
-.btn {
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
-padding: 0.65rem 1.25rem;
-font-weight: 600;
-font-size: 0.9rem;
-border-radius: 9999px;
-text-decoration: none;
-cursor: pointer;
-border: none;
-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.tab-btn {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
 }
 
-.btn-primary {
-background: var(--blue-primary);
-color: #fff;
-box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+.tab-btn:hover {
+  background: #e2e8f0;
+  color: var(--gz-text-dark);
 }
 
-.btn-primary:hover {
-background: var(--blue-dark);
-transform: translateY(-2px);
+.tab-btn.active {
+  background: var(--gz-purple) !important;
+  color: #ffffff !important;
+  border-color: var(--gz-purple) !important;
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
 }
 
-.btn-accent {
-background: var(--pink-primary);
-color: #fff;
-box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35);
+/* --- 4. PEMBATAS KONTEN UTAMA --- */
+.content-wrapper {
+  max-width: 1040px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
 }
 
-.btn-accent:hover {
-background: var(--pink-dark);
-transform: translateY(-2px);
+/* --- 5. LENCANA (BADGES & PILLS) --- */
+.pill {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  display: inline-block;
+  line-height: 1.2;
 }
 
-.btn-secondary {
-background: var(--green-primary);
-color: #fff;
-box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+.badge-purple {
+  background: var(--gz-purple-light);
+  color: var(--gz-purple);
+  font-weight: 800;
 }
 
-.btn-secondary:hover {
-background: var(--green-dark);
-transform: translateY(-2px);
+.badge-orange {
+  background: var(--gz-orange-light);
+  color: #c2410c;
+  font-weight: 800;
 }
 
-.btn-outline {
-background: transparent;
-border: 2px solid var(--border-color);
-color: var(--text-primary);
+.badge-blue {
+  background: var(--gz-blue-light);
+  color: var(--gz-blue);
+  font-weight: 800;
 }
 
-.btn-outline:hover {
-border-color: var(--blue-primary);
-color: var(--blue-primary);
+/* --- 6. KOTAK JUDUL (HERO BANNER) & KARTU KONTEN --- */
+.hero-box {
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3.25rem;
+  margin-bottom: 2.5rem;
+  border: 1.5px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
-/* Layout Containers */
-.container {
-max-width: 1050px;
-margin: 0 auto;
-padding: 2.5rem 1.5rem;
+.hero-box h1 {
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  line-height: 1.35;
+  margin: 1.5rem 0 1rem 0;
+  max-width: 900px;
+  color: var(--gz-text-dark);
 }
 
-/* Hero Badge */
-.tag-badge {
-display: inline-flex;
-align-items: center;
-padding: 0.35rem 0.9rem;
-border-radius: 9999px;
-font-size: 0.8rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-margin-bottom: 1rem;
+.hero-box p {
+  font-size: 1.12rem;
+  color: #334155;
+  line-height: 1.8;
+  max-width: 900px;
 }
 
-.tag-blue { background: var(--blue-light); color: var(--blue-dark); }
-.tag-pink { background: var(--pink-light); color: var(--pink-dark); }
-.tag-green { background: var(--green-light); color: var(--green-dark); }
-
-/* Timeline Card */
-.timeline-box {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 1rem;
-margin: 2rem 0;
+.hero-meta {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
-.timeline-step {
-background: var(--bg-card);
-border: 1px solid var(--border-color);
-border-radius: var(--radius-md);
-padding: 1.25rem;
-position: relative;
-overflow: hidden;
-box-shadow: var(--shadow-sm);
-transition: transform 0.2s ease;
+.content-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.75rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.timeline-step:hover {
-transform: translateY(-3px);
+.content-card h2 {
+  font-size: 1.65rem;
+  color: var(--gz-text-dark);
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
 }
 
-.timeline-step::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 4px;
+.quote-box {
+  border-left: 5px solid var(--gz-blue);
+  background: #f0f9ff;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 1.08rem;
+  line-height: 1.8;
 }
 
-.step-blue::before { background: var(--blue-primary); }
-.step-pink::before { background: var(--pink-primary); }
-.step-green::before { background: var(--green-primary); }
-
-.step-time {
-font-size: 0.75rem;
-font-weight: 800;
-color: var(--text-muted);
-text-transform: uppercase;
+.grid-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
 }
 
-.step-title {
-font-weight: 700;
-font-size: 1rem;
-margin: 0.2rem 0;
+.accent-card {
+  padding: 2rem 1.75rem;
+  border-radius: var(--radius-md);
 }
 
-/* Content Card */
-.card {
-background: var(--bg-card);
-border: 1px solid var(--border-color);
-border-radius: var(--radius-lg);
-padding: 2.25rem;
-margin-bottom: 2.5rem;
-box-shadow: var(--shadow-sm);
+.card-purple-bright {
+  border-left: 5px solid var(--gz-purple);
+  background: #faf5ff;
 }
 
-.card-header-styled {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 1.5rem;
-padding-bottom: 1rem;
-border-bottom: 1px solid var(--border-color);
+.card-orange-bright {
+  border-left: 5px solid var(--gz-orange);
+  background: #fff7ed;
 }
 
-.icon-pill {
-width: 46px;
-height: 46px;
-border-radius: 14px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.35rem;
+.card-blue-bright {
+  border-left: 5px solid var(--gz-blue);
+  background: #f0f9ff;
 }
 
-.pill-blue { background: var(--blue-light); color: var(--blue-primary); }
-.pill-pink { background: var(--pink-light); color: var(--pink-primary); }
-.pill-green { background: var(--green-light); color: var(--green-primary); }
-
-/* Deep Exploration Grid */
-.detail-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-gap: 1.5rem;
-margin: 1.5rem 0;
+/* --- 7. DIAGRAM & KUIS INTERAKTIF --- */
+.diagram-container {
+  margin: 2.25rem 0;
 }
 
-.detail-item {
-background: #f1f5f9;
-border-radius: var(--radius-md);
-padding: 1.4rem;
-border-left: 5px solid var(--blue-primary);
+.diagram-caption {
+  text-align: center;
+  font-size: 0.92rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  font-style: italic;
 }
 
-.detail-item.green-border { border-left-color: var(--green-primary); }
-.detail-item.pink-border { border-left-color: var(--pink-primary); }
-
-.detail-item h4 {
-margin-bottom: 0.5rem;
-font-size: 1.05rem;
+.game-card {
+  border: 2px dashed #c4b5fd;
+  background: #faf5ff;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  margin-top: 1.25rem;
 }
 
-.citation-tag {
-display: inline-block;
-font-size: 0.75rem;
-padding: 0.15rem 0.5rem;
-background: #e2e8f0;
-color: var(--text-secondary);
-border-radius: 4px;
-margin-top: 0.5rem;
-font-weight: 600;
+.sound-toggle-bar {
+  margin-bottom: 1.25rem;
 }
 
-/* Interactive Quiz Game */
-.quiz-container {
-background: linear-gradient(135deg, rgba(219, 234, 254, 0.4), rgba(252, 231, 243, 0.4));
-border: 2px dashed var(--pink-primary);
-border-radius: var(--radius-lg);
-padding: 2rem;
-margin: 2.5rem 0;
+.sound-btn {
+  background: #ffffff;
+  border: 1.5px solid var(--gz-purple);
+  color: var(--gz-purple);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.sound-btn:hover {
+  background: var(--gz-purple-light);
 }
 
 .quiz-option {
-display: block;
-width: 100%;
-text-align: left;
-background: #fff;
-border: 1px solid var(--border-color);
-padding: 1rem 1.25rem;
-border-radius: var(--radius-md);
-margin-bottom: 0.75rem;
-font-size: 0.95rem;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  padding: 1.15rem 1.4rem;
+  margin-bottom: 0.85rem;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  font-family: inherit;
+  transition: all 0.2s ease;
 }
 
 .quiz-option:hover {
-background: #f8fafc;
-border-color: var(--blue-primary);
-transform: translateX(4px);
+  border-color: var(--gz-purple);
+  background: #fbf8ff;
 }
 
-.quiz-option.correct {
-background: var(--green-light) !important;
-border-color: var(--green-primary) !important;
-color: var(--green-dark) !important;
-font-weight: 700;
+.quiz-feedback {
+  display: none;
+  padding: 1.35rem 1.6rem;
+  border-radius: var(--radius-md);
+  margin-top: 1.35rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
 }
 
-.quiz-option.wrong {
-background: var(--pink-light) !important;
-border-color: var(--pink-primary) !important;
-color: var(--pink-dark) !important;
-font-weight: 700;
+/* --- 8. LEMBAR KERJA MAHASISWA (WORKSHEET VIEW) --- */
+.print-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: #ffffff;
+  padding: 1.75rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
-.feedback-msg {
-display: none;
-margin-top: 1rem;
-padding: 0.9rem 1.2rem;
-border-radius: var(--radius-md);
-font-weight: 600;
+.worksheet-paper {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
-/* Presentation Slides Viewport */
-.slides-viewport {
-position: relative;
-width: 100vw;
-height: 100vh;
-overflow: hidden;
-background: #0f172a;
-color: #fff;
-display: flex;
-align-items: center;
-justify-content: center;
+.large-answer-area {
+  width: 100%;
+  min-height: 240px;
+  padding: 1.35rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  border: 2px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  resize: vertical;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
 }
 
-.slide {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-padding: 4rem 6rem;
-display: flex;
-flex-direction: column;
-justify-content: center;
-opacity: 0;
-visibility: hidden;
-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-transform: scale(0.95);
+.large-answer-area:focus {
+  border-color: var(--gz-purple);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
 }
 
-.slide.active {
-opacity: 1;
-visibility: visible;
-transform: scale(1);
+/* --- 9. PRESENTASI SLIDE DOSEN --- */
+.presentation-frame-bright {
+  background: #ffffff;
+  color: #1e293b;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3.25rem 2.5rem 3.25rem;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-lg);
 }
 
-.slide h1 {
-font-size: 3.25rem;
-line-height: 1.15;
-color: #f8fafc;
-margin-bottom: 1.5rem;
+.presentation-frame-bright h2 {
+  color: var(--gz-text-dark);
+  font-size: clamp(2rem, 3.8vw, 2.5rem);
+  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
 }
 
-.slide h2 {
-font-size: 2.25rem;
-color: #f8fafc;
-margin-bottom: 1.25rem;
+.presentation-frame-bright .slide-body {
+  font-size: 1.25rem;
+  line-height: 1.85;
+  color: #334155;
+  flex-grow: 1;
 }
 
-.slide-content-box {
-background: rgba(255, 255, 255, 0.05);
-border: 1px solid rgba(255, 255, 255, 0.12);
-border-radius: 20px;
-padding: 2.5rem;
-backdrop-filter: blur(16px);
-max-width: 1100px;
-width: 100%;
+.presentation-frame-bright .slide-body p {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.presentation-frame-bright .slide-body li {
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2rem;
+  list-style: none;
+}
+
+.presentation-frame-bright .slide-body li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--gz-purple);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.speaker-notes-bright {
+  margin-top: 1.75rem;
+  background: #f8fafc;
+  border-left: 4px solid var(--gz-orange);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+  display: none;
 }
 
 .slide-controls {
-position: fixed;
-bottom: 2rem;
-left: 50%;
-transform: translateX(-50%);
-display: flex;
-gap: 1.25rem;
-z-index: 1000;
-background: rgba(15, 23, 42, 0.8);
-border: 1px solid rgba(255, 255, 255, 0.2);
-padding: 0.75rem 1.5rem;
-border-radius: 9999px;
-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #f1f5f9;
+  padding-top: 2rem;
+  margin-top: 2.25rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.slide-counter {
-display: flex;
-align-items: center;
-color: #94a3b8;
-font-weight: 700;
-font-size: 0.9rem;
+.btn-ctrl {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
 }
 
-/* Printable Worksheet Styles */
+.btn-ctrl.secondary {
+  background: #f1f5f9;
+  color: var(--text-muted);
+  border: 1px solid #cbd5e1;
+}
+
+.btn-ctrl.secondary:hover {
+  background: #e2e8f0;
+  color: var(--gz-text-dark);
+}
+
+/* --- 10. PENGATURAN MODE CETAK DOKUMEN (PRINT TO PDF) --- */
 @media print {
-body {
-background: #fff !important;
-color: #000 !important;
-font-size: 12pt;
-}
-.navbar, .btn, .quiz-container, .no-print {
-display: none !important;
-}
-.container {
-max-width: 100% !important;
-padding: 0 !important;
-}
-.worksheet-printable {
-display: block !important;
-page-break-before: always;
-}
-}
+  .site-header,
+  .print-action-bar,
+  .sound-toggle-bar,
+  .slide-controls,
+  nav,
+  .btn-ctrl,
+  .hero-meta {
+    display: none !important;
+  }
 
-.worksheet-printable {
-display: none;
-}
+  .view-section {
+    display: none !important;
+  }
 
-@media (max-width: 768px) {
-.slide {
-padding: 2rem 1.5rem;
-}
-.slide h1 {
-font-size: 2rem;
-}
-.slide h2 {
-font-size: 1.6rem;
-}
-.slide-controls {
-bottom: 1rem;
-width: 90%;
-justify-content: space-between;
-}
+  #worksheet-view {
+    display: block !important;
+  }
+
+  .content-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .worksheet-paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .large-answer-area {
+    border: 1.5px solid #000000 !important;
+    box-shadow: none !important;
+  }
 }
