@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 13: Teknik Membaca Artikel Ilmiah di Jurnal Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #F8FAF9;
+      --card-bg: #FFFFFF;
+      --text-main: #111817;
+      --text-muted: #52605D;
+      
+      /* Palet Warna Baru: Hijau Mint, Abu-abu, dan Black */
+      --theme-black: #111817;
+      --theme-black-soft: #1E2624;
+      --theme-mint: #10B981;
+      --theme-mint-light: #D1FAE5;
+      --theme-mint-subtle: #ECFDF5;
+      --theme-mint-dark: #065F46;
+      --theme-gray: #64748B;
+      --theme-gray-light: #F1F5F9;
+      --theme-gray-border: #CBD5E1;
+      
+      --border-dark: #111817;
+      --shadow-solid: 4px 4px 0px #111817;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(248, 250, 249, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--theme-mint-light);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--theme-mint-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--theme-black);
+      color: #FFFFFF;
+    }
+
+    .btn-worksheet {
+      background-color: var(--theme-mint);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: var(--theme-black);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: 4px 4px 0px var(--theme-mint);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+    }
+
+    .time-slot.t1 { background: var(--theme-mint-subtle); }
+    .time-slot.t2 { background: var(--theme-gray-light); }
+    .time-slot.t3 { background: var(--theme-mint-light); }
+    .time-slot.t4 { background: #FFFFFF; }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--theme-mint-dark);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--theme-black);
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-canvas);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--theme-black);
+      color: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: var(--theme-black); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--theme-mint-dark); }
+    p { margin-bottom: 1rem; color: #1E2624; }
+
+    /* DIAGRAM ALUR MEMBACA */
+    .diagram-container {
+      background: var(--theme-gray-light);
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 4px 4px 0px var(--theme-mint);
+    }
+
+    .diagram-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--theme-black);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .flow-step-item {
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      gap: 1rem;
+    }
+
+    .flow-step-num {
+      background: var(--theme-mint);
+      color: #FFFFFF;
+      font-weight: 800;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+
+    .flow-step-text strong {
+      display: block;
+      color: var(--theme-black);
+      font-size: 0.95rem;
+    }
+
+    .flow-step-text small {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* QUOTE BOX */
+    .quote-box {
+      background-color: var(--theme-mint-subtle);
+      border-left: 5px solid var(--theme-mint);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #064E3B;
+      border-top: 1px solid #A7F3D0;
+      border-right: 1px solid #A7F3D0;
+      border-bottom: 1px solid #A7F3D0;
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--theme-mint-dark);
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--theme-gray);
+      border-left: 5px solid var(--theme-gray);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .example-box strong {
+      color: var(--theme-black);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item.accent-mint { background: var(--theme-mint-light); }
+    .feature-item.accent-gray { background: var(--theme-gray-light); }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--theme-black);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+    }
+
+    /* GAMES CARD */
+    .game-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border-dark);
+      transition: all 0.1s ease;
+      color: var(--text-main);
+    }
+
+    .quiz-btn:hover {
+      background: var(--theme-mint-light);
+      transform: translate(-1px, -1px);
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 700;
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(17, 24, 23, 0.9);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid var(--border-dark);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--theme-mint);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: #FFFFFF;
+      border-top: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--theme-black);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--theme-mint-dark);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-visual-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .slide-card-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--theme-mint);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--theme-mint);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: var(--theme-mint-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    .case-study-box {
+      background: #FFFDFD;
+      border: 2px solid var(--border-dark);
+      border-left: 6px solid var(--theme-mint);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-box h4 {
+      color: var(--theme-mint-dark);
+      font-size: 11pt;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .slide-visual-grid { grid-template-columns: 1fr; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>📖</span> Penulisan Karya Ilmiah • Pertemuan 13 (2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Presentasi Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📝</span> Buka Lembar Studi Kasus
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Alokasi Waktu: 2 SKS (100 Menit)</span>
+            <span class="tag">Tema: Hijau Mint, Abu-abu & Black</span>
+            <span class="tag">Topik: Teknik Membaca Artikel Ilmiah</span>
+          </div>
+          <h1>Teknik Membaca Kritis Artikel di Jurnal Ilmiah</h1>
+          <p>Materi pertemuan ketiga belas: menguasai keterampilan membaca sebagai fondasi menulis, memahami proses mental membaca senyap, membedakan teknik pemindaian cepat (scanning vs skimming), serta menerapkan strategi membaca kritis bagian demi bagian naskah jurnal ilmiah.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=700&q=80" alt="Membaca Kritis Artikel Ilmiah" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot t1">
+        <span class="time">10 Menit</span>
+        <div class="title">Warming Up & Pendahuluan</div>
+        <small style="color:var(--text-muted)">Kemahiran membaca sebagai prasyarat kemajuan sains dan kebangkitan bangsa.</small>
+      </div>
+      <div class="time-slot t2">
+        <span class="time">45 Menit</span>
+        <div class="title">Materi Inti Komprehensif</div>
+        <small style="color:var(--text-muted)">Proses mental, scanning vs skimming, dan telaah 7 bagian struktur jurnal.</small>
+      </div>
+      <div class="time-slot t3">
+        <span class="time">5 Menit</span>
+        <div class="title">Games Interaktif</div>
+        <small style="color:var(--text-muted)">Uji Cepat: Menentukan penggunaan teknik scanning vs skimming dalam kasus riil).</small>
+      </div>
+      <div class="time-slot t4">
+        <span class="time">40 Menit</span>
+        <div class="title">Evaluasi Studi Kasus & Penutup</div>
+        <small style="color:var(--text-muted)">Analisis mendalam 3 kasus membaca kritis artikel jurnal tanpa kunci jawaban).</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Membaca sebagai Kunci Kemajuan Ilmiah (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Warming Up & Landasan Literasi Akademik</small>
+        </div>
+      </div>
+      <p>Membaca artikel ilmiah di jurnal merupakan kebutuhan mutlak bagi akademisi). Bagi mahasiswa tingkat akhir, membaca adalah prasyarat wajib untuk menemukan kebaruan riset sebelum mempublikasikan karyanya). Sedangkan bagi dosen, membaca jurnal menjadi penopang utama pelaksanaan tridarma perguruan tinggi, baik untuk pengajaran, penelitian, maupun pengabdian masyarakat).</p>
+
+      <div class="quote-box">
+        "Para pakar sepakat kemahiran membaca merupakan prasyarat mutlak bagi setiap insan yang ingin memperoleh kemajuan. Ia juga menambahkan, bisa kita ambil contoh kemajuan tersebut dari negara Jepang. Hingga pertengahan abad ke-18, ketika Jepang melancarkan gerakan Restorasi Meiji, menerjemahkan buku-buku ilmiah dan teknis secara besar-besaran, dan memperkenalkan budaya literasi kepada masyarakat... kurang dari satu abad setelah gerakan ini dimulai dan budaya literasi meningkat, bangsa Jepang muncul sebagai negara adidaya baru yang keberadaannya sangat dihargai dan dihormati oleh negara-negara di seluruh dunia."
+        <span class="citation">— Halaman 159–160)</span>
+      </div>
+
+      <p>Keterampilan membaca dan menulis saling bertaut erat). Mendengarkan dan membaca merupakan keterampilan masukan (input), sedangkan berbicara dan menulis merupakan keterampilan luaran (output)). Seorang penulis yang tangguh hampir selalu lahir dari seorang pembaca yang tekun dan kritis).</p>
+    </article>
+
+    <!-- SESI 2: MATERI INTI (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Materi Inti: Proses Kognitif & Strategi Membaca Jurnal (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Kajian Komprehensif Berdasarkan Rangkuman Bab 12</small>
+        </div>
+      </div>
+
+      <!-- PROSES MEMBACA -->
+      <h3>A. Hakikat Proses Membaca Kritis</h3>
+      <p>Membaca senyap pada orang dewasa terpelajar berlangsung dengan kecepatan sekitar 200 hingga 400 kata per menit (words per minute* / wpm)). Kendati demikian, membaca bukan proses visual semata-mata).</p>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-mint">
+          <strong>Bukan Sekadar Hafalan Kata</strong>
+          Membaca artikel ilmiah tidak menuntut penghafalan kata demi kata atau kalimat demi kalimat, melainkan proses mental menangkap pesan inti dan logika argumen penulis).
+        </div>
+        <div class="feature-item accent-gray">
+          <strong>Aktivitas Evaluasi Kognitif</strong>
+          Membaca adalah proses aktif memahami, menerima, menolak, membandingkan, serta menguji keabsahan dalil-dalil yang disajikan oleh penulis naskah).
+        </div>
+        <div class="feature-item">
+          <strong>Faktor Hambatan Membaca</strong>
+          Ketidakmampuan mencerna naskah ilmiah seringkali disebabkan oleh kelelahan fisik, keraguan, ketakutan menghadapi istilah teknis, dan kurangnya rasa percaya diri).
+        </div>
+        <div class="feature-item">
+          <strong>Peran Pengalaman Pembaca</strong>
+          Tingkat pemahaman terhadap naskah sangat dipengaruhi oleh kekayaan literasi, pengalaman meneliti, serta jam terbang pembaca dalam menggeluti bidang ilmunya).
+        </div>
+      </div>
+
+      <!-- SCANNING VS SKIMMING -->
+      <h3>B. Dua Teknik Membaca Cepat: Scanning dan Skimming</h3>
+      <p>Untuk menavigasi ribuan publikasi jurnal yang terbit setiap tahun, peneliti harus memadukan dua teknik penelusuran cepat):</p>
+
+      <div class="feature-grid">
+        <div class="feature-item" style="border-left: 6px solid var(--theme-mint);">
+          <strong>1. Scanning (Pemindaian Spesifik)</strong>
+          Metode penelusuran cepat yang difokuskan untuk menemukan data atau informasi spesifik (seperti kata kunci khusus, nama tokoh, rumus matematis, atau angka statistik) tanpa membaca rincian teks lainnya). Dilakukan dengan membaca baris subjek atau memindai pandangan secara vertikal).
+        </div>
+        <div class="feature-item" style="border-left: 6px solid var(--theme-gray);">
+          <strong>2. Skimming (Menjelajah Cepat)</strong>
+          Proses melayari seluruh permukaan naskah atau membalik halaman demi halaman secara cepat untuk memahami gambaran umum isi artikel, struktur subbab, dan arah simpulan tanpa membuang banyak waktu).
+        </div>
+      </div>
+
+      <div class="example-box">
+        <strong>Contoh Perbedaan Penerapan Nyata:</strong><br>
+        • <em>Kasus Scanning:</em> Peneliti membuka artikel biologi hanya untuk mencari berapa nilai p-value uji ANOVA atau suhu optimum inkubasi bakteri pada tabel hasil).<br>
+        • <em>Kasus Skimming:</em> Peneliti membuka naskah jurnal 15 halaman dan membaca kilat judul, abstrak, subjudul, serta paragraf kesimpulan dalam waktu 3 menit untuk menentukan apakah naskah tersebut relevan dijadikan rujukan).
+      </div>
+
+      <!-- DIAGRAM ALUR TELAAH BAGIAN JURNAL -->
+      <h3>C. Diagram Alur Membaca Kritis Bagian demi Bagian Jurnal</h3>
+      <p>Pembacaan artikel ilmiah menuntut pemeriksaan terstruktur pada setiap elemen pembentuknya):</p>
+
+      <div class="diagram-container">
+        <div class="diagram-title">
+          <span>📊</span> Diagram Alur Investigasi Kritis Artikel Ilmiah
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step-item">
+            <div class="flow-step-num">1</div>
+            <div class="flow-step-text">
+              <strong>Judul (Title)</strong>
+              <small>Mendeteksi topik utama, identitas partisipan/subjek riset, serta afiliasi penulis).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">2</div>
+            <div class="flow-step-text">
+              <strong>Abstrak (Abstract)</strong>
+              <small>Memahami ikhtisar padat mengenai tujuan, metode, temuan utama, dan simpulan umum).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">3</div>
+            <div class="flow-step-text">
+              <strong>Pendahuluan (Introduction)</strong>
+              <small>Mengidentifikasi perumusan masalah, teori dasar yang melandasi, hipotesis, dan arah kajian).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">4</div>
+            <div class="flow-step-text">
+              <strong>Metode Penelitian (Methods)</strong>
+              <small>Memeriksa validitas desain, keterwakilan sampel, dan ada tidaknya variabel perancu).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">5</div>
+            <div class="flow-step-text">
+              <strong>Hasil (Results)</strong>
+              <small>Menganalisis bukti numerik/grafik pendukung hipotesis serta mendeteksi adanya potensi bias pelaporan).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">6</div>
+            <div class="flow-step-text">
+              <strong>Pembahasan (Discussion)</strong>
+              <small>Mengevaluasi cara penulis memaknai temuan, komparasi dengan riset lain, dan pengakuan keterbatasan).</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">7</div>
+            <div class="flow-step-text">
+              <strong>Kesimpulan (Conclusion)</strong>
+              <small>Menilai signifikansi capaian jawaban atas masalah dan peta jalan bagi riset selanjutnya).</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KIAT PRAKTIS -->
+      <h3>D. Kiat Membangun Kemahiran Membaca Artikel Ilmiah</h3>
+      <ul class="detailed-list">
+        <li><strong>Membuat Anotasi & Catatan:</strong> Memberi tanda stabilo, menggarisbawahi argumen kunci, dan mencatat definisi istilah teknis pada tepi naskah).</li>
+        <li><strong>Rujukan Sumber Eksternal:</strong> Membuka kamus istilah atau ensiklopedia bidang ilmu saat menghadapi terminologi asing yang tidak dijelaskan).</li>
+        <li><strong>Diskusi Kolegial:</strong> Membedah artikel bersama rekan kelompok atau dosen pembimbing guna memperoleh beragam sudut pandang kritis).</li>
+        <li><strong>Membaca Berulang Kali:</strong> Naskah teoretis yang rumit membutuhkan pembacaan bertahap (bacaan awal untuk kerangka, bacaan kedua untuk pembuktian data)).</li>
+        <li><strong>Penjadwalan Khusus:</strong> Menyediakan waktu tenang tanpa gangguan gawai untuk membaca artikel secara fokus).</li>
+      </ul>
+    </article>
+
+    <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Games Interaktif: Deteksi Teknik Membaca (5 Menit)</h2>
+          <small style="color:var(--text-muted)">Uji Cepat Pemilihan Metode Scanning vs Skimming</small>
+        </div>
+      </div>
+      <div class="game-card">
+        <h4>⚡ Studi Kasus Pengambilan Keputusan</h4>
+        <p style="margin-top:0.5rem">Seorang mahasiswa sedang merevisi skripsi dan membutuhkan angka persentase penurunan emisi karbon yang dihasilkan oleh jenis filter X pada sebuah artikel jurnal 20 halaman dalam waktu kurang dari satu menit. Teknik membaca manakah yang paling efektif digunakan?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="checkAnswer(true)">A. Teknik Scanning (Memindai kata kunci "filter X" dan simbol "%" pada tabel hasil)</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">B. Teknik Skimming (Membaca cepat seluruh alinea dari halaman pertama sampai akhir)</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">C. Membaca kritis bagian Pendahuluan dan Kajian Pustaka secara teliti</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">D. Membaca senyap berulang kali dengan kecepatan 200 kata per menit</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </article>
+
+    <!-- SESI 4: TANYA JAWAB & CLOSING -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Tanya Jawab & Closing Statement</h2>
+          <small style="color:var(--text-muted)">Penguatan Kapasitas Berpikir Kritis Mahasiswa</small>
+        </div>
+      </div>
+      <p><strong>Fokus Diskusi & Tanya Jawab:</strong></p>
+      <ul class="detailed-list">
+        <li>Bagaimana cara mendeteksi bahwa sebuah grafik dalam bagian hasil sengaja dimanipulasi skalanya untuk melebih-lebihkan ukuran efek (effect size))?</li>
+        <li>Mengapa seorang peneliti tidak boleh mencukupkan diri hanya dengan membaca abstrak saja saat menyusun kajian pustaka)?</li>
+      </ul>
+      <div class="quote-box" style="border-left-color: var(--theme-mint); background-color: var(--theme-mint-subtle);">
+        "Membaca artikel ilmiah bukan sekadar menyerap kalimat tertulis, melainkan dialog kritis antara nalar pembaca dengan pembuktian peneliti. Dengan membaca secara jeli dan terstruktur, kita tidak mudah terkecoh oleh klaim sepihak dan mampu membangun riset di atas fondasi yang kokoh."
+        <span class="citation">— Penutup Perkuliahan Pertemuan ke-13</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="background:var(--theme-mint); color:#FFFFFF; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan XIII: Teknik Membaca Artikel Ilmiah</span>
+        </div>
+        <button class="btn btn-worksheet" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
+        <h1 class="slide-title">Teknik Membaca Kritis Artikel Jurnal</h1>
+        <div class="slide-visual-grid">
+          <div>
+            <p style="font-size:1.15rem; margin-bottom:1.5rem;">Menguasai proses kognitif membaca senyap, teknik pemindaian cepat (scanning vs skimming), serta strategi membongkar struktur IMRAD secara mendalam).</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="tag" style="background:var(--theme-mint-light)">Durasi: 100 Menit</span>
+              <span class="tag" style="background:var(--theme-gray-light)">Fokus: Bab 12 Rujukan Teks</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Slide Sampul" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-mint);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: PROSES KOGNITIF & FAKTOR HAMBATAN -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">PROSES MENTAL MEMBACA</div>
+        <h2 class="slide-title">Membaca Bukan Sekadar Visual</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.3rem;">Kecepatan & Pemahaman</strong>
+            Kecepatan membaca senyap terpelajar 200–400 wpm). Lebih penting memahami pesan inti daripada menghafal kata per kata).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.3rem;">Hambatan Mental</strong>
+            Kelelahan, ketakutan menghadapi istilah asing, dan keraguan adalah penyebab utama kegagalan memahami naskah).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.3rem;">Input vs Output</strong>
+            Membaca adalah keterampilan input yang berbanding lurus dengan kemahiran menulis sebagai keterampilan output).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.3rem;">Karakter Kritis</strong>
+            Proses aktif untuk menerima, menolak, membandingkan, dan menguji kebenaran argumen penulis).
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: SCANNING VS SKIMMING -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">METODE PENELUSURAN CEPAT</div>
+        <h2 class="slide-title">Scanning vs Skimming</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.4rem;">Scanning (Pemindaian)</strong>
+            • Mencari fakta/kata kunci spesifik).<br>
+            • Mengabaikan rincian teks lainnya).<br>
+            • Menggunakan penunjuk jari atau baris subjek).<br>
+            • Ideal untuk mencari angka, nama, atau rumus).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.4rem;">Skimming (Menjelajah)</strong>
+            • Membaca kilat seluruh permukaan naskah).<br>
+            • Memahami gambaran besar isi artikel).<br>
+            • Meneliti judul, subbab, dan paragraf penutup).<br>
+            • Efektif menyaring naskah yang relevan).
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: PEMBEDAHAN STRUKTUR IMRAD -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">ANATOMI JURNAL ILMIAH</div>
+        <h2 class="slide-title">Pertanyaan Kritis Setiap Bagian</h2>
+        <div class="slide-card-box">
+          <ul style="padding-left:1.2rem; font-size:0.95rem; line-height:1.7;">
+            <li><strong>Introduction:</strong> Apa masalah spesifik yang diteliti dan variabel apa saja yang dihubungkan)?</li>
+            <li><strong>Methods:</strong> Apakah desain riset valid dan adakah variabel perancu yang diabaikan peneliti)?</li>
+            <li><strong>Results:</strong> Bagaimana keselarasan data numerik dengan hipotesis dan apakah bebas dari bias analisis)?</li>
+            <li><strong>Discussion:</strong> Apakah interpretasi penulis didukung bukti nyata atau terdapat penafsiran lain)?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: PENUTUP -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">SIMPULAN & DISKUSI</div>
+        <h2 class="slide-title">Membangun Budaya Literasi Kritis</h2>
+        <div class="quote-box" style="font-size:1.15rem; margin-top:1.5rem;">
+          "Kemahiran membaca merupakan prasyarat mutlak bagi setiap insan yang ingin memperoleh kemajuan... Membaca artikel ilmiah memerlukan kesabaran dan praktik. Semakin sering kita melakukannya, semakin baik kita dalam menganalisis dan memahami artikel ilmiah.")
+        </div>
+        <p style="margin-top:2rem; font-size:1.05rem;">
+          <strong>Aktivitas Terjadwal:</strong> Buka lembar kerja untuk menganalisis 3 kasus kritis penelusuran naskah jurnal ilmiah secara mandiri.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: EVALUASI STUDI KASUS MAHASISWA -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:var(--theme-mint-dark);">
+          <span>📄 Lembar Evaluasi Studi Kasus Mahasiswa (Bab 12)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak Lembar Kasus (PDF)
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN EVALUASI STUDI KASUS -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:15pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Evaluasi Analisis Kasus: Teknik Membaca Kritis Jurnal</h2>
+          <h3 style="font-size:11.5pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 13</h3>
+          <p style="font-size:9.5pt; color:#333;">Materi Telaah: Bab 12 (Proses Membaca, Scanning vs Skimming, Telaah Kritis Struktur IMRAD))</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:15px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <div style="margin-bottom:15px; font-size:9.5pt; background:var(--theme-mint-light); padding:8px 12px; border:1px solid #A7F3D0; border-radius:4px;">
+          <strong>Petunjuk Pengerjaan:</strong> Bacalah ketiga kasus penerapan teknik membaca artikel jurnal ilmiah di bawah ini secara seksama. Berikan telaah analitis, kritik metodologis, dan usulan solutif pada kolom jawaban yang tersedia secara mendalam!
+        </div>
+
+        <!-- KASUS 1 -->
+        <div class="case-study-box">
+          <h4>Kasus 1: Jebakan Pembacaan Abstrak Tunggal dalam Sintesis Literatur</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Seorang mahasiswa pascasarjana menyusun kajian pustaka untuk proposal tesisnya dengan mengumpulkan 30 artikel jurnal internasional. Untuk menghemat waktu, ia hanya membaca bagian abstrak dari ketiga puluh artikel tersebut, lalu langsung menyalin klaim temuan akhir penulis ke dalam naskah proposalnya. Saat ujian seminar proposal, penguji menemukan bahwa metode yang digunakan pada salah satu artikel rujukan utama ternyata memiliki kelemahan fatal: ukuran sampelnya hanya 3 orang responden dan tidak mengontrol variabel perancu usia, sehingga kesimpulan yang dikutip oleh mahasiswa tersebut sesungguhnya tidak valid untuk digeneralisasikan.
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-black);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Mengapa strategi membaca yang hanya mengandalkan abstrak dinilai menyesatkan dalam tradisi akademik berdasarkan paparan halaman 164)?</li>
+            <li>Pertanyaan-pertanyaan kritis apa saja yang wajib diajukan saat membaca bagian <em>Metode Penelitian</em> dan <em>Hasil</em> agar peneliti terhindar dari pengutipan data yang bias atau cacat metodologi)?</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:90px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Analisis Kasus 1]
+          </div>
+        </div>
+
+        <!-- KASUS 2 -->
+        <div class="case-study-box">
+          <h4>Kasus 2: Distorsi Interpretasi Hasil dan Grafik dalam Bagian Pembahasan</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Saat membaca naskah artikel uji klinis obat herbal, seorang peneliti muda menemukan bahwa pada bagian <em>Results</em> ditampilkan diagram batang yang memperlihatkan peningkatan kesembuhan sebesar 80%. Namun, saat ditelaah lebih dalam pada sumbu vertikal grafik (sumbu Y), skala grafik sengaja dimulai dari angka 75% hingga 81% (skala terpotong) sehingga perbedaan 2% terlihat sangat mencolok secara visual. Selain itu, pada bagian <em>Discussion</em>, penulis artikel mengklaim bahwa obat herbal ini dapat menggantikan obat paten di rumah sakit, padahal uji statistik inferensial menunjukkan nilai signifikansi p = 0,08 (tidak signifikan secara statistik).
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-black);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Berdasarkan kaidah membaca kritis pada halaman 165–166, bagaimanakah cara mendeteksi bias pelaporan data dan manipulasi format visual grafik pada naskah ilmiah)?</li>
+            <li>Apakah penulis artikel tersebut dibenarkan dalam membuat klaim teoretis pada bagian pembahasan? Evaluasi hubungan antara bukti numerik di bagian hasil dengan klaim pada bagian diskusi)!</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:90px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Analisis Kasus 2]
+          </div>
+        </div>
+
+        <!-- KASUS 3 -->
+        <div class="case-study-box">
+          <h4>Kasus 3: Penerapan Terpadu Scanning, Skimming, dan Anotasi Digital</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Sebuah kelompok riset mahasiswa diberi tugas menelaah 15 artikel jurnal bereputasi tinggi mengenai kecerdasan buatan dalam waktu dua hari. Mereka merasa kewalahan dan mengalami kelelahan mental membaca senyap kata demi kata secara lambat (kurang dari 100 wpm). Mereka belum menguasai cara mengintegrasikan teknik membaca cepat dengan teknik anotasi aktif untuk menyaring argumen kunci secara efisien.
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-black);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Rancanglah panduan langkah demi langkah (SOP Membaca) yang memadukan teknik <em>Skimming</em> (eksplorasi awal), <em>Scanning</em> (pencarian data kunci), dan pembuatan <em>Anotasi</em> agar tim tersebut dapat menyelesaikan penelaahan 15 artikel secara tepat waktu tanpa kehilangan esensi pemahaman ilmiah)!</li>
+            <li>Bagaimana faktor psikologis (seperti keraguan dan kurang percaya diri) dapat diatasi agar proses mental membaca naskah bahasa Inggris yang kompleks berjalan lancar)?</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:90px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Analisis Kasus 3]
+          </div>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Tanda Tangan Mahasiswa:</strong><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Verifikasi Dosen Pengampu:</strong><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+
+    /* QUIZ PEMBUKA LOGIC */
+    function checkAnswer(isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      if (isCorrect) {
+        feedback.style.backgroundColor = '#D1FAE5';
+        feedback.style.borderColor = '#10B981';
+        feedback.style.color = '#065F46';
+        feedback.innerText = '✅ TEPAT SEKALI! Berdasarkan Halaman 162, teknik scanning merupakan metode membaca cepat yang ditujukan mencari informasi spesifik (seperti angka persentase atau kata kunci tertentu) tanpa membaca detail keseluruhan teks.';
+      } else {
+        feedback.style.backgroundColor = '#FEE2E2';
+        feedback.style.borderColor = '#EF4444';
+        feedback.style.color = '#991B1B';
+        feedback.innerText = '❌ KURANG TEPAT. Untuk menemukan data angka atau istilah spesifik dalam hitungan detik, metode yang paling tepat adalah Scanning, bukan Skimming atau membaca senyap lambat (Halaman 162).';
+      }
+    }
+  </script>
+</body>
+</html>
