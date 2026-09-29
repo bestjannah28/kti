@@ -28,7 +28,7 @@
       --radius-md: 18px;
     }
 
-     {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -43,7 +43,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    / TOP BAR / NAVIGATION /
+    /* TOP BAR / NAVIGATION */
     header.site-header {
       position: sticky;
       top: 0;
@@ -110,7 +110,7 @@
     .btn-worksheet { background-color: var(--genz-mint); }
     .btn-task { background-color: var(--genz-peach); }
 
-    / CONTAINER & HERO /
+    /* CONTAINER & HERO */
     .container {
       max-width: 1080px;
       margin: 2rem auto;
@@ -157,7 +157,7 @@
       max-width: 800px;
     }
 
-    / TIMELINE SECTION /
+    /* TIMELINE SECTION */
     .timeline-card {
       background: #FFFFFF;
       border: 2px solid var(--border-dark);
@@ -194,7 +194,7 @@
       font-weight: 700;
     }
 
-    / SECTION CARD /
+    /* SECTION CARD */
     .section-block {
       background: var(--card-bg);
       border: 2px solid var(--border-dark);
@@ -231,7 +231,7 @@
     h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; }
     p { margin-bottom: 1rem; color: #2D3139; }
 
-    / QUOTE BOX /
+    /* QUOTE BOX */
     .quote-box {
       background-color: #F8FAFC;
       border-left: 5px solid var(--genz-lilac-dark);
@@ -254,7 +254,7 @@
       color: var(--genz-lilac-dark);
     }
 
-    / GRID LISTS /
+    /* GRID LISTS */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -291,7 +291,7 @@
       padding-left: 0.35rem;
     }
 
-    / GAMES CARD /
+    /* GAMES CARD */
     .game-card {
       background: var(--genz-yellow);
       border: 2px solid var(--border-dark);
@@ -334,7 +334,7 @@
       border: 2px solid var(--border-dark);
     }
 
-    / FULLSCREEN PRESENTATION MODAL /
+    /* FULLSCREEN PRESENTATION MODAL */
     .presentation-modal {
       display: none;
       position: fixed;
@@ -414,10 +414,10 @@
       margin-bottom: 1.5rem;
     }
 
-    / PRINT FORMAT /
+    /* PRINT FORMAT */
     @media print {
-      body  { visibility: hidden; }
-      .print-section, .print-section  { visibility: visible; }
+      body * { visibility: hidden; }
+      .print-section, .print-section * { visibility: visible; }
       .print-section {
         position: absolute;
         left: 0;
@@ -857,7 +857,7 @@
 
   <!-- JAVASCRIPT CONTROLLER -->
   <script>
-    / SLIDE PRESENTATION LOGIC /
+    /* SLIDE PRESENTATION LOGIC */
     let currentSlide = 1;
     const totalSlides = 5;
 
@@ -908,7 +908,7 @@
       }
     });
 
-    / QUIZ LOGIC /
+    /* QUIZ LOGIC */
     function checkAnswer(isCorrect) {
       const feedback = document.getElementById('quiz-feedback');
       feedback.style.display = 'block';
@@ -923,7 +923,7 @@
       }
     }
 
-    / PRINT HANDLER FOR WORKSHEET & TASK /
+    /* PRINT HANDLER FOR WORKSHEET & TASK */
     function printDoc(elementId) {
       const printContents = document.getElementById(elementId).innerHTML;
       const printWindow = window.open('', '', 'height=800,width=900');
