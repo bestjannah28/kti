@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 11: Plagiarisme dalam Karya Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #FFF5F7;
+      --card-bg: #FFFFFF;
+      --text-main: #201217;
+      --text-muted: #644952;
+      
+      /* Palet Warna: Magenta, Teracotta, Baby Pink, Blue Light */
+      --theme-magenta: #C026D3;
+      --theme-magenta-dark: #86198F;
+      --theme-teracotta: #C2410C;
+      --theme-teracotta-light: #FFEDD5;
+      --theme-baby-pink: #FCE7F3;
+      --theme-blue-light: #E0F2FE;
+      --theme-blue-dark: #0369A1;
+      
+      --border-dark: #201217;
+      --shadow-solid: 4px 4px 0px #201217;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 245, 247, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--theme-baby-pink);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--theme-magenta-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--theme-magenta);
+      color: #FFFFFF;
+    }
+
+    .btn-worksheet {
+      background-color: var(--theme-teracotta);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: var(--theme-magenta-dark);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: 4px 4px 0px var(--theme-magenta);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+    }
+
+    .time-slot.t1 { background: var(--theme-baby-pink); }
+    .time-slot.t2 { background: var(--theme-blue-light); }
+    .time-slot.t3 { background: var(--theme-teracotta-light); }
+    .time-slot.t4 { background: #FFFFFF; }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--theme-magenta-dark);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--theme-teracotta);
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-canvas);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--theme-magenta);
+      color: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: var(--theme-magenta-dark); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--theme-teracotta); }
+    p { margin-bottom: 1rem; color: #2D1A22; }
+
+    .content-img-wrapper {
+      margin: 1.5rem 0;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: 4px 4px 0px var(--theme-teracotta);
+    }
+
+    .content-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-caption {
+      background: #FFFFFF;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1.5px solid var(--border-dark);
+    }
+
+    /* QUOTE BOX (Sitasi nomor halaman) */
+    .quote-box {
+      background-color: var(--theme-baby-pink);
+      border-left: 5px solid var(--theme-magenta);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #4A044E;
+      border-top: 1px solid #FBCFE8;
+      border-right: 1px solid #FBCFE8;
+      border-bottom: 1px solid #FBCFE8;
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--theme-teracotta);
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--theme-teracotta);
+      border-left: 5px solid var(--theme-teracotta);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .example-box strong {
+      color: var(--theme-teracotta);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item.accent-pink { background: var(--theme-baby-pink); }
+    .feature-item.accent-blue { background: var(--theme-blue-light); }
+    .feature-item.accent-teracotta { background: var(--theme-teracotta-light); }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--theme-magenta-dark);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+    }
+
+    /* GAMES CARD */
+    .game-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border-dark);
+      transition: all 0.1s ease;
+      color: var(--text-main);
+    }
+
+    .quiz-btn:hover {
+      background: var(--theme-baby-pink);
+      transform: translate(-1px, -1px);
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 700;
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(32, 18, 23, 0.88);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: #FFFDFE;
+      border: 3px solid var(--border-dark);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--theme-magenta);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: #FFFFFF;
+      border-top: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--theme-magenta-dark);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--theme-teracotta);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-visual-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .slide-card-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--theme-teracotta);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--theme-magenta);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: var(--theme-baby-pink);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    .case-study-box {
+      background: #FFFDFD;
+      border: 2px solid var(--border-dark);
+      border-left: 6px solid var(--theme-teracotta);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-box h4 {
+      color: var(--theme-teracotta);
+      font-size: 11pt;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .lecturer-auth-box {
+      background: var(--theme-baby-pink);
+      border: 2px dashed var(--theme-magenta);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      margin-top: 2rem;
+    }
+
+    .answer-key-content {
+      display: none;
+      background: var(--theme-blue-light);
+      border: 2px solid var(--theme-blue-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .lecturer-auth-box, .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .slide-visual-grid { grid-template-columns: 1fr; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>🛡️</span> Penulisan Karya Ilmiah • Pertemuan 11 (2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Presentasi Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📖</span> Buka Lembar Kasus & Kunci Dosen
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Alokasi Waktu: 2 SKS (100 Menit)</span>
+            <span class="tag">Tema: Magenta, Teracotta, Baby Pink & Blue Light</span>
+            <span class="tag">Topik: Plagiarisme dalam Karya Ilmiah</span>
+          </div>
+          <h1>Integritas Ilmiah: Memahami & Menghindari Plagiarisme</h1>
+          <p>Materi pertemuan kesebelas: mengkaji batasan hukum dan sanksi plagiarisme di Indonesia, interpretasi indeks kemiripan Turnitin, bedah fenomena self-plagiarism dan publikasi berganda, serta strategi mitigasi melalui formula Akui, Parafrasa, dan Integrasi.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=700&q=80" alt="Etika dan Integritas Ilmiah" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot t1">
+        <span class="time">10 Menit</span>
+        <div class="title">Warming Up & Pendahuluan</div>
+        <small style="color:var(--text-muted)">Urgensi etika kejujuran dan konsekuensi hukum pencabutan gelar akademik.</small>
+      </div>
+      <div class="time-slot t2">
+        <span class="time">45 Menit</span>
+        <div class="title">Materi Inti Komprehensif</div>
+        <small style="color:var(--text-muted)">Bentuk plagiarisme, interpretasi Turnitin, self-plagiarism, dan teknik parafrasa.</small>
+      </div>
+      <div class="time-slot t3">
+        <span class="time">5 Menit</span>
+        <div class="title">Games Interaktif</div>
+        <small style="color:var(--text-muted)">Uji Cepat: Deteksi status fakta umum vs tindakan penjiplakan.</small>
+      </div>
+      <div class="time-slot t4">
+        <span class="time">40 Menit</span>
+        <div class="title">Evaluasi Studi Kasus & Penutup</div>
+        <small style="color:var(--text-muted)">Analisis mendalam kasus pelanggaran etika dan verifikasi panduan dosen.</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Momok Plagiarisme & Konsekuensi Hukum (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Warming Up & Peletakan Kesadaran Integritas Akademik</small>
+        </div>
+      </div>
+      <p>Dunia akademik dibangun di atas fondasi kepercayaan dan kejujuran intelektual. Tindakan mengambil karya atau ide orang lain tanpa pengakuan yang sah bukan sekadar kecerobohan teknis penulisan, melainkan pelanggaran serius yang dapat menghancurkan karier akademik seorang sarjana dan mencabut hak legal gelar yang diperolehnya.</p>
+
+      <div class="quote-box">
+        "Salah satu momok yang tidak bisa dilepaskan dari dunia tulis menulis adalah plagiarisme. Isu plagiasi bukanlah suatu hal yang baru namun selalu hangat untuk dibahas dan dikaji bersama... Di Indonesia, seorang akademisi yang ketahuan melakukan plagiarisme dapat terjerat kasus pidana karena terdapat aturan yang ketat di setiap institusi dalam menetapkan syarat kelulusan. Pasal 25 ayat (1) UU Sistem Pendidikan Nasional menyatakan apabila karya ilmiah yang digunakan untuk memperoleh gelar akademik, profesi, atau vokasi terbukti melakukan plagiat, maka gelarnya dicabut."
+        <span class="citation">— Halaman 141, 142</span>
+      </div>
+
+      <p>Kementerian Pendidikan Nasional melalui Permendiknas No. 17/2010 secara tegas mengklasifikasikan bahwa tindakan mengutip frasa, kata, data, atau gagasan orang lain tanpa menyebutkan sumber secara memadai, maupun merumuskan dengan kata-kata sendiri tanpa atribusi yang layak, merupakan perbuatan plagiat yang memiliki sanksi administratif dan hukum.</p>
+
+      <div class="content-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=80" alt="Hukum dan Etika Penulisan" class="content-img">
+        <div class="img-caption">Gambar 1: Payung hukum dan etika akademik menegakkan sanksi tegas terhadap praktik kecurangan penjiplakan karya ilmiah.</div>
+      </div>
+    </article>
+
+    <!-- SESI 2: MATERI INTI (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Materi Inti: Ragam Bentuk, Turnitin & Strategi Pencegahan (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Kajian Komprehensif Berdasarkan Rangkuman Bab 10</small>
+        </div>
+      </div>
+
+      <!-- BATASAN DAN BENTUK PLAGIARISME -->
+      <h3>A. Batasan Tindakan dan Bentuk-Bentuk Plagiarisme</h3>
+      <p>Memahami batasan plagiarisme sangat penting agar peneliti mampu membedakan pemanfaatan informasi yang sah dengan tindakan pencurian intelektual:</p>
+
+      <div class="quote-box">
+        "Mengacu pada KBBI Ed. 5, plagiarisme merupakan penjiplakan yang melanggar hak cipta sementara Pratama (2020) menyatakan bahwa plagiarisme adalah tindakan mengklaim atau mengambil tulisan, opini, dan sebagainya dari orang lain dan menjadikannya seolah-olah merupakan karangan maupun pendapatnya sendiri... Menjiplak dan mengakui merupakan dua hal yang berbeda. Menjiplak merupakan meniru ataupun menyalin sementara mengakui merupakan sebuah bentuk tindakan pernyataan sikap bahwa karya yang dibuat merupakan tulisan atau ide yang berasal dari orang lain."
+        <span class="citation">— Halaman 142</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-pink">
+          <strong>1. Plagiarisme Utuh</strong>
+          Mengambil seluruh teks karya orang lain secara menyeluruh dan mengklaimnya secara sengaja sebagai karya sendiri.
+        </div>
+        <div class="feature-item accent-blue">
+          <strong>2. Plagiarisme Verbatim</strong>
+          Menyalin perkataan, kalimat, atau paragraf orang lain secara langsung kata demi kata tanpa tanda petik dan tanpa menyebutkan rujukan.
+        </div>
+        <div class="feature-item accent-teracotta">
+          <strong>3. Plagiarisme Parafrasa</strong>
+          Mengubah struktur kalimat atau menyusun ulang ide orang lain namun disajikan seolah-olah buah pikiran sendiri tanpa sitasi sumber.
+        </div>
+        <div class="feature-item">
+          <strong>4. Plagiarisme Tambal-Sulam</strong>
+          Mengambil potongan-potongan kalimat dari berbagai sumber berbeda lalu merajutnya menjadi satu teks padu tanpa mencantumkan rujukan asli.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <strong>Pengecualian: Informasi yang Tidak Termasuk Plagiarisme (Halaman 144):</strong><br>
+        • Menggunakan <em>fakta umum</em> (common knowledge) yang diketahui khalayak luas, misalnya: <em>"Jakarta adalah ibu kota Indonesia"</em> atau <em>"Proklamasi kemerdekaan Republik Indonesia dibacakan pada 17 Agustus 1945."</em><br>
+        • Parafrasa tulisan orang lain yang disusun dengan bahasa sendiri serta mencantumkan nama penulis dan tahun secara jelas.<br>
+        • Mengutip secukupnya dengan batas tanda petik yang tegas dan mencantumkan sumber rujukan secara lengkap.
+      </div>
+
+      <!-- TURNITIN DAN SIMILARITY CHECK -->
+      <h3>B. Interpretasi Indeks Kemiripan (Turnitin)</h3>
+      <p>Aplikasi Turnitin digunakan untuk mengidentifikasi derajat kesamaan kata antara naskah penulis dengan repositori publikasi global. Batas toleransi kemiripan yang umum diberlakukan di Indonesia berada pada rentang <strong>20% hingga 25%</strong>.</p>
+
+      <div class="feature-grid">
+        <div class="feature-item" style="border-left: 6px solid #3B82F6;">
+          <strong>Varian Biru (0%)</strong>
+          Menandakan naskah bersih tanpa ditemukan adanya derajat kesamaan teks dengan dokumen lain.
+        </div>
+        <div class="feature-item" style="border-left: 6px solid #10B981;">
+          <strong>Varian Hijau (1% – 25%)</strong>
+          Tingkat kemiripan teks rendah dan umumnya berada dalam batas aman toleransi institusi akademik.
+        </div>
+        <div class="feature-item" style="border-left: 6px solid #EAB308;">
+          <strong>Varian Kuning (25% – 49%)</strong>
+          Menandakan adanya kemiripan teks tingkat menengah; penulis wajib melakukan perbaikan parafrasa.
+        </div>
+        <div class="feature-item" style="border-left: 6px solid #F97316;">
+          <strong>Varian Oranye (50% – 74%)</strong>
+          Derajat kemiripan teks tinggi; naskah didominasi salinan dokumen lain dan terancam ditolak.
+        </div>
+        <div class="feature-item" style="border-left: 6px solid #EF4444;">
+          <strong>Varian Merah (75% – 100%)</strong>
+          Tingkat kesamaan teks sangat ekstrem; terindikasi plagiarisme berat dan naskah langsung gugur.
+        </div>
+      </div>
+
+      <!-- SELF-PLAGIARISM & PUBLIKASI BERGANDA -->
+      <h3>C. Plagiarisme Diri dan Bahaya Publikasi Berganda</h3>
+      <p>Plagiarisme diri terjadi ketika seorang akademisi mengambil kembali tulisan atau datanya sendiri yang telah diterbitkan sebelumnya, lalu menampilkannya sebagai karya baru yang orisinal tanpa melakukan sitasi diri.</p>
+
+      <div class="quote-box">
+        "Plagiarisme diri terjadi ketika penulis mengambil tulisannya yang telah ada dan ditampilkan sebagai karya baru yang orisinil dalam situasi yang berbeda... Ada empat rambu utama: 1) Apakah data/tulisan pernah dipublikasikan di tempat lain? 2) Apakah data/tulisan sudah pernah diajukan dan belum ditolak? 3) Apakah pernah dipresentasikan pada suatu konferensi? 4) Apakah pernah diserahkan kepada rekan sejawat atau mahasiswa? Jika 'iya', penulis wajib memberikan informasi kutipan yang benar."
+        <span class="citation">— Halaman 147–149</span>
+      </div>
+
+      <div class="example-box">
+        <strong>Bahaya Publikasi Berganda (Duplicate Publication):</strong><br>
+        Mengirimkan satu naskah artikel yang sama ke dua jurnal berbeda secara serentak berisiko menimbulkan sengketa hak cipta (copyright), tuntutan hukum antar-penerbit, penurunan reputasi jurnal, serta sanksi daftar hitam (blacklist) bagi penulis.
+      </div>
+
+      <!-- 3 PRINSIP PENCEGAHAN -->
+      <h3>D. Tiga Prinsip Utama Menghindari Plagiarisme</h3>
+      <p>Untuk memastikan karya tulis terbebas dari jerat penjiplakan yang tidak disengaja, penulis wajib menerapkan tiga pilar metodologis berikut:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-pink">
+          <strong>1. Akui</strong>
+          Menyatakan pengakuan secara eksplisit terhadap sumber acuan dengan menuliskan nama penulis asli dan tahun publikasi sesuai kaidah sitasi baku.
+        </div>
+        <div class="feature-item accent-blue">
+          <strong>2. Parafrasa</strong>
+          Mengungkapkan kembali substansi pemikiran sumber memakai gaya bahasa pribadi. Dilakukan dengan cara: (a) mengubah kalimat aktif menjadi pasif atau sebaliknya, (b) mencari padanan kata (sinonim) yang tepat, dan (c) memahami inti konsep secara mendalam.
+        </div>
+        <div class="feature-item accent-teracotta">
+          <strong>3. Integrasi</strong>
+          Menggabungkan prinsip Akui dan Parafrasa secara harmonis dalam narasi naskah. Jika mengutip langsung, wajib membubuhkan nama, tahun, dan nomor halaman secara presisi.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <strong>Contoh Penerapan Teknik Parafrasa yang Benar:</strong><br>
+        • Teks Asli: <em>"Tindakan plagiarisme dapat mencoreng nama baik seorang akademisi di Indonesia dan mengancam karir masa depannya karena sanksi hukum pencabutan gelar."</em><br>
+        • Hasil Parafrasa: <em>Keberlangsungan profesi seorang sarjana di Indonesia sangat terancam apabila terbukti menjiplak karya orang lain, mengingat adanya regulasi tegas mengenai pembatalan ijazah akademik (Shadiqi, 2019).</em>
+      </div>
+    </article>
+
+    <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Games Interaktif: Detektor Plagiarisme vs Fakta Umum (5 Menit)</h2>
+          <small style="color:var(--text-muted)">Uji Cepat: Menentukan Perlunya Kewajiban Sitasi</small>
+        </div>
+      </div>
+      <div class="game-card">
+        <h4>⚡ Evaluasi Pernyataan: Apakah Wajib Diberi Sitasi?</h4>
+        <p style="margin-top:0.5rem">Seorang mahasiswa menulis kalimat berikut dalam bab pendahuluannya: <em>"Kota Surabaya merupakan ibu kota Provinsi Jawa Timur yang berada di wilayah pesisir utara Pulau Jawa."</em> Apakah kalimat tersebut wajib mencantumkan sumber sitasi rujukan?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="checkAnswer(false)">A. Wajib, karena semua kalimat dalam karya ilmiah harus memiliki catatan kaki rujukan.</button>
+          <button class="quiz-btn" onclick="checkAnswer(true)">B. Tidak wajib, karena informasi tersebut merupakan fakta umum (common knowledge) yang diketahui luas.</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">C. Wajib, jika mahasiswa tersebut belum pernah mengunjungi kota Surabaya secara langsung.</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">D. Tergantung apakah kalimat tersebut lolos pengecekan Turnitin atau tidak.</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </article>
+
+    <!-- SESI 4: TANYA JAWAB & CLOSING -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Tanya Jawab & Closing Statement</h2>
+          <small style="color:var(--text-muted)">Komitmen Menjaga Keaslian Nalar Ilmiah</small>
+        </div>
+      </div>
+      <p><strong>Fokus Diskusi & Tanya Jawab:</strong></p>
+      <ul class="detailed-list">
+        <li>Mengapa memparafrasa tulisan orang lain tanpa mencantumkan nama penulis aslinya tetap dikategorikan sebagai tindakan plagiarisme berat?</li>
+        <li>Bagaimana cara menyiasati pelaporan data penelitian tesis mandiri agar saat diubah menjadi naskah jurnal tidak terdeteksi sebagai plagiarisme diri?</li>
+      </ul>
+      <div class="quote-box" style="border-left-color: var(--theme-magenta); background-color: var(--theme-baby-pink);">
+        "Menulis karya ilmiah adalah ikhtiar merawat kejujuran akal budi. Mengakui pemikiran para pendahulu melalui sitasi yang benar bukan tanda kelemahan, melainkan bukti integritas tertinggi seorang pencari kebenaran sejati."
+        <span class="citation">— Penutup Perkuliahan Pertemuan ke-11</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="background:var(--theme-magenta); color:#FFF; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan XI: Plagiarisme dalam Karya Ilmiah</span>
+        </div>
+        <button class="btn btn-worksheet" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
+        <h1 class="slide-title">Plagiarisme dalam Karya Ilmiah</h1>
+        <div class="slide-visual-grid">
+          <div>
+            <p style="font-size:1.15rem; margin-bottom:1.5rem;">Memahami batasan hukum penjiplakan, klasifikasi bentuk plagiasi, pembacaan indeks Turnitin, bahaya publikasi berganda, serta teknik parafrasa bebas penjiplakan.</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="tag" style="background:var(--theme-baby-pink)">Durasi: 100 Menit</span>
+              <span class="tag" style="background:var(--theme-blue-light)">Fokus: Bab 10 Rujukan Teks</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Slide Sampul" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-magenta);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: DEFINISI & PAYUNG HUKUM -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">ASPEK YURIDIS & SANKSI</div>
+        <h2 class="slide-title">Batasan Hukum di Indonesia</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-magenta-dark); display:block; margin-bottom:0.3rem;">UU Sisdiknas Pasal 25 (1)</strong>
+            Pencabutan gelar akademik, profesi, atau vokasi secara mutlak jika karya ilmiah terbukti hasil plagiat.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-teracotta); display:block; margin-bottom:0.3rem;">Permendiknas 17/2010</strong>
+            Menetapkan bahwa mengutip kalimat, data, atau ide orang lain tanpa atribusi memadai adalah pelanggaran hukum.
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: BENTUK-BENTUK PLAGIARISME -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">KLASIFIKASI PELANGGARAN</div>
+        <h2 class="slide-title">Ragam Wujud Penjiplakan</h2>
+        <div class="slide-visual-grid">
+          <div>
+            <ul class="detailed-list" style="font-size:1.05rem; line-height:1.8;">
+              <li><strong>Plagiarisme Utuh:</strong> Mengakui seluruh naskah orang lain sebagai tulisan sendiri.</li>
+              <li><strong>Plagiarisme Verbatim:</strong> Menyalin kata demi kata langsung tanpa tanda kutip.</li>
+              <li><strong>Plagiarisme Parafrasa:</strong> Mengubah kalimat ide orang lain tanpa mencantumkan sitasi.</li>
+              <li><strong>Plagiarisme Tambal-Sulam:</strong> Menggabungkan potongan teks acak dari aneka sumber.</li>
+            </ul>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Slide Bentuk Plagiasi" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-teracotta);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: TURNITIN & SELF-PLAGIARISM -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">DETEKSI & ETIKA DIRI</div>
+        <h2 class="slide-title">Turnitin & Plagiarisme Diri</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-magenta-dark); display:block; margin-bottom:0.4rem;">Varian Warna Turnitin</strong>
+            • Biru: 0% kesamaan.<br>
+            • Hijau: s.d. 25% (ambang batas aman).<br>
+            • Kuning: 25% – 49% (perlu perbaikan).<br>
+            • Merah: 75% – 100% (penjiplakan berat).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-teracotta); display:block; margin-bottom:0.4rem;">Plagiarisme Diri & Ganda</strong>
+            Menerbitkan ulang data/tulisan sendiri tanpa sitasi diri, atau mengirim naskah ke dua penerbit sekaligus (duplicate publication).
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: 3 PRINSIP MITIGASI -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">FORMULA PENCEGAHAN</div>
+        <h2 class="slide-title">Tiga Prinsip: Akui, Parafrasa, Integrasi</h2>
+        <div class="quote-box" style="font-size:1.15rem; margin-top:1.5rem;">
+          "1. Akui sumber acuan dengan menuliskan nama dan tahun; 2. Parafrasa dengan mengubah struktur kalimat dan padanan sinonim; 3. Integrasi dengan menggabungkan pengakuan dan parafrasa secara harmonis." (Halaman 150)
+        </div>
+        <p style="margin-top:2rem; font-size:1.05rem;">
+          <strong>Aktivitas Terjadwal:</strong> Buka lembar evaluasi studi kasus untuk menganalisis problematika integritas akademik di lapangan. Dosen dapat memverifikasi telaah kasus melalui sandi khusus.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: EVALUASI STUDI KASUS MAHASISWA -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:var(--theme-magenta-dark);">
+          <span>📄 Lembar Evaluasi Studi Kasus Mahasiswa & Panduan Dosen (Bab 10)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak Lembar Kasus (PDF)
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN EVALUASI STUDI KASUS -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:15pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Evaluasi Analisis Kasus: Integritas & Plagiarisme</h2>
+          <h3 style="font-size:11.5pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 11</h3>
+          <p style="font-size:9.5pt; color:#333;">Materi Telaah: Bab 10 (Hukum Plagiasi, Similarity Check, Self-Plagiarism & Parafrasa)</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:15px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <div style="margin-bottom:15px; font-size:9.5pt; background:var(--theme-baby-pink); padding:8px 12px; border:1px solid #FBCFE8; border-radius:4px;">
+          <strong>Petunjuk Pengerjaan:</strong> Bacalah narasi kasus-kasus pelanggaran akademik di bawah ini secara cermat. Berikan analisis kritis berlandaskan landasan hukum, konsep similarity check, serta 3 prinsip pencegahan plagiarisme pada lembar jawaban yang tersedia!
+        </div>
+
+        <!-- KASUS 1 -->
+        <div class="case-study-box">
+          <h4>Kasus 1: Sengketa Parafrasa Tanpa Atribusi pada Skripsi Mahasiswa</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Seorang mahasiswa tingkat akhir menyusun Bab II skripsinya dengan mengambil ide teori belajar dari buku seorang profesor ternama. Mahasiswa tersebut telah bersusah payah mengubah seluruh susunan kalimat asli dari bentuk aktif menjadi pasif, menukar kosa kata dengan sinonim baru, serta memadatkan lima alinea menjadi dua alinea ringkas. Namun, mahasiswa tersebut sama sekali tidak mencantumkan nama profesor ataupun tahun terbit buku tersebut di akhir paragraf maupun di daftar pustaka dengan alasan: <em>"Rangkaian kalimat tersebut murni hasil ketikan dan susunan kata saya sendiri."</em>
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-teracotta);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Berdasarkan Permendiknas No. 17/2010 dan klasifikasi Utorodewo (2011), apakah tindakan mahasiswa tersebut sah dikategorikan sebagai plagiarisme? Jelaskan alasannya secara yuridis dan konseptual!</li>
+            <li>Sanksi apa yang dapat dijatuhkan kepada mahasiswa tersebut menurut Pasal 25 ayat (1) UU Sisdiknas jika skripsi tersebut terlanjur diujikan dan diluluskan?</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:85px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Analisis Kasus 1]
+          </div>
+        </div>
+
+        <!-- KASUS 2 -->
+        <div class="case-study-box">
+          <h4>Kasus 2: Dilema Publikasi Berganda dan Self-Plagiarism</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Dr. R menyusun sebuah manuskrip hasil penelitian eksperimen laboratorium. Karena mengejar syarat percepatan kenaikan jabatan fungsional dosen, ia mengirimkan naskah yang sama persis secara serentak ke Jurnal Nasional Sinta 2 (Jurnal A) dan Jurnal Internasional Bereputasi (Jurnal B). Tiga bulan kemudian, naskah tersebut dinyatakan diterima dan diterbitkan oleh kedua jurnal tersebut tanpa saling mengetahui. Selain itu, pada naskah tersebut, Dr. R memasukkan 40% data grafik yang pernah ia terbitkan di prosiding seminar tahun lalu tanpa melakukan sitasi diri.
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-teracotta);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Bedah tindakan Dr. R berdasarkan 4 rambu deteksi plagiarisme diri! Apakah penyisipan grafik lama tanpa sitasi dapat dibenarkan?</li>
+            <li>Jelaskan kerugian hukum, finansial, dan reputasi ilmiah yang dialami oleh pihak penerbit jurnal akibat praktik publikasi berganda tersebut!</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:85px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Analisis Kasus 2]
+          </div>
+        </div>
+
+        <!-- KASUS 3 -->
+        <div class="case-study-box">
+          <h4>Kasus 3: Anomali Laporan Turnitin dan Rekonstruksi Paragraf</h4>
+          <p style="font-size:9.5pt; text-align:justify; margin-bottom:8px;">
+            Naskah artikel ilmiah milik seorang peneliti menunjukkan angka indeks kemiripan (similarity index) sebesar <strong>42% (Varian Warna Kuning)</strong> pada sistem Turnitin. Setelah diperiksa, sebagian besar teks yang terdeteksi merah menyala berasal dari kutipan langsung panjang dan teks metodologi yang disalin mentah-mentah dari publikasi orang lain.<br><br>
+            Teks yang terdeteksi kesamaan tinggi:<br>
+            <em>"Plagiarisme merupakan penjiplakan yang melanggar hak cipta dan tindakan mengklaim tulisan orang lain seolah karangan sendiri. Kejujuran adalah proses ilmiah yang masuk dalam ranah integritas seorang akademisi karena menghasilkan karya membutuhkan pikiran, tenaga, biaya dan waktu yang tidak sedikit."</em>
+          </p>
+          <p style="font-size:9.5pt; font-weight:700; color:var(--theme-teracotta);">
+            Pertanyaan Analisis:
+          </p>
+          <ol style="padding-left:18px; font-size:9.5pt;">
+            <li>Bagaimanakah interpretasi hasil uji Turnitin tersebut terhadap kelayakan terbit naskah di Indonesia?</li>
+            <li>Terapkan prinsip <strong>Akui, Parafrasa, dan Integrasi</strong> (Halaman 150) untuk merekonstruksi teks bermasalah di atas agar menghasilkan kalimat baru yang bebas kemiripan tinggi Turnitin namun tetap mempertahankan makna aslinya!</li>
+          </ol>
+          <div style="border:1px dashed #777; min-height:85px; margin-top:8px; padding:8px; font-size:9pt; color:#444; background:#FFF;">
+            [Lembar Jawaban Rekonstruksi Parafrasa Kasus 3]
+          </div>
+        </div>
+
+        <!-- VERIFIKASI DOSEN KHUSUS UNTUK MEMBUKA PANDUAN PENILAIAN -->
+        <div class="lecturer-auth-box">
+          <div style="font-weight:700; color:var(--theme-magenta-dark); margin-bottom:0.4rem;">
+            🔒 Panduan Telaah & Rubrik Analisis Kasus (Akses Khusus Dosen Pengampu)
+          </div>
+          <p style="font-size:9pt; margin-bottom:0.6rem; color:var(--text-muted);">
+            Masukkan kode verifikasi dosen untuk membuka kriteria penilaian dan indikator telaah kasus Bab 10:
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <input type="password" id="lecturerPass" placeholder="Masukkan Sandi Dosen..." style="padding:0.4rem 0.8rem; border:1.5px solid var(--border-dark); border-radius:4px; font-size:9pt;">
+            <button class="btn btn-presentation" style="padding:0.4rem 0.9rem; font-size:8.5pt;" onclick="unlockAnswerKey()">Verifikasi Sandi</button>
+          </div>
+          
+          <div id="keyContent" class="answer-key-content">
+            <h4 style="color:var(--theme-blue-dark); margin-bottom:0.5rem; font-size:10.5pt;">Pedoman Penilaian Kasus Akademik (Bab 10):</h4>
+            <div style="font-size:9pt; line-height:1.6; color:#0C4A6E;">
+              <strong>1. Kasus 1 (Skor Maks. 35):</strong><br>
+              • Mahasiswa terbukti melakukan <em>plagiarisme parafrasa</em>. Sesuai Permendiknas 17/2010 Pasal 2 ayat 1 huruf (d) dan Utorodewo (2011), menyusun ulang kalimat ide orang lain tanpa atribusi adalah penjiplakan hak cipta ide. Menjiplak menyangkut bentuk kata, namun mengakui menyangkut integritas sumber.<br>
+              • Berdasarkan UU Sisdiknas Pasal 25 ayat (1), sanksi hukum tertingginya adalah <strong>pencabutan gelar akademik</strong> yang telah diberikan oleh perguruan tinggi.<br><br>
+              <strong>2. Kasus 2 (Skor Maks. 35):</strong><br>
+              • Berdasarkan 4 rambu deteksi (Hlm. 147–148), data grafik yang pernah dipresentasikan/diterbitkan wajib disitasi diri secara eksplisit. Ketiadaan rujukan menjadikannya <em>self-plagiarism</em>.<br>
+              • Publikasi berganda melanggar hak cipta eksklusif penerbit, menurunkan ranking/kredibilitas jurnal di mata akademisi, memicu sengketa hukum hak cipta, dan mencoreng integritas peneliti.<br><br>
+              <strong>3. Kasus 3 (Skor Maks. 30):</strong><br>
+              • Skor 42% (kuning) melebihi batas toleransi institusi di Indonesia (maksimal 20%–25%), sehingga naskah wajib ditolak atau direvisi total.<br>
+              • Contoh rekonstruksi parafrasa yang tepat: <em>Integritas seorang periset tercermin dari kejujuran ilmiahnya saat mengutip, sebab penciptaan karya membutuhkan dedikasi sumber daya yang besar; oleh karena itu pengabaian hak cipta merupakan pelanggaran berat (Wahyuni, 2018; Pratama, 2020).</em>
+            </div>
+            <div style="margin-top:0.8rem; font-size:8.5pt; color:var(--theme-blue-dark); font-style:italic;">
+              *Catatan Dosen: Penilaian berfokus pada ketajaman argumentasi yuridis dan kepatuhan terhadap formula Akui-Parafrasa-Integrasi.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Tanda Tangan Mahasiswa:</strong><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Verifikasi Nilai Dosen Pengampu:</strong><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+
+    /* QUIZ PEMBUKA LOGIC */
+    function checkAnswer(isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      if (isCorrect) {
+        feedback.style.backgroundColor = '#FCE7F3';
+        feedback.style.borderColor = '#C026D3';
+        feedback.style.color = '#86198F';
+        feedback.innerText = '✅ TEPAT SEKALI! Berdasarkan Halaman 144, informasi berupa fakta umum (common knowledge) seperti nama kota, letak geografis, atau peristiwa bersejarah tidak termasuk plagiarisme dan tidak wajib disitasi.';
+      } else {
+        feedback.style.backgroundColor = '#FFEDD5';
+        feedback.style.borderColor = '#C2410C';
+        feedback.style.color = '#7C2D12';
+        feedback.innerText = '❌ KURANG TEPAT. Fakta umum yang diketahui secara luas oleh publik dibebaskan dari kewajiban sitasi rujukan (Halaman 144).';
+      }
+    }
+
+    /* VERIFIKASI PANDUAN TELAAH KASUS DOSEN */
+    function unlockAnswerKey() {
+      const pass = document.getElementById('lecturerPass').value;
+      const keyBox = document.getElementById('keyContent');
+      // Password khusus dosen Pertemuan 11: DOSENKTI11
+      if (pass === 'DOSENKTI11' || pass === 'dosenkti11') {
+        keyBox.style.display = 'block';
+        alert('Panduan penilaian analisis kasus Bab 10 berhasil dibuka.');
+      } else {
+        alert('Sandi salah. Akses panduan penilaian hanya diperuntukkan bagi dosen pengampu.');
+      }
+    }
+  </script>
+</body>
+</html>
