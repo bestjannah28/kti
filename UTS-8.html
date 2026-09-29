@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 8: Ujian Tengah Semester (UTS) - Penulisan Karya Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Tema Hijau Tua (Dark Green Canvas) */
+      --bg-canvas: #0A2619;
+      --card-bg: #113826;
+      --card-inner: #164630;
+      --text-main: #F2FBF6;
+      --text-muted: #A3C9B5;
+      
+      --accent-green-bright: #10B981;
+      --accent-mint: #A7F3D0;
+      --accent-gold: #FBBF24;
+      --accent-orange: #F97316;
+      
+      --border-dark: #04140D;
+      --shadow-solid: 4px 4px 0px #04140D;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(10, 38, 25, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--accent-green-bright);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-mint);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #064E3B;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: #04140D;
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--accent-gold);
+    }
+
+    .btn-worksheet {
+      background-color: var(--accent-green-bright);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-green-bright);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--card-inner);
+      border: 1.5px solid var(--accent-green-bright);
+      color: var(--accent-mint);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--accent-green-bright);
+      box-shadow: 4px 4px 0px var(--border-dark);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-green-bright);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--accent-green-bright);
+      background: var(--card-inner);
+    }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--accent-gold);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-green-bright);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1.5px solid var(--card-inner);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      color: #04140D;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: #FFFFFF; }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--accent-mint); }
+    p { margin-bottom: 1rem; color: var(--text-main); }
+
+    /* QUOTE BOX */
+    .quote-box {
+      background-color: var(--card-inner);
+      border-left: 5px solid var(--accent-gold);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: var(--text-main);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--accent-gold);
+    }
+
+    /* TASK SPECIFICATION BOX */
+    .task-banner {
+      background: var(--card-inner);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin: 1.5rem 0;
+      box-shadow: 4px 4px 0px var(--border-dark);
+    }
+
+    .task-banner h4 {
+      font-size: 1.3rem;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 1.5px solid var(--accent-green-bright);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: var(--card-inner);
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--accent-mint);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+      color: var(--text-main);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(4, 20, 13, 0.92);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: var(--card-bg);
+      border: 3px solid var(--accent-green-bright);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--border-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: var(--card-inner);
+      border-bottom: 2px solid var(--accent-green-bright);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: var(--card-inner);
+      border-top: 2px solid var(--accent-green-bright);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: #FFFFFF;
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-card-box {
+      background: var(--card-inner);
+      border: 1.5px solid var(--accent-green-bright);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--accent-gold);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: #F0FDF4;
+      border-bottom: 2px solid #000;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>📝</span> Penulisan Karya Ilmiah • Pertemuan 8 (UTS - 2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Pengarahan Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📖</span> Buka & Cetak Soal Tugas UTS
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Evaluasi: Ujian Tengah Semester (UTS)</span>
+            <span class="tag">Bobot: 2 SKS (100 Menit Pengarahan)</span>
+            <span class="tag">Format: Penugasan Proyek Mandiri</span>
+          </div>
+          <h1>Ujian Tengah Semester: Proyek Penyusunan Draf Naskah Karya Ilmiah</h1>
+          <p>Pertemuan kedelapan difokuskan pada pengarahan teknis pelaksanaan evaluasi tengah semester melalui satu penugasan komprehensif: menyusun draf naskah ilmiah Bab I sampai Bab III dengan menerapkan seluruh standarisasi fisik pengetikan, kaidah sitasi, dan etika akademik.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=700&q=80" alt="Penulisan Naskah UTS" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot">
+        <span class="time">10 Menit</span>
+        <div class="title">Pengantar & Aturan UTS</div>
+        <small style="color:var(--text-muted)">Penjelasan tujuan evaluasi dan batas integritas akademik bebas plagiarisme.</small>
+      </div>
+      <div class="time-slot">
+        <span class="time">45 Menit</span>
+        <div class="title">Bedah Rubrik & Format</div>
+        <small style="color:var(--text-muted)">Penjelasan terperinci syarat fisik kertas, margin, spasi, kutipan, dan struktur Bab I–III.</small>
+      </div>
+      <div class="time-slot">
+        <span class="time">30 Menit</span>
+        <div class="title">Konsultasi Topik & Judul</div>
+        <small style="color:var(--text-muted)">Verifikasi kelayakan topik tentatif mahasiswa agar terhindar dari bias.</small>
+      </div>
+      <div class="time-slot">
+        <span class="time">15 Menit</span>
+        <div class="title">Instruksi Final & Penutup</div>
+        <small style="color:var(--text-muted)">Penetapan tenggat unggah berkas PDF dan closing statement perkuliahan.</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN & LANDASAN TEORITIS (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Hakikat Evaluasi Tengah Semester (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Landasan Filosofis Pengujian Keterampilan Praktik Menulis</small>
+        </div>
+      </div>
+      <p>Kemahiran dalam menulis karya ilmiah tidak dapat diukur sekadar melalui hafalan definisi, melainkan harus dibuktikan lewat karya nyata yang tersusun secara runtut, logis, teratur, dan memenuhi standar kaidah keilmuan yang baku[cite: 1].</p>
+
+      <div class="quote-box">
+        "Karangan yang disusun secara berurutan atau beraturan dan ilmiah disebut karya tulis ilmiah. Berurutan dan beraturan berarti karangan disusun secara runtut sesuai dengan aturan yang berlaku dan koherensi. Ilmiah berarti karangan menjelaskan suatu pemecahan masalah yang bersumber dari bukti empiris atau kajian teoritis. Jadi, pembaca dapat menelusuri bukti kebenarannya (Rifai, 2021). Suatu tulisan bisa dikatakan sebagai karya tulis ilmiah jika memenuhi beberapa persyaratan diantaranya: 1) pembahasan termasuk dalam lingkup pengetahuan ilmiah, 2) tahapan penelitian berdasarkan metode ilmiah, dan 3) wujud tampilannya memenuhi persyaratan dan kesesuaian sebagai suatu wujud keilmuan."
+        <span class="citation">— Halaman 51[cite: 1]</span>
+      </div>
+
+      <p>Melalui evaluasi ini, mahasiswa dituntut mendemonstrasikan integrasi keahlian yang telah dipelajari dari pertemuan 1 hingga 7: mulai dari perumusan latar belakang yang tajam, penelaahan kajian pustaka tanpa plagiasi, penyusunan rancangan metode yang dapat direplikasi, hingga kepatuhan pada tata letak margin dan tipografi resmi[cite: 1].</p>
+    </article>
+
+    <!-- SESI 2: SOAL TUNGGAL UTS (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Instruksi Soal Ujian Tengah Semester (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Satu Soal Proyek Komprehensif Berbobot Penuh</small>
+        </div>
+      </div>
+
+      <div class="task-banner">
+        <h4>📌 SOAL TUNGGAL PENUGASAN UTS</h4>
+        <p style="font-size:1.05rem; line-height:1.8; color:#FFFFFF;">
+          <strong>"Susunlah sebuah Draf Naskah Karya Ilmiah mandiri (mencakup Bagian Awal, Bab I Pendahuluan, Bab II Kajian Pustaka, Bab III Metodologi Penelitian, dan Daftar Pustaka) berdasarkan bidang keilmuan program studi Anda, dengan menerapkan secara ketat seluruh standarisasi fisik pengetikan (kertas, font, margin 4-4-3-3, spasi naskah), integrasi kutipan langsung dan tidak langsung, catatan kaki berformat Latin, serta bebas dari segala bentuk fabrikasi data maupun plagiarisme."</strong>[cite: 1]
+        </p>
+      </div>
+
+      <h3>A. Ketentuan Teknis dan Format Fisik Pengetikan</h3>
+      <p>Naskah wajib disusun dengan mematuhi ketentuan baku tata tulis berikut:</p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <strong>1. Standar Kertas & Huruf</strong>
+          Format halaman A4 (21,0 cm × 29,7 cm), orientasi portrait, spasi baris 2 untuk teks naskah[cite: 1]. Jenis huruf wajib Times New Roman ukuran 12 untuk teks utama[cite: 1], ukuran 14 tebal untuk judul bab[cite: 1], dan ukuran 9 spasi 1 untuk catatan kaki[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>2. Batas Tepi (Margin)</strong>
+          Menggunakan margin baku <strong>4-4-3-3</strong> (Batas Atas 4 cm, Batas Kiri 4 cm, Batas Bawah 3 cm, dan Batas Kanan 3 cm)[cite: 1]. Pengetikan teks wajib rata kiri-kanan (<em>justify</em>)[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>3. Tata Letak Nomor Halaman</strong>
+          Halaman judul sampai abstrak menggunakan angka Romawi kecil (i, ii, iii...) di tengah bawah[cite: 1]. Mulai Bab I Pendahuluan hingga Daftar Pustaka menggunakan angka Arab (1, 2, 3...) di sudut kanan atas[cite: 1], kecuali pada halaman pertama setiap bab diletakkan di sudut kanan bawah[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>4. Penulisan Angka & Satuan</strong>
+          Kalimat yang diawali bilangan harus dieja dengan huruf (misalnya: <em>"Sebanyak sepuluh subjek..."</em>)[cite: 1]. Tanda desimal menggunakan koma (,)[cite: 1], serta singkatan satuan resmi tidak diakhiri tanda titik (contoh: <em>15 km</em>, bukan <em>15 km.</em>)[cite: 1].
+        </div>
+      </div>
+
+      <!-- STRUKTUR KONTEN -->
+      <h3>B. Anatomi Struktur Konten Naskah</h3>
+      <p>Draf naskah yang dikumpulkan wajib memuat rincian isi sebagai berikut:</p>
+      <ul class="detailed-list">
+        <li><strong>Bagian Awal:</strong> Halaman Judul formal[cite: 1] dan Abstrak mandiri (*standalone*) sepanjang 150–250 kata berstruktur IMRAD yang diketik miring berspasi tunggal[cite: 1].</li>
+        <li><strong>Bab I Pendahuluan:</strong> Memuat Latar Belakang Masalah faktual yang memenuhi 5 kriteria kelayakan (Feasible, Interesting, Novelty, Ethical, Relevant)[cite: 1], Perumusan Masalah berbentuk kalimat tanya spesifik[cite: 1], Tujuan Penelitian (solusi, rekomendasi kebijakan, atau peramalan)[cite: 1], serta Manfaat Teoretis dan Praktis[cite: 1].</li>
+        <li><strong>Bab II Kajian Pustaka:</strong> Landasan teori yang menopang variabel riset[cite: 1], sintesis minimal 3 artikel jurnal terkini yang disajikan dalam bentuk matriks tabel komparasi[cite: 1], perumusan kesenjangan riset (*research gap*)[cite: 1], serta dugaan hipotesis[cite: 1]. Wajib menyertakan minimal 1 contoh <em>Kutipan Langsung Panjang</em> (lebih dari 3 baris, spasi 1, menjorok 5–7 ketukan)[cite: 1] dan <em>Kutipan Tidak Langsung</em> (parafrasa)[cite: 1].</li>
+        <li><strong>Bab III Metodologi Penelitian:</strong> Penjelasan eksplisit mengenai pendekatan riset (kualitatif atau kuantitatif)[cite: 1], populasi target[cite: 1], teknik sampling (probability atau nonprobability)[cite: 1], kriteria inklusi dan eksklusi[cite: 1], instrumen pengumpul data[cite: 1], serta teknik analisis data[cite: 1].</li>
+        <li><strong>Catatan Kaki (Footnote):</strong> Menyertakan minimal 3 catatan kaki di bagian bawah halaman yang mempraktikkan tata urutan penggunaan istilah singkatan Latin: <em>Ibid.</em>, <em>Op. cit.</em>, dan <em>Loc. cit.</em> secara tepat[cite: 1].</li>
+        <li><strong>Daftar Pustaka:</strong> Disusun alfabetis tanpa menyertakan gelar akademik penulis[cite: 1], format baris kedua menjorok 1 cm / 5 spasi (*hanging indent*)[cite: 1], jarak spasi tunggal dalam satu rujukan dan jeda 2 spasi antarsumber rujukan[cite: 1].</li>
+      </ul>
+    </article>
+
+    <!-- SESI 3: RUBRIK PENILAIAN -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Kriteria dan Bobot Penilaian UTS</h2>
+          <small style="color:var(--text-muted)">Transparansi Evaluasi Capaian Pembelajaran</small>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <strong>1. Format Fisik & Tipografi (20%)</strong>
+          Ketaatan pada ukuran kertas A4, margin 4-4-3-3, font Times New Roman, spasi baris, dan posisi nomor halaman[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>2. Ketajaman Masalah & Urgensi Bab I (25%)</strong>
+          Kejelasan latar belakang, pemenuhan kriteria kelayakan masalah, ketepatan rumusan masalah, dan keselarasan tujuan[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>3. Kajian Pustaka & Research Gap Bab II (20%)</strong>
+          Kedalaman sintesis teori, penyajian matriks komparasi penelitian terdahulu, dan penemuan kesenjangan ilmiah[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>4. Kejelasan Prosedur Metodologi Bab III (20%)</strong>
+          Rasionalitas penentuan pendekatan riset, teknik penarikan sampel, instrumen, dan kriteria inklusi/eksklusi[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>5. Kaidah Sitasi & Integritas Etika (15%)</strong>
+          Kebenaran kutipan langsung/panjang, aplikasi footnote Latin (Ibid., Op. cit., Loc. cit.), kerapian daftar pustaka, dan orisinalitas naskah[cite: 1].
+        </div>
+      </div>
+    </article>
+
+    <!-- SESI 4: CLOSING STATEMENT -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Closing Statement & Komitmen Akademik</h2>
+          <small style="color:var(--text-muted)">Integritas Moral Penulisan Ilmiah</small>
+        </div>
+      </div>
+      <div class="quote-box" style="border-left-color: var(--accent-gold);">
+        "Menulis karya ilmiah pada hakikatnya adalah melatih kejujuran intelektual dan ketertiban berpikir. Jadikan naskah tugas UTS ini sebagai wujud komitmen Anda untuk menghadirkan karya yang orisinal, berbobot, dan dapat dipertanggungjawabkan di hadapan peradaban akademis."
+        <span class="citation">— Penutup Sesi Arahan UTS</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK DOSEN) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem; color:#FFFFFF;">
+          <span style="background:var(--accent-gold); color:#04140D; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan VIII: Pengarahan Ujian Tengah Semester (UTS)</span>
+        </div>
+        <button class="btn btn-presentation" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1 -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">EVALUASI TENGAH SEMESTER (2 SKS)</div>
+        <h1 class="slide-title">Pengarahan Tugas Mandiri UTS</h1>
+        <p style="font-size:1.2rem; color:var(--text-muted); margin-bottom:1.5rem;">
+          Penyusunan Draf Naskah Karya Ilmiah: Integrasi Format Fisik, Kaidah Sitasi, dan Sistematika Bab I sampai Bab III[cite: 1].
+        </p>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <span class="tag">Format: Penugasan Mandiri</span>
+          <span class="tag">Durasi Pengarahan: 100 Menit</span>
+          <span class="tag">Cakupan Materi: Bab 1 s.d. Bab 7</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">SOAL TUNGGAL PROYEK UTS</div>
+        <h2 class="slide-title">Tugas Inti yang Harus Dikerjakan</h2>
+        <div class="slide-card-box">
+          <p style="font-size:1.1rem; color:#FFFFFF; line-height:1.7;">
+            Menyusun satu draf karya ilmiah lengkap yang memuat: <strong>Halaman Judul, Abstrak (IMRAD), Bab I Pendahuluan, Bab II Kajian Pustaka, Bab III Metodologi Penelitian, dan Daftar Pustaka</strong> sesuai fokus bidang studi masing-masing[cite: 1].
+          </p>
+        </div>
+        <p style="font-size:0.95rem; color:var(--accent-mint); margin-top:1rem;">
+          *Seluruh teks harus orisinal, bebas fabrikasi dan plagiarisme, serta mencerminkan alur berpikir ilmiah yang logis[cite: 1].
+        </p>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">STANDARISASI FISIK NASKAH</div>
+        <h2 class="slide-title">Kepatuhan Tata Tulis (Halaman 52–55)</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--accent-mint); display:block; margin-bottom:0.4rem;">Margin & Pengetikan</strong>
+            • Batas tepi <strong>4-4-3-3</strong> (Atas 4, Kiri 4, Bawah 3, Kanan 3 cm)[cite: 1].<br>
+            • Rata kiri-kanan (<em>justify</em>)[cite: 1].<br>
+            • Kertas HVS A4 80 gram[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--accent-gold); display:block; margin-bottom:0.4rem;">Tipografi & Spasi</strong>
+            • Teks naskah Times New Roman 12, jarak 2 spasi[cite: 1].<br>
+            • Judul bab ukuran 14 tebal[cite: 1].<br>
+            • Catatan kaki ukuran 9, jarak 1 spasi[cite: 1].
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">SITASI & DAFTAR RUJUKAN</div>
+        <h2 class="slide-title">Kutipan Langsung & Footnote Latin</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--accent-mint); display:block; margin-bottom:0.4rem;">Pengutipan Baku</strong>
+            Wajib memuat kutipan langsung panjang (&gt;3 baris, jarak 1 spasi, menjorok 5–7 ketukan, tanpa petik)[cite: 1] serta parafrasa tidak langsung[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--accent-gold); display:block; margin-bottom:0.4rem;">Catatan Kaki & Daftar Pustaka</strong>
+            Menampilkan aplikasi istilah <em>Ibid.</em>, <em>Op. cit.</em>, dan <em>Loc. cit.</em> secara runtut[cite: 1], serta daftar pustaka dengan <em>hanging indent</em> tanpa mencantumkan gelar[cite: 1].
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">PENGUMPULAN & BOBOT</div>
+        <h2 class="slide-title">Rubrik Penilaian & Batas Waktu</h2>
+        <div class="slide-card-box">
+          <ul style="padding-left:1.2rem; font-size:1rem; line-height:1.8;">
+            <li>Format Fisik & Tata Letak: <strong>20%</strong>[cite: 1]</li>
+            <li>Ketajaman Masalah Bab I: <strong>25%</strong>[cite: 1]</li>
+            <li>Kajian Pustaka & Research Gap Bab II: <strong>20%</strong>[cite: 1]</li>
+            <li>Rasionalitas Metodologi Bab III: <strong>20%</strong>[cite: 1]</li>
+            <li>Etika Sitasi & Daftar Pustaka: <strong>15%</strong>[cite: 1]</li>
+          </ul>
+        </div>
+        <p style="margin-top:1.5rem; font-size:1.05rem; color:var(--accent-gold);">
+          <strong>Tenggat Pengumpulan:</strong> Naskah PDF diunggah ke LMS universitas paling lambat 7 hari kalender sejak pengarahan hari ini.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700; color:#FFFFFF;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: LEMBAR SOAL TUGAS UTS -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:#064E3B;">
+          <span>📄 Lembar Petunjuk & Soal Tugas Ujian Tengah Semester (UTS)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak / Simpan PDF
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN TUGAS UTS SIAP BACA & CETAK -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:16pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Ujian Tengah Semester (UTS)</h2>
+          <h3 style="font-size:12pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Bobot: 2 SKS</h3>
+          <p style="font-size:10pt; color:#333;">Tugas Mandiri: Penyusunan Draf Naskah Karya Tulis Ilmiah (Bab I–III)</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:20px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas / Dosen</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <!-- SOAL TUNGGAL -->
+        <div style="border:1.5px solid #000; padding:15px; background:#FAFAFA; margin-bottom:20px;">
+          <h4 style="font-size:11pt; font-weight:800; text-transform:uppercase; margin-bottom:6px; color:#991B1B;">
+            Instruksi Soal UTS:
+          </h4>
+          <p style="font-size:10.5pt; text-align:justify; line-height:1.6;">
+            <strong>Pilihlah satu topik penelitian yang relevan dengan bidang keilmuan program studi Anda, kemudian susunlah sebuah draf karya tulis ilmiah mandiri yang memuat struktur lengkap: (1) Halaman Judul, (2) Abstrak mandiri format IMRAD, (3) Bab I Pendahuluan, (4) Bab II Kajian Pustaka, (5) Bab III Metodologi Penelitian, dan (6) Daftar Pustaka. Naskah wajib diketik dengan mematuhi kaidah margin baku 4-4-3-3, font Times New Roman, aturan spasi naskah, memuat contoh kutipan langsung panjang dan kutipan tidak langsung, menerapkan catatan kaki dengan singkatan Latin (Ibid., Op. cit., Loc. cit.), serta disusun secara orisinal bebas plagiarisme!</strong>[cite: 1]
+          </p>
+        </div>
+
+        <!-- RINCIAN FORMAT PENGERJAAN -->
+        <div style="margin-bottom:20px;">
+          <h4 style="font-size:11pt; font-weight:700; border-bottom:1px solid #000; padding-bottom:4px; margin-bottom:10px;">
+            Spesifikasi & Rincian Komponen Naskah:
+          </h4>
+
+          <ol style="padding-left:18px; font-size:9.5pt; line-height:1.6;">
+            <li style="margin-bottom:8px;">
+              <strong>Format Fisik Pengetikan (Halaman 52–55):</strong>
+              Ukuran kertas A4, margin 4-4-3-3 (Atas 4 cm, Kiri 4 cm, Bawah 3 cm, Kanan 3 cm)[cite: 1]. Teks utama berjarak 2 spasi[cite: 1], judul bab Times New Roman 14 tebal[cite: 1], naskah Times New Roman 12[cite: 1], nomor halaman angka Arab di sudut kanan atas (sudut kanan bawah untuk halaman judul bab)[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Abstrak Mandiri (Halaman 83–84, 90):</strong>
+              Panjang 150–250 kata dalam satu alinea miring berspasi tunggal[cite: 1], memuat intisari IMRAD (latar belakang, tujuan, metodologi, temuan, dan implikasi) tanpa mencantumkan sitasi pustaka[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Bab I Pendahuluan (Halaman 70–72, 90–91):</strong>
+              Memuat Latar Belakang Masalah yang memenuhi kriteria <em>Feasible, Interesting, Novelty, Ethical, Relevant</em>[cite: 1]; Rumusan Masalah dalam bentuk kalimat tanya spesifik[cite: 1]; Tujuan Penelitian yang selaras[cite: 1]; serta Manfaat Teoretis dan Praktis[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Bab II Kajian Pustaka (Halaman 72–78, 103–105):</strong>
+              Uraian dasar teori[cite: 1]; matriks tabel perbandingan minimal 3 riset terdahulu[cite: 1]; perumusan <em>research gap</em>[cite: 1]; serta hipotesis riset[cite: 1]. Wajib memuat minimal 1 kutipan langsung panjang (&gt;3 baris, spasi 1, menjorok 5–7 ketukan)[cite: 1] dan parafrasa kutipan tidak langsung[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Bab III Metodologi Penelitian (Halaman 78–83, 91–96, 105–112):</strong>
+              Penjelasan eksplisit mengenai pendekatan kualitatif atau kuantitatif[cite: 1], karakteristik populasi dan penarikan sampel[cite: 1], kriteria inklusi dan eksklusi[cite: 1], instrumen riset[cite: 1], serta teknik analisis data[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Catatan Kaki (Footnote) (Halaman 58–60):</strong>
+              Menampilkan minimal 3 catatan kaki berspasi tunggal font 9 yang mempraktikkan penggunaan singkatan Latin: <em>Ibid.</em>, <em>Op. cit.</em>, dan <em>Loc. cit.</em> secara tepat[cite: 1].
+            </li>
+            <li style="margin-bottom:8px;">
+              <strong>Daftar Pustaka (Halaman 60–61, 98–99):</strong>
+              Disusun alfabetis tanpa gelar[cite: 1], indentasi gantung 1 cm / 5 spasi[cite: 1], spasi 1 dalam entri dan 2 spasi antarsumber rujukan[cite: 1].
+            </li>
+          </ol>
+        </div>
+
+        <!-- RUBRIK SKOR PENILAIAN -->
+        <div style="margin-bottom:20px;">
+          <h4 style="font-size:11pt; font-weight:700; border-bottom:1px solid #000; padding-bottom:4px; margin-bottom:8px;">
+            Rubrik Penilaian Capaian:
+          </h4>
+          <table border="1" style="width:100%; border-collapse:collapse; font-size:9pt; text-align:left;">
+            <thead>
+              <tr style="background:#F3F4F6;">
+                <th style="padding:6px; width:5%; text-align:center;">No</th>
+                <th style="padding:6px; width:30%;">Indikator Penilaian</th>
+                <th style="padding:6px; width:50%;">Kriteria Mutu</th>
+                <th style="padding:6px; width:15%; text-align:center;">Bobot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px; text-align:center;">1</td>
+                <td style="padding:6px;"><strong>Format Fisik & Tata Tulis</strong></td>
+                <td style="padding:6px;">Kesesuaian margin 4-4-3-3, kertas A4, font TNR 12/14/9, spasi naskah, dan penomoran[cite: 1].</td>
+                <td style="padding:6px; text-align:center;">20%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">2</td>
+                <td style="padding:6px;"><strong>Konstruksi Bab I</strong></td>
+                <td style="padding:6px;">Ketajaman latar belakang, kriteria kelayakan masalah, perumusan, dan tujuan[cite: 1].</td>
+                <td style="padding:6px; text-align:center;">25%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">3</td>
+                <td style="padding:6px;"><strong>Sintesis Pustaka Bab II</strong></td>
+                <td style="padding:6px;">Kedalaman telaah teori, tabel komparasi studi terdahulu, dan <em>research gap</em>[cite: 1].</td>
+                <td style="padding:6px; text-align:center;">20%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">4</td>
+                <td style="padding:6px;"><strong>Rancangan Metodologi Bab III</strong></td>
+                <td style="padding:6px;">Ketepatan desain riset, teknik sampling, kriteria inklusi/eksklusi, dan analisis[cite: 1].</td>
+                <td style="padding:6px; text-align:center;">20%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">5</td>
+                <td style="padding:6px;"><strong>Etika Sitasi & Daftar Pustaka</strong></td>
+                <td style="padding:6px;">Kerapian kutipan panjang, footnote Latin (Ibid, Op cit, Loc cit), dan orisinalitas[cite: 1].</td>
+                <td style="padding:6px; text-align:center;">15%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Pernyataan Integritas Mahasiswa:</strong><br>
+            <em>"Naskah yang saya kumpulkan adalah murni karya sendiri."</em><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Tanda Tangan Dosen Penguji:</strong><br><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
