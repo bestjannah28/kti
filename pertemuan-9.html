@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 9: Karya Tulis Ilmiah dalam Pertemuan Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #FFFBF5;
+      --card-bg: #FFFFFF;
+      --text-main: #0B192C;
+      --text-muted: #534538;
+      
+      /* Palet Warna: Dark Blue, Oranye, & Cokelat */
+      --theme-navy: #0B192C;
+      --theme-navy-light: #EBF1F8;
+      --theme-navy-dark: #050E1A;
+      
+      --theme-orange: #EA580C;
+      --theme-orange-light: #FFEDD5;
+      --theme-orange-dark: #C2410C;
+      
+      --theme-brown: #78350F;
+      --theme-brown-light: #F7EFE9;
+      --theme-brown-dark: #451A03;
+      
+      --border-dark: #0B192C;
+      --shadow-solid: 4px 4px 0px #0B192C;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 251, 245, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--theme-orange-light);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--theme-orange-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--theme-navy);
+      color: #FFFFFF;
+    }
+
+    .btn-worksheet {
+      background-color: var(--theme-orange);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: var(--theme-navy);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: 4px 4px 0px var(--theme-orange);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+    }
+
+    .time-slot.t1 { background: var(--theme-navy-light); }
+    .time-slot.t2 { background: #FFFFFF; }
+    .time-slot.t3 { background: var(--theme-orange-light); }
+    .time-slot.t4 { background: var(--theme-brown-light); }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--theme-navy);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--theme-brown-dark);
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-canvas);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--theme-navy);
+      color: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: var(--theme-navy); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--theme-orange-dark); }
+    p { margin-bottom: 1rem; color: #2D241E; }
+
+    .content-img-wrapper {
+      margin: 1.5rem 0;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: 4px 4px 0px var(--theme-brown);
+    }
+
+    .content-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-caption {
+      background: #FFFFFF;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1.5px solid var(--border-dark);
+    }
+
+    /* QUOTE BOX */
+    .quote-box {
+      background-color: var(--theme-orange-light);
+      border-left: 5px solid var(--theme-orange);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #431407;
+      border-top: 1px solid #FED7AA;
+      border-right: 1px solid #FED7AA;
+      border-bottom: 1px solid #FED7AA;
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--theme-brown);
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--theme-brown);
+      border-left: 5px solid var(--theme-brown);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .example-box strong {
+      color: var(--theme-brown-dark);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item.accent-orange { background: var(--theme-orange-light); }
+    .feature-item.accent-brown { background: var(--theme-brown-light); }
+    .feature-item.accent-navy { background: var(--theme-navy-light); }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--theme-navy);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+    }
+
+    /* GAMES CARD */
+    .game-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border-dark);
+      transition: all 0.1s ease;
+      color: var(--theme-navy);
+    }
+
+    .quiz-btn:hover {
+      background: var(--theme-orange-light);
+      transform: translate(-1px, -1px);
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 700;
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(11, 25, 44, 0.88);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: #FFFCF7;
+      border: 3px solid #0B192C;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--theme-orange);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: #FFFFFF;
+      border-top: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--theme-navy);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--theme-orange);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-visual-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .slide-card-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--theme-navy);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--theme-brown);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: var(--theme-brown-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    .lecturer-auth-box {
+      background: #FFF7ED;
+      border: 2px dashed var(--theme-orange);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      margin-top: 2rem;
+    }
+
+    .answer-key-content {
+      display: none;
+      background: #FEF3C7;
+      border: 2px solid var(--theme-brown);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .lecturer-auth-box, .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .slide-visual-grid { grid-template-columns: 1fr; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>🏛️</span> Penulisan Karya Ilmiah • Pertemuan 9 (2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Presentasi Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📖</span> Buka Soal Evaluasi & Kunci Dosen
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Alokasi Waktu: 2 SKS (100 Menit)</span>
+            <span class="tag">Tema: Oranye, Cokelat & Dark Blue</span>
+            <span class="tag">Topik: Karya Tulis Ilmiah dalam Pertemuan Ilmiah</span>
+          </div>
+          <h1>Karya Tulis Ilmiah dalam Pertemuan Ilmiah</h1>
+          <p>Materi pertemuan kesembilan: mengkaji peran forum akademik sebagai wadah diseminasi gagasan, membedah karakteristik simposium, seminar, lokakarya, diskusi, dan konferensi, serta menelaah ragam naskah ilmiah (makalah, artikel, kertas kerja, skripsi, tesis, dan disertasi)[cite: 1].</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=700&q=80" alt="Pertemuan Ilmiah" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot t1">
+        <span class="time">10 Menit</span>
+        <div class="title">Warming Up & Pendahuluan</div>
+        <small style="color:var(--text-muted)">Apresiasi profesionalitas pendidik/peneliti dan keterbukaan intelektual[cite: 1].</small>
+      </div>
+      <div class="time-slot t2">
+        <span class="time">45 Menit</span>
+        <div class="title">Materi Inti Komprehensif</div>
+        <small style="color:var(--text-muted)">Klasifikasi 6 forum ilmiah dan 7 wujud karya ilmiah akademik[cite: 1].</small>
+      </div>
+      <div class="time-slot t3">
+        <span class="time">5 Menit</span>
+        <div class="title">Games Interaktif</div>
+        <small style="color:var(--text-muted)">Uji Cepat: Membedakan forum simposium, lokakarya, dan seminar[cite: 1].</small>
+      </div>
+      <div class="time-slot t4">
+        <span class="time">40 Menit</span>
+        <div class="title">Evaluasi & Penutup</div>
+        <small style="color:var(--text-muted)">Pengerjaan 15 soal evaluasi mandiri, verifikasi kunci dosen, dan simpulan[cite: 1].</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Profesionalitas & Forum Ilmiah (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Warming Up & Esensi Diseminasi Pengetahuan</small>
+        </div>
+      </div>
+      <p>Keahlian profesional seorang akademisi maupun praktisi pendidikan tercermin langsung dalam kemampuannya mengeksekusi riset dan mengomunikasikan temuan tersebut secara terbuka[cite: 1]. Kemajuan ilmu pengetahuan menuntut agar gagasan-gagasan solutif tidak hanya tersimpan di ruang arsip, melainkan dipaparkan dalam forum ilmiah guna diuji kebenarannya dan dikonsumsi oleh masyarakat luas[cite: 1].</p>
+
+      <div class="quote-box">
+        "Keahlian profesional seseorang terkait dengan pelaksanaan tugas dan pekerjaan yang ditampilkan. Sifat profesional terpenting dalam hal ini adalah kemampuan melakukan penelitian dan berpikiran terbuka untuk meningkatkan produktivitas tanpa harus melakukan sesuatu yang sulit. Kemajuan ilmu pengetahuan dan teknologi harus mampu memberikan kepercayaan diri masyarakat untuk melakukan kegiatan produktif sekaligus memastikan bahwa dunia berbasis pengetahuan memiliki banyak ide untuk diwujudkan."
+        <span class="citation">— Halaman 113[cite: 1]</span>
+      </div>
+
+      <p>Karya tulis ilmiah dan forum pertemuan akademik adalah dua sisi mata uang yang tidak terpisahkan[cite: 1]. Forum ilmiah menjadi kawah candradimuka tempat hasil penyelidikan dipertukarkan, ditanggapi para pakar, dan dimatangkan sebelum menjadi khazanah ilmu permanen[cite: 1].</p>
+
+      <div class="content-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80" alt="Presentasi di Depan Forum Ilmiah" class="content-img">
+        <div class="img-caption">Gambar 1: Pertemuan ilmiah menyediakan wahana pengujian metodologi dan pertukaran dialektika kritis[cite: 1].</div>
+      </div>
+    </article>
+
+    <!-- SESI 2: MATERI INTI (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Materi Inti: Ragam Pertemuan & Jenis Karya Ilmiah (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Kajian Komprehensif Berdasarkan Rangkuman Bab 8</small>
+        </div>
+      </div>
+
+      <!-- KATEGORI PERTEMUAN ILMIAH -->
+      <h3>A. Kategori Forum dan Pertemuan Ilmiah</h3>
+      <p>Pertemuan ilmiah adalah media terstruktur untuk mempresentasikan atau mendiskusikan temuan riset sesuai dengan jadwal yang telah ditetapkan[cite: 1]. Bentuk forum ini dibedakan menjadi enam kategori utama[cite: 1]:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-navy">
+          <strong>1. Simposium</strong>
+          Pertemuan dengan satu penanggung jawab terbuka, di mana para pembicara menyajikan beragam sudut pandang dan standar gagasan berbeda atas suatu topik tertentu[cite: 1]. Dipandu moderator dan dilengkapi penyanggah untuk merumuskan keselarasan pandangan bagi pemangku kepentingan[cite: 1].
+        </div>
+        <div class="feature-item accent-orange">
+          <strong>2. Seminar</strong>
+          Pembahasan mendalam atas masalah penting yang bersumber dari makalah kerja yang disepakati panitia[cite: 1]. Bertujuan menemukan solusi konkret dan selalu diakhiri dengan musyawarah penutup yang memuat rekomendasi atau kesimpulan akhir[cite: 1].
+        </div>
+        <div class="feature-item accent-brown">
+          <strong>3. Workshop / Lokakarya</strong>
+          Kegiatan ilmiah yang berfokus pada amalan kerja intensif untuk menghasilkan sebuah produk atau keluaran (output) nyata, seperti rancangan model pembelajaran baru atau draf proposal penelitian[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>4. Diskusi</strong>
+          Berasal dari bahasa Latin <em>discusum</em> atau <em>discutio</em>[cite: 1]; proses percakapan terstruktur untuk menghimpun fakta dan opini, mengidentifikasi akar persoalan, serta merumuskan potensi pemecahannya secara mendalam[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>5. Rapat</strong>
+          Bentuk komunikasi terstruktur yang bersifat berkelanjutan dan sering digunakan oleh berbagai organisasi, baik di lingkungan pemerintahan maupun lembaga swasta[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>6. Konferensi</strong>
+          Pertemuan formal skala luas yang mempertemukan berbagai pihak untuk berkumpul mendiskusikan dan menyepakati permasalahan bersama yang relevan dalam suatu bidang kajian[cite: 1].
+        </div>
+      </div>
+
+      <!-- HAKIKAT DAN KRITERIA KTI -->
+      <h3>B. Hakikat & Tiga Kriteria Gagasan Karya Tulis Ilmiah</h3>
+      <p>Suatu naskah dipandang sah sebagai karya tulis ilmiah apabila disusun secara sistematis, terorganisir, bertumpu pada data objektif, serta bebas dari pengaruh emosional maupun prasangka pribadi[cite: 1]:</p>
+
+      <div class="quote-box">
+        "Karya ilmiah adalah karya tulis atau bentuk lainnya telah diakui dalam bidang ilmu pengetahuan, teknologi atau seni ditulis atau dikerjakan sesuai dengan tata cara ilmiah dan mengikuti pedoman atau aturan yang telah ditetapkan (Nana Sudjana, 2014)... Materi dan gagasan dari buku teks yang berfokus pada ilmu pengetahuan diharapkan memenuhi kriteria: (1) relevansi dengan situasi yang ada; (2) kejelasan masalah; dan (3) kemungkinan pembahasan masalah (Firmansyah, 2007)."
+        <span class="citation">— Halaman 119–120[cite: 1]</span>
+      </div>
+
+      <div class="example-box">
+        <strong>Penjelasan Tiga Kriteria Gagasan Ilmiah (Firmansyah, 2007):</strong><br>
+        • <em>Relevansi:</em> Pokok bahasan memiliki keterkaitan langsung dengan isu nyata yang sedang berkembang di lingkungan masyarakat[cite: 1].<br>
+        • <em>Kejelasan Masalah:</em> Permasalahan dirumuskan secara tegas, spesifik, dan tidak menimbulkan ambiguitas penafsiran[cite: 1].<br>
+        • <em>Kemungkinan Pembahasan:</em> Masalah tersebut realistis untuk dipecahkan dan dibedah menggunakan instrumen metodologi ilmiah yang tersedia[cite: 1].
+      </div>
+
+      <!-- RAGAM KARYA ILMIAH AKADEMIK -->
+      <h3>C. Jenis-Jenis Karya Ilmiah yang Sering Dipublikasikan</h3>
+      <p>Di ranah institusi pendidikan tinggi dan temu ilmiah, terdapat tujuh ragam bentuk tulisan ilmiah yang lazim ditemui[cite: 1]:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-navy">
+          <strong>1. Makalah</strong>
+          Karya tulis yang mengulas masalah secara empiris dan objektif untuk dipresentasikan dalam sidang seminar atau pemenuhan tugas akademik mahasiswa[cite: 1]. Terbagi atas Makalah Ilmiah, Makalah Kerja, dan Makalah Kajian[cite: 1].
+        </div>
+        <div class="feature-item accent-orange">
+          <strong>2. Kertas Kerja (Work Paper)</strong>
+          Mirip dengan makalah, namun disusun dengan analisis yang jauh lebih mendalam dan spesifik; lazimnya dipresentasikan dalam lokakarya atau seminar pakar guna memperoleh tanggapan akademik[cite: 1].
+        </div>
+        <div class="feature-item accent-brown">
+          <strong>3. Artikel Ilmiah</strong>
+          Karya tulis yang disarikan dari hasil tinjauan atau eksperimen ilmiah dengan tujuan utama dipublikasikan ke dalam jurnal ilmiah terakreditasi[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>4. Paper Mahasiswa</strong>
+          Sebutan khusus bagi karya tulis ilmiah/makalah yang disusun mahasiswa dalam kaitannya dengan kurikulum pendidikan diploma atau sarjana[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>5. Skripsi</strong>
+          Karya ilmiah wajib mahasiswa program Strata Satu (S1) yang menyajikan hasil penyelidikan mandiri berbasis observasi lapangan untuk meraih gelar sarjana[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>6. Tesis</strong>
+          Karya ilmiah mahasiswa jenjang Magister (S2) yang disusun secara lebih teliti, mendalam, dan komprehensif dibandingkan skripsi guna menyajikan temuan baru dari riset mandiri[cite: 1].
+        </div>
+        <div class="feature-item">
+          <strong>7. Disertasi (Tesis Ph.D)</strong>
+          Karya ilmiah tingkat tertinggi calon Doktor (S3) yang memuat proposisi teruji secara menyeluruh serta menyajikan temuan orisinal yang dibuktikan sendiri oleh penulisnya[cite: 1].
+        </div>
+      </div>
+    </article>
+
+    <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Games Interaktif: Uji Karakteristik Forum Ilmiah (5 Menit)</h2>
+          <small style="color:var(--text-muted)">Klasifikasi Format Pertemuan Berdasarkan Tujuan Akhir</small>
+        </div>
+      </div>
+      <div class="game-card">
+        <h4>⚡ Uji Pemahaman Jenis Forum</h4>
+        <p style="margin-top:0.5rem">Sebuah pertemuan ilmiah diselenggarakan selama dua hari dengan agenda awal pemaparan teori rancangan modul, dilanjutkan dengan kegiatan praktik intensif hingga seluruh peserta berhasil menghasilkan draf produk modul ajar digital[cite: 1]. Berdasarkan karakteristiknya, forum apakah ini[cite: 1]?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="checkAnswer(false)">A. Simposium Ilmiah Terbuka</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">B. Rapat Kerja Koordinasi</button>
+          <button class="quiz-btn" onclick="checkAnswer(true)">C. Workshop atau Lokakarya Produk</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">D. Diskusi Terbatas Non-Formal</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </article>
+
+    <!-- SESI 4: TANYA JAWAB & CLOSING -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Tanya Jawab & Closing Statement</h2>
+          <small style="color:var(--text-muted)">Refleksi Integritas Diseminasi Gagasan</small>
+        </div>
+      </div>
+      <p><strong>Fokus Diskusi & Tanya Jawab:</strong></p>
+      <ul class="detailed-list">
+        <li>Bagaimana membedakan secara mendasar antara Makalah Kerja (working paper) dengan Kertas Kerja (work paper) dalam sidang ilmiah[cite: 1]?</li>
+        <li>Mengapa simposium memerlukan pembicara dari berbagai sudut pandang yang berbeda atas topik yang sama[cite: 1]?</li>
+      </ul>
+      <div class="quote-box" style="border-left-color: var(--theme-orange); background-color: var(--theme-orange-light);">
+        "Menulis karya ilmiah adalah membangun fondasi kebenaran, sedangkan menyajikannya di forum ilmiah adalah menguji ketangguhan nalar kita di hadapan masyarakat keilmuan. Keterbukaan terhadap kritik dan ketepatan metodologi adalah tanda sejati profesionalitas seorang akademisi."
+        <span class="citation">— Penutup Perkuliahan Pertemuan ke-9</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="background:var(--theme-navy); color:#FFF; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan IX: Forum & Karya Tulis Ilmiah</span>
+        </div>
+        <button class="btn btn-worksheet" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
+        <h1 class="slide-title">KTI dalam Pertemuan Ilmiah</h1>
+        <div class="slide-visual-grid">
+          <div>
+            <p style="font-size:1.15rem; margin-bottom:1.5rem;">Membedah klasifikasi 6 forum temu ilmiah, kriteria kelayakan gagasan (Firmansyah), serta jenjang karya tulis ilmiah akademik dari makalah hingga disertasi[cite: 1].</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="tag" style="background:var(--theme-orange-light)">Durasi: 100 Menit</span>
+              <span class="tag" style="background:var(--theme-navy-light)">Fokus: Bab 8 Rujukan Teks</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Slide Sampul" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-navy);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: KLASIFIKASI FORUM -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">WADAH DISEMINASI ILMIAH</div>
+        <h2 class="slide-title">Enam Kategori Pertemuan Ilmiah</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-orange-dark); display:block; margin-bottom:0.3rem;">Simposium & Seminar</strong>
+            • <em>Simposium:</em> Variasi perspektif para pembicara atas topik tunggal dipandu moderator[cite: 1].<br>
+            • <em>Seminar:</em> Bedah masalah penting berdasar makalah kerja untuk merumuskan rekomendasi[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-navy); display:block; margin-bottom:0.3rem;">Workshop & Diskusi</strong>
+            • <em>Workshop:</em> Praktik intensif menghasilkan produk nyata (scientific output)[cite: 1].<br>
+            • <em>Diskusi:</em> Percakapan terstruktur memetakan akar dan solusi permasalahan[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-brown); display:block; margin-bottom:0.3rem;">Rapat & Konferensi</strong>
+            • <em>Rapat:</em> Komunikasi formal berkala organisasi[cite: 1].<br>
+            • <em>Konferensi:</em> Temu skala luas membahas dan menyepakati isu strategis[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-orange-dark); display:block; margin-bottom:0.3rem;">Tujuan Forum</strong>
+            Wahana berbagi pengetahuan, uji validitas, dan menjaga tata krama masyarakat keilmuan[cite: 1].
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: KRITERIA GAGASAN -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">SYARAT PENYAJIAN KTI</div>
+        <h2 class="slide-title">Kriteria Gagasan Ilmiah (Firmansyah, 2007)</h2>
+        <div class="slide-visual-grid">
+          <div>
+            <ul class="detailed-list" style="font-size:1.05rem; line-height:1.8;">
+              <li><strong>1. Relevansi:</strong> Gagasan memiliki kesesuaian nyata dengan kondisi problematika yang sedang berlangsung di masyarakat[cite: 1].</li>
+              <li><strong>2. Kejelasan Masalah:</strong> Substansi persoalan dirumuskan secara lugas, terperinci, dan tidak bermakna ganda[cite: 1].</li>
+              <li><strong>3. Kemungkinan Pembahasan:</strong> Persoalan yang diangkat bersifat realistis dan dapat diselesaikan lewat metode ilmiah yang terpercaya[cite: 1].</li>
+            </ul>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Slide Syarat KTI" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-brown);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: JENIS KARYA ILMIAH -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">HIERARKI & BENTUK NASKAH</div>
+        <h2 class="slide-title">Ragam Karya Ilmiah Akademik</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-navy); display:block; margin-bottom:0.4rem;">Makalah & Kertas Kerja</strong>
+            • <em>Makalah:</em> Ulasan ilmiah untuk sidang/tugas terbagi jenis Ilmiah, Kerja, dan Kajian[cite: 1].<br>
+            • <em>Kertas Kerja:</em> Analisis lebih mendalam untuk lokakarya pakar[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-orange-dark); display:block; margin-bottom:0.4rem;">Artikel & Paper</strong>
+            • <em>Artikel:</em> Ditulis khusus untuk publikasi jurnal ilmiah[cite: 1].<br>
+            • <em>Paper:</em> Naskah tugas mahasiswa berpedoman pada kampus[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-brown); display:block; margin-bottom:0.4rem;">Jenjang Skripsi & Tesis</strong>
+            • <em>Skripsi:</em> Riset mandiri berbasis observasi lapangan untuk S1[cite: 1].<br>
+            • <em>Tesis:</em> Riset mendalam menyajikan temuan baru tingkat S2[cite: 1].
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-navy); display:block; margin-bottom:0.4rem;">Jenjang Disertasi</strong>
+            • <em>Disertasi (Ph.D):</em> Proposisi teruji komprehensif dengan temuan orisinal mandiri untuk gelar Doktor (S3)[cite: 1].
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: PENUTUP -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">SIMPULAN & DISKUSI KELAS</div>
+        <h2 class="slide-title">Integritas Komunikasi Ilmiah</h2>
+        <div class="quote-box" style="font-size:1.15rem; margin-top:1.5rem;">
+          Karya tulis ilmiah yang sah disusun secara sistematis, terorganisir, berbasis data objektif, dan disajikan dengan tetap menjunjung tinggi tata krama masyarakat keilmuan[cite: 1].
+        </div>
+        <p style="margin-top:2rem; font-size:1.05rem;">
+          <strong>Aktivitas Mandiri:</strong> Silakan buka lembar evaluasi untuk mengerjakan 15 soal pilihan ganda mandiri. Dosen dapat memverifikasi lembar jawaban melalui sandi verifikasi khusus.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: SOAL EVALUASI 15 PG + KUNCI DOSEN -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:var(--theme-navy);">
+          <span>📄 Lembar Evaluasi Mahasiswa & Kunci Dosen (Bab 8)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak Lembar Soal (PDF)
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN EVALUASI -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:15pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Evaluasi Perkuliahan: Karya Ilmiah dalam Pertemuan Ilmiah</h2>
+          <h3 style="font-size:11.5pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 9</h3>
+          <p style="font-size:9.5pt; color:#333;">Materi: Bab 8 (Pertemuan Ilmiah, Kriteria KTI, dan Ragam Bentuk Publikasi)[cite: 1]</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:15px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <div style="margin-bottom:15px; font-size:9.5pt; background:#FFF7ED; padding:8px 12px; border:1px solid #FED7AA; border-radius:4px;">
+          <strong>Petunjuk Mengerjakan:</strong> Pilihlah satu jawaban yang paling tepat (A, B, C, atau D) dengan memberi tanda silang (X) atau melingkari huruf pilihan Anda!
+        </div>
+
+        <!-- 15 SOAL PILIHAN GANDA -->
+        <div style="font-size:9.5pt; line-height:1.5;">
+
+          <!-- SOAL 1 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>1. Sifat profesional terpenting seseorang dalam kaitannya dengan pelaksanaan tugas keilmuan dan peningkatan produktivitas kerja adalah...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Kemampuan menghindari forum diskusi publik<br>
+              B. Kemampuan melakukan penelitian dan berpikiran terbuka<br>
+              C. Mempertahankan pendapat tanpa menguji kebenaran bukti empiris<br>
+              D. Menolak perubahan teknologi komputasi dalam penulisan
+            </div>
+          </div>
+
+          <!-- SOAL 2 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>2. Wahana terstruktur yang digunakan untuk melakukan presentasi, diskusi, serta saling berbagi pemahaman ilmiah antarpeserta secara terjadwal disebut...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Pertemuan ilmiah<br>
+              B. Sidang yudisial<br>
+              C. Musyawarah tertutup<br>
+              D. Debat terbuka
+            </div>
+          </div>
+
+          <!-- SOAL 3 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>3. Pertemuan ilmiah dengan satu orang penanggung jawab terbuka, di mana para peserta/pembicara mendeskripsikan pandangan dari perspektif berbeda atas suatu topik disebut...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Lokakarya<br>
+              B. Rapat komisi<br>
+              C. Simposium<br>
+              D. Wawancara terarah
+            </div>
+          </div>
+
+          <!-- SOAL 4 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>4. Ciri utama dari forum seminar adalah pembahasan persoalan penting yang bersumber dari makalah kerja dan selalu diakhiri dengan...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Pembuatan produk modul ajar secara langsung<br>
+              B. Pembatalan seluruh hipotesis penelitian terdahulu<br>
+              C. Kata penutup musyawarah bersama yang memuat rekomendasi/penyelesaian<br>
+              D. Pemilihan pimpinan dewan juri kehormatan
+            </div>
+          </div>
+
+          <!-- SOAL 5 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>5. Jenis pertemuan ilmiah yang berfokus pada amalan kerja nyata dan bertujuan menghasilkan keluaran atau produk ilmiah tertentu (seperti model pengajaran atau proposal) dinamakan...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Seminar<br>
+              B. Workshop atau lokakarya<br>
+              C. Simposium<br>
+              D. Konferensi berkala
+            </div>
+          </div>
+
+          <!-- SOAL 6 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>6. Istilah "diskusi" secara etimologis berakar dari bahasa Latin yaitu...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. <em>Discusum</em> atau <em>discutio</em><br>
+              B. <em>Opera citatto</em><br>
+              C. <em>Loco citato</em><br>
+              D. <em>Faculté de langage</em>
+            </div>
+          </div>
+
+          <!-- SOAL 7 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>7. Menurut Nana Sudjana (2014), karya ilmiah diartikan sebagai bentuk karya tulis atau wujud lainnya yang...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Dibuat berdasarkan imajinasi bebas tanpa ikatan aturan baku<br>
+              B. Telah diakui dalam bidang Iptek atau seni serta dikerjakan sesuai tata cara ilmiah dan aturan yang ditetapkan<br>
+              C. Merupakan kompilasi berita opini yang diterbitkan di koran harian<br>
+              D. Hanya memuat data hasil wawancara informal tanpa analisis
+            </div>
+          </div>
+
+          <!-- SOAL 8 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>8. Menurut Firmansyah (2007), materi dan gagasan suatu karya ilmiah berfokus pada ilmu pengetahuan wajib memenuhi tiga kriteria, yaitu...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Popularitas topik, kecepatan publikasi, dan panjang naskah<br>
+              B. Relevansi dengan situasi yang ada, kejelasan masalah, dan kemungkinan pembahasan masalah<br>
+              C. Keberpihakan subjektif, keunikan bahasa gaul, dan kerahasiaan data<br>
+              D. Manfaat komersial, jumlah referensi web, dan dukungan sponsor tunggal
+            </div>
+          </div>
+
+          <!-- SOAL 9 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>9. Pandangan ahli yang menyatakan bahwa "karya ilmiah adalah serangkaian kegiatan penulisan berlandaskan hasil penelitian sistematis mengikuti metodologi ilmiah guna mendapatkan jawaban ilmiah atas suatu permasalahan" dikemukakan oleh...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Brotowidjoyo<br>
+              B. Hery Firman<br>
+              C. Eko Susilo M.<br>
+              D. Drs. Totok Djuroto dan Dr. Bambang Supriyadi
+            </div>
+          </div>
+
+          <!-- SOAL 10 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>10. Makalah yang ditulis dengan tujuan khusus memberikan saran pemecahan atas situasi yang bersifat kontroversial tergolong ke dalam jenis...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Makalah Kajian<br>
+              B. Makalah Kerja<br>
+              C. Makalah Ilmiah Murni<br>
+              D. Kertas Posisi
+            </div>
+          </div>
+
+          <!-- SOAL 11 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>11. Bentuk karya tulis yang memiliki kemiripan dengan makalah namun memuat analisis yang lebih mendalam serta dipresentasikan pada seminar atau lokakarya akademisi dinamakan...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Kertas Kerja (Work Paper)<br>
+              B. Artikel Populer<br>
+              C. Risalah Rapat<br>
+              D. Notula Diskusi
+            </div>
+          </div>
+
+          <!-- SOAL 12 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>12. Sebutan lazim yang digunakan mahasiswa untuk karya tulis sejenis makalah/artikel dalam rangka menyelesaikan jenjang studi Diploma, S1, S2, atau S3 sesuai pedoman kampus adalah...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Monograf<br>
+              B. Paper<br>
+              C. Buku Teks<br>
+              D. Kolom Opini
+            </div>
+          </div>
+
+          <!-- SOAL 13 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>13. Karya ilmiah mahasiswa tingkat sarjana (S1) yang menyajikan hasil penyelidikan berlandaskan teori terbitan sebelumnya dan didukung data observasi lapangan disebut...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Skripsi<br>
+              B. Disertasi<br>
+              C. Tesis<br>
+              D. Prosiding
+            </div>
+          </div>
+
+          <!-- SOAL 14 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>14. Perbedaan mendasar antara skripsi dan tesis adalah bahwa tesis...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Ditulis oleh siswa sekolah menengah untuk ujian akhir<br>
+              B. Merupakan makalah tingkat magister (S2) yang ditulis lebih teliti guna menangkap pemahaman baru dari penelitian mandiri<br>
+              C. Tidak memerlukan metode ilmiah dan pengolahan data lapangan<br>
+              D. Bersifat fiksi ilmiah dan tidak perlu dipertahankan dalam sidang
+            </div>
+          </div>
+
+          <!-- SOAL 15 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>15. Karya ilmiah tingkat doktor (S3) yang menyajikan proposisi teruji secara menyeluruh dan memuat temuan orisinal yang dibuktikan sendiri oleh penulisnya disebut...[cite: 1]</strong></p>
+            <div style="padding-left:15px;">
+              A. Disertasi (Tesis Ph.D)<br>
+              B. Makalah Kerja<br>
+              C. Laporan Penugasan<br>
+              D. Kertas Kerja
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VERIFIKASI DOSEN KHUSUS UNTUK MEMBUKA KUNCI -->
+        <div class="lecturer-auth-box">
+          <div style="font-weight:700; color:var(--theme-navy); margin-bottom:0.4rem;">
+            🔒 Kunci Jawaban Resmi (Akses Khusus Dosen Pengampu)
+          </div>
+          <p style="font-size:9pt; margin-bottom:0.6rem; color:var(--text-muted);">
+            Masukkan kode verifikasi dosen untuk membuka kunci jawaban dan pembahasan Bab 8:
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <input type="password" id="lecturerPass" placeholder="Masukkan Sandi Dosen..." style="padding:0.4rem 0.8rem; border:1.5px solid var(--border-dark); border-radius:4px; font-size:9pt;">
+            <button class="btn btn-presentation" style="padding:0.4rem 0.9rem; font-size:8.5pt;" onclick="unlockAnswerKey()">Verifikasi Sandi</button>
+          </div>
+          
+          <div id="keyContent" class="answer-key-content">
+            <h4 style="color:var(--theme-brown-dark); margin-bottom:0.5rem; font-size:10.5pt;">Kunci Jawaban 15 Soal Pilihan Ganda (Bab 8):</h4>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:0.4rem; font-size:9pt; font-weight:700;">
+              <div>1. B (Riset & Terbuka)</div>
+              <div>2. A (Pertemuan Ilmiah)</div>
+              <div>3. C (Simposium)</div>
+              <div>4. C (Rekomendasi Musyawarah)</div>
+              <div>5. B (Workshop/Lokakarya)</div>
+              <div>6. A (Discusum/Discutio)</div>
+              <div>7. B (Pengakuan Tata Cara)</div>
+              <div>8. B (3 Kriteria Firmansyah)</div>
+              <div>9. D (Totok & Bambang)</div>
+              <div>10. A (Makalah Kajian)</div>
+              <div>11. A (Kertas Kerja)</div>
+              <div>12. B (Paper)</div>
+              <div>13. A (Skripsi)</div>
+              <div>14. B (Tesis S2)</div>
+              <div>15. A (Disertasi S3)</div>
+            </div>
+            <div style="margin-top:0.8rem; font-size:8.5pt; color:#78350F; font-style:italic;">
+              *Catatan Dosen: Seluruh kunci telah diverifikasi sesuai uraian Bab 8 halaman 113–124[cite: 1].
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Tanda Tangan Mahasiswa:</strong><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Verifikasi Nilai Dosen Pengampu:</strong><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+
+    /* QUIZ PEMBUKA LOGIC */
+    function checkAnswer(isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      if (isCorrect) {
+        feedback.style.backgroundColor = '#FFEDD5';
+        feedback.style.borderColor = '#EA580C';
+        feedback.style.color = '#7C2D12';
+        feedback.innerText = '✅ TEPAT SEKALI! Berdasarkan Halaman 117, forum ilmiah yang berfokus pada amalan kerja nyata untuk menghasilkan produk atau luaran ilmiah tertentu disebut workshop atau lokakarya.';
+      } else {
+        feedback.style.backgroundColor = '#FEE2E2';
+        feedback.style.borderColor = '#DC2626';
+        feedback.style.color = '#991B1B';
+        feedback.innerText = '❌ KURANG TEPAT. Ingat kembali definisi Halaman 117: Kegiatan yang berorientasi pada penghasilan produk/karya nyata adalah workshop atau lokakarya.';
+      }
+    }
+
+    /* VERIFIKASI KUNCI JAWABAN DOSEN */
+    function unlockAnswerKey() {
+      const pass = document.getElementById('lecturerPass').value;
+      const keyBox = document.getElementById('keyContent');
+      // Password khusus dosen Pertemuan 9: DOSENKTI9
+      if (pass === 'DOSENKTI9' || pass === 'dosenkti9') {
+        keyBox.style.display = 'block';
+        alert('Kunci jawaban Bab 8 berhasil dibuka.');
+      } else {
+        alert('Sandi salah. Akses kunci jawaban hanya diperuntukkan bagi dosen pengampu.');
+      }
+    }
+  </script>
+</body>
+</html>
