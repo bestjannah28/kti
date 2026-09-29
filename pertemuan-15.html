@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 15: Etika Penulisan & Submit Artikel Jurnal Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #F8FAF9;
+      --card-bg: #FFFFFF;
+      --text-main: #111817;
+      --text-muted: #52605D;
+      
+      /* Palet Warna: Hijau Mint, Abu-abu, dan Black */
+      --theme-black: #111817;
+      --theme-black-soft: #1E2624;
+      --theme-mint: #10B981;
+      --theme-mint-light: #D1FAE5;
+      --theme-mint-subtle: #ECFDF5;
+      --theme-mint-dark: #065F46;
+      --theme-gray: #64748B;
+      --theme-gray-light: #F1F5F9;
+      --theme-gray-border: #CBD5E1;
+      
+      --border-dark: #111817;
+      --shadow-solid: 4px 4px 0px #111817;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(248, 250, 249, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--theme-mint-light);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--theme-mint-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--theme-black);
+      color: #FFFFFF;
+    }
+
+    .btn-worksheet {
+      background-color: var(--theme-mint);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: var(--theme-black);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: 4px 4px 0px var(--theme-mint);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+    }
+
+    .time-slot.t1 { background: var(--theme-mint-subtle); }
+    .time-slot.t2 { background: var(--theme-gray-light); }
+    .time-slot.t3 { background: var(--theme-mint-light); }
+    .time-slot.t4 { background: #FFFFFF; }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--theme-mint-dark);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--theme-black);
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-canvas);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--theme-black);
+      color: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: var(--theme-black); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--theme-mint-dark); }
+    p { margin-bottom: 1rem; color: #1E2624; }
+
+    /* DIAGRAM ALUR SUBMIT OJS */
+    .diagram-container {
+      background: var(--theme-gray-light);
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 4px 4px 0px var(--theme-mint);
+    }
+
+    .diagram-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--theme-black);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .flow-step-item {
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      gap: 1rem;
+    }
+
+    .flow-step-num {
+      background: var(--theme-mint);
+      color: #FFFFFF;
+      font-weight: 800;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+
+    .flow-step-text strong {
+      display: block;
+      color: var(--theme-black);
+      font-size: 0.95rem;
+    }
+
+    .flow-step-text small {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* QUOTE BOX (Sitasi rujukan nomor halaman) */
+    .quote-box {
+      background-color: var(--theme-mint-subtle);
+      border-left: 5px solid var(--theme-mint);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #064E3B;
+      border-top: 1px solid #A7F3D0;
+      border-right: 1px solid #A7F3D0;
+      border-bottom: 1px solid #A7F3D0;
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--theme-mint-dark);
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--theme-gray);
+      border-left: 5px solid var(--theme-gray);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .example-box strong {
+      color: var(--theme-black);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item.accent-mint { background: var(--theme-mint-light); }
+    .feature-item.accent-gray { background: var(--theme-gray-light); }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--theme-black);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+    }
+
+    /* GAMES CARD */
+    .game-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border-dark);
+      transition: all 0.1s ease;
+      color: var(--text-main);
+    }
+
+    .quiz-btn:hover {
+      background: var(--theme-mint-light);
+      transform: translate(-1px, -1px);
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 700;
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(17, 24, 23, 0.9);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid var(--border-dark);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--theme-mint);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: #FFFFFF;
+      border-top: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--theme-black);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--theme-mint-dark);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-visual-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .slide-card-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--theme-mint);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--theme-mint);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: var(--theme-mint-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    .lecturer-auth-box {
+      background: var(--theme-mint-light);
+      border: 2px dashed var(--theme-mint-dark);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      margin-top: 2rem;
+    }
+
+    .answer-key-content {
+      display: none;
+      background: var(--theme-gray-light);
+      border: 2px solid var(--theme-black);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .lecturer-auth-box, .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .slide-visual-grid { grid-template-columns: 1fr; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>⚖️</span> Penulisan Karya Ilmiah • Pertemuan 15 (2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Presentasi Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📄</span> Buka Lembar Evaluasi & Kunci Dosen
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Alokasi Waktu: 2 SKS (100 Menit)</span>
+            <span class="tag">Tema: Hijau Mint, Abu-abu & Black</span>
+            <span class="tag">Topik: Etika Penulisan & Submit Jurnal</span>
+          </div>
+          <h1>Etika Kepenulisan & Tata Cara Submit Artikel Jurnal Ilmiah</h1>
+          <p>Materi pertemuan kelima belas: mengkaji standar etika kepenulisan (kejujuran, hak cipta, validitas), membongkar ragam bentuk pelanggaran ilmiah (fabrikasi, falsifikasi, kepengarangan tidak sah), memahami 9 ciri KTI, menelaah standar indeksasi jurnal (SINTA, Scopus, WoS), serta menguasai prosedur submit naskah berbasis Open Journal System (OJS).</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=700&q=80" alt="Etika dan Publikasi Jurnal" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot t1">
+        <span class="time">10 Menit</span>
+        <div class="title">Warming Up & Pendahuluan</div>
+        <small style="color:var(--text-muted)">Urgensi etika moralitas keilmuan dan memasukkan karya ke catatan permanen.</small>
+      </div>
+      <div class="time-slot t2">
+        <span class="time">45 Menit</span>
+        <div class="title">Materi Inti Komprehensif</div>
+        <small style="color:var(--text-muted)">Pelanggaran ilmiah, 9 ciri KTI, kriteria mutu jurnal, dan alur submit OJS.</small>
+      </div>
+      <div class="time-slot t3">
+        <span class="time">5 Menit</span>
+        <div class="title">Games Interaktif</div>
+        <small style="color:var(--text-muted)">Uji Cepat: Membedakan fabrikasi, falsifikasi, dan kepengarangan tidak sah.</small>
+      </div>
+      <div class="time-slot t4">
+        <span class="time">40 Menit</span>
+        <div class="title">Evaluasi Mandiri & Penutup</div>
+        <small style="color:var(--text-muted)">Pengerjaan 20 soal pilihan ganda mandiri dan verifikasi kunci dosen.</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Integritas Moral & Catatan Ilmiah Permanen (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Warming Up & Peletakan Landasan Tanggung Jawab Akademik</small>
+        </div>
+      </div>
+      <p>Publikasi artikel ilmiah pada jurnal merupakan jembatan emas untuk menyebarluaskan hasil penyelidikan empiris ke tengah peradaban keilmuan global. Namun, kebebasan menulis senantiasa diikat oleh tanggung jawab moral yang ketat. Mengirimkan karya tulis ke jurnal ilmiah otomatis memasukkan hasil pemikiran ke dalam catatan ilmiah permanen yang akan dibaca, diuji, dan direplikasi oleh peneliti independen di masa depan.</p>
+
+      <div class="quote-box">
+        "Etika secara umum didefinisikan sebagai seperangkat aturan yang dibahas secara sistematis, logis, dan kritis... 'Ethos' dalam bahasa Yunani berarti adat atau Susila merupakan asal kata etika... Tujuan dari etika penulisan ilmiah adalah untuk memastikan bahwa meskipun penulis memiliki kebebasan untuk menulis secara mandiri, mereka harus mampu bertanggung jawab atas apa yang mereka tulis. Hal ini dilakukan agar standar kualitas karya ilmiah dapat terjaga... Dengan mempublikasikan artikel pada jurnal ilmiah artinya telah memasukkan karya tulis ke dalam catatan ilmiah permanen."
+        <span class="citation">— Halaman 183, 184, 191</span>
+      </div>
+
+      <p>Kepatuhan terhadap kaidah keilmuan dan etika kepengarangan memastikan bahwa setiap klaim pengetahuan yang disajikan dapat dipercaya dan terbebas dari sengketa hukum hak cipta maupun manipulasi data.</p>
+
+      <div class="content-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=80" alt="Integritas dan Hukum Publikasi" class="content-img">
+        <div class="img-caption">Gambar 1: Publikasi ilmiah menuntut keseimbangan antara kejujuran data lapangan dan kepatuhan prosedur editorial jurnal.</div>
+      </div>
+    </article>
+
+    <!-- SESI 2: MATERI INTI (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Materi Inti: Etika, Pelanggaran Ilmiah & Alur Submit Jurnal (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Kajian Komprehensif Berdasarkan Bab 14 & 15</small>
+        </div>
+      </div>
+
+      <!-- STANDAR ETIKA DAN PELANGGARAN -->
+      <h3>A. Standar Etika dan Bentuk-Bentuk Pelanggaran Ilmiah</h3>
+      <p>Penulis karya ilmiah wajib menegakkan lima standar pokok etika dan mewaspadai enam wujud pelanggaran ilmiah fatal:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-mint">
+          <strong>1. Standar Kejujuran & Keabsahan</strong>
+          Menampilkan data lapangan yang asli tanpa rekayasa; gagasan diuraikan dengan kalimat efektif agar tidak menimbulkan salah tafsir.
+        </div>
+        <div class="feature-item accent-gray">
+          <strong>2. Bebas Plagiarisme & Menjunjung Hak Cipta</strong>
+          Menghormati hak eksklusif pencipta sesuai UU No. 19 Tahun 2002 serta selalu mencantumkan sumber sitasi secara eksplisit.
+        </div>
+        <div class="feature-item">
+          <strong>3. Reliabilitas dan Akurasi</strong>
+          Memastikan alat ukur valid dan reliabel, penarikan sampel representatif, serta memakai analisis statistik yang tepat.
+        </div>
+        <div class="feature-item">
+          <strong>4. Fabrikasi vs Falsifikasi</strong>
+          <em>Fabrikasi</em> adalah mengarang data yang tidak pernah ada dalam riset; <em>Falsifikasi</em> adalah memanipulasi atau mengubah data/referensi selama proses riset.
+        </div>
+        <div class="feature-item accent-mint">
+          <strong>5. Kepengarangan Tidak Sah</strong>
+          Mencantumkan nama orang yang tidak berkontribusi (gift authorship) atau menghapus nama pihak yang nyata-nyata berkontribusi (ghost authorship).
+        </div>
+        <div class="feature-item accent-gray">
+          <strong>6. Konflik Kepentingan & Pengajuan Jamak</strong>
+          Merekayasa data demi kepentingan sponsor tertentu, atau mengirimkan satu naskah yang sama ke berbagai jurnal secara serentak (duplicate submission).
+        </div>
+      </div>
+
+      <!-- SEMBILAN CIRI KTI -->
+      <h3>B. Sembilan Ciri Khas Karya Tulis Ilmiah</h3>
+      <p>Sebuah naskah diakui memenuhi kualifikasi karya tulis ilmiah apabila memenuhi 9 indikator baku:</p>
+      <ul class="detailed-list">
+        <li><strong>Reproduktif:</strong> Informasi yang ditulis dapat dimaknai secara tepat oleh pembaca persis seperti maksud penulis.</li>
+        <li><strong>Tidak Ambigu:</strong> Uraian mendalam, gamblang, dan tidak memicu tafsiran ganda.</li>
+        <li><strong>Tidak Emotif:</strong> Tidak melibatkan perasaan subjektif; murni menyajikan fakta empiris.</li>
+        <li><strong>Menggunakan Bahasa Baku:</strong> Patuh pada ejaan, istilah, dan kaidah tata bahasa resmi.</li>
+        <li><strong>Menggunakan Kaidah Keilmuan:</strong> Menggunakan terminologi akademik yang relevan dengan bidang ilmu.</li>
+        <li><strong>Bersifat Denotatif (Dekoratif/Rasional):</strong> Memilih kata dengan konsistensi arti yang menonjolkan rasionalitas nalar.</li>
+        <li><strong>Terdapat Kohesi:</strong> Hubungan antarbagian atau alinea bersambung runtut dan tidak keluar dari pokok bahasan.</li>
+        <li><strong>Bersifat Objektif:</strong> Berlandaskan hasil analisis fakta nyata tanpa memihak.</li>
+        <li><strong>Menggunakan Kalimat Efektif:</strong> Kalimat padat, teratur, dan mudah dipahami pembaca.</li>
+      </ul>
+
+      <!-- MENGENAL MUTU JURNAL & INDEKSASI -->
+      <h3>C. Standar Mutu Jurnal dan Kategori Indeksasi</h3>
+      <p>Kredibilitas publikasi diukur berdasarkan pemenuhan parameter mutu dewan redaksi, proses telaah, dan reputasi pengindeks:</p>
+
+      <div class="quote-box">
+        "Kualitas sebuah jurnal baik nasional maupun internasional dapat dilihat dari terpenuhinya beberapa ciri-ciri... Jurnal Nasional Terakreditasi dilakukan oleh Science and Technology Index (SINTA)... SINTA memiliki 6 tingkatan yaitu SINTA 1 sampai SINTA 6. Semakin tinggi tingkatan jurnal SINTA, semakin rendah kualitas jurnalnya. Misal SINTA 2 tentu lebih baik dari SINTA 4... Sedangkan jurnal internasional yang diakui bereputasi adalah yang terindeks Scopus dan Web of Science (WOS)... Think.Check.Submit adalah sumber online untuk menelusuri status kredibilitas jurnal."
+        <span class="citation">— Halaman 194, 197, 198</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-mint">
+          <strong>Parameter Jurnal Nasional</strong>
+          Memiliki ISSN dan versi daring; menggunakan bahasa Indonesia atau Inggris; dewan redaksi dan penulis minimal berasal dari 2 institusi berbeda; terakreditasi SINTA (peringkat 1–6).
+        </div>
+        <div class="feature-item accent-gray">
+          <strong>Parameter Jurnal Internasional</strong>
+          Memiliki ISSN dan terbitan daring; menggunakan salah satu bahasa resmi PBB; dewan redaksi pakar minimal dari 4 negara berbeda; penulis dalam satu nomor terbitan minimal dari 2 negara; terindeks pangkalan data bereputasi (Scopus / Web of Science).
+        </div>
+      </div>
+
+      <!-- DIAGRAM ALUR SUBMIT OJS -->
+      <h3>D. Diagram Alur Pengiriman Naskah Berbasis Open Journal System (OJS)</h3>
+      <p>Prosedur pengiriman naskah secara digital mengikuti tahapan terstruktur pada sistem OJS:</p>
+
+      <div class="diagram-container">
+        <div class="diagram-title">
+          <span>🚀</span> Alur Prosedur Pengiriman Naskah Artikel (OJS Submission Workflow)
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step-item">
+            <div class="flow-step-num">1</div>
+            <div class="flow-step-text">
+              <strong>Register & Log In</strong>
+              <small>Mendaftarkan akun sebagai Penulis (Author) di portal OJS jurnal dengan melengkapi identitas afiliasi.</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">2</div>
+            <div class="flow-step-text">
+              <strong>Memulai Pengajuan (New Submission)</strong>
+              <small>Memilih menu pengajuan baru dan menyetujui pernyataan kepatuhan etika serta orisinalitas naskah.</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">3</div>
+            <div class="flow-step-text">
+              <strong>Unggah Berkas Naskah (Upload Submission)</strong>
+              <small>Mengunggah file naskah artikel utama yang telah disesuaikan dengan template selingkung jurnal.</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">4</div>
+            <div class="flow-step-text">
+              <strong>Pengisian Metadata Naskah (Enter Metadata)</strong>
+              <small>Mengisi judul, abstrak, kata kunci, daftar penulis kontributor, dan daftar pustaka lengkap.</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">5</div>
+            <div class="flow-step-text">
+              <strong>Proses Penelaahan Mitra Bestari (Peer Review)</strong>
+              <small>Dewan editor menugaskan reviewer independen untuk menguji substansi keilmuan dan metodologi.</small>
+            </div>
+          </div>
+          <div class="flow-step-item">
+            <div class="flow-step-num">6</div>
+            <div class="flow-step-text">
+              <strong>Revisi & Keputusan Akhir (Accepted / Rejected)</strong>
+              <small>Penulis memperbaiki naskah sesuai masukan reviewer hingga dinyatakan diterima atau ditolak resmi oleh editor.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Games Interaktif: Detektor Pelanggaran Ilmiah (5 Menit)</h2>
+          <small style="color:var(--text-muted)">Klasifikasi Pelanggaran: Fabrikasi vs Falsifikasi vs Kepengarangan</small>
+        </div>
+      </div>
+      <div class="game-card">
+        <h4>⚡ Studi Kasus Pelanggaran</h4>
+        <p style="margin-top:0.5rem">Seorang peneliti menghapus data dari 5 subjek sampel yang bernilai ekstrim karena data tersebut menyebabkan uji hipotesisnya menjadi tidak signifikan, lalu mengubah angka-angka pada tabel agar selaras dengan kesimpulan yang diharapkan. Berdasarkan Halaman 188, pelanggaran apakah yang dilakukan?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="checkAnswer(false)">A. Fabrikasi data fiktif</button>
+          <button class="quiz-btn" onclick="checkAnswer(true)">B. Falsifikasi (Manipulasi data riset)</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">C. Kepengarangan tidak sah (Ghost author)</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">D. Konflik kepentingan sponsor</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </article>
+
+    <!-- SESI 4: TANYA JAWAB & CLOSING -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Tanya Jawab & Closing Statement</h2>
+          <small style="color:var(--text-muted)">Menjaga Kemurnian Integritas Publikasi</small>
+        </div>
+      </div>
+      <p><strong>Fokus Diskusi & Tanya Jawab:</strong></p>
+      <ul class="detailed-list">
+        <li>Mengapa mencantumkan nama pimpinan lembaga yang sama sekali tidak berkontribusi dalam riset dikategorikan sebagai pelanggaran etika kepengarangan tidak sah (gift authorship)?</li>
+        <li>Bagaimana platform *Think.Check.Submit* membantu peneliti menghindari jeratan jurnal predator atau meragukan?</li>
+      </ul>
+      <div class="quote-box" style="border-left-color: var(--theme-mint); background-color: var(--theme-mint-subtle);">
+        "Menulis karya ilmiah adalah dedikasi pada kebenaran, sedangkan mempublikasikannya di jurnal ilmiah adalah komitmen berbagi kemaslahatan. Ketaatan pada etika, keaslian data, dan kepatuhan pada kaidah publikasi adalah mahkota tertinggi martabat seorang akademisi."
+        <span class="citation">— Penutup Perkuliahan Pertemuan ke-15</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="background:var(--theme-mint); color:#FFFFFF; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan XV: Etika & Publikasi Jurnal Ilmiah</span>
+        </div>
+        <button class="btn btn-worksheet" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
+        <h1 class="slide-title">Etika Penulisan & Submit Jurnal</h1>
+        <div class="slide-visual-grid">
+          <div>
+            <p style="font-size:1.15rem; margin-bottom:1.5rem;">Memahami standar moral kepengarangan, mitigasi pelanggaran ilmiah fatal, kriteria indeksasi SINTA & Scopus, serta penguasaan alur submit berbasis OJS.</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="tag" style="background:var(--theme-mint-light)">Durasi: 100 Menit</span>
+              <span class="tag" style="background:var(--theme-gray-light)">Fokus: Bab 14 & Bab 15 Teks</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Slide Sampul" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-mint);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: PELANGGARAN ILMIAH -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">STANDAR MORALITAS PENELITI</div>
+        <h2 class="slide-title">Bentuk Pelanggaran Etika Akademik</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.3rem;">Fabrikasi & Falsifikasi</strong>
+            • <em>Fabrikasi:</em> Mengarang atau membuat data fiktif yang tidak pernah ada.<br>
+            • <em>Falsifikasi:</em> Mengubah atau memanipulasi data/referensi selama proses riset.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.3rem;">Kepengarangan Tidak Sah</strong>
+            Menghapus nama kontributor asli atau menyisipkan nama pihak luar tanpa kontribusi nyata.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.3rem;">Konflik Kepentingan</strong>
+            KTI disusun untuk memihak kepentingan sponsor dengan menyajikan data rekayasa.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.3rem;">Pengajuan Jamak</strong>
+            Mengirim naskah yang sama ke berbagai penerbit/jurnal sekaligus tanpa izin.
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: INDEKSASI JURNAL -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">KREDIBILITAS PUBLIKASI</div>
+        <h2 class="slide-title">Kategori Indeksasi: SINTA & Scopus</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-mint-dark); display:block; margin-bottom:0.4rem;">Jurnal Nasional (SINTA)</strong>
+            • Dikelola Kemendikbudristek.<br>
+            • Memiliki tingkatan SINTA 1 s.d. SINTA 6.<br>
+            • SINTA 1 dan 2 peringkat mutu tertinggi.<br>
+            • Indeksasi penunjang: GARUDA.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-black); display:block; margin-bottom:0.4rem;">Jurnal Internasional</strong>
+            • Bereputasi tinggi: Scopus & Web of Science (WoS).<br>
+            • Bahasa resmi PBB, editor & author multinasional.<br>
+            • Verifikasi integritas: Think.Check.Submit.
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: ALUR SUBMIT OJS -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">PROSEDUR TEKNIS PENGIRIMAN</div>
+        <h2 class="slide-title">Tahapan Open Journal System (OJS)</h2>
+        <div class="slide-card-box">
+          <ul style="padding-left:1.2rem; font-size:0.95rem; line-height:1.7;">
+            <li><strong>Langkah 1–2:</strong> Registrasi akun Author dan klik New Submission dengan menyetujui kode etik.</li>
+            <li><strong>Langkah 3–4:</strong> Unggah file naskah sesuai template dan isi metadata lengkap (judul, abstrak, kata kunci, sitasi).</li>
+            <li><strong>Langkah 5–6:</strong> Konfirmasi penerimaan editor dan pemantauan proses telaah mitra bestari (peer review).</li>
+            <li><strong>Langkah 7–8:</strong> Pengunggahan perbaikan naskah hasil revisi hingga terbit keputusan resmi (Accepted/Rejected).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: PENUTUP -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">SIMPULAN & DISKUSI</div>
+        <h2 class="slide-title">Kemenangan Integritas Akademik</h2>
+        <div class="quote-box" style="font-size:1.15rem; margin-top:1.5rem;">
+          "Menulis karya ilmiah adalah proses menyajikan kebenaran fakta, sedangkan mempublikasikannya adalah memasukkan pemikiran kita ke dalam khazanah sains permanen yang diuji sepanjang masa."
+        </div>
+        <p style="margin-top:2rem; font-size:1.05rem;">
+          <strong>Aktivitas Terjadwal:</strong> Silakan buka lembar evaluasi untuk mengerjakan 20 soal pilihan ganda mandiri. Dosen dapat memverifikasi kunci jawaban melalui sandi verifikasi khusus.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: SOAL EVALUASI 20 PG + KUNCI DOSEN -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:var(--theme-mint-dark);">
+          <span>📄 Lembar Evaluasi Mahasiswa & Kunci Dosen (Bab 14 & 15)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak Lembar Soal (PDF)
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN EVALUASI -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:15pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Evaluasi Perkuliahan: Etika Penulisan & Publikasi Jurnal</h2>
+          <h3 style="font-size:11.5pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 15</h3>
+          <p style="font-size:9.5pt; color:#333;">Materi: Bab 14 (Etika Penulisan KTI) & Bab 15 (Submit Artikel pada Jurnal Ilmiah)</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:15px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <div style="margin-bottom:15px; font-size:9.5pt; background:var(--theme-mint-light); padding:8px 12px; border:1px solid #A7F3D0; border-radius:4px;">
+          <strong>Petunjuk Mengerjakan:</strong> Pilihlah satu jawaban yang paling tepat (A, B, C, atau D) dengan memberi tanda silang (X) atau melingkari huruf pilihan Anda!
+        </div>
+
+        <!-- 20 SOAL PILIHAN GANDA -->
+        <div style="font-size:9.5pt; line-height:1.5;">
+
+          <!-- SOAL 1 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>1. Secara etimologis, istilah "etika" berakar dari bahasa Yunani yaitu <em>ethos</em> yang memiliki arti...</strong></p>
+            <div style="padding-left:15px;">
+              A. Kemampuan bernalar tinggi<br>
+              B. Adat atau susila<br>
+              C. Kebebasan tanpa batas<br>
+              D. Hukum tertulis pengadilan
+            </div>
+          </div>
+
+          <!-- SOAL 2 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>2. Tujuan utama penerapan etika dalam penulisan karya ilmiah menurut halaman 184 adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Membatasi kebebasan berpendapat peneliti di forum publik<br>
+              B. Memastikan penulis mampu bertanggung jawab atas karyanya sehingga standar mutu terjaga<br>
+              C. Mempercepat proses pencetakan buku oleh penerbit komersial<br>
+              D. Menghilangkan perbedaan gaya penulisan antarperguruan tinggi
+            </div>
+          </div>
+
+          <!-- SOAL 3 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>3. Tindakan menyajikan atau menyampaikan data, hasil pengamatan, atau informasi yang sebenarnya tidak pernah ditemukan dalam penelitian disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Falsifikasi<br>
+              B. Fabrikasi<br>
+              C. Plagiarisme verbatim<br>
+              D. Kepengarangan tidak sah
+            </div>
+          </div>
+
+          <!-- SOAL 4 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>4. Mengubah, memanipulasi, atau merekayasa data dan rujukan literatur selama proses penelitian agar selaras dengan keinginan penulis merupakan bentuk pelanggaran...</strong></p>
+            <div style="padding-left:15px;">
+              A. Falsifikasi<br>
+              B. Fabrikasi<br>
+              C. Duplikasi publikasi<br>
+              D. Autoplagiarisme
+            </div>
+          </div>
+
+          <!-- SOAL 5 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>5. Jika sebuah artikel ilmiah ditulis oleh tiga orang akademisi, namun salah satu nama penulis yang berkontribusi nyata sengaja dihapus dari naskah, pelanggaran ini dikategorikan sebagai...</strong></p>
+            <div style="padding-left:15px;">
+              A. Pengajuan jamak<br>
+              B. Kepengarangan tidak sah<br>
+              C. Konflik kepentingan<br>
+              D. Plagiarisme tambal-sulam
+            </div>
+          </div>
+
+          <!-- SOAL 6 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>6. Penulisan karya ilmiah yang disusun demi melayani kepentingan perusahaan penyandang dana sehingga menyajikan data rekayasa agar citra donor dinilai positif termasuk ke dalam...</strong></p>
+            <div style="padding-left:15px;">
+              A. Konflik kepentingan<br>
+              B. Pengajuan jamak<br>
+              C. Falsifikasi metode<br>
+              D. Sengketa hak cipta
+            </div>
+          </div>
+
+          <!-- SOAL 7 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>7. Mengirimkan satu manuskrip artikel yang sama persis ke beberapa penerbit jurnal ilmiah secara serentak disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Kepengarangan tidak sah<br>
+              B. Pengajuan jamak (duplicate submission)<br>
+              C. Plagiarisme verbatim<br>
+              D. Fabrikasi naskah
+            </div>
+          </div>
+
+          <!-- SOAL 8 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>8. Ciri karya ilmiah di mana pembaca dapat menerima dan memahami isi tulisan secara tepat sesuai maksud yang ingin disampaikan oleh penulis dinamakan...</strong></p>
+            <div style="padding-left:15px;">
+              A. Tidak emotif<br>
+              B. Reproduktif<br>
+              C. Terdapat kohesi<br>
+              D. Bersifat dekoratif
+            </div>
+          </div>
+
+          <!-- SOAL 9 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>9. Ciri karya tulis ilmiah yang menuntut agar tulisan tidak melibatkan perasaan subjektif penulis dan murni berlandaskan analisis fakta empiris adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Tidak ambigu<br>
+              B. Tidak emotif<br>
+              C. Menggunakan kalimat efektif<br>
+              D. Reproduktif
+            </div>
+          </div>
+
+          <!-- SOAL 10 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>10. Penggunaan istilah akademik dan terminologi resmi yang mencerminkan kepakaran penulis dalam bidang kajiannya menunjukkan bahwa karya ilmiah memiliki ciri...</strong></p>
+            <div style="padding-left:15px;">
+              A. Menggunakan kaidah keilmuan<br>
+              B. Terdapat kohesi<br>
+              C. Bersifat dekoratif<br>
+              D. Tidak emotif
+            </div>
+          </div>
+
+          <!-- SOAL 11 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>11. Publikasi hasil penelitian di dalam jurnal ilmiah memiliki arti penting bagi perkembangan ilmu pengetahuan karena...</strong></p>
+            <div style="padding-left:15px;">
+              A. Meniadakan perlunya kritik atau evaluasi sejawat<br>
+              B. Memasukkan karya tulis ke dalam catatan ilmiah permanen yang dapat diverifikasi<br>
+              C. Menjamin penulis memperoleh royalti finansial langsung<br>
+              D. Menggugurkan kewajiban membuat daftar pustaka
+            </div>
+          </div>
+
+          <!-- SOAL 12 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>12. Di bawah ini merupakan lima fungsi utama jurnal ilmiah menurut halaman 192–193, KECUALI...</strong></p>
+            <div style="padding-left:15px;">
+              A. Menyebarkan hasil penelitian<br>
+              B. Sebagai sumber informasi yang terpercaya<br>
+              C. Sebagai media penyalur opini fiktif masyarakat umum<br>
+              D. Sebagai alat untuk menilai ulang teori yang ada
+            </div>
+          </div>
+
+          <!-- SOAL 13 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>13. Berdasarkan standar penilaian angka kredit Kemenristek (2019), jurnal ilmiah dikategorikan ke dalam empat tingkatan, yaitu...</strong></p>
+            <div style="padding-left:15px;">
+              A. Jurnal Lokal, Regional, Nasional, dan Universal<br>
+              B. Jurnal Nasional, Nasional Terakreditasi, Internasional, dan Internasional Bereputasi<br>
+              C. Jurnal Cetak, Daring, Terbuka, dan Tertutup<br>
+              D. Jurnal Mahasiswa, Dosen, Guru, dan Peneliti
+            </div>
+          </div>
+
+          <!-- SOAL 14 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>14. Ciri utama dari jurnal internasional berkualitas adalah dewan redaksi (editorial board) pakar di bidangnya minimal berasal dari...</strong></p>
+            <div style="padding-left:15px;">
+              A. Dua negara berbeda<br>
+              B. Empat negara berbeda<br>
+              C. Satu universitas terkemuka<br>
+              D. Enam benua di dunia
+            </div>
+          </div>
+
+          <!-- SOAL 15 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>15. Kesesuaian bidang keilmuan atau kajian dari naskah artikel yang diajukan dengan batasan bidang yang diterbitkan oleh sebuah jurnal disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Author Guidelines<br>
+              B. Focus and Scope<br>
+              C. Template naskah<br>
+              D. Peer-review process
+            </div>
+          </div>
+
+          <!-- SOAL 16 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>16. Tingkatan akreditasi jurnal ilmiah nasional di Indonesia yang dikelola oleh Kemendikbudristek dikenal dengan portal...</strong></p>
+            <div style="padding-left:15px;">
+              A. SCOPUS<br>
+              B. SINTA (Science and Technology Index)<br>
+              C. DOAJ<br>
+              D. Thomson Reuters
+            </div>
+          </div>
+
+          <!-- SOAL 17 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>17. Mengenai tingkatan akreditasi pada portal SINTA, pernyataan manakah di bawah ini yang benar berdasarkan halaman 197?</strong></p>
+            <div style="padding-left:15px;">
+              A. SINTA 6 memiliki reputasi yang jauh lebih tinggi daripada SINTA 1<br>
+              B. SINTA memiliki 6 tingkatan, di mana tingkatan SINTA 1 dan SINTA 2 memiliki mutu lebih baik dari SINTA 4<br>
+              C. Jurnal yang masuk SINTA tidak memerlukan ISSN resmi<br>
+              D. Peringkat SINTA hanya diperuntukkan bagi jurnal mahasiswa diploma
+            </div>
+          </div>
+
+          <!-- SOAL 18 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>18. Pangkalan data pengindeks jurnal internasional bereputasi tinggi yang sangat populer dan menjadi standar rujukan utama akademisi di Indonesia adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Scopus dan Web of Science (WoS)<br>
+              B. Garuda dan Moraref<br>
+              C. Academia.edu dan ResearchGate<br>
+              D. Wikipedia dan Blogger
+            </div>
+          </div>
+
+          <!-- SOAL 19 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>19. Layanan daring internasional yang dapat digunakan peneliti sebagai panduan edukasi untuk menelusuri keabsahan dan menghindari jurnal meragukan (predatory) adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Grammarly<br>
+              B. Think.Check.Submit<br>
+              C. Turnitin Similarity<br>
+              D. Google Cendekia
+            </div>
+          </div>
+
+          <!-- SOAL 20 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>20. Pada alur pengiriman naskah berbasis Open Journal System (OJS), tahapan di mana penulis memasukkan judul, abstrak, kata kunci, dan daftar pustaka naskah disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Upload Submission<br>
+              B. Enter Metadata (Isi Meta Data Naskah)<br>
+              C. Peer Review Process<br>
+              D. Confirmation Editor
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VERIFIKASI DOSEN KHUSUS UNTUK MEMBUKA KUNCI -->
+        <div class="lecturer-auth-box">
+          <div style="font-weight:700; color:var(--theme-mint-dark); margin-bottom:0.4rem;">
+            🔒 Kunci Jawaban Resmi (Akses Khusus Dosen Pengampu)
+          </div>
+          <p style="font-size:9pt; margin-bottom:0.6rem; color:var(--text-muted);">
+            Masukkan kode verifikasi dosen untuk membuka kunci jawaban 20 soal evaluasi Bab 14 & 15:
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <input type="password" id="lecturerPass" placeholder="Masukkan Sandi Dosen..." style="padding:0.4rem 0.8rem; border:1.5px solid var(--border-dark); border-radius:4px; font-size:9pt;">
+            <button class="btn btn-presentation" style="padding:0.4rem 0.9rem; font-size:8.5pt;" onclick="unlockAnswerKey()">Verifikasi Sandi</button>
+          </div>
+          
+          <div id="keyContent" class="answer-key-content">
+            <h4 style="color:var(--theme-black); margin-bottom:0.5rem; font-size:10.5pt;">Kunci Jawaban 20 Soal Pilihan Ganda (Bab 14 & 15):</h4>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:0.4rem; font-size:9pt; font-weight:700;">
+              <div>1. B (Adat/Susila)</div>
+              <div>2. B (Standar Mutu)</div>
+              <div>3. B (Fabrikasi Data)</div>
+              <div>4. A (Falsifikasi)</div>
+              <div>5. B (Pengarang Tidak Sah)</div>
+              <div>6. A (Konflik Kepentingan)</div>
+              <div>7. B (Pengajuan Jamak)</div>
+              <div>8. B (Reproduktif)</div>
+              <div>9. B (Tidak Emotif)</div>
+              <div>10. A (Kaidah Keilmuan)</div>
+              <div>11. B (Catatan Permanen)</div>
+              <div>12. C (Bukan Opini Fiktif)</div>
+              <div>13. B (4 Kategori Kemenristek)</div>
+              <div>14. B (Minimal 4 Negara)</div>
+              <div>15. B (Focus and Scope)</div>
+              <div>16. B (SINTA)</div>
+              <div>17. B (SINTA 1 & 2 Lebih Baik)</div>
+              <div>18. A (Scopus & WoS)</div>
+              <div>19. B (Think.Check.Submit)</div>
+              <div>20. B (Enter Metadata)</div>
+            </div>
+            <div style="margin-top:0.8rem; font-size:8.5pt; color:var(--theme-gray); font-style:italic;">
+              *Catatan Dosen: Seluruh kunci telah diverifikasi sesuai uraian Bab 14 (hlm. 183–190) dan Bab 15 (hlm. 191–200).
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Tanda Tangan Mahasiswa:</strong><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Verifikasi Nilai Dosen Pengampu:</strong><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+
+    /* QUIZ PEMBUKA LOGIC */
+    function checkAnswer(isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      if (isCorrect) {
+        feedback.style.backgroundColor = '#D1FAE5';
+        feedback.style.borderColor = '#10B981';
+        feedback.style.color = '#065F46';
+        feedback.innerText = '✅ TEPAT SEKALI! Berdasarkan Halaman 188, mengubah atau memanipulasi data selama penelitian agar sesuai dengan keinginan penulis adalah bentuk pelanggaran Falsifikasi.';
+      } else {
+        feedback.style.backgroundColor = '#FEE2E2';
+        feedback.style.borderColor = '#EF4444';
+        feedback.style.color = '#991B1B';
+        feedback.innerText = '❌ KURANG TEPAT. Mengubah atau memanipulasi data riil disebut Falsifikasi, sedangkan mengarang data fiktif yang tidak ada disebut Fabrikasi (Halaman 188).';
+      }
+    }
+
+    /* VERIFIKASI KUNCI JAWABAN DOSEN */
+    function unlockAnswerKey() {
+      const pass = document.getElementById('lecturerPass').value;
+      const keyBox = document.getElementById('keyContent');
+      // Password khusus dosen Pertemuan 15: DOSENKTI15
+      if (pass === 'DOSENKTI15' || pass === 'dosenkti15') {
+        keyBox.style.display = 'block';
+        alert('Kunci jawaban Bab 14 & 15 berhasil dibuka.');
+      } else {
+        alert('Sandi salah. Akses kunci jawaban hanya diperuntukkan bagi dosen pengampu.');
+      }
+    }
+  </script>
+</body>
+</html>
