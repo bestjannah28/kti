@@ -108,7 +108,6 @@
 
     .btn-presentation { background-color: var(--genz-yellow); }
     .btn-worksheet { background-color: var(--genz-mint); }
-    .btn-task { background-color: var(--genz-peach); }
 
     /* CONTAINER & HERO */
     .container {
@@ -334,23 +333,24 @@
       border: 2px solid var(--border-dark);
     }
 
-    /* FULLSCREEN PRESENTATION MODAL */
-    .presentation-modal {
+    /* MODAL UMUM (PRESENTASI & LEMBAR KERJA BACA) */
+    .modal-overlay {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(30, 30, 36, 0.95);
+      background-color: rgba(30, 30, 36, 0.9);
       z-index: 999;
       justify-content: center;
       align-items: center;
       padding: 1.5rem;
     }
 
-    .presentation-modal.active { display: flex; }
+    .modal-overlay.active { display: flex; }
 
+    /* SLIDE PRESENTATION DECK */
     .slide-deck {
       width: 100%;
       max-width: 1100px;
@@ -414,19 +414,52 @@
       margin-bottom: 1.5rem;
     }
 
+    /* MODAL TAMPILAN BACA WORKSHEET / TUGAS */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 900px;
+      height: 90vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px #A7F3D0;
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: #FAF5FF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
     /* PRINT FORMAT */
     @media print {
       body * { visibility: hidden; }
-      .print-section, .print-section * { visibility: visible; }
-      .print-section {
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
         background: #FFF !important;
-        padding: 20mm;
+        padding: 15mm 20mm;
       }
-      .site-header, .presentation-modal, .no-print { display: none !important; }
+      .site-header, .modal-overlay, .no-print { display: none !important; }
     }
 
     @media (max-width: 768px) {
@@ -436,6 +469,7 @@
       .quiz-options { grid-template-columns: 1fr; }
       .slide-deck-content { padding: 1.5rem; }
       .slide-title { font-size: 1.6rem; }
+      .reading-modal-body { padding: 1.5rem; }
       .nav-actions { width: 100%; justify-content: flex-start; }
       .btn { flex: 1; justify-content: center; }
     }
@@ -450,13 +484,10 @@
     </div>
     <div class="nav-actions">
       <button class="btn btn-presentation" onclick="openPresentation()">
-        <span>🖥️</span> Slide Presentasi Interaktif
+        <span>🖥️</span> Slide Presentasi Dosen
       </button>
-      <button class="btn btn-worksheet" onclick="printDoc('worksheet-view')">
-        <span>📄</span> Lembar Kerja Mahasiswa (PDF)
-      </button>
-      <button class="btn btn-task" onclick="printDoc('task-view')">
-        <span>📝</span> Tugas Mandiri (PDF)
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📖</span> Baca & Cetak Lembar Tugas Mahasiswa
       </button>
     </div>
   </header>
@@ -473,7 +504,7 @@
         <span class="tag">Rujukan Utama: Bab 3 (Jenis-Jenis Karya Ilmiah)</span>
       </div>
       <h1>Jenis-Jenis Karya Ilmiah</h1>
-      <p>Modul perkuliahan pertemuan ketiga: telaah mendalam, sistematis, dan komprehensif mengenai ragam media komunikasi ilmiah—makalah, artikel jurnal (penelitian asli, ulasan, studi kasus, metode), artikel populer, prosiding, monograf, laporan penelitian, hingga skripsi[cite: 1].</p>
+      <p>Modul perkuliahan pertemuan ketiga: telaah mendalam, sistematis, dan komprehensif mengenai ragam media komunikasi ilmiah—makalah, artikel jurnal (penelitian asli, ulasan, studi kasus, metode), artikel populer, prosiding konferensi, monograf, laporan penelitian, hingga skripsi.</p>
     </section>
 
     <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
@@ -481,7 +512,7 @@
       <div class="time-slot t1">
         <span class="time">10 Menit</span>
         <div class="title">Warming Up & Pendahuluan</div>
-        <small style="color:var(--text-muted)">Apresiasi keragaman karya ilmiah sebagai alat komunikasi dan sarana berpikir kritis[cite: 1].</small>
+        <small style="color:var(--text-muted)">Apresiasi keragaman karya ilmiah sebagai alat komunikasi dan sarana berpikir kritis.</small>
       </div>
       <div class="time-slot t2">
         <span class="time">45 Menit</span>
@@ -496,7 +527,7 @@
       <div class="time-slot t4">
         <span class="time">40 Menit</span>
         <div class="title">Diskusi, Tanya Jawab & Closing</div>
-        <small style="color:var(--text-muted)">Analisis komparatif target publikasi, penugasan LKM, dan sintesis[cite: 1].</small>
+        <small style="color:var(--text-muted)">Analisis komparatif target publikasi, penugasan lembar kerja, dan sintesis[cite: 1].</small>
       </div>
     </div>
 
@@ -513,14 +544,14 @@
 
       <div class="quote-box">
         "Karya ilmiah merupakan tonggak utama dalam dunia penelitian dan perkembangan ilmu pengetahuan. Setiap hasil penelitian dan pemikiran yang diungkapkan dalam bentuk karya ilmiah memiliki peran penting dalam memperluas cakrawala pengetahuan manusia. Dalam paper ini, kami akan membahas berbagai jenis karya ilmiah yang menjadi wadah bagi ide, inovasi, dan penemuan yang berharga. Dengan memahami beragam jenis karya ilmiah, kita akan lebih mampu menghargai keragaman dan kompleksitas dalam dunia akademik."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 39</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 39[cite: 1]</span>
       </div>
 
       <p>Lebih lanjut, aktivitas penulisan karya ilmiah merupakan sarana pembentukan daya analitis tingkat tinggi bagi sivitas akademika[cite: 1]:</p>
 
       <div class="quote-box">
         "Karya ilmiah tidak hanya merupakan sarana untuk menyebarkan pengetahuan, tetapi juga sarana untuk mengembangkan keterampilan berpikir kritis, analitis, dan penelitian. Melalui proses penulisan karya ilmiah, penulis dihadapkan pada tuntutan untuk menyusun argumen yang kokoh, mendukungnya dengan bukti yang kuat, dan mengatasi tantangan dalam penelitian."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 40</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 40[cite: 1]</span>
       </div>
     </article>
 
@@ -538,7 +569,7 @@
       <h3>A. Makalah</h3>
       <div class="quote-box">
         "Menurut Putrayasa (2016), makalah adalah jenis tulisan ilmiah yang mengulas topik tertentu, baik berdasarkan studi literatur maupun penelitian lapangan. Sedangkan definisi makalah dalam KBBI (2023) memiliki dua definisi yang berbeda, definisi pertama mengacu pada makalah sebagai tulisan resmi yang mengulas suatu topik utama yang digunakan untuk publikasi dan presentasi di dalam sidang, dan seringkali disusun dan diterbitkan. Definisi kedua adalah makalah sebagai karya tulis yang dibuat oleh pelajar atau mahasiswa sebagai laporan dalam konteks penyelesaian tugas dari institusi pendidikan, baik itu kampus maupun sekolah. Oleh karena itu dapat disimpulkan bahwa makalah merupakan Makalah adalah dokumen tertulis yang mengulas masalah tertentu dengan tujuan memberikan analisis dan penjelasan yang lebih mendalam mengenai masalah tersebut serta sering digunakan dalam berbagai konteks, termasuk pendidikan tinggi, konferensi ilmiah, dan publikasi dalam jurnal ilmiah."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 41</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 41[cite: 1]</span>
       </div>
       <p>Makalah berfungsi ganda: merefleksikan pemahaman teoretis mahasiswa atas suatu bidang studi sekaligus instrumen evaluasi kemampuan analitis dan peramuan berbagai sumber secara sintesis yang utuh[cite: 1].</p>
 
@@ -546,7 +577,7 @@
       <h3>B. Artikel Ilmiah</h3>
       <div class="quote-box">
         "Artikel ilmiah merupakan salah satu jenis karya ilmiah yang sangat umum di dunia penelitian dan publikasi ilmiah. Ini merupakan bentuk tulisan yang dirancang untuk menyajikan penelitian, eksperimen, atau analisis yang telah dilakukan oleh penulis dalam suatu bidang ilmu pengetahuan atau studi tertentu. Artikel ilmiah biasanya dipublikasikan dalam jurnal ilmiah, yang merupakan saluran utama bagi peneliti untuk berbagi temuan mereka dengan komunitas ilmiah yang lebih luas. Sebagian besar penulisan jurnal ilmiah mengikuti apa yang disebut dengan format 'IMRAD', yang strukturnya terdiri dari bagian pendahuluan, metode, hasil dan diskusi (Ecarnot, et al., 2015)."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 42</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 42[cite: 1]</span>
       </div>
 
       <!-- D & E: VARIASI ARTIKEL ILMIAH -->
@@ -556,19 +587,19 @@
       <div class="feature-grid">
         <div class="feature-item accent-1">
           <strong>1. Penelitian Asli (Original Research)</strong>
-          <p>Berfokus pada riset empiris dengan struktur <em>introduction, methodology, results, discussion, conclusion</em> untuk memaparkan temuan baru berdasar data[cite: 1]. Termasuk di dalamnya bentuk <em>Laporan Singkat / Surat (Brief Report or Letter)</em> untuk gagasan awal menarik dengan batasan ruang ketat[cite: 1].</p>
+          <p>Berfokus pada riset empiris dengan struktur <em>introduction, methodology, results, discussion, conclusion</em> untuk memaparkan temuan baru berdasar data[cite: 1]. Termasuk di dalamnya bentuk <em>Laporan Singkat atau Surat (Brief Report or Letter)</em> untuk memperkenalkan temuan awal yang menarik dengan batasan ruang ketat[cite: 1].</p>
         </div>
         <div class="feature-item accent-2">
           <strong>2. Artikel Ulasan (Review Article)</strong>
-          <p>Menyajikan tinjauan menyeluruh atas penelitian yang ada guna mengidentifikasi celah riset dan arah masa depan[cite: 1]. Penulis mensintesis literatur yang umumnya mengutip sekitar 100 artikel penelitian utama[cite: 1].</p>
+          <p>Menyajikan tinjauan menyeluruh atas penelitian yang telah ada dalam suatu bidang untuk mengidentifikasi celah riset dan arah masa depan[cite: 1]. Penulis mengumpulkan dan mensintesis penelitian relevan yang umumnya mengutip sekitar 100 artikel penelitian utama[cite: 1].</p>
         </div>
         <div class="feature-item accent-3">
           <strong>3. Studi Kasus (Case Study)</strong>
-          <p>Eksplorasi mendalam atas satu atau beberapa kasus tertentu (organisasi, individu, fenomena) yang menyajikan deskripsi rinci latar belakang, metodologi, dan temuan kontekstual[cite: 1].</p>
+          <p>Eksplorasi mendalam atas satu atau beberapa kasus tertentu (organisasi, individu, peristiwa) dalam konteks nyata yang menyajikan deskripsi rinci latar belakang, metodologi, dan interpretasi temuan[cite: 1].</p>
         </div>
         <div class="feature-item accent-4">
-          <strong>4. Metodologi / Metode</strong>
-          <p>Menjelaskan langkah, instrumen, atau strategi teknis penelitian sebagai panduan bagi peneliti lain yang ingin mengadopsi atau mengulangi riset serupa[cite: 1].</p>
+          <strong>4. Metodologi atau Metode</strong>
+          <p>Menjelaskan secara terperinci pendekatan, instrumen, strategi, atau teknik analisis data sebagai panduan bagi peneliti lain yang ingin mengadopsi atau mengulangi riset serupa[cite: 1].</p>
         </div>
       </div>
 
@@ -576,36 +607,36 @@
       <h3>D. Artikel Ilmiah Populer</h3>
       <div class="quote-box">
         "Artikel ilmiah populer, juga dikenal sebagai artikel populer, adalah tulisan yang dimuat di media massa seperti surat kabar, majalah, atau media internet. Tujuan utama dari artikel ini adalah untuk menyampaikan ide dan seringkali digunakan untuk kritik, promosi, atau penggugatan terhadap fenomena atau kebijakan yang dianggap memiliki anomali. Artikel populer dalam media massa sering disebut opini, memiliki ciri-ciri berupa tulisan yang pendek, dan umumnya tidak mengalami banyak intervensi dari redaktur media. Meskipun didasarkan pada pendapat pribadi, artikel populer juga dapat mencakup pandangan dari pakar, teori, atau data hasil riset ilmiah yang mendukung argumen penulis (Ibda, 2019)."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 45</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 45[cite: 1]</span>
       </div>
-      <p>Karya ini berfungsi vital menjembatani kesenjangan komunikasi antara dunia sains dengan masyarakat awam[cite: 1].</p>
+      <p>Karya ini berfungsi vital menjembatani kesenjangan antara sains murni dan masyarakat umum[cite: 1].</p>
 
       <!-- G. PAPER KONFERENSI / PROSIDING -->
       <h3>E. Paper Konferensi (Prosiding)</h3>
       <div class="quote-box">
         "Paper konferensi, yang juga dikenal sebagai prosiding konferensi, adalah jenis karya ilmiah yang seringkali muncul sebagai hasil dari presentasi dan diskusi dalam konferensi ilmiah baik itu di tingkat nasional maupun internasional. Menurut Menurut Kamus Besar Bahasa Indonesia (KBBI, 2023), prosiding merupakan kumpulan makalah seminar yang telah dibukukan... Salah satu keuntungan utama dari paper konferensi adalah kemampuannya untuk dengan cepat berbagi pengetahuan dan hasil penelitian terbaru dengan komunitas ilmiah yang lebih luas."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 46–47</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 46–47[cite: 1]</span>
       </div>
 
       <!-- H. MONOGRAF -->
       <h3>F. Monograf</h3>
       <div class="quote-box">
         "Monograf adalah jenis publikasi buku ilmiah utama dalam ilmu sosial dan humaniora (Kulczycki & Korytkowski, 2020). Kata 'monograf' berasal dari kata Yunani 'mono' yang berarti 'tunggal' dan 'grapho' yang berarti 'menulis'. Shaw, et al (2023) menjelaskan bahwa istilah monograf juga digunakan untuk menunjukkan buku akademis jangka panjang mengenai topik penelitian tunggal, ditulis oleh satu atau beberapa penulis. Penulisan monograf dapat didasarkan pada hasil penelitian asli atau tinjauan literatur... Pada umumnya, monograf lebih panjang dan lebih rinci daripada artikel ilmiah biasa."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 47–48</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 47–48[cite: 1]</span>
       </div>
 
       <!-- I. LAPORAN PENELITIAN -->
       <h3>G. Laporan Penelitian</h3>
       <div class="quote-box">
         "Laporan penelitian adalah sebuah laporan resmi mengenai bagaimana sebuah proyek penelitian dilaksanakan dan apa yang ditemukan (Thomas & Hodges, 2010). Bagi para peneliti dalam suatu proyek, laporan penelitian memberikan catatan record sepanjang masa dan pengingat tentang pekerjaan yang telah dilakukan dan hasil yang diperolehnya... Kabir (2016), mengungkapkan bahwa laporan penelitian adalah tulisan sistematis atas temuan penelitian termasuk metodologi, pembahasan, kesimpulan dan lain-lain mengikuti gaya tertentu."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 48–49</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 48–49[cite: 1]</span>
       </div>
 
       <!-- J. SKRIPSI -->
       <h3>H. Skripsi</h3>
       <div class="quote-box">
         "Skripsi adalah salah satu jenis karya ilmiah yang biasanya ditulis oleh mahasiswa sebagai syarat untuk menyelesaikan program studi tingkat sarjana. Skripsi adalah hasil penelitian yang mendalam tentang suatu topik atau masalah tertentu dalam bidang studi mahasiswa. Dalam Kamus Oxford, skripsi didefinisikan sebagai esai panjang atau disertasi yang melibatkan penelitian pribadi, yang ditulis oleh calon sarjana (Oxford, 2018)... Untuk lulus, sebuah skripsi harus menunjukkan alasan yang logis, terstruktur, dan dapat dipertahankan berdasarkan bukti yang kredibel dan dapat diverifikasi yang disajikan sedemikian rupa sehingga memberikan kontribusi orisinal terhadap pengetahuan, sebagaimana dinilai oleh para ahli di bidangnya (Evans, et al., 2014)."
-        <span class="citation">— Buku Rujukan Bab 3, Hal. 49–50</span>
+        <span class="citation">— Buku Rujukan Bab 3, Hal. 49–50[cite: 1]</span>
       </div>
     </article>
 
@@ -620,7 +651,7 @@
       </div>
       <div class="game-card">
         <h4>⚡ Tebak Format: Publikasi Akademis Topik Tunggal</h4>
-        <p style="margin-top:0.5rem">Berdasarkan Bab 3 rujukan (Hal. 47), publikasi ilmiah jangka panjang mengenai <strong>topik penelitian tunggal</strong> yang menjadi buku utama dalam ilmu sosial/humaniora dan lebih rinci dibanding artikel biasa disebut?</p>
+        <p style="margin-top:0.5rem">Berdasarkan Bab 3 rujukan (Hal. 47), publikasi ilmiah jangka panjang mengenai <strong>topik penelitian tunggal</strong> yang menjadi buku utama dalam ilmu sosial/humaniora dan lebih rinci dibanding artikel biasa disebut[cite: 1]?</p>
         <div class="quiz-options">
           <button class="quiz-btn" onclick="checkAnswer(false)">A. Artikel Populer (Opini Media Massa)</button>
           <button class="quiz-btn" onclick="checkAnswer(true)">B. Monograf (Buku Akademis Topik Tunggal)</button>
@@ -642,8 +673,8 @@
       </div>
       <p><strong>Fokus Tanya Jawab:</strong></p>
       <ul class="detailed-list">
-        <li>Kapan seorang akademisi sebaiknya memilih mempublikasikan hasil telaahnya sebagai <em>Review Article</em> (artikel ulasan) dibanding <em>Original Research</em>[cite: 1]?</li>
-        <li>Mengapa karya ilmiah populer di surat kabar (opini) tetap memerlukan landasan data atau teori pakar meskipun ditulis dengan gaya ringkas[cite: 1]?</li>
+        <li>Kapan seorang peneliti pemula sebaiknya memilih mempublikasikan karyanya dalam format <em>Review Article</em> daripada <em>Original Research</em>[cite: 1]?</li>
+        <li>Mengapa karya ilmiah populer di surat kabar (opini) tetap harus bersandar pada bukti empiris atau pandangan pakar meskipun ditulis dengan ringkas[cite: 1]?</li>
       </ul>
       <div class="quote-box" style="border-left-color: var(--genz-mint-dark);">
         "Mengetahui ragam jenis karya ilmiah ibarat seorang pelukis yang memahami aneka kuas dan kanvasnya. Pilihlah medium yang tepat agar ide, pembuktian empiris, dan suara intelektual Anda terdengar jelas serta memberi manfaat sebesar-besarnya bagi kemanusiaan."
@@ -654,7 +685,7 @@
   </div>
 
   <!-- PRESENTATION MODAL (SLIDE DECK) -->
-  <div id="presentationModal" class="presentation-modal">
+  <div id="presentationModal" class="modal-overlay">
     <div class="slide-deck">
       <div class="slide-deck-header">
         <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
@@ -668,7 +699,7 @@
       <div class="slide-deck-content active" id="slide-1">
         <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
         <h1 class="slide-title">Bab 3: Jenis-Jenis Karya Ilmiah</h1>
-        <p style="font-size:1.25rem; max-width:850px; margin-top:1.5rem;">"Karya ilmiah merupakan tonggak utama dalam dunia penelitian dan perkembangan ilmu pengetahuan... Masing-masing jenis karya ilmiah memiliki ciri khas dan tujuan tertentu."</p>
+        <p style="font-size:1.25rem; max-width:850px; margin-top:1.5rem;">"Karya ilmiah merupakan tonggak utama dalam dunia penelitian dan perkembangan ilmu pengetahuan... Masing-masing jenis karya ilmiah memiliki ciri khas dan tujuan tertentu[cite: 1]."</p>
         <div style="margin-top:2.5rem; display:flex; gap:1rem;">
           <span class="tag" style="background:var(--genz-mint)">Durasi: 100 Menit</span>
           <span class="tag" style="background:var(--genz-peach)">Fokus: Makalah, Jurnal, Prosiding, Monograf & Skripsi</span>
@@ -682,11 +713,11 @@
         <div class="feature-grid" style="margin-top:1.5rem;">
           <div class="feature-item accent-1">
             <strong>Makalah (Hal. 41)</strong>
-            <p>Tulisan resmi untuk sidang/presentasi atau tugas akademik yang mengulas masalah secara mendalam berdasarkan literatur atau lapangan.</p>
+            <p>Tulisan resmi untuk sidang/presentasi atau tugas akademik yang mengulas masalah secara mendalam berdasarkan literatur atau lapangan[cite: 1].</p>
           </div>
           <div class="feature-item accent-2">
             <strong>Artikel Ilmiah (Hal. 42)</strong>
-            <p>Dirancang untuk membagikan temuan riset orisinal ke komunitas ilmiah luas lewat jurnal, dominan menggunakan format <em>IMRAD</em> (Introduction, Method, Results, and Discussion).</p>
+            <p>Dirancang untuk membagikan temuan riset orisinal ke komunitas ilmiah luas lewat jurnal, dominan menggunakan format <em>IMRAD</em> (Introduction, Method, Results, and Discussion)[cite: 1].</p>
           </div>
         </div>
       </div>
@@ -696,10 +727,10 @@
         <div class="slide-subtitle">KLASIFIKASI JURNAL</div>
         <h2 class="slide-title">Varian Artikel Ilmiah</h2>
         <ul class="detailed-list" style="font-size:1.1rem; line-height:1.8;">
-          <li><strong>Penelitian Asli:</strong> Paparan data empiris orisinal; mencakup juga <em>Brief Report / Letter</em>.</li>
-          <li><strong>Artikel Ulasan (Review Article):</strong> Tinjauan menyeluruh, mensintesis sekitar ~100 rujukan utama untuk melihat perkembangan ilmu.</li>
-          <li><strong>Studi Kasus:</strong> Eksplorasi kontekstual mendalam pada entitas, organisasi, atau peristiwa spesifik.</li>
-          <li><strong>Artikel Metodologi:</strong> Uraian instrumen atau prosedur terperinci sebagai rujukan replikasi riset lain.</li>
+          <li><strong>Penelitian Asli:</strong> Paparan data empiris orisinal; mencakup juga <em>Brief Report / Letter</em>[cite: 1].</li>
+          <li><strong>Artikel Ulasan (Review Article):</strong> Tinjauan menyeluruh, mensintesis sekitar ~100 rujukan utama untuk melihat perkembangan ilmu[cite: 1].</li>
+          <li><strong>Studi Kasus:</strong> Eksplorasi kontekstual mendalam pada entitas, organisasi, atau peristiwa spesifik[cite: 1].</li>
+          <li><strong>Artikel Metodologi:</strong> Uraian instrumen atau prosedur terperinci sebagai rujukan replikasi riset lain[cite: 1].</li>
         </ul>
       </div>
 
@@ -710,15 +741,15 @@
         <div class="feature-grid" style="margin-top:1.5rem;">
           <div class="feature-item accent-3">
             <strong>Artikel Populer (Hal. 45)</strong>
-            <p>Opini di media massa; bahasa komunikatif untuk edukasi publik, tetap bertumpu pada teori atau bukti empiris.</p>
+            <p>Opini di media massa; bahasa komunikatif untuk edukasi publik, tetap bertumpu pada teori atau bukti empiris[cite: 1].</p>
           </div>
           <div class="feature-item accent-4">
             <strong>Paper Konferensi / Prosiding (Hal. 46)</strong>
-            <p>Hasil seminar ilmiah yang dibukukan; sarana cepat diseminasi dan umpan balik kolaboratif antarpeneliti.</p>
+            <p>Hasil seminar ilmiah yang dibukukan; sarana cepat diseminasi dan umpan balik kolaboratif antarpeneliti[cite: 1].</p>
           </div>
           <div class="feature-item accent-1">
             <strong>Monograf (Hal. 47)</strong>
-            <p>Buku akademis komprehensif mengenai <em>satu topik tunggal</em>, sangat dominan dalam kajian humaniora dan sosial.</p>
+            <p>Buku akademis komprehensif mengenai <em>satu topik tunggal</em>, sangat dominan dalam kajian humaniora dan sosial[cite: 1].</p>
           </div>
         </div>
       </div>
@@ -728,10 +759,10 @@
         <div class="slide-subtitle">DOKUMENTASI RISET & AKADEMIK</div>
         <h2 class="slide-title">Laporan Penelitian & Skripsi</h2>
         <div class="quote-box" style="font-size:1.15rem; margin-top:1rem;">
-          "Sebuah skripsi harus menunjukkan alasan yang logis, terstruktur, dan dapat dipertahankan berdasarkan bukti yang kredibel dan dapat diverifikasi yang disajikan sedemikian rupa sehingga memberikan kontribusi orisinal terhadap pengetahuan..." (Evans et al., 2014)
+          "Sebuah skripsi harus menunjukkan alasan yang logis, terstruktur, dan dapat dipertahankan berdasarkan bukti yang kredibel dan dapat diverifikasi yang disajikan sedemikian rupa sehingga memberikan kontribusi orisinal terhadap pengetahuan..." (Evans et al., 2014)[cite: 1]
         </div>
         <p style="font-size:1.1rem; margin-top:1.5rem;">
-          Laporan penelitian mendokumentasikan jejak rekam kerja institusional, sedangkan skripsi menguji kapasitas riset mandiri calon sarjana.
+          Laporan penelitian mendokumentasikan jejak rekam kerja institusional, sedangkan skripsi menguji kapasitas riset mandiri calon sarjana[cite: 1].
         </p>
       </div>
 
@@ -746,112 +777,127 @@
     </div>
   </div>
 
-  <!-- PRINT-ONLY VIEW: LEMBAR KERJA MAHASISWA (WORKSHEET) -->
-  <div id="worksheet-view" class="print-section" style="display:none;">
-    <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:20px;">
-      <h2 style="font-size:18pt; text-transform:uppercase;">Lembar Kerja Mahasiswa (LKM) 3</h2>
-      <h3 style="font-size:14pt; font-weight:normal;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 3</h3>
-      <p style="font-size:10pt;">Materi Rujukan: Bab 3 (Jenis-Jenis Karya Ilmiah)</p>
-    </div>
-    <table style="width:100%; margin-bottom:20px; font-size:11pt;">
-      <tr><td style="width:130px;">Nama Mahasiswa</td><td>: ............................................................</td><td style="width:80px;">NIM</td><td>: .............................</td></tr>
-      <tr><td>Program Studi</td><td>: ............................................................</td><td>Kelas</td><td>: .............................</td></tr>
-    </table>
-    
-    <div style="margin-bottom:20px;">
-      <h4 style="font-size:12pt; margin-bottom:6px;">A. Komparasi Format: Artikel Ilmiah vs Artikel Populer (Rujukan Hal. 42 & 45)</h4>
-      <p style="font-size:10pt; text-align:justify;">Jelaskan perbedaan mendasar antara artikel ilmiah jurnal (struktur IMRAD) dengan artikel ilmiah populer (opini media massa) ditinjau dari target pembaca dan gaya bahasa!</p>
-      <div style="border:1px dashed #444; height:100px; margin-top:8px; padding:10px; font-size:10pt; color:#666;">[Tuliskan uraian komparasi Anda di sini]</div>
-    </div>
-
-    <div style="margin-bottom:20px;">
-      <h4 style="font-size:12pt; margin-bottom:6px;">B. Analisis Artikel Ulasan (Review Article) (Rujukan Hal. 44)</h4>
-      <p style="font-size:10pt; text-align:justify;">Mengapa penulisan <em>Review Article</em> umumnya memerlukan sintesis literatur yang sangat luas (mengutip sekitar 100 artikel), dan apa manfaatnya bagi seorang peneliti pemula?</p>
-      <div style="border:1px dashed #444; height:110px; margin-top:8px; padding:10px; font-size:10pt; color:#666;">[Tuliskan penjelasan Anda di sini]</div>
-    </div>
-
-    <div style="margin-bottom:20px;">
-      <h4 style="font-size:12pt; margin-bottom:6px;">C. Karakteristik Monograf (Rujukan Hal. 47)</h4>
-      <p style="font-size:10pt; text-align:justify;">Jelaskan arti kata monograf dari asal katanya, serta mengapa monograf menjadi bentuk publikasi buku ilmiah utama dalam disiplin ilmu sosial dan humaniora!</p>
-      <div style="border:1px dashed #444; height:100px; margin-top:8px; padding:10px; font-size:10pt; color:#666;">[Tuliskan jawaban Anda di sini]</div>
-    </div>
-
-    <div style="margin-top:30px; display:flex; justify-content:space-between; font-size:11pt;">
-      <div>Catatan Evaluasi Dosen:</div>
-      <div style="text-align:center;">
-        Tanda Tangan Dosen Pengampu<br><br><br><br>
-        (.......................................................)
+  <!-- MODAL BACA & CETAK: LEMBAR KERJA & TUGAS TERPADU (LKT) -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>📄 Lembar Kerja & Tugas Terpadu Mahasiswa (LKT)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak / Simpan PDF
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
+      
+      <!-- AREA DOKUMEN (BISA DIBACA LANGSUNG & SIAP CETAK) -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:16pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Lembar Kerja & Tugas Terpadu Mahasiswa</h2>
+          <h3 style="font-size:12pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 3</h3>
+          <p style="font-size:10pt; color:#333;">Materi Rujukan: Bab 3 (Jenis-Jenis Karya Ilmiah)[cite: 1]</p>
+        </div>
 
-  <!-- PRINT-ONLY VIEW: TUGAS MANDIRI -->
-  <div id="task-view" class="print-section" style="display:none;">
-    <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:20px;">
-      <h2 style="font-size:18pt; text-transform:uppercase;">Lembar Penugasan Mandiri Mahasiswa</h2>
-      <h3 style="font-size:14pt; font-weight:normal;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 3</h3>
-      <p style="font-size:10pt;">Topik: Matriks Identifikasi dan Analisis Komparatif Jenis Karya Ilmiah</p>
-    </div>
+        <table style="width:100%; margin-bottom:20px; font-size:10.5pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:4px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:4px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:4px 0;"><strong>NIM</strong></td>
+            <td style="padding:4px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:4px 0;">: .................................................................................</td>
+            <td style="padding:4px 0;"><strong>Kelas</strong></td>
+            <td style="padding:4px 0;">: ......................................</td>
+          </tr>
+        </table>
 
-    <div style="font-size:11pt; line-height:1.6; margin-bottom:20px;">
-      <strong>Petunjuk Pengerjaan:</strong>
-      <ol style="padding-left:20px; margin-top:8px;">
-        <li>Pelajari Bab 3 pada buku teks rujukan (Halaman 39–50).</li>
-        <li>Isilah tabel matriks di bawah ini untuk membedakan karakteristik 5 bentuk karya ilmiah utama.</li>
-        <li>Sertakan contoh konkret topik riset yang sesuai untuk masing-masing jenis tersebut.</li>
-      </ol>
-    </div>
+        <!-- BAGIAN 1: LEMBAR KERJA ANALISIS KONSEPTUAL -->
+        <div style="margin-bottom:22px;">
+          <h4 style="font-size:11.5pt; font-weight:700; border-bottom:1px solid #ccc; padding-bottom:4px; margin-bottom:8px;">
+            Bagian I: Lembar Kerja Analisis Konseptual (Aktivitas Kelas)
+          </h4>
+          
+          <div style="margin-bottom:14px;">
+            <p><strong>1. Komparasi Format IMRAD vs Opini Populer (Rujukan Hal. 42 & 45):</strong><br>
+            Berdasarkan Bab 3 rujukan, uraikan perbedaan esensial antara artikel ilmiah yang diterbitkan di jurnal dengan artikel ilmiah populer di media massa, khususnya mengenai struktur penyajian, gaya bahasa, dan target pembacanya[cite: 1]!</p>
+            <div style="border:1px dashed #666; min-height:85px; padding:8px; margin-top:6px; color:#555; background:#FCFCFD;">
+              [Ruang Jawaban Mahasiswa]
+            </div>
+          </div>
 
-    <table border="1" style="width:100%; border-collapse:collapse; font-size:10pt; text-align:left;">
-      <thead>
-        <tr style="background-color:#F0F0F0;">
-          <th style="padding:8px; width:5%;">No</th>
-          <th style="padding:8px; width:20%;">Jenis Karya Ilmiah</th>
-          <th style="padding:8px; width:30%;">Tujuan Utama & Audiens</th>
-          <th style="padding:8px; width:25%;">Ciri Khas Struktur</th>
-          <th style="padding:8px; width:20%;">Contoh Topik Relevan</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding:8px; text-align:center;">1</td>
-          <td style="padding:8px;"><strong>Makalah</strong></td>
-          <td style="padding:8px;">Tugas institusi / presentasi sidang ilmiah.</td>
-          <td style="padding:8px;">Ulasan topik literatur/lapangan, sintesis.</td>
-          <td style="padding:8px;">.........................................</td>
-        </tr>
-        <tr>
-          <td style="padding:8px; text-align:center;">2</td>
-          <td style="padding:8px;"><strong>Artikel Penelitian Asli</strong></td>
-          <td style="padding:8px;">Komunitas ilmiah di jurnal akademik.</td>
-          <td style="padding:8px;">Format baku IMRAD, data orisinal.</td>
-          <td style="padding:8px;">.........................................</td>
-        </tr>
-        <tr>
-          <td style="padding:8px; text-align:center;">3</td>
-          <td style="padding:8px;"><strong>Artikel Ilmiah Populer</strong></td>
-          <td style="padding:8px;">Masyarakat luas via koran/media internet.</td>
-          <td style="padding:8px;">Singkat, format opini, bahasa populer.</td>
-          <td style="padding:8px;">.........................................</td>
-        </tr>
-        <tr>
-          <td style="padding:8px; text-align:center;">4</td>
-          <td style="padding:8px;"><strong>Monograf</strong></td>
-          <td style="padding:8px;">Pakar, periset, akademisi bidang serumpun.</td>
-          <td style="padding:8px;">Buku tebal telaah topik tunggal mendalam.</td>
-          <td style="padding:8px;">.........................................</td>
-        </tr>
-        <tr>
-          <td style="padding:8px; text-align:center;">5</td>
-          <td style="padding:8px;"><strong>Skripsi</strong></td>
-          <td style="padding:8px;">Dewan penguji sarjana perguruan tinggi.</td>
-          <td style="padding:8px;">Struktur lengkap bab 1–5, penelitian mandiri.</td>
-          <td style="padding:8px;">.........................................</td>
-        </tr>
-      </tbody>
-    </table>
-    <div style="margin-top:25px; font-size:10pt; color:#555;">
-      <em>Batas Pengumpulan: File PDF diunggah ke portal akademik paling lambat sebelum pertemuan ke-4 dimulai.</em>
+          <div style="margin-bottom:14px;">
+            <p><strong>2. Signifikansi Sintesis pada Review Article (Rujukan Hal. 44):</strong><br>
+            Mengapa penulisan <em>Review Article</em> (artikel ulasan) lazimnya mensintesis sekitar 100 artikel penelitian utama, dan apa perannya dalam mengidentifikasi celah riset (research gap)[cite: 1]?</p>
+            <div style="border:1px dashed #666; min-height:85px; padding:8px; margin-top:6px; color:#555; background:#FCFCFD;">
+              [Ruang Jawaban Mahasiswa]
+            </div>
+          </div>
+        </div>
+
+        <!-- BAGIAN 2: TUGAS MANDIRI / KELOMPOK -->
+        <div style="margin-bottom:20px;">
+          <h4 style="font-size:11.5pt; font-weight:700; border-bottom:1px solid #ccc; padding-bottom:4px; margin-bottom:8px;">
+            Bagian II: Penugasan Mandiri (Matriks Klasifikasi Diseminasi Ilmiah)
+          </h4>
+          <p style="margin-bottom:10px;">
+            <strong>Petunjuk:</strong> Pilihlah satu topik penelitian yang relevan dengan program studi Anda. Rancanglah bagaimana topik tersebut diadaptasi ke dalam empat wadah karya ilmiah yang berbeda sesuai ketentuan Bab 3[cite: 1]!
+          </p>
+
+          <table border="1" style="width:100%; border-collapse:collapse; font-size:10pt; text-align:left;">
+            <thead>
+              <tr style="background-color:#F3F4F6;">
+                <th style="padding:6px; width:5%; text-align:center;">No</th>
+                <th style="padding:6px; width:22%;">Bentuk Karya Ilmiah</th>
+                <th style="padding:6px; width:33%;">Karakteristik & Sasaran Utama (Bab 3)</th>
+                <th style="padding:6px; width:40%;">Rancangan Judul & Fokus Pembahasan Mahasiswa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px; text-align:center;">1</td>
+                <td style="padding:6px;"><strong>Artikel Penelitian Asli</strong></td>
+                <td style="padding:6px;">Format IMRAD, data empiris orisinal, jurnal ilmiah[cite: 1].</td>
+                <td style="padding:6px; color:#777;">Contoh fokus: Eksperimen/pengujian langsung...</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">2</td>
+                <td style="padding:6px;"><strong>Artikel Populer</strong></td>
+                <td style="padding:6px;">Ringkas, opini berbasis fakta, koran/media internet[cite: 1].</td>
+                <td style="padding:6px; color:#777;">Contoh fokus: Solusi praktis bagi publik...</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">3</td>
+                <td style="padding:6px;"><strong>Paper Konferensi</strong></td>
+                <td style="padding:6px;">Hasil seminar dibukukan (prosiding), pertukaran ide cepat[cite: 1].</td>
+                <td style="padding:6px; color:#777;">Contoh fokus: Temuan awal diseminasi sidang...</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; text-align:center;">4</td>
+                <td style="padding:6px;"><strong>Monograf</strong></td>
+                <td style="padding:6px;">Buku akademis mendalam atas satu topik penelitian tunggal[cite: 1].</td>
+                <td style="padding:6px; color:#777;">Contoh fokus: Kajian teoretis komprehensif...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:10pt;">
+          <div>
+            <strong>Catatan & Umpan Balik Dosen:</strong>
+            <div style="border:1px solid #aaa; width:280px; height:65px; margin-top:4px;"></div>
+          </div>
+          <div style="text-align:center;">
+            Tanda Tangan Dosen Pengampu<br><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -894,16 +940,35 @@
       }
     }
 
-    // Keyboard navigation
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
     document.addEventListener('keydown', function(e) {
-      const modal = document.getElementById('presentationModal');
-      if (modal.classList.contains('active')) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
         if (e.key === 'ArrowRight' || e.key === 'Space') {
           nextSlide();
         } else if (e.key === 'ArrowLeft') {
           prevSlide();
         } else if (e.key === 'Escape') {
           closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
         }
       }
     });
@@ -921,28 +986,6 @@
         feedback.style.borderColor = '#E11D48';
         feedback.innerText = '❌ KURANG TEPAT. Ingat kembali definisi Bab 3 (Hal. 47): Publikasi buku penelitian atas topik tunggal disebut monograf.';
       }
-    }
-
-    /* PRINT HANDLER FOR WORKSHEET & TASK */
-    function printDoc(elementId) {
-      const printContents = document.getElementById(elementId).innerHTML;
-      const printWindow = window.open('', '', 'height=800,width=900');
-      printWindow.document.write('<html><head><title>Cetak Dokumen Perkuliahan</title>');
-      printWindow.document.write('<style>');
-      printWindow.document.write(`
-        body { font-family: 'Times New Roman', serif; padding: 25mm 20mm; color: #000; line-height: 1.5; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #333; padding: 6px 10px; }
-      `);
-      printWindow.document.write('</style></head><body>');
-      printWindow.document.write(printContents);
-      printWindow.document.write('</body></html>');
-      printWindow.document.close();
-      printWindow.focus();
-      setTimeout(function() {
-        printWindow.print();
-        printWindow.close();
-      }, 500);
     }
   </script>
 </body>
