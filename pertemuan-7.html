@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertemuan 7: Isi Karya Ilmiah</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #FFFBF5;
+      --card-bg: #FFFFFF;
+      --text-main: #0B192C;
+      --text-muted: #534538;
+      
+      /* Palet Warna: Dark Blue, Oranye, & Cokelat */
+      --theme-navy: #0B192C;
+      --theme-navy-light: #EBF1F8;
+      --theme-navy-dark: #050E1A;
+      
+      --theme-orange: #EA580C;
+      --theme-orange-light: #FFEDD5;
+      --theme-orange-dark: #C2410C;
+      
+      --theme-brown: #78350F;
+      --theme-brown-light: #F7EFE9;
+      --theme-brown-dark: #451A03;
+      
+      --border-dark: #0B192C;
+      --shadow-solid: 4px 4px 0px #0B192C;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP BAR / NAVIGATION */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 251, 245, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--theme-orange-light);
+      border: 2px solid var(--border-dark);
+      box-shadow: 2px 2px 0 var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--theme-orange-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--border-dark);
+    }
+
+    .btn-presentation {
+      background-color: var(--theme-navy);
+      color: #FFFFFF;
+    }
+
+    .btn-worksheet {
+      background-color: var(--theme-orange);
+      color: #FFFFFF;
+    }
+
+    /* CONTAINER & HERO */
+    .container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .hero {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      color: var(--theme-navy);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 230px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+      box-shadow: 4px 4px 0px var(--theme-orange);
+      object-fit: cover;
+    }
+
+    /* TIMELINE SECTION */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+    }
+
+    .time-slot.t1 { background: var(--theme-navy-light); }
+    .time-slot.t2 { background: #FFFFFF; }
+    .time-slot.t3 { background: var(--theme-orange-light); }
+    .time-slot.t4 { background: var(--theme-brown-light); }
+
+    .time-slot .time {
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+      color: var(--theme-navy);
+    }
+
+    .time-slot .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--theme-brown-dark);
+    }
+
+    /* SECTION CARD */
+    .section-block {
+      background: var(--card-bg);
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-canvas);
+      padding-bottom: 1rem;
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--theme-navy);
+      color: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    h2 { font-size: 1.6rem; font-weight: 800; color: var(--theme-navy); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem 0; color: var(--theme-orange-dark); }
+    p { margin-bottom: 1rem; color: #2D241E; }
+
+    .content-img-wrapper {
+      margin: 1.5rem 0;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: 4px 4px 0px var(--theme-brown);
+    }
+
+    .content-img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-caption {
+      background: #FFFFFF;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1.5px solid var(--border-dark);
+    }
+
+    /* QUOTE BOX */
+    .quote-box {
+      background-color: var(--theme-orange-light);
+      border-left: 5px solid var(--theme-orange);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #431407;
+      border-top: 1px solid #FED7AA;
+      border-right: 1px solid #FED7AA;
+      border-bottom: 1px solid #FED7AA;
+    }
+
+    .quote-box .citation {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: var(--theme-brown);
+    }
+
+    /* EXAMPLE BOX */
+    .example-box {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--theme-brown);
+      border-left: 5px solid var(--theme-brown);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .example-box strong {
+      color: var(--theme-brown-dark);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    /* GRID LISTS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+    .feature-item {
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      background: #FFFFFF;
+      box-shadow: 3px 3px 0 var(--border-dark);
+    }
+
+    .feature-item.accent-orange { background: var(--theme-orange-light); }
+    .feature-item.accent-brown { background: var(--theme-brown-light); }
+    .feature-item.accent-navy { background: var(--theme-navy-light); }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: var(--theme-navy);
+    }
+
+    ol.detailed-list, ul.detailed-list {
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    ol.detailed-list li, ul.detailed-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 0.35rem;
+    }
+
+    /* GAMES CARD */
+    .game-card {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      box-shadow: var(--shadow-solid);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border-dark);
+      transition: all 0.1s ease;
+      color: var(--theme-navy);
+    }
+
+    .quiz-btn:hover {
+      background: var(--theme-orange-light);
+      transform: translate(-1px, -1px);
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      font-weight: 700;
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-dark);
+    }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(11, 25, 44, 0.88);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    /* SLIDE PRESENTATION DECK */
+    .slide-deck {
+      width: 100%;
+      max-width: 1120px;
+      height: 92vh;
+      background-color: #FFFCF7;
+      border: 3px solid #0B192C;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 14px 14px 0px var(--theme-orange);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-deck-header {
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-deck-content {
+      flex: 1;
+      padding: 2.5rem 3.5rem;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .slide-deck-content.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-deck-footer {
+      background: #FFFFFF;
+      border-top: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--theme-navy);
+    }
+
+    .slide-subtitle {
+      font-size: 1.15rem;
+      color: var(--theme-orange);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .slide-visual-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .slide-card-box {
+      background: #FFFFFF;
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      box-shadow: 3px 3px 0px var(--theme-navy);
+      margin-bottom: 0.8rem;
+    }
+
+    /* MODAL TAMPILAN BACA */
+    .reading-modal-container {
+      width: 100%;
+      max-width: 950px;
+      height: 92vh;
+      background-color: #FFFFFF;
+      border: 3px solid #000;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 0px var(--theme-brown);
+      overflow: hidden;
+    }
+
+    .reading-modal-header {
+      background: var(--theme-brown-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reading-modal-body {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+      background: #FFFFFF;
+      color: #000;
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+
+    .lecturer-auth-box {
+      background: #FFF7ED;
+      border: 2px dashed var(--theme-orange);
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-sm);
+      margin-top: 2rem;
+    }
+
+    .answer-key-content {
+      display: none;
+      background: #FEF3C7;
+      border: 2px solid var(--theme-brown);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* PRINT FORMAT */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #FFF !important;
+        padding: 15mm 20mm;
+      }
+      .lecturer-auth-box, .site-header, .modal-overlay, .no-print { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 1.5rem; }
+      .section-block { padding: 1.5rem; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .slide-deck-content { padding: 1.5rem; }
+      .slide-title { font-size: 1.6rem; }
+      .slide-visual-grid { grid-template-columns: 1fr; }
+      .reading-modal-body { padding: 1.5rem; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER / ACTION BAR -->
+  <header class="site-header no-print">
+    <div class="badge-course">
+      <span>📊</span> Penulisan Karya Ilmiah • Pertemuan 7 (2 SKS)
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-presentation" onclick="openPresentation()">
+        <span>🖥️</span> Slide Presentasi Dosen
+      </button>
+      <button class="btn btn-worksheet" onclick="openReadingModal()">
+        <span>📖</span> Buka Soal Evaluasi & Kunci Dosen
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="container no-print">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="tag">Mata Kuliah: Penulisan Karya Ilmiah</span>
+            <span class="tag">Alokasi Waktu: 2 SKS (100 Menit)</span>
+            <span class="tag">Tema: Oranye, Cokelat & Dark Blue</span>
+            <span class="tag">Topik: Isi Karya Ilmiah</span>
+          </div>
+          <h1>Isi Karya Tulis Ilmiah: Anatomi, Metodologi, dan Desain Data</h1>
+          <p>Materi pertemuan ketujuh: bedah mendalam isi karya tulis ilmiah dari proposal hingga laporan akhir, perbandingan paradigma riset kualitatif dan kuantitatif, klasifikasi data riset, serta teknik penarikan populasi dan sampel representatif.</p>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80" alt="Isi Karya Ilmiah" class="hero-illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE RENCANA PERKULIAHAN (100 MENIT) -->
+    <div class="timeline-card">
+      <div class="time-slot t1">
+        <span class="time">10 Menit</span>
+        <div class="title">Warming Up & Pendahuluan</div>
+        <small style="color:var(--text-muted)">Urgensi proposal sebagai cetak biru riset dan pemecahan masalah terkini.</small>
+      </div>
+      <div class="time-slot t2">
+        <span class="time">45 Menit</span>
+        <div class="title">Materi Inti Komprehensif</div>
+        <small style="color:var(--text-muted)">Bedah Bab I–III, komparasi kualitatif/kuantitatif, data, dan sampling.</small>
+      </div>
+      <div class="time-slot t3">
+        <span class="time">5 Menit</span>
+        <div class="title">Games Interaktif</div>
+        <small style="color:var(--text-muted)">Studi Kasus: Membedakan data kuantitatif diskrit vs kontinum.</small>
+      </div>
+      <div class="time-slot t4">
+        <span class="time">40 Menit</span>
+        <div class="title">Evaluasi & Penutup</div>
+        <small style="color:var(--text-muted)">Pengerjaan 15 soal evaluasi mandiri, verifikasi kunci dosen, dan simpulan.</small>
+      </div>
+    </div>
+
+    <!-- SESI 1: PENDAHULUAN (10 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2>Pendahuluan: Hakikat Isi Karya Ilmiah (10 Menit)</h2>
+          <small style="color:var(--text-muted)">Warming Up & Konstruksi Rancangan Awal</small>
+        </div>
+      </div>
+      <p>Karya tulis ilmiah bukanlah catatan acak, melainkan rekaman sistematis yang bertujuan menyajikan fakta dan jalan keluar atas problematika di lapangan. Sebelum naskah lengkap tersusun, proposal memegang peranan krusial sebagai fondasi awal penelitian.</p>
+
+      <div class="quote-box">
+        "Uraian kegiatan yang tertuang dalam laporan yang berisikan tentang informasi, dan temuan yang berasal dari berbagai informasi yang didapatkan dengan beberapa cara disebut Karya tulis ilmiah. Karya tulis ilmiah bertujuan untuk memberikan informasi terkini dari kasus atau masalah yang sedang dialami... Penyusunan proposal sangat dibutuhkan pada saat ingin membuat sebuah karya tulis ilmiah. Proposal berfungsi sebagai perencanaan awal untuk menentukan tema, tujuan, manfaat, kemudian metode yang akan digunakan, sampai target yang ingin dicapai."
+        <span class="citation">— Halaman 99, 101</span>
+      </div>
+
+      <p>Melalui perencanaan yang tertuang dalam proposal, peneliti diarahkan agar alur pembuktian tidak mengalami distorsi, serta mampu mempertahankan temuannya di hadapan komunitas akademik secara meyakinkan.</p>
+
+      <div class="content-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1000&q=80" alt="Rancangan Proposal" class="content-img">
+        <div class="img-caption">Gambar 1: Perencanaan matang proposal penelitian menjaga konsistensi variabel hingga laporan akhir.</div>
+      </div>
+    </article>
+
+    <!-- SESI 2: MATERI INTI (45 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2>Materi Inti: Anatomi Bab, Paradigma Riset & Sampling (45 Menit)</h2>
+          <small style="color:var(--text-muted)">Kajian Komprehensif Berdasarkan Rangkuman Bab 7</small>
+        </div>
+      </div>
+
+      <!-- BAB I & BAB II -->
+      <h3>A. Batang Tubuh Isi: Bab I (Pendahuluan) & Bab II (Kajian Pustaka)</h3>
+      <p>Struktur pendahuluan dan kajian pustaka menjadi fondasi yang menopang seluruh arah penyelidikan ilmiah:</p>
+
+      <div class="quote-box">
+        "Menurut Ramdhan (Ramdhan, 2021) tujuan penelitian dibuat untuk dapat: 1) Untuk mendapatkan solusi pada permasalahan yang sedang dihadapi; 2) Untuk mendapatkan suatu kebijakan bagi pengambil keputusan; 3) Untuk meramal fenomena yang akan terjadi dikemudian hari... Landasan teori pada bab ini didapatkan dari berbagai macam media misalnya seperti, artikel yang dipublikasikan dalam jurnal, skripsi, koran, dan penelitian-penelitian sebelumnya yang sesuai dengan tema dari penelitian yang akan dilakukan."
+        <span class="citation">— Halaman 102, 103</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-navy">
+          <strong>1. Komponen Bab I (Pendahuluan)</strong>
+          Memuat latar belakang (alasan urgensi riset), rumusan masalah (pernyataan lugas masalah dan arah solusi), tujuan penelitian terukur, serta manfaat teoretis dan praktis.
+        </div>
+        <div class="feature-item accent-orange">
+          <strong>2. Komponen Bab II (Kajian Pustaka)</strong>
+          Memuat sekelompok teori sebagai landasan hukum konseptual dan rangkuman penelitian terdahulu (sebaiknya disajikan dalam format matriks tabel komparasi agar mudah dipahami).
+        </div>
+      </div>
+
+      <!-- METODOLOGI: KUALITATIF VS KUANTITATIF -->
+      <h3>B. Bab III: Metodologi Penelitian (Kualitatif vs Kuantitatif)</h3>
+      <p>Metodologi memaparkan langkah dan prosedur konkret dalam mengumpulkan serta mengolah data di lapangan:</p>
+
+      <div class="quote-box">
+        "Penelitian kualitatif merupakan metode penelitian yang berfokus pada aspek filosofis, digunakan untuk menginvestigasi dalam konteks ilmiah dimana peneliti berperan sebagai alat utama, metode pengumpulan data, dan analisis yang dilakukan lebih berfokus pada pemahaman makna (Sugiyono, 2011)... Sedangkan penelitian kuantitatif merupakan metode penelitian yang berakar pada pandangan positivisme, yang digunakan sebagai pendekatan ilmiah karena telah memenuhi kriteria ilmiah yang bersifat konkret atau empiris, objektif, terukur, rasional, dan terstruktur secara sistematis."
+        <span class="citation">— Halaman 105, 107</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-brown">
+          <strong>Karakteristik Riset Kualitatif</strong>
+          • Bersifat <em>induktif</em> (berangkat dari fakta khusus menuju perumusan konsep umum).<br>
+          • Peneliti bertindak sebagai instrumen utama (human instrument).<br>
+          • Data berwujud kalimat, narasi, gambar, atau rekaman (tanpa SPSS).<br>
+          • Partisipan dipilih yang kredibel, terpercaya, dan komunikatif dengan ukuran subjek kecil.
+        </div>
+        <div class="feature-item accent-navy">
+          <strong>Karakteristik Riset Kuantitatif</strong>
+          • Bersifat <em>deduktif</em> (menguji teori umum ke pengujian kasus khusus).<br>
+          • Desain riset dan ukuran sampel permanen/baku.<br>
+          • Menggunakan instrumen kuesioner dan uji statistik numerik.<br>
+          • Subjek luas (umumnya &gt; 10 responden) untuk tujuan generalisasi ke populasi.
+        </div>
+      </div>
+
+      <div class="example-box">
+        <strong>Tabel Matriks Komparasi Kualitatif vs Kuantitatif:</strong>
+        • <em>Tujuan:</em> Kualitatif memahami peristiwa secara holistik; Kuantitatif meramalkan dan menguji kausalitas.<br>
+        • <em>Sifat:</em> Kualitatif induktif; Kuantitatif deduktif.<br>
+        • <em>Wujud Temuan:</em> Kualitatif model/konsep/teori; Kuantitatif angka/skor statistik.<br>
+        • <em>Instrumen:</em> Kualitatif peneliti sendiri & alat rekam; Kuantitatif kuesioner & formulir observasi.
+      </div>
+
+      <!-- KLASIFIKASI DATA -->
+      <h3>C. Data dan Jenis-Jenis Data Riset</h3>
+      <p>Data merupakan jawaban faktual atas rumusan masalah penelitian. Diklasifikasikan ke dalam beberapa dimensi:</p>
+
+      <ul class="detailed-list">
+        <li><strong>Berdasarkan Sumbernya:</strong>
+          <ul>
+            <li><em>Data Primer:</em> Didapatkan langsung oleh peneliti dari sumber aslinya melalui wawancara mendalam, observasi, atau kuesioner.</li>
+            <li><em>Data Sekunder:</em> Data tidak langsung yang bersumber dari laporan lembaga resmi (BPS, instansi kedinasan, arsip artikel jurnal terdahulu).</li>
+          </ul>
+        </li>
+        <li><strong>Berdasarkan Sifatnya:</strong>
+          <ul>
+            <li><em>Data Kualitatif:</em> Berupa kata-kata, kalimat, atau gambar dari catatan lapangan.</li>
+            <li><em>Data Kuantitatif:</em> Berwujud angka statistik, mencakup data nominal, ordinal, interval, dan rasio.</li>
+          </ul>
+        </li>
+        <li><strong>Berdasarkan Cara Memperoleh Angka Kuantitatif:</strong>
+          <ul>
+            <li><em>Data Diskrit:</em> Diperoleh dari hasil penghitungan (counting), bernilai bulat dan terbatas (misal: jumlah penduduk, jumlah armada kendaraan).</li>
+            <li><em>Data Kontinum:</em> Diperoleh dari hasil pengukuran (measurement), dapat berupa pecahan maupun bilangan riil (misal: tinggi badan, suhu udara, waktu tempuh).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- POPULASI DAN SAMPEL -->
+      <h3>D. Populasi, Sampel, dan Teknik Penarikan Sampel</h3>
+      <p>Subjek yang memenuhi kriteria penelitian dinamakan populasi, sedangkan bagian dari populasi yang diambil untuk mewakili karakteristik keseluruhan disebut sampel:</p>
+
+      <div class="quote-box">
+        "Subjek yang telah memenuhi kriteria disebut dengan populasi dalam penelitian, yang peneliti sebut sebagai subyek adalah manusia (responden) (Nursalam, 2008)... Subyek penelitian yang berasal dari bagian populasi yang ditentukan melalui sampling... Kriteria sampel dalam penelitian bertujuan untuk mengurangi bias hasil penelitian. Kriteria sampel ada 2 yaitu: 1) Kriteria Inklusi; 2) Kriteria Eksklusi."
+        <span class="citation">— Halaman 111–112</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-item accent-orange">
+          <strong>Probability Sampling (Peluang Sama)</strong>
+          Setiap unsur populasi memiliki kesempatan yang sama untuk terpilih:
+          <ul style="padding-left:1.2rem; font-size:0.95rem; margin-top:0.3rem;">
+            <li>Simple Random Sampling</li>
+            <li>Stratified Random Sampling</li>
+            <li>Cluster Sampling</li>
+            <li>Systematic Sampling</li>
+          </ul>
+        </div>
+        <div class="feature-item accent-brown">
+          <strong>Nonprobability Sampling (Peluang Tidak Sama)</strong>
+          Pengambilan sampel berdasarkan pertimbangan tertentu:
+          <ul style="padding-left:1.2rem; font-size:0.95rem; margin-top:0.3rem;">
+            <li>Purposive Sampling</li>
+            <li>Consecutive Sampling</li>
+            <li>Convenience Sampling</li>
+            <li>Quota Sampling</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- SESI 3: GAMES INTERAKTIF (5 MENIT) -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2>Games Interaktif: Klasifikasi Data Kuantitatif (5 Menit)</h2>
+          <small style="color:var(--text-muted)">Uji Cepat: Membedakan Data Diskrit dan Data Kontinum</small>
+        </div>
+      </div>
+      <div class="game-card">
+        <h4>⚡ Uji Pemahaman Jenis Angka</h4>
+        <p style="margin-top:0.5rem">Seorang peneliti mencatat dua variabel di laboratorium: (1) Jumlah mahasiswa yang hadir sebanyak 35 orang, dan (2) Suhu ruangan pengujian sebesar 24,8°C. Berdasarkan cara mendapatkannya, variabel (1) dan (2) secara berturut-turut tergolong ke dalam jenis data?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="checkAnswer(false)">A. Data Kontinum dan Data Diskrit</button>
+          <button class="quiz-btn" onclick="checkAnswer(true)">B. Data Diskrit dan Data Kontinum</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">C. Data Kualitatif dan Data Sekunder</button>
+          <button class="quiz-btn" onclick="checkAnswer(false)">D. Data Nominal dan Data Ordinal</button>
+        </div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </div>
+    </article>
+
+    <!-- SESI 4: TANYA JAWAB & CLOSING -->
+    <article class="section-block">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2>Tanya Jawab & Closing Statement</h2>
+          <small style="color:var(--text-muted)">Integritas Perolehan Data Ilmiah</small>
+        </div>
+      </div>
+      <p><strong>Fokus Diskusi & Tanya Jawab:</strong></p>
+      <ul class="detailed-list">
+        <li>Mengapa kriteria eksklusi tidak boleh sekadar merupakan kebalikan (negasi langsung) dari kriteria inklusi?</li>
+        <li>Bagaimana peran seorang peneliti kualitatif sebagai *human instrument* dalam menjamin keabsahan data tanpa bias subjektif?</li>
+      </ul>
+      <div class="quote-box" style="border-left-color: var(--theme-orange); background-color: var(--theme-orange-light);">
+        "Isi karya tulis ilmiah adalah bangunan kejujuran akademik. Mulai dari rumusan masalah yang tajam, kedalaman landasan pustaka, hingga ketepatan penarikan sampel, seluruhnya diikat oleh komitmen untuk menyajikan kebenaran fakta tanpa manipulasi."
+        <span class="citation">— Penutup Perkuliahan Pertemuan ke-7</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESENTATION MODAL (SLIDE DECK) -->
+  <div id="presentationModal" class="modal-overlay">
+    <div class="slide-deck">
+      <div class="slide-deck-header">
+        <div style="font-weight:800; font-size:1.1rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="background:var(--theme-navy); color:#FFF; border:1.5px solid #000; padding:2px 8px; border-radius:6px;">Slide Deck</span>
+          <span>Pertemuan VII: Isi Karya Tulis Ilmiah</span>
+        </div>
+        <button class="btn btn-worksheet" style="padding:0.35rem 0.8rem; font-size:0.8rem;" onclick="closePresentation()">Keluar (Esc)</button>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide-deck-content active" id="slide-1">
+        <div class="slide-subtitle">MATA KULIAH: PENULISAN KARYA ILMIAH (2 SKS)</div>
+        <h1 class="slide-title">Isi Karya Tulis Ilmiah</h1>
+        <div class="slide-visual-grid">
+          <div>
+            <p style="font-size:1.15rem; margin-bottom:1.5rem;">Mengkaji anatomi isi laporan ilmiah dari Bab I hingga Bab III, komparasi riset kualitatif vs kuantitatif, klasifikasi data, dan teknik sampling representatif.</p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <span class="tag" style="background:var(--theme-orange-light)">Durasi: 100 Menit</span>
+              <span class="tag" style="background:var(--theme-navy-light)">Fokus: Metodologi, Data & Sampel</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Slide Sampul" style="width:100%; border:2px solid #000; border-radius:12px; box-shadow:4px 4px 0px var(--theme-navy);">
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: BAB I & BAB II -->
+      <div class="slide-deck-content" id="slide-2">
+        <div class="slide-subtitle">ANATOMI ISI BAGIAN AWAL</div>
+        <h2 class="slide-title">Pendahuluan & Kajian Pustaka</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-navy); display:block; margin-bottom:0.3rem;">Bab I: Pendahuluan</strong>
+            Latar belakang urgensi riset, rumusan masalah lugas, serta 3 fungsi tujuan (solusi masalah, rekomendasi kebijakan, peramalan fenomena).
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-orange-dark); display:block; margin-bottom:0.3rem;">Bab II: Kajian Pustaka</strong>
+            Landasan teori pendukung dan rangkuman penelitian terdahulu yang disajikan dalam bentuk tabel komparatif guna merumuskan hipotesis.
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: KUALITATIF VS KUANTITATIF -->
+      <div class="slide-deck-content" id="slide-3">
+        <div class="slide-subtitle">PARADIGMA METODOLOGI</div>
+        <h2 class="slide-title">Kualitatif vs Kuantitatif</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-brown); display:block; margin-bottom:0.4rem;">Penelitian Kualitatif</strong>
+            <ul style="padding-left:1.2rem; font-size:0.95rem;">
+              <li>Fokus pada pemahaman makna filosofis.</li>
+              <li>Penalaran induktif (khusus ke umum).</li>
+              <li>Peneliti sebagai alat utama (human instrument).</li>
+              <li>Data berupa teks/gambar, analisis tanpa SPSS.</li>
+            </ul>
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-navy); display:block; margin-bottom:0.4rem;">Penelitian Kuantitatif</strong>
+            <ul style="padding-left:1.2rem; font-size:0.95rem;">
+              <li>Berakar pada positivisme konkret & empiris.</li>
+              <li>Penalaran deduktif (menguji teori ke kasus).</li>
+              <li>Desain permanen dengan uji statistik numerik.</li>
+              <li>Subjek luas (&gt;10) untuk generalisasi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: KLASIFIKASI DATA -->
+      <div class="slide-deck-content" id="slide-4">
+        <div class="slide-subtitle">DESAIN PENGUKURAN DATA</div>
+        <h2 class="slide-title">Klasifikasi Data Riset</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem;">
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-orange-dark); display:block; margin-bottom:0.4rem;">Sumber & Sifat Data</strong>
+            • <em>Data Primer:</em> Diperoleh langsung (wawancara, observasi).<br>
+            • <em>Data Sekunder:</em> Diperoleh dari pihak kedua (BPS, laporan).<br>
+            • <em>Data Kualitatif:</em> Kata, kalimat, gambar.<br>
+            • <em>Data Kuantitatif:</em> Skor/angka statistik.
+          </div>
+          <div class="slide-card-box">
+            <strong style="color:var(--theme-brown-dark); display:block; margin-bottom:0.4rem;">Diskrit vs Kontinum</strong>
+            • <em>Data Diskrit:</em> Hasil pembilangan/penghitungan, nilai bulat terbatas (jumlah penduduk, unit mobil).<br>
+            • <em>Data Kontinum:</em> Hasil pengukuran, dapat berupa pecahan (tinggi badan, waktu, suhu ruangan).
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: POPULASI & SAMPLING -->
+      <div class="slide-deck-content" id="slide-5">
+        <div class="slide-subtitle">PENENTUAN SUBJEK RISET</div>
+        <h2 class="slide-title">Populasi, Sampling & Pengendalian Bias</h2>
+        <div class="quote-box" style="font-size:1.15rem; margin-top:1.5rem;">
+          Pengendalian bias pada sampel dilakukan melalui penetapan kriteria inklusi (karakteristik yang wajib dipenuhi) dan kriteria eksklusi (karakteristik yang dikeluarkan dari penelitian).
+        </div>
+        <p style="margin-top:2rem; font-size:1.05rem;">
+          <strong>Aktivitas Terjadwal:</strong> Buka lembar evaluasi untuk mengerjakan 15 soal pilihan ganda mandiri. Dosen dapat memverifikasi lembar jawaban melalui sandi verifikasi.
+        </p>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="slide-deck-footer">
+        <div style="font-weight:700;" id="slideIndicator">Slide 1 dari 5</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn" onclick="prevSlide()">◀ Sebelumnya</button>
+          <button class="btn btn-presentation" onclick="nextSlide()">Berikutnya ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BACA & CETAK: SOAL EVALUASI 15 PG + KUNCI DOSEN -->
+  <div id="readingModal" class="modal-overlay">
+    <div class="reading-modal-container">
+      <div class="reading-modal-header">
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem; color:var(--theme-navy);">
+          <span>📄 Lembar Evaluasi Mahasiswa & Kunci Dosen (Bab 7)</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-worksheet" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="triggerPrint()">
+            🖨️ Cetak Lembar Soal (PDF)
+          </button>
+          <button class="btn" style="padding:0.4rem 0.85rem; font-size:0.85rem;" onclick="closeReadingModal()">
+            Tutup (Esc)
+          </button>
+        </div>
+      </div>
+      
+      <!-- AREA DOKUMEN EVALUASI -->
+      <div class="reading-modal-body" id="printableArea">
+        <div style="text-align:center; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
+          <h2 style="font-size:15pt; font-weight:800; text-transform:uppercase; margin-bottom:4px;">Evaluasi Perkuliahan: Isi Karya Tulis Ilmiah</h2>
+          <h3 style="font-size:11.5pt; font-weight:600; margin-bottom:4px;">Mata Kuliah: Penulisan Karya Ilmiah • Pertemuan 7</h3>
+          <p style="font-size:9.5pt; color:#333;">Materi: Bab 7 (Isi Karya Ilmiah: Pendahuluan, Pustaka, Metodologi, Data & Sampel)</p>
+        </div>
+
+        <table style="width:100%; margin-bottom:15px; font-size:10pt; border-collapse:collapse;">
+          <tr>
+            <td style="width:140px; padding:3px 0;"><strong>Nama Mahasiswa</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="width:80px; padding:3px 0;"><strong>NIM</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+          <tr>
+            <td style="padding:3px 0;"><strong>Program Studi</strong></td>
+            <td style="padding:3px 0;">: .................................................................................</td>
+            <td style="padding:3px 0;"><strong>Kelas</strong></td>
+            <td style="padding:3px 0;">: ......................................</td>
+          </tr>
+        </table>
+
+        <div style="margin-bottom:15px; font-size:9.5pt; background:#FFF7ED; padding:8px 12px; border:1px solid #FED7AA; border-radius:4px;">
+          <strong>Petunjuk Mengerjakan:</strong> Pilihlah satu jawaban yang paling tepat (A, B, C, atau D) dengan memberi tanda silang (X) atau melingkari huruf pilihan Anda!
+        </div>
+
+        <!-- 15 SOAL PILIHAN GANDA -->
+        <div style="font-size:9.5pt; line-height:1.5;">
+
+          <!-- SOAL 1 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>1. Uraian kegiatan tertulis yang berisikan informasi dan temuan yang didapatkan melalui serangkaian cara ilmiah untuk merespons kasus terkini disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Karya tulis ilmiah<br>
+              B. Berita editorial opini<br>
+              C. Artikel kolokial populer<br>
+              D. Catatan kronologis harian
+            </div>
+          </div>
+
+          <!-- SOAL 2 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>2. Berdasarkan perumusan Ramdhan (2021), tujuan penelitian disusun untuk memenuhi tiga fungsi pokok berikut, KECUALI...</strong></p>
+            <div style="padding-left:15px;">
+              A. Mendapatkan solusi pada masalah yang dihadapi<br>
+              B. Mempertahankan opini subjektif peneliti tanpa pengujian data<br>
+              C. Menghasilkan pertimbangan kebijakan bagi pengambil keputusan<br>
+              D. Meramal fenomena yang akan terjadi di kemudian hari
+            </div>
+          </div>
+
+          <!-- SOAL 3 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>3. Tahapan perencanaan awal yang berfungsi menetapkan tema, tujuan, manfaat, metode pengumpulan data, hingga target yang ingin dicapai dinamakan...</strong></p>
+            <div style="padding-left:15px;">
+              A. Ringkasan buku teks<br>
+              B. Lampiran dokumen<br>
+              C. Proposal penelitian<br>
+              D. Catatan kaki Latin
+            </div>
+          </div>
+
+          <!-- SOAL 4 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>4. Dalam Bab II (Kajian Pustaka), ketiadaan landasan teori yang kuat dapat mengakibatkan risiko berupa...</strong></p>
+            <div style="padding-left:15px;">
+              A. Penelitian menyimpang dari topik permasalahan awal dan hasil kurang optimal<br>
+              B. Nilai kemiripan naskah pada aplikasi Turnitin menurun secara otomatis<br>
+              C. Format naskah otomatis beralih menjadi karya fiksi ilmiah<br>
+              D. Judul penelitian ditolak oleh penerbit tanpa melalui evaluasi
+            </div>
+          </div>
+
+          <!-- SOAL 5 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>5. Format penyampaian penelitian-penelitian terdahulu di dalam Bab II disarankan disajikan dalam bentuk... agar memudahkan pembaca memahaminya.</strong></p>
+            <div style="padding-left:15px;">
+              A. Matriks tabel ringkasan perbandingan<br>
+              B. Catatan harian naratif tidak berstruktur<br>
+              C. Rangkaian kutipan langsung tanpa analisis<br>
+              D. Daftar indeks kosakata asing
+            </div>
+          </div>
+
+          <!-- SOAL 6 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>6. Paradigma metodologi yang berfokus pada aspek filosofis, pemahaman makna, dan menempatkan peneliti sebagai instrumen utama (human instrument) adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Penelitian kuantitatif eksperimental<br>
+              B. Penelitian kualitatif<br>
+              C. Penelitian survei terstruktur<br>
+              D. Analisis statistik inferensial
+            </div>
+          </div>
+
+          <!-- SOAL 7 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>7. Alur penalaran pada penelitian kualitatif pada umumnya bersifat induktif, yang bermakna...</strong></p>
+            <div style="padding-left:15px;">
+              A. Menguji rumus teori umum ke pembuktian kasus lapangan<br>
+              B. Bergerak dari data angka menuju pengujian hipotesis permanen<br>
+              C. Berangkat dari fakta khusus di lapangan menuju penyusunan tema/konsep umum<br>
+              D. Membandingkan kelompok kasus dan kelompok kontrol secara retrospektif
+            </div>
+          </div>
+
+          <!-- SOAL 8 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>8. Ciri utama penelitian kuantitatif menurut pandangan positivisme adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Bersifat konkret, objektif, terukur, dan berlandaskan data numerik<br>
+              B. Pengolahan data tidak memerlukan instrumen baku<br>
+              C. Data dihasilkan murni berupa rekaman video dan transkrip cerita<br>
+              D. Jumlah sampel dapat diubah-ubah sewaktu-waktu di lapangan
+            </div>
+          </div>
+
+          <!-- SOAL 9 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>9. Berdasarkan sifat penalarannya, perbedaan mendasar antara penelitian kualitatif dan kuantitatif adalah...</strong></p>
+            <div style="padding-left:15px;">
+              A. Kualitatif bersifat deduktif, sedangkan kuantitatif bersifat induktif<br>
+              B. Kualitatif bersifat induktif, sedangkan kuantitatif bersifat deduktif<br>
+              C. Kualitatif menggunakan SPSS, sedangkan kuantitatif menggunakan rekaman suara<br>
+              D. Kualitatif bersubjek luas, sedangkan kuantitatif bersubjek tunggal
+            </div>
+          </div>
+
+          <!-- SOAL 10 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>10. Data yang diperoleh langsung oleh peneliti dari sumber pertamanya melalui wawancara, observasi lapangan, atau kuesioner dikategorikan sebagai...</strong></p>
+            <div style="padding-left:15px;">
+              A. Data sekunder<br>
+              B. Data primer<br>
+              C. Data kontinum<br>
+              D. Data tersier
+            </div>
+          </div>
+
+          <!-- SOAL 11 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>11. Data kuantitatif yang diperoleh melalui proses pembilangan/penghitungan, bernilai bilangan bulat, dan jumlahnya terbatas dinamakan...</strong></p>
+            <div style="padding-left:15px;">
+              A. Data kontinum<br>
+              B. Data diskrit<br>
+              C. Data ordinal<br>
+              D. Data interval
+            </div>
+          </div>
+
+          <!-- SOAL 12 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>12. Manakah di antara variabel berikut yang merupakan contoh nyata dari data kontinum?</strong></p>
+            <div style="padding-left:15px;">
+              A. Jumlah sepeda motor di area parkir kampus<br>
+              B. Tinggi badan dan suhu udara ruangan laboratorium<br>
+              C. Jumlah mahasiswa dalam kelas perkuliahan<br>
+              D. Jumlah halaman dalam sebuah bab buku teks
+            </div>
+          </div>
+
+          <!-- SOAL 13 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>13. Keseluruhan subjek yang telah memenuhi kriteria karakteristik yang ditentukan oleh peneliti disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Populasi<br>
+              B. Sampel kuota<br>
+              C. Partisipan aksidental<br>
+              D. Kelompok perlakuan
+            </div>
+          </div>
+
+          <!-- SOAL 14 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>14. Teknik penarikan sampel di mana setiap unsur populasi tidak memiliki peluang yang sama untuk terpilih dinamakan...</strong></p>
+            <div style="padding-left:15px;">
+              A. Probability sampling<br>
+              B. Simple random sampling<br>
+              C. Nonprobability sampling<br>
+              D. Cluster sampling
+            </div>
+          </div>
+
+          <!-- SOAL 15 -->
+          <div style="margin-bottom:12px;">
+            <p><strong>15. Kriteria yang dirumuskan oleh peneliti guna mengeluarkan subjek yang tidak memenuhi syarat dari sampel penelitian demi meminimalkan bias disebut...</strong></p>
+            <div style="padding-left:15px;">
+              A. Kriteria inklusi<br>
+              B. Kriteria eksklusi<br>
+              C. Sampling jenuh<br>
+              D. Stratifikasi acak
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VERIFIKASI DOSEN KHUSUS UNTUK MEMBUKA KUNCI -->
+        <div class="lecturer-auth-box">
+          <div style="font-weight:700; color:var(--theme-navy); margin-bottom:0.4rem;">
+            🔒 Kunci Jawaban Resmi (Akses Khusus Dosen Pengampu)
+          </div>
+          <p style="font-size:9pt; margin-bottom:0.6rem; color:var(--text-muted);">
+            Masukkan kode verifikasi dosen untuk membuka kunci jawaban dan pembahasan:
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <input type="password" id="lecturerPass" placeholder="Masukkan Sandi Dosen..." style="padding:0.4rem 0.8rem; border:1.5px solid var(--border-dark); border-radius:4px; font-size:9pt;">
+            <button class="btn btn-presentation" style="padding:0.4rem 0.9rem; font-size:8.5pt;" onclick="unlockAnswerKey()">Verifikasi Sandi</button>
+          </div>
+          
+          <div id="keyContent" class="answer-key-content">
+            <h4 style="color:var(--theme-brown-dark); margin-bottom:0.5rem; font-size:10.5pt;">Kunci Jawaban 15 Soal Pilihan Ganda (Bab 7):</h4>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:0.4rem; font-size:9pt; font-weight:700;">
+              <div>1. A (Karya tulis ilmiah)</div>
+              <div>2. B (Bukan tujuan ilmiah)</div>
+              <div>3. C (Proposal riset)</div>
+              <div>4. A (Riset menyimpang)</div>
+              <div>5. A (Matriks tabel)</div>
+              <div>6. B (Kualitatif)</div>
+              <div>7. C (Khusus ke umum)</div>
+              <div>8. A (Positivisme terukur)</div>
+              <div>9. B (Induktif vs Deduktif)</div>
+              <div>10. B (Data primer)</div>
+              <div>11. B (Data diskrit)</div>
+              <div>12. B (Tinggi & suhu)</div>
+              <div>13. A (Populasi)</div>
+              <div>14. C (Nonprobability)</div>
+              <div>15. B (Kriteria eksklusi)</div>
+            </div>
+            <div style="margin-top:0.8rem; font-size:8.5pt; color:#78350F; font-style:italic;">
+              *Catatan Dosen: Seluruh kunci telah diverifikasi sesuai uraian Bab 7 halaman 99–112.
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:25px; display:flex; justify-content:space-between; font-size:9.5pt;">
+          <div>
+            <strong>Tanda Tangan Mahasiswa:</strong><br><br><br>
+            (.......................................................)
+          </div>
+          <div style="text-align:center;">
+            <strong>Verifikasi Nilai Dosen Pengampu:</strong><br><br><br>
+            (.......................................................)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLER -->
+  <script>
+    /* SLIDE PRESENTATION LOGIC */
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function openPresentation() {
+      document.getElementById('presentationModal').classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closePresentation() {
+      document.getElementById('presentationModal').classList.remove('active');
+    }
+
+    function showSlide(index) {
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById('slide-' + i);
+        if (slide) slide.classList.remove('active');
+      }
+      const activeSlide = document.getElementById('slide-' + index);
+      if (activeSlide) activeSlide.classList.add('active');
+      document.getElementById('slideIndicator').innerText = `Slide ${index} dari ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+    }
+
+    /* READING & PRINT MODAL LOGIC */
+    function openReadingModal() {
+      document.getElementById('readingModal').classList.add('active');
+    }
+
+    function closeReadingModal() {
+      document.getElementById('readingModal').classList.remove('active');
+    }
+
+    function triggerPrint() {
+      window.print();
+    }
+
+    // Keyboard navigation (Esc & Arrows)
+    document.addEventListener('keydown', function(e) {
+      const presModal = document.getElementById('presentationModal');
+      const readModal = document.getElementById('readingModal');
+
+      if (presModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Escape') {
+          closePresentation();
+        }
+      } else if (readModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeReadingModal();
+        }
+      }
+    });
+
+    /* QUIZ PEMBUKA LOGIC */
+    function checkAnswer(isCorrect) {
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+      if (isCorrect) {
+        feedback.style.backgroundColor = '#FFEDD5';
+        feedback.style.borderColor = '#EA580C';
+        feedback.style.color = '#7C2D12';
+        feedback.innerText = '✅ TEPAT SEKALI! Jumlah mahasiswa (hasil penghitungan bulat) adalah data diskrit, sedangkan suhu 24,8°C (hasil pengukuran kontinu) adalah data kontinum.';
+      } else {
+        feedback.style.backgroundColor = '#FEE2E2';
+        feedback.style.borderColor = '#DC2626';
+        feedback.style.color = '#991B1B';
+        feedback.innerText = '❌ KURANG TEPAT. Ingat: data yang diperoleh dari menghitung adalah diskrit, sedangkan yang didapatkan dari mengukur adalah kontinum.';
+      }
+    }
+
+    /* VERIFIKASI KUNCI JAWABAN DOSEN */
+    function unlockAnswerKey() {
+      const pass = document.getElementById('lecturerPass').value;
+      const keyBox = document.getElementById('keyContent');
+      // Password khusus dosen: DOSENKTI7
+      if (pass === 'DOSENKTI7' || pass === 'dosenkti7') {
+        keyBox.style.display = 'block';
+        alert('Kunci jawaban berhasil dibuka.');
+      } else {
+        alert('Sandi salah. Akses kunci jawaban hanya diperuntukkan bagi dosen pengampu.');
+      }
+    }
+  </script>
+</body>
+</html>
