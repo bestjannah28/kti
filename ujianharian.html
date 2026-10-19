@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Game Interaktif: Persiapan Ujian Harian (Bab 1 - 3)</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F4F6F9;
+      --card-bg: #FFFFFF;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --primary: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --accent: #10B981;
+      --danger: #EF4444;
+      --border: #0F172A;
+      --shadow: 4px 4px 0px #0F172A;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+    }
+
+    /* HEADER */
+    header {
+      background: #FFFFFF;
+      border: 3px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+    }
+
+    .btn {
+      cursor: pointer;
+      padding: 0.55rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      box-shadow: 2px 2px 0 var(--border);
+      transition: all 0.15s ease;
+      background: #FFFFFF;
+      color: var(--text-dark);
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--border);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-lecturer {
+      background: #FEF08A;
+      color: #854D0E;
+    }
+
+    /* CARD GAME */
+    .game-card {
+      background: var(--card-bg);
+      border: 3px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    /* SECTION STATUS MAHASISWA */
+    .student-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .input-field label {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .input-field input {
+      padding: 0.65rem 0.85rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .input-field input:focus {
+      border-color: var(--primary);
+    }
+
+    /* QUIZ INTERFACE */
+    .quiz-progress-bar {
+      height: 12px;
+      background: #E2E8F0;
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 4%;
+      transition: width 0.25s ease;
+    }
+
+    .quiz-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .badge-stage {
+      background: #E0F2FE;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      color: var(--primary-dark);
+    }
+
+    .question-box {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .option-btn {
+      text-align: left;
+      background: #FFFFFF;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--border);
+      transition: all 0.1s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .option-btn:hover {
+      background: #F8FAFC;
+      transform: translate(-1px, -1px);
+    }
+
+    .option-btn.selected {
+      background: #E0F2FE;
+      border-color: var(--primary);
+      box-shadow: 3px 3px 0 var(--primary);
+      color: var(--primary-dark);
+    }
+
+    .quiz-nav-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    /* SCREEN SUBMISSION SUCCESS */
+    .success-screen {
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .locked-notice {
+      background: #EFF6FF;
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* MODAL DOSEN */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #FFFFFF;
+      border: 3px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 10px 10px 0 var(--primary);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      background: #F8FAFC;
+      border-bottom: 2px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .table-results {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 1rem;
+    }
+
+    .table-results th, .table-results td {
+      border: 1.5px solid var(--border);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+
+    .table-results th {
+      background: #E2E8F0;
+      font-weight: 800;
+    }
+
+    @media (max-width: 640px) {
+      .student-form-grid { grid-template-columns: 1fr; }
+      body { padding: 0.75rem; }
+      .game-card { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- TOP NAVIGATION -->
+    <header>
+      <div class="logo-badge">
+        <span>🎮</span>
+        <span>Game Kuis KTI • Bab 1 s.d. Bab 3</span>
+      </div>
+      <div>
+        <button class="btn btn-lecturer" onclick="openLecturerModal()">
+          🔒 Portal Dosen
+        </button>
+      </div>
+    </header>
+
+    <!-- SECTION 1: REGISTRASI MAHASISWA SEBELUM MULAI -->
+    <section id="screen-start" class="game-card">
+      <h2 style="font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem;">
+        ⚡ Persiapan Ujian Harian: Karya Tulis Ilmiah
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Game ini berisi 25 soal pilihan ganda acak dari Bab 1 (Hakikat Karya Ilmiah), Bab 2 (Perencanaan Karya Ilmiah), dan Bab 3 (Jenis-Jenis Karya Ilmiah).
+      </p>
+
+      <div class="locked-notice">
+        ℹ️ <strong>Ketentuan Integritas:</strong> Skor dan jawaban yang Anda kirimkan bersifat rahasia dan <strong>hanya dapat diperiksa langsung oleh Dosen Pengampu</strong> melalui portal evaluasi.
+      </div>
+
+      <div class="student-form-grid">
+        <div class="input-field">
+          <label for="student-name">Nama Lengkap Mahasiswa *</label>
+          <input type="text" id="student-name" placeholder="Contoh: Muhammad Farhan" required>
+        </div>
+        <div class="input-field">
+          <label for="student-nim">NIM / Nomor Induk Mahasiswa *</label>
+          <input type="text" id="student-nim" placeholder="Contoh: 2108101010" required>
+        </div>
+        <div class="input-field">
+          <label for="student-class">Kelas / Program Studi *</label>
+          <input type="text" id="student-class" placeholder="Contoh: Kelas A - Teknik Informatika" required>
+        </div>
+        <div class="input-field">
+          <label for="student-token">Kode Sesi Ujian (Opsional)</label>
+          <input type="text" id="student-token" placeholder="KTI2026">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; padding: 0.85rem;" onclick="startQuiz()">
+        Mulai Game Kuis Sekarang 🚀
+      </button>
+    </section>
+
+    <!-- SECTION 2: GAMEPLAY KUIS BERTAHAP -->
+    <section id="screen-quiz" class="game-card" style="display: none;">
+      
+      <!-- PROGRESS BAR -->
+      <div class="quiz-progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <!-- META BAR -->
+      <div class="quiz-meta-bar">
+        <span class="badge-stage" id="stage-badge">Soal 1 dari 25</span>
+        <span style="color: var(--text-muted);" id="category-badge">Bab 1: Hakikat KTI</span>
+      </div>
+
+      <!-- TEXT SOAL -->
+      <div id="question-text" class="question-box">
+        Memuat soal kuis...
+      </div>
+
+      <!-- PILIHAN OPSI -->
+      <div id="options-container" class="options-grid">
+        <!-- Opsi jawaban dirender oleh JS -->
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="quiz-nav-actions">
+        <button id="btn-prev" class="btn" onclick="prevQuestion()" disabled>
+          ◀ Sebelumnya
+        </button>
+        <button id="btn-next" class="btn btn-primary" onclick="nextQuestion()">
+          Selanjutnya ▶
+        </button>
+        <button id="btn-submit" class="btn btn-primary" style="display: none; background: var(--accent);" onclick="submitExam()">
+          Kirim Jawaban Akhir ✔
+        </button>
+      </div>
+
+    </section>
+
+    <!-- SECTION 3: TAMPILAN SETELAH SUBMIT (HANYA NOTIFIKASI SUKSES) -->
+    <section id="screen-success" class="game-card success-screen" style="display: none;">
+      <div class="success-icon">🎉</div>
+      <h2 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem;">
+        Ujian Harian Berhasil Dikirim!
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto;">
+        Terima kasih, <strong id="lbl-submitted-name">-</strong> (<span id="lbl-submitted-nim">-</span>). Seluruh berkas jawaban Anda telah dienkripsi dan berhasil diteruskan ke sistem arsip Dosen Pengampu.
+      </p>
+
+      <div class="locked-notice" style="text-align: left; max-width: 580px; margin: 1.5rem auto;">
+        🔒 <strong>Kerahasiaan Skor:</strong><br>
+        Sesuai dengan ketentuan ujian, nilai evaluasi, rincian jawaban benar/salah, dan analisis ketercapaian Bab 1 s.d. 3 hanya dapat diakses melalui verifikasi kredensial Dosen Pengampu.
+      </div>
+
+      <button class="btn" onclick="location.reload()">
+        Selesai & Keluar Halaman
+      </button>
+    </section>
+
+  </div>
+
+  <!-- MODAL KHUSUS DOSEN PENGAMPU -->
+  <div id="lecturer-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="font-weight: 800; font-size: 1.1rem; color: #854D0E; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🔒 Portal Verifikasi & Rekap Nilai Dosen</span>
+        </div>
+        <button class="btn" style="padding: 0.2rem 0.6rem;" onclick="closeLecturerModal()">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        
+        <!-- FORM LOGIN DOSEN (SEBELUM SANDI TERVERIFIKASI) -->
+        <div id="lecturer-auth-box" style="text-align: center; padding: 2rem 1rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Autentikasi Hak Akses Dosen</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
+            Masukkan kata sandi pengampu mata kuliah untuk membuka rekapitulasi nilai dan lembar jawaban mahasiswa.
+          </p>
+          <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
+            <input type="password" id="lecturer-password" placeholder="Masukkan Sandi Dosen..." style="padding: 0.6rem 0.85rem; border: 2px solid var(--border); border-radius: 8px; text-align: center; font-weight: 700;">
+            <button class="btn btn-primary" onclick="verifyLecturerPassword()">Buka Data Nilai</button>
+          </div>
+          <small style="display: block; margin-top: 1rem; color: #94A3B8;">Petunjuk Kunci Dosen: <code>DOSENKTI123</code></small>
+        </div>
+
+        <!-- DASHBOARD REKAP DOSEN (SETELAH VERIFIKASI) -->
+        <div id="lecturer-dashboard" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; font-weight: 800;">Daftar Pengiriman Jawaban Mahasiswa</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Data tersimpan secara otomatis pada memori lokal sistem.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn" style="background: #10B981; color: white;" onclick="exportToCSV()">📥 Ekspor Rekap (CSV)</button>
+              <button class="btn" style="background: #EF4444; color: white;" onclick="clearAllData()">🗑️ Reset Data</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="table-results">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Waktu Kirim</th>
+                  <th>NIM</th>
+                  <th>Nama Mahasiswa</th>
+                  <th>Kelas</th>
+                  <th>Skor (0-100)</th>
+                  <th>Benar/Salah</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="results-tbody">
+                <tr>
+                  <td colspan="8" style="text-align: center; color: var(--text-muted);">Belum ada mahasiswa yang mengirimkan jawaban.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- KUNCI JAWABAN RESMI 25 SOAL KHUSUS DOSEN -->
+          <div style="margin-top: 2rem; background: #FEF3C7; border: 1.5px solid #F59E0B; border-radius: 8px; padding: 1rem;">
+            <strong style="color: #92400E; display: block; margin-bottom: 0.5rem;">🔑 Master Kunci Jawaban 25 Soal (Bab 1 - 3):</strong>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.4rem; font-size: 0.82rem; font-weight: 700; color: #78350F;">
+              <span>1. A (Objektivitas)</span>
+              <span>2. B (Reproduktifitas)</span>
+              <span>3. B (Metode Ilmiah)</span>
+              <span>4. B (Komunikasi)</span>
+              <span>5. B (Peer Review)</span>
+              <span>6. A (Integritas Data)</span>
+              <span>7. B (Minat & Keahlian)</span>
+              <span>8. B (Ketidaksesuaian)</span>
+              <span>9. B (Rencana Tujuan)</span>
+              <span>10. C (Hipotesis)</span>
+              <span>11. B (Pengumpulan Data)</span>
+              <span>12. C (Abstrak Deskriptif)</span>
+              <span>13. B (Revisi Laporan)</span>
+              <span>14. B (Makalah Akademis)</span>
+              <span>15. B (Format IMRAD)</span>
+              <span>16. B (Penelitian Asli)</span>
+              <span>17. B (Review Article)</span>
+              <span>18. B (Studi Kasus)</span>
+              <span>19. B (Artikel Metode)</span>
+              <span>20. B (Artikel Populer)</span>
+              <span>21. B (Monograf)</span>
+              <span>22. B (Laporan Penelitian)</span>
+              <span>23. B (Skripsi Sarjana)</span>
+              <span>24. B (Tesis Magister)</span>
+              <span>25. B (Disertasi Doktor)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       DATA 25 SOAL KOMPREHENSIF (BAB 1 S.D. BAB 3)
+       Sumber: Buku "Teknik Penulisan Karya Ilmiah", Mahmudi dkk. (2023)
+       ========================================================================== */
+    const QUESTION_BANK = [
+      // BAB 1: HAKIKAT KARYA ILMIAH (SOAL 1 - 6)
+      {
+        id: 1,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Prinsip dalam karya ilmiah yang menuntut agar informasi didasarkan pada fakta, bukti, data, dan argumen yang dapat diverifikasi tanpa dipengaruhi oleh sudut pandang atau bias pribadi disebut...",
+        options: [
+          "Objektivitas",
+          "Subjektivitas kritis",
+          "Komparasi personal",
+          "Korelasional tertutup"
+        ],
+        answer: 0
+      },
+      {
+        id: 2,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Mengapa hasil penelitian dalam karya ilmiah harus diuraikan dengan metode yang transparan dan dapat diuji ulang (diverifikasi) oleh peneliti lain?",
+        options: [
+          "Agar karya tersebut dapat segera dijual ke penerbit komersial",
+          "Untuk menciptakan dasar kepercayaan dan memastikan keabsahan temuan ilmiah",
+          "Untuk memenuhi syarat jumlah halaman minimum naskah",
+          "Agar seluruh data mentah tidak perlu disimpan oleh peneliti"
+        ],
+        answer: 1
+      },
+      {
+        id: 3,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Pendekatan sistematis yang digunakan dalam karya ilmiah untuk merencanakan, menjalankan, mengumpulkan data, dan mengevaluasi hasil penelitian disebut...",
+        options: [
+          "Pendekatan intuitif",
+          "Metode ilmiah",
+          "Retorika populer",
+          "Spekulasi teoritis"
+        ],
+        answer: 1
+      },
+      {
+        id: 4,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Salah satu fungsi utama karya ilmiah menurut Sigit Hermawan dan Amirullah (2016) adalah sebagai media komunikasi yang bertujuan...",
+        options: [
+          "Menyembunyikan formula riset demi kepentingan rahasia pribadi",
+          "Membagikan pengetahuan, temuan, dan hasil riset kepada komunitas ilmiah dan masyarakat luas",
+          "Menghindari kritik dan masukan dari sesama akademisi",
+          "Membatasi perkembangan ilmu pengetahuan pada kelompok tertentu"
+        ],
+        answer: 1
+      },
+      {
+        id: 5,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Proses penilaian mutu, keandalan, dan keabsahan metodologi sebuah karya ilmiah oleh para ahli sejawat sebelum naskah tersebut diterbitkan dinamakan...",
+        options: [
+          "Autentikasi mandiri",
+          "Evaluasi sejawat (peer review)",
+          "Uji coba laboratorium",
+          "Konfirmasi editorial sepihak"
+        ],
+        answer: 1
+      },
+      {
+        id: 6,
+        category: "Bab 1: Hakikat Karya Ilmiah",
+        question: "Kepatuhan etika dalam penulisan karya ilmiah menuntut peneliti untuk menghindari hal-hal berikut, KECUALI...",
+        options: [
+          "Transparansi data dan pengakuan sumber kutipan",
+          "Plagiarisme karya orang lain",
+          "Manipulasi dan fabrikasi data penelitian",
+          "Penyembunyian konflik kepentingan finansial"
+        ],
+        answer: 0
+      },
+
+      // BAB 2: PERENCANAAN KARYA ILMIAH (SOAL 7 - 13)
+      {
+        id: 7,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Dalam tahap memilih topik karya ilmiah, dua faktor internal yang sangat penting dimiliki penulis agar pembahasan tulisan mendalam dan tidak terbatas adalah...",
+        options: [
+          "Modal keuangan dan popularitas isu di media sosial",
+          "Minat dan keahlian/penguasaan bidang ilmu penulis",
+          "Saran sponsor tunggal dan kemudahan salin-tempel",
+          "Keinginan menyelesaikan tulisan dalam waktu satu malam"
+        ],
+        answer: 1
+      },
+      {
+        id: 8,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Menurut Hermawan (2019), 'masalah' dalam perencanaan karya ilmiah pada hakikatnya merujuk pada...",
+        options: [
+          "Kerumitan penggunaan rumus statistik",
+          "Fakta yang menggambarkan ketidaksesuaian antara kenyataan (das Sein) dan harapan (das Sollen)",
+          "Pertentangan argumen pribadi yang tidak dapat diselesaikan",
+          "Ketiadaan dana operasional dalam meneliti"
+        ],
+        answer: 1
+      },
+      {
+        id: 9,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Langkah pertama yang harus dilakukan dalam rencana penetapan tujuan penyusunan karya ilmiah adalah...",
+        options: [
+          "Langsung mencetak halaman sampul laporan",
+          "Melakukan observasi serta menetapkan masalah dan tujuan yang akan diteliti",
+          "Membuat kesimpulan akhir sebelum data terkumpul",
+          "Menentukan penerbit buku komersial"
+        ],
+        answer: 1
+      },
+      {
+        id: 10,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Pernyataan berupa dugaan sementara atau jawaban sementara terhadap pertanyaan penelitian yang akan diuji kebenarannya melalui data disebut...",
+        options: [
+          "Aksentuasi",
+          "Sistematika",
+          "Hipotesis",
+          "Generalisasi mutlak"
+        ],
+        answer: 2
+      },
+      {
+        id: 11,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Dalam tahap pengumpulan data perencanaan KTI, data yang telah dihimpun harus diolah secara sistematis agar...",
+        options: [
+          "Jumlah kata pada naskah bertambah banyak",
+          "Data tersebut memiliki arti dan relevansi terhadap variabel yang diuji",
+          "Peneliti tidak perlu membuat tabel atau grafik",
+          "Dapat disembunyikan dari pengujian ulang peneliti lain"
+        ],
+        answer: 1
+      },
+      {
+        id: 12,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Berdasarkan jenisnya pada struktur laporan KTI, abstrak yang berisi penjelasan singkat mengenai topik dan ruang lingkup tanpa menyajikan rincian hasil atau kesimpulan disebut...",
+        options: [
+          "Abstrak informatif",
+          "Abstrak kritis",
+          "Abstrak deskriptif",
+          "Abstrak sorot"
+        ],
+        answer: 2
+      },
+      {
+        id: 13,
+        category: "Bab 2: Perencanaan Karya Ilmiah",
+        question: "Tahapan akhir dalam proses perencanaan dan penyusunan draf karya ilmiah sebelum disebarluaskan adalah...",
+        options: [
+          "Menghapus seluruh daftar rujukan pustaka",
+          "Merevisi dan mengedit laporan guna menyempurnakan struktur dan tata bahasa",
+          "Mengganti seluruh topik penelitian yang telah dianalisis",
+          "Menyerahkan naskah mentah tanpa pemeriksaan ulang"
+        ],
+        answer: 1
+      },
+
+      // BAB 3: JENIS-JENIS KARYA ILMIAH (SOAL 14 - 25)
+      {
+        id: 14,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Karya tulis ilmiah yang mengulas topik tertentu baik berdasarkan studi literatur maupun penelitian lapangan, dan sering disusun mahasiswa sebagai laporan pemenuhan tugas akademik disebut...",
+        options: [
+          "Ensiklopedi umum",
+          "Makalah",
+          "Buku novel sejarah",
+          "Resensi majalah"
+        ],
+        answer: 1
+      },
+      {
+        id: 15,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Sebagian besar artikel ilmiah yang diterbitkan dalam jurnal internasional mengikuti struktur format baku yang dikenal dengan istilah...",
+        options: [
+          "SWOT Analysis",
+          "IMRAD (Introduction, Methods, Results, and Discussion)",
+          "POAC Management",
+          "SMART Objectives"
+        ],
+        answer: 1
+      },
+      {
+        id: 16,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Jenis artikel ilmiah yang berfokus menyajikan laporan penelitian empiris langsung yang dilakukan oleh penulis lengkap dengan temuan-temuan baru disebut...",
+        options: [
+          "Artikel ulasan (review article)",
+          "Penelitian asli (original research article)",
+          "Artikel opini publik",
+          "Laporan berkala redaksi"
+        ],
+        answer: 1
+      },
+      {
+        id: 17,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Artikel ilmiah yang bertujuan menyajikan tinjauan menyeluruh, mengumpulkan, mensintesis, serta menganalisis sekitar 100 artikel penelitian terdahulu dalam suatu topik tertentu dinamakan...",
+        options: [
+          "Artikel ulasan (Review Article)",
+          "Surat pembaca (Letter to Editor)",
+          "Artikel berita harian",
+          "Komunikasi singkat (Brief Report)"
+        ],
+        answer: 0
+      },
+      {
+        id: 18,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Artikel ilmiah yang berfokus pada eksplorasi mendalam mengenai satu atau beberapa kasus nyata pada konteks organisasi, individu, atau peristiwa tertentu disebut...",
+        options: [
+          "Artikel metodologi",
+          "Artikel studi kasus (case study article)",
+          "Artikel bibliografi",
+          "Monograf teoritis"
+        ],
+        answer: 1
+      },
+      {
+        id: 19,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Jenis karya ilmiah yang merinci langkah-langkah, prosedur, teknik, instrumen, atau strategi baru dalam pengumpulan dan analisis data agar dapat diadopsi peneliti lain disebut...",
+        options: [
+          "Artikel metodologi atau metode",
+          "Artikel editorial",
+          "Artikel tinjauan buku",
+          "Esai sastra"
+        ],
+        answer: 0
+      },
+      {
+        id: 20,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Artikel ilmiah yang disajikan dengan bahasa populer, komunikatif, dimuat dalam surat kabar atau majalah, dan sering disebut sebagai kolom opini merupakan jenis...",
+        options: [
+          "Artikel ilmiah populer",
+          "Tesis master",
+          "Disertasi akademik",
+          "Monograf teknis"
+        ],
+        answer: 0
+      },
+      {
+        id: 21,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Karya ilmiah berupa buku yang memuat pembahasan mendalam dan komprehensif mengenai satu topik spesifik oleh satu orang ahli atau tim pakar disebut...",
+        options: [
+          "Buku saku",
+          "Monograf",
+          "Kamus istilah",
+          "Atlas riset"
+        ],
+        answer: 1
+      },
+      {
+        id: 22,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Tulisan sistematis yang memaparkan seluruh temuan dari proyek penelitian resmi yang didanai atau diselenggarakan oleh institusi/lembaga dinamakan...",
+        options: [
+          "Buku harian lapangan",
+          "Laporan penelitian (research report)",
+          "Surat tugas",
+          "Brosur kegiatan"
+        ],
+        answer: 1
+      },
+      {
+        id: 23,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Karya ilmiah wajib yang disusun oleh mahasiswa jenjang Strata Satu (S1) sebagai syarat utama meraih gelar sarjana melalui penyelidikan berbasis data lapangan/pustaka disebut...",
+        options: [
+          "Makalah kajian",
+          "Skripsi",
+          "Disertasi",
+          "Kertas kerja"
+        ],
+        answer: 1
+      },
+      {
+        id: 24,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Karya ilmiah tingkat magister (S2) yang menuntut analisis lebih mendalam, teliti, dan mengemukakan wawasan atau temuan baru secara mandiri dinamakan...",
+        options: [
+          "Tesis",
+          "Skripsi terapan",
+          "Paper mahasiswa diploma",
+          "Laporan magang"
+        ],
+        answer: 0
+      },
+      {
+        id: 25,
+        category: "Bab 3: Jenis Karya Ilmiah",
+        question: "Karya tulis ilmiah tingkat tertinggi yang disusun calon doktor (S3) yang memuat proposisi teruji secara komprehensif dan menghasilkan temuan orisinal mandiri disebut...",
+        options: [
+          "Monograf pengantar",
+          "Disertasi",
+          "Tesis doktoral singkat",
+          "Makalah seminar nasional"
+        ],
+        answer: 1
+      }
+    ];
+
+    /* ==========================================================================
+       LOGIKA GAME & KUIS MAHASISWA
+       ========================================================================== */
+    let currentQuestionIdx = 0;
+    let studentAnswers = new Array(QUESTION_BANK.length).fill(null);
+    let studentProfile = { name: "", nim: "", studentClass: "", token: "" };
+
+    function startQuiz() {
+      const name = document.getElementById('student-name').value.trim();
+      const nim = document.getElementById('student-nim').value.trim();
+      const studentClass = document.getElementById('student-class').value.trim();
+      const token = document.getElementById('student-token').value.trim();
+
+      if (!name || !nim || !studentClass) {
+        alert("Mohon lengkapi Nama, NIM, dan Kelas terlebih dahulu!");
+        return;
+      }
+
+      studentProfile = { name, nim, studentClass, token };
+
+      document.getElementById('screen-start').style.display = 'none';
+      document.getElementById('screen-quiz').style.display = 'block';
+
+      renderQuestion(0);
+    }
+
+    function renderQuestion(idx) {
+      currentQuestionIdx = idx;
+      const q = QUESTION_BANK[idx];
+
+      // Update badge & progress
+      document.getElementById('stage-badge').innerText = `Soal ${idx + 1} dari ${QUESTION_BANK.length}`;
+      document.getElementById('category-badge').innerText = q.category;
+      
+      const pct = ((idx + 1) / QUESTION_BANK.length) * 100;
+      document.getElementById('progress-fill').style.width = pct + "%";
+
+      // Render Question
+      document.getElementById('question-text').innerHTML = `${idx + 1}. ${q.question}`;
+
+      // Render Options
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      q.options.forEach((opt, optIdx) => {
+        const btn = document.createElement('button');
+        btn.className = `option-btn ${studentAnswers[idx] === optIdx ? 'selected' : ''}`;
+        btn.onclick = () => selectOption(optIdx);
+        btn.innerHTML = `<span style="font-weight:800; min-width:22px;">${letters[optIdx]}.</span> <span>${opt}</span>`;
+        optionsContainer.appendChild(btn);
+      });
+
+      // Update Nav Buttons
+      document.getElementById('btn-prev').disabled = (idx === 0);
+
+      if (idx === QUESTION_BANK.length - 1) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('btn-submit').style.display = 'inline-flex';
+      } else {
+        document.getElementById('btn-next').style.display = 'inline-flex';
+        document.getElementById('btn-submit').style.display = 'none';
+      }
+    }
+
+    function selectOption(optIdx) {
+      studentAnswers[currentQuestionIdx] = optIdx;
+      renderQuestion(currentQuestionIdx);
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIdx < QUESTION_BANK.length - 1) {
+        renderQuestion(currentQuestionIdx + 1);
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestionIdx > 0) {
+        renderQuestion(currentQuestionIdx - 1);
+      }
+    }
+
+    /* PENGIRIMAN UJIAN: DATA DIKIRIM HANYA KE LOCALSTORAGE DOSEN */
+    function submitExam() {
+      // Cek apakah ada soal yang belum dijawab
+      const unanswered = studentAnswers.filter(a => a === null).length;
+      if (unanswered > 0) {
+        const confirmSubmit = confirm(`Masih ada ${unanswered} soal yang belum dijawab. Apakah Anda yakin ingin mengirim ujian sekarang?`);
+        if (!confirmSubmit) return;
+      } else {
+        const confirmSubmit = confirm("Apakah Anda yakin ingin menyelesaikan dan mengirimkan seluruh lembar jawaban ujian?");
+        if (!confirmSubmit) return;
+      }
+
+      // Hitung skor di sisi sistem
+      let correctCount = 0;
+      QUESTION_BANK.forEach((q, i) => {
+        if (studentAnswers[i] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const score = Math.round((correctCount / QUESTION_BANK.length) * 100);
+      const timestamp = new Date().toLocaleString('id-ID');
+
+      // Paket data submission
+      const submissionData = {
+        id: 'SUB-' + Date.now(),
+        timestamp: timestamp,
+        profile: studentProfile,
+        answers: studentAnswers,
+        correctCount: correctCount,
+        totalQuestions: QUESTION_BANK.length,
+        score: score
+      };
+
+      // Simpan ke storage yang hanya bisa dibuka dosen
+      saveSubmissionToDatabase(submissionData);
+
+      // Tampilkan layar sukses ke mahasiswa (Skor dan Kunci Jawaban TIDAK DITAMPILKAN)
+      document.getElementById('screen-quiz').style.display = 'none';
+      document.getElementById('screen-success').style.display = 'block';
+      document.getElementById('lbl-submitted-name').innerText = studentProfile.name;
+      document.getElementById('lbl-submitted-nim').innerText = studentProfile.nim;
+    }
+
+    function saveSubmissionToDatabase(data) {
+      let currentData = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+      currentData.push(data);
+      localStorage.setItem('KTI_EXAM_SUBMISSIONS', JSON.stringify(currentData));
+    }
+
+    /* ==========================================================================
+       PORTAL & SISTEM AUTENTIKASI DOSEN
+       ========================================================================== */
+    const LECTURER_PASS = "DOSENKTI123"; // Kata sandi dosen
+
+    function openLecturerModal() {
+      document.getElementById('lecturer-modal').classList.add('active');
+    }
+
+    function closeLecturerModal() {
+      document.getElementById('lecturer-modal').classList.remove('active');
+    }
+
+    function verifyLecturerPassword() {
+      const inputPass = document.getElementById('lecturer-password').value;
+      if (inputPass === LECTURER_PASS) {
+        document.getElementById('lecturer-auth-box').style.display = 'none';
+        document.getElementById('lecturer-dashboard').style.display = 'block';
+        loadLecturerTable();
+      } else {
+        alert("Kata sandi salah! Akses nilai hanya diberikan kepada Dosen Pengampu.");
+      }
+    }
+
+    function loadLecturerTable() {
+      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+      const tbody = document.getElementById('results-tbody');
+      tbody.innerHTML = '';
+
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Belum ada mahasiswa yang mengirimkan jawaban.</td></tr>`;
+        return;
+      }
+
+      data.forEach((sub, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><small>${sub.timestamp}</small></td>
+          <td><strong>${sub.profile.nim}</strong></td>
+          <td>${sub.profile.name}</td>
+          <td>${sub.profile.studentClass}</td>
+          <td style="font-weight: 800; color: ${sub.score >= 75 ? '#059669' : '#DC2626'};">${sub.score}</td>
+          <td>${sub.correctCount} / ${sub.totalQuestions}</td>
+          <td>
+            <button class="btn" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="viewDetail('${sub.id}')">🔍 Rincian</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function viewDetail(submissionId) {
+      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+      const item = data.find(s => s.id === submissionId);
+      if (!item) return;
+
+      let summary = `HASIL UJIAN MAHASISWA:\nNama: ${item.profile.name}\nNIM: ${item.profile.nim}\nKelas: ${item.profile.studentClass}\nWaktu Kirim: ${item.timestamp}\nSkor: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\nRincian Jawaban:`;
+      
+      const letters = ['A', 'B', 'C', 'D'];
+      item.answers.forEach((ans, i) => {
+        const q = QUESTION_BANK[i];
+        const isCorrect = (ans === q.answer);
+        summary += `\nNo ${i+1}: Jawaban Mahasiswa: ${ans !== null ? letters[ans] : '-'} | Kunci: ${letters[q.answer]} [${isCorrect ? 'BENAR' : 'SALAH'}]`;
+      });
+
+      alert(summary);
+    }
+
+    function exportToCSV() {
+      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+      if (data.length === 0) {
+        alert("Tidak ada data untuk diekspor!");
+        return;
+      }
+
+      let csv = "ID,Waktu_Kirim,NIM,Nama,Kelas,Token,Skor,Jawaban_Benar,Total_Soal\n";
+      data.forEach(s => {
+        csv += `"${s.id}","${s.timestamp}","${s.profile.nim}","${s.profile.name}","${s.profile.studentClass}","${s.profile.token || '-'}",${s.score},${s.correctCount},${s.totalQuestions}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Rekap_Nilai_KTI_Bab1_3_${Date.now()}.csv`;
+      a.click();
+    }
+
+    function clearAllData() {
+      if (confirm("Apakah Bapak/Ibu Dosen yakin ingin mereset/menghapus seluruh rekaman jawaban ujian mahasiswa di perangkat ini?")) {
+        localStorage.removeItem('KTI_EXAM_SUBMISSIONS');
+        loadLecturerTable();
+        alert("Seluruh data ujian mahasiswa telah dibersihkan.");
+      }
+    }
+  </script>
+</body>
+</html>
