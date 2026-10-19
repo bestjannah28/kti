@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kuis Game Interaktif Tingkat Tinggi: Bab 1 - 3</title>
-  <!-- Google Fonts -->
+  <title>Simulasi Ujian Harian KTI: Bab 1 - 3 (35 Menit)</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -65,8 +65,30 @@
       align-items: center;
       gap: 0.6rem;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--primary-dark);
+    }
+
+    .timer-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #FEE2E2;
+      border: 2px solid var(--danger);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--danger);
+    }
+
+    .timer-container.warning {
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.04); background: #FECACA; }
     }
 
     .btn {
@@ -140,7 +162,7 @@
       border-color: var(--primary);
     }
 
-    /* QUIZ INTERFACE */
+    /* PROGRESS & META */
     .quiz-progress-bar {
       height: 12px;
       background: #E2E8F0;
@@ -175,7 +197,7 @@
     }
 
     .question-box {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       line-height: 1.6;
       margin-bottom: 1.5rem;
@@ -223,7 +245,7 @@
       gap: 1rem;
     }
 
-    /* NOTIFIKASI SUBMIT */
+    /* SCREEN SUCCESS */
     .success-screen {
       text-align: center;
       padding: 2.5rem 1rem;
@@ -324,9 +346,13 @@
     <header>
       <div class="logo-badge">
         <span>🎮</span>
-        <span>Simulasi Ujian KTI • Analisis Bab 1 s.d. Bab 3</span>
+        <span>Ujian Harian KTI • Bab 1 s.d. Bab 3</span>
       </div>
-      <div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div id="exam-timer" class="timer-container" style="display: none;">
+          <span>⏳</span>
+          <span id="timer-display">35:00</span>
+        </div>
         <button class="btn btn-lecturer" onclick="openLecturerModal()">
           🔒 Portal Dosen
         </button>
@@ -336,37 +362,38 @@
     <!-- SECTION 1: REGISTRASI MAHASISWA -->
     <section id="screen-start" class="game-card">
       <h2 style="font-weight: 800; font-size: 1.35rem; margin-bottom: 0.5rem;">
-        ⚡ Ujian Harian Tingkat Tinggi: Hakikat, Perencanaan, & Jenis KTI
+        ⚡ Evaluasi Harian Mandiri: Bab 1, 2, dan 3
       </h2>
       <p style="color: var(--text-muted); font-size: 0.95rem;">
-        Evaluasi ini terdiri atas 25 butir soal pilihan ganda dengan opsi jebakan konseptual mendalam berdasar rujukan Bab 1 sampai Bab 3. Cermati setiap distinksi istilah sebelum menetapkan pilihan.
+        Kuis ini terdiri dari 25 butir soal penalaran kritis berdasar rujukan Bab 1 (Hakikat KTI), Bab 2 (Perencanaan KTI), dan Bab 3 (Jenis-Jenis KTI). Waktu pengerjaan dialokasikan selama <strong>35 menit</strong>.
       </p>
 
       <div class="locked-notice">
-        ℹ️ <strong>Ketentuan Akses:</strong> Nilai numerik, analisis salah/benar, dan lembar jawaban akhir dienkripsi secara penuh dan <strong>hanya dapat didekripsi serta diunduh oleh Dosen Pengampu</strong> melalui portal verifikasi.
+        ⚠️ <strong>Aturan Pewaktu 35 Menit & Auto-Submit:</strong><br>
+        Setelah Anda mengklik tombol "Mulai Ujian", pewaktu akan berjalan otomatis. Jika waktu 35 menit habis, <strong>sistem akan langsung mengunci dan mengirimkan jawaban Anda secara otomatis</strong> ke portal dosen meskipun belum semua soal terjawab. Skor dan kunci jawaban hanya bisa diakses oleh dosen pengampu.
       </div>
 
       <div class="student-form-grid">
         <div class="input-field">
           <label for="student-name">Nama Lengkap Mahasiswa *</label>
-          <input type="text" id="student-name" placeholder="Contoh: Siti Nurhaliza" required>
+          <input type="text" id="student-name" placeholder="Contoh: Muhammad Akbar" required>
         </div>
         <div class="input-field">
           <label for="student-nim">Nomor Induk Mahasiswa (NIM) *</label>
-          <input type="text" id="student-nim" placeholder="Contoh: 2207015024" required>
+          <input type="text" id="student-nim" placeholder="Contoh: 2108101015" required>
         </div>
         <div class="input-field">
           <label for="student-class">Kelas / Program Studi *</label>
-          <input type="text" id="student-class" placeholder="Contoh: Reguler A - Pend. Bahasa" required>
+          <input type="text" id="student-class" placeholder="Contoh: Kelas B - Pendidikan Bahasa" required>
         </div>
         <div class="input-field">
-          <label for="student-token">Kode Token Kelas</label>
-          <input type="text" id="student-token" placeholder="KTI-ADVANCED">
+          <label for="student-token">Token Kelas (Opsional)</label>
+          <input type="text" id="student-token" placeholder="KTI-BAB123">
         </div>
       </div>
 
       <button class="btn btn-primary" style="width: 100%; padding: 0.85rem;" onclick="startQuiz()">
-        Konfirmasi Identitas & Buka Soal 🚀
+        Mulai Ujian & Jalankan Timer (35 Menit) 🚀
       </button>
     </section>
 
@@ -402,8 +429,8 @@
         <button id="btn-next" class="btn btn-primary" onclick="nextQuestion()">
           Butir Selanjutnya ▶
         </button>
-        <button id="btn-submit" class="btn btn-primary" style="display: none; background: var(--accent);" onclick="submitExam()">
-          Selesaikan & Kirim Berkas Jawaban ✔
+        <button id="btn-submit" class="btn btn-primary" style="display: none; background: var(--accent);" onclick="submitExam(false)">
+          Kirim Berkas Ujian Akhir ✔
         </button>
       </div>
 
@@ -412,20 +439,20 @@
     <!-- SECTION 3: TAMPILAN SELESAI -->
     <section id="screen-success" class="game-card success-screen" style="display: none;">
       <div class="success-icon">🛡️</div>
-      <h2 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem;">
-        Lembar Ujian Berhasil Diterima Sistem!
+      <h2 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem;" id="success-title">
+        Lembar Ujian Berhasil Terkirim!
       </h2>
-      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto;">
-        Naskah jawaban atas nama <strong id="lbl-submitted-name">-</strong> (NIM: <span id="lbl-submitted-nim">-</span>) telah terkunci secara aman ke basis data arsip dosen.
+      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto;" id="success-desc">
+        Berkas jawaban atas nama <strong id="lbl-submitted-name">-</strong> (NIM: <span id="lbl-submitted-nim">-</span>) telah berhasil diarsipkan secara aman ke basis data Dosen Pengampu.
       </p>
 
       <div class="locked-notice" style="text-align: left; max-width: 580px; margin: 1.5rem auto;">
-        🔒 <strong>Status Kerahasiaan Nilai:</strong><br>
-        Sistem tidak menampilkan perolehan nilai, rincian opsi benar, maupun koreksi kesalahan pada perangkat mahasiswa guna menjaga keotentikan evaluasi kelas. Silakan menunggu rekapitulasi resmi dari Dosen Pengampu.
+        🔒 <strong>Kerahasiaan Nilai & Kunci Jawaban:</strong><br>
+        Sistem tidak menampilkan perolehan skor maupun kunci jawaban pada perangkat ini guna mencegah kebocoran soal antarmahasiswa. Seluruh evaluasi dan rekapitulasi penilaian hanya dapat dibuka oleh Dosen Pengampu melalui Portal Dosen.
       </div>
 
       <button class="btn" onclick="location.reload()">
-        Tutup Sesi Ujian
+        Selesai & Keluar Halaman
       </button>
     </section>
 
@@ -436,7 +463,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div style="font-weight: 800; font-size: 1.1rem; color: #854D0E; display: flex; align-items: center; gap: 0.5rem;">
-          <span>🔒 Portal Verifikasi & Dekripsi Nilai Dosen</span>
+          <span>🔒 Portal Verifikasi & Rekap Nilai Dosen</span>
         </div>
         <button class="btn" style="padding: 0.2rem 0.6rem;" onclick="closeLecturerModal()">✕</button>
       </div>
@@ -445,9 +472,9 @@
         
         <!-- LOGIN DOSEN -->
         <div id="lecturer-auth-box" style="text-align: center; padding: 2rem 1rem;">
-          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Akses Dosen Pengampu</h3>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Autentikasi Hak Akses Dosen</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-            Masukkan kata sandi pengampu mata kuliah untuk memeriksa lembar jawaban dan rekapitulasi nilai mahasiswa.
+            Masukkan kata sandi pengampu mata kuliah untuk membuka rekapitulasi nilai dan lembar jawaban mahasiswa.
           </p>
           <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
             <input type="password" id="lecturer-password" placeholder="Sandi Otoritas Dosen..." style="padding: 0.6rem 0.85rem; border: 2px solid var(--border); border-radius: 8px; text-align: center; font-weight: 700;">
@@ -478,14 +505,15 @@
                   <th>NIM</th>
                   <th>Nama Mahasiswa</th>
                   <th>Kelas</th>
+                  <th>Status Kirim</th>
                   <th>Nilai Akhir</th>
                   <th>Skor (Benar/25)</th>
-                  <th>Opsi</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody id="results-tbody">
                 <tr>
-                  <td colspan="8" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td>
+                  <td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td>
                 </tr>
               </tbody>
             </table>
@@ -493,7 +521,7 @@
 
           <!-- KUNCI JAWABAN KHUSUS DOSEN -->
           <div style="margin-top: 2rem; background: #FEF3C7; border: 1.5px solid #F59E0B; border-radius: 8px; padding: 1.1rem;">
-            <strong style="color: #92400E; display: block; margin-bottom: 0.6rem;">🔑 Master Kunci Jawaban Soal Menjebak (Bab 1 s.d. Bab 3):</strong>
+            <strong style="color: #92400E; display: block; margin-bottom: 0.6rem;">🔑 Master Kunci Jawaban 25 Butir Menjebak (Bab 1 s.d. Bab 3):</strong>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.4rem; font-size: 0.82rem; font-weight: 700; color: #78350F;">
               <span>1. B (Objektivitas Fakta)</span>
               <span>2. C (Verifikasi/Replikasi)</span>
@@ -530,7 +558,7 @@
 
   <script>
     /* ==========================================================================
-       DATA 25 SOAL DENGAN DISTRACTOR MENJEBAK (BAB 1 - 3)
+       DATA 25 SOAL MENJEBAK (BAB 1 - BAB 3)
        Sumber: Mahmudi dkk. (2023), Halaman 1-60
        ========================================================================== */
     const QUESTION_BANK = [
@@ -672,7 +700,7 @@
       {
         id: 12,
         category: "Bab 2: Perencanaan Karya Ilmiah",
-        question: "Dalam taksonomi abstrak pada laporan KTI, abstrak yang hanya menguraikan pokok bahasan, tujuan, dan lingkup kajian tanpa menyajikan angka hasil maupun rincian simpulan tergolong...",
+        question: "Dalam taksonomi abstrak pada laporan KTI, abstrak yang hanya menguraikan pokok bahasan, tujuan, dan lingkup kajian tanpa menyajikan rincian hasil atau kesimpulan tergolong...",
         options: [
           "Abstrak informatif, yang merangkum seluruh elemen IMRAD lengkap dengan data kuantitatif",
           "Abstrak deskriptif, yang mengindikasikan jenis informasi naskah tanpa merinci temuan numerik",
@@ -842,11 +870,17 @@
     ];
 
     /* ==========================================================================
-       LOGIKA GAME & KUIS MAHASISWA
+       LOGIKA GAME, PEWAKTU 35 MENIT, & AUTO-SUBMIT
        ========================================================================== */
     let currentQuestionIdx = 0;
     let studentAnswers = new Array(QUESTION_BANK.length).fill(null);
     let studentProfile = { name: "", nim: "", studentClass: "", token: "" };
+
+    // Pewaktu: 35 menit = 35 * 60 detik = 2100 detik
+    const TOTAL_TIME_SECONDS = 35 * 60;
+    let timeRemaining = TOTAL_TIME_SECONDS;
+    let timerInterval = null;
+    let isExamFinished = false;
 
     function startQuiz() {
       const name = document.getElementById('student-name').value.trim();
@@ -863,8 +897,40 @@
 
       document.getElementById('screen-start').style.display = 'none';
       document.getElementById('screen-quiz').style.display = 'block';
+      document.getElementById('exam-timer').style.display = 'inline-flex';
 
       renderQuestion(0);
+      startTimer();
+    }
+
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        updateTimerDisplay();
+
+        // Peringatan jika sisa waktu 5 menit (300 detik)
+        if (timeRemaining <= 300) {
+          document.getElementById('exam-timer').classList.add('warning');
+        }
+
+        // Jika waktu habis -> AUTO-SUBMIT OTOMATIS
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          if (!isExamFinished) {
+            alert("⏰ WAKTU 35 MENIT TELAH HABIS!\nSistem secara otomatis mengunci dan mengirimkan lembar jawaban Anda ke dosen sekarang.");
+            submitExam(true); // true = dipicu oleh waktu habis
+          }
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = timeRemaining % 60;
+      const formattedMin = minutes < 10 ? '0' + minutes : minutes;
+      const formattedSec = seconds < 10 ? '0' + seconds : seconds;
+      document.getElementById('timer-display').innerText = `${formattedMin}:${formattedSec}`;
     }
 
     function renderQuestion(idx) {
@@ -878,10 +944,10 @@
       const pct = ((idx + 1) / QUESTION_BANK.length) * 100;
       document.getElementById('progress-fill').style.width = pct + "%";
 
-      // Render Question
+      // Render Soal
       document.getElementById('question-text').innerHTML = `${idx + 1}. ${q.question}`;
 
-      // Render Options
+      // Render Opsi
       const optionsContainer = document.getElementById('options-container');
       optionsContainer.innerHTML = '';
 
@@ -924,15 +990,22 @@
     }
 
     /* PENGIRIMAN DATA UJIAN KE LOCALSTORAGE DOSEN */
-    function submitExam() {
-      const unanswered = studentAnswers.filter(a => a === null).length;
-      if (unanswered > 0) {
-        const confirmSubmit = confirm(`Perhatian: Masih terdapat ${unanswered} butir soal yang belum Anda jawab. Yakin ingin mengirimkan lembar ujian sekarang?`);
-        if (!confirmSubmit) return;
-      } else {
-        const confirmSubmit = confirm("Apakah Anda telah meneliti seluruh opsi jawaban dan yakin ingin mengakhiri sesi ujian ini?");
-        if (!confirmSubmit) return;
+    function submitExam(isAutoSubmit = false) {
+      if (isExamFinished) return;
+
+      if (!isAutoSubmit) {
+        const unanswered = studentAnswers.filter(a => a === null).length;
+        if (unanswered > 0) {
+          const confirmSubmit = confirm(`Perhatian: Masih terdapat ${unanswered} butir soal yang belum Anda jawab. Yakin ingin mengirimkan lembar ujian sekarang?`);
+          if (!confirmSubmit) return;
+        } else {
+          const confirmSubmit = confirm("Apakah Anda telah meneliti seluruh opsi jawaban dan yakin ingin mengakhiri sesi ujian ini?");
+          if (!confirmSubmit) return;
+        }
       }
+
+      isExamFinished = true;
+      clearInterval(timerInterval);
 
       // Hitung skor otomatis
       let correctCount = 0;
@@ -948,6 +1021,7 @@
       const submissionData = {
         id: 'SUB-' + Date.now(),
         timestamp: timestamp,
+        statusKirim: isAutoSubmit ? "Waktu Habis (Auto-Submit)" : "Terkirim Manual",
         profile: studentProfile,
         answers: studentAnswers,
         correctCount: correctCount,
@@ -957,9 +1031,15 @@
 
       saveSubmissionToDatabase(submissionData);
 
-      // Tampilkan layar konfirmasi (SKOR & KUNCI JAWABAN TIDAK DITAMPILKAN KE MAHASISWA)
+      // Sembunyikan timer & kartu kuis
+      document.getElementById('exam-timer').style.display = 'none';
       document.getElementById('screen-quiz').style.display = 'none';
       document.getElementById('screen-success').style.display = 'block';
+
+      if (isAutoSubmit) {
+        document.getElementById('success-title').innerText = "Waktu 35 Menit Habis - Jawaban Otomatis Terkirim!";
+      }
+
       document.getElementById('lbl-submitted-name').innerText = studentProfile.name;
       document.getElementById('lbl-submitted-nim').innerText = studentProfile.nim;
     }
@@ -1000,7 +1080,7 @@
       tbody.innerHTML = '';
 
       if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td></tr>`;
         return;
       }
 
@@ -1012,6 +1092,7 @@
           <td><strong>${sub.profile.nim}</strong></td>
           <td>${sub.profile.name}</td>
           <td>${sub.profile.studentClass}</td>
+          <td><span style="font-size:0.75rem; padding:2px 6px; border-radius:4px; background:${sub.statusKirim.includes('Auto') ? '#FEE2E2; color:#DC2626' : '#DCFCE7; color:#166534'}">${sub.statusKirim}</span></td>
           <td style="font-weight: 800; color: ${sub.score >= 75 ? '#059669' : '#DC2626'};">${sub.score}</td>
           <td>${sub.correctCount} / ${sub.totalQuestions}</td>
           <td>
@@ -1027,13 +1108,13 @@
       const item = data.find(s => s.id === submissionId);
       if (!item) return;
 
-      let summary = `LEMBAR VERIFIKASI DOSEN:\nNama: ${item.profile.name}\nNIM: ${item.profile.nim}\nKelas: ${item.profile.studentClass}\nWaktu: ${item.timestamp}\nNilai Akhir: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\nRincian Analisis Pilihan Mahasiswa:`;
+      let summary = `LEMBAR VERIFIKASI DOSEN:\nNama: ${item.profile.name}\nNIM: ${item.profile.nim}\nKelas: ${item.profile.studentClass}\nWaktu: ${item.timestamp}\nStatus: ${item.statusKirim}\nNilai Akhir: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\nRincian Analisis Pilihan Mahasiswa:`;
       
       const letters = ['A', 'B', 'C', 'D'];
       item.answers.forEach((ans, i) => {
         const q = QUESTION_BANK[i];
         const isCorrect = (ans === q.answer);
-        summary += `\nNo ${i+1}: Jawaban Mahasiswa: ${ans !== null ? letters[ans] : '-'} | Kunci Dosen: ${letters[q.answer]} [${isCorrect ? 'BENAR' : 'SALAH'}]`;
+        summary += `\nNo ${i+1}: Jawaban Mahasiswa: ${ans !== null ? letters[ans] : '(Kosong)'} | Kunci: ${letters[q.answer]} [${isCorrect ? 'BENAR' : 'SALAH'}]`;
       });
 
       alert(summary);
@@ -1046,9 +1127,9 @@
         return;
       }
 
-      let csv = "ID,Waktu_Kirim,NIM,Nama,Kelas,Token,Nilai_Akhir,Jumlah_Benar,Total_Soal\n";
+      let csv = "ID,Waktu_Kirim,Status_Kirim,NIM,Nama,Kelas,Token,Nilai_Akhir,Jumlah_Benar,Total_Soal\n";
       data.forEach(s => {
-        csv += `"${s.id}","${s.timestamp}","${s.profile.nim}","${s.profile.name}","${s.profile.studentClass}","${s.profile.token || '-'}",${s.score},${s.correctCount},${s.totalQuestions}\n`;
+        csv += `"${s.id}","${s.timestamp}","${s.statusKirim}","${s.profile.nim}","${s.profile.name}","${s.profile.studentClass}","${s.profile.token || '-'}",${s.score},${s.correctCount},${s.totalQuestions}\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
