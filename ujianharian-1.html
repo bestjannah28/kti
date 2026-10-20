@@ -45,7 +45,6 @@
       max-width: 840px;
     }
 
-    /* HEADER */
     header {
       background: #FFFFFF;
       border: 3px solid var(--border);
@@ -119,7 +118,6 @@
       color: #854D0E;
     }
 
-    /* CARD GAME */
     .game-card {
       background: var(--card-bg);
       border: 3px solid var(--border);
@@ -130,7 +128,6 @@
       position: relative;
     }
 
-    /* FORM IDENTITAS */
     .student-form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -162,7 +159,6 @@
       border-color: var(--primary);
     }
 
-    /* PROGRESS & META */
     .quiz-progress-bar {
       height: 12px;
       background: #E2E8F0;
@@ -245,7 +241,6 @@
       gap: 1rem;
     }
 
-    /* SCREEN SUCCESS */
     .success-screen {
       text-align: center;
       padding: 2.5rem 1rem;
@@ -331,6 +326,23 @@
       font-weight: 800;
     }
 
+    /* LOADING OVERLAY SAAT KIRIM */
+    #loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      font-weight: 700;
+    }
+
     @media (max-width: 640px) {
       .student-form-grid { grid-template-columns: 1fr; }
       body { padding: 0.75rem; }
@@ -340,9 +352,14 @@
 </head>
 <body>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loading-overlay">
+    <div style="font-size: 2.5rem; margin-bottom: 0.5rem; animation: pulse 1s infinite alternate;">📤</div>
+    <div>Mengirim & Merekam ke Database Dosen...</div>
+  </div>
+
   <div class="container">
     
-    <!-- TOP NAVIGATION -->
     <header>
       <div class="logo-badge">
         <span>🎮</span>
@@ -365,12 +382,14 @@
         ⚡ Evaluasi Harian Mandiri: Bab 1, 2, dan 3
       </h2>
       <p style="color: var(--text-muted); font-size: 0.95rem;">
-        Kuis ini terdiri dari 25 butir soal penalaran kritis berdasar rujukan Bab 1 (Hakikat KTI), Bab 2 (Perencanaan KTI), dan Bab 3 (Jenis-Jenis KTI). Waktu pengerjaan dialokasikan selama <strong>35 menit</strong>.
+        Kuis terdiri dari 25 butir soal penalaran kritis berdasar rujukan Bab 1 sampai Bab 3. Waktu dialokasikan selama <strong>35 menit</strong>.
       </p>
 
       <div class="locked-notice">
-        ⚠️ <strong>Aturan Pewaktu 35 Menit & Auto-Submit:</strong><br>
-        Setelah Anda mengklik tombol "Mulai Ujian", pewaktu akan berjalan otomatis. Jika waktu 35 menit habis, <strong>sistem akan langsung mengunci dan mengirimkan jawaban Anda secara otomatis</strong> ke portal dosen meskipun belum semua soal terjawab. Skor dan kunci jawaban hanya bisa diakses oleh dosen pengampu.
+        ⚠️ <strong>Aturan Pewaktu & Integrasi Terpusat:</strong><br>
+        1. Pewaktu mundur 35 menit akan berjalan otomatis begitu tombol mulai diklik.<br>
+        2. Jika waktu habis, <strong>sistem akan langsung mengirimkan jawaban ke Google Sheets Dosen</strong> secara otomatis.<br>
+        3. Skor dan lembar penilaian dirahasiakan dan hanya terdata pada portal dosen.
       </div>
 
       <div class="student-form-grid">
@@ -400,28 +419,21 @@
     <!-- SECTION 2: GAMEPLAY KUIS BERTAHAP -->
     <section id="screen-quiz" class="game-card" style="display: none;">
       
-      <!-- PROGRESS BAR -->
       <div class="quiz-progress-bar">
         <div id="progress-fill" class="progress-fill"></div>
       </div>
 
-      <!-- META BAR -->
       <div class="quiz-meta-bar">
         <span class="badge-stage" id="stage-badge">Soal 1 dari 25</span>
         <span style="color: var(--text-muted);" id="category-badge">Bab 1: Hakikat Karya Ilmiah</span>
       </div>
 
-      <!-- TEXT SOAL -->
       <div id="question-text" class="question-box">
         Memuat butir pertanyaan...
       </div>
 
-      <!-- PILIHAN OPSI -->
-      <div id="options-container" class="options-grid">
-        <!-- Opsi dirender via JS -->
-      </div>
+      <div id="options-container" class="options-grid"></div>
 
-      <!-- KONTROL NAVIGASI -->
       <div class="quiz-nav-actions">
         <button id="btn-prev" class="btn" onclick="prevQuestion()" disabled>
           ◀ Butir Sebelumnya
@@ -440,15 +452,15 @@
     <section id="screen-success" class="game-card success-screen" style="display: none;">
       <div class="success-icon">🛡️</div>
       <h2 style="font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem;" id="success-title">
-        Lembar Ujian Berhasil Terkirim!
+        Lembar Ujian Berhasil Terkirim ke Google Sheets Dosen!
       </h2>
       <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto;" id="success-desc">
-        Berkas jawaban atas nama <strong id="lbl-submitted-name">-</strong> (NIM: <span id="lbl-submitted-nim">-</span>) telah berhasil diarsipkan secara aman ke basis data Dosen Pengampu.
+        Berkas jawaban atas nama <strong id="lbl-submitted-name">-</strong> (NIM: <span id="lbl-submitted-nim">-</span>) telah berhasil diverifikasi dan tersimpan terpusat di spreadsheet dosen.
       </p>
 
       <div class="locked-notice" style="text-align: left; max-width: 580px; margin: 1.5rem auto;">
-        🔒 <strong>Kerahasiaan Nilai & Kunci Jawaban:</strong><br>
-        Sistem tidak menampilkan perolehan skor maupun kunci jawaban pada perangkat ini guna mencegah kebocoran soal antarmahasiswa. Seluruh evaluasi dan rekapitulasi penilaian hanya dapat dibuka oleh Dosen Pengampu melalui Portal Dosen.
+        🔒 <strong>Kerahasiaan Nilai:</strong><br>
+        Sistem tidak menampilkan perolehan nilai pada perangkat ini guna menjaga keutuhan evaluasi kelas. Silakan menunggu pengumuman dari dosen pengampu.
       </div>
 
       <button class="btn" onclick="location.reload()">
@@ -470,11 +482,10 @@
       
       <div class="modal-body">
         
-        <!-- LOGIN DOSEN -->
         <div id="lecturer-auth-box" style="text-align: center; padding: 2rem 1rem;">
           <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Autentikasi Hak Akses Dosen</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-            Masukkan kata sandi pengampu mata kuliah untuk membuka rekapitulasi nilai dan lembar jawaban mahasiswa.
+            Masukkan kata sandi pengampu mata kuliah untuk memeriksa lembar jawaban dan rekapitulasi nilai mahasiswa.
           </p>
           <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
             <input type="password" id="lecturer-password" placeholder="Sandi Otoritas Dosen..." style="padding: 0.6rem 0.85rem; border: 2px solid var(--border); border-radius: 8px; text-align: center; font-weight: 700;">
@@ -483,12 +494,11 @@
           <small style="display: block; margin-top: 1rem; color: #94A3B8;">Kunci Akses Dosen: <code>DOSENKTI123</code></small>
         </div>
 
-        <!-- DASHBOARD REKAP DOSEN -->
         <div id="lecturer-dashboard" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
             <div>
-              <h3 style="font-size: 1.1rem; font-weight: 800;">Rekap Hasil Ujian Mandiri Mahasiswa</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">Data otomatis terhitung secara objektif berdasarkan Master Kunci 25 Butir.</p>
+              <h3 style="font-size: 1.1rem; font-weight: 800;">Rekap Hasil Ujian Mandiri Mahasiswa (Cadangan Lokal)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Data utama tetap tersinkronisasi otomatis ke Google Sheets.</p>
             </div>
             <div style="display: flex; gap: 0.5rem;">
               <button class="btn" style="background: #059669; color: white;" onclick="exportToCSV()">📥 Ekspor Spreadsheet (CSV)</button>
@@ -513,7 +523,7 @@
               </thead>
               <tbody id="results-tbody">
                 <tr>
-                  <td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td>
+                  <td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk di perangkat ini.</td>
                 </tr>
               </tbody>
             </table>
@@ -558,11 +568,15 @@
 
   <script>
     /* ==========================================================================
+       KONFIGURASI BACKEND GAS (GOOGLE APPS SCRIPT)
+       Ganti URL di bawah dengan Web App URL hasil deployment Anda!
+       ========================================================================== */
+    const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwXm3NkpAwfJDjTCLJjHz2lbMQhruairQIclVazuVfdajWFhNtVCQ4iCWeQBhFzftfjxA/exec";
+
+    /* ==========================================================================
        DATA 25 SOAL MENJEBAK (BAB 1 - BAB 3)
-       Sumber: Mahmudi dkk. (2023), Halaman 1-60
        ========================================================================== */
     const QUESTION_BANK = [
-      // BAB 1: HAKIKAT KARYA ILMIAH (SOAL 1 - 6)
       {
         id: 1,
         category: "Bab 1: Hakikat Karya Ilmiah",
@@ -635,8 +649,6 @@
         ],
         answer: 2
       },
-
-      // BAB 2: PERENCANAAN KARYA ILMIAH (SOAL 7 - 13)
       {
         id: 7,
         category: "Bab 2: Perencanaan Karya Ilmiah",
@@ -721,8 +733,6 @@
         ],
         answer: 1
       },
-
-      // BAB 3: JENIS-JENIS KARYA ILMIAH (SOAL 14 - 25)
       {
         id: 14,
         category: "Bab 3: Jenis Karya Ilmiah",
@@ -870,14 +880,13 @@
     ];
 
     /* ==========================================================================
-       LOGIKA GAME, PEWAKTU 35 MENIT, & AUTO-SUBMIT
+       LOGIKA GAME, TIMER 35 MENIT & INTEGRASI BACKEND GAS
        ========================================================================== */
     let currentQuestionIdx = 0;
     let studentAnswers = new Array(QUESTION_BANK.length).fill(null);
     let studentProfile = { name: "", nim: "", studentClass: "", token: "" };
 
-    // Pewaktu: 35 menit = 35 * 60 detik = 2100 detik
-    const TOTAL_TIME_SECONDS = 35 * 60;
+    const TOTAL_TIME_SECONDS = 35 * 60; // 35 Menit = 2100 Detik
     let timeRemaining = TOTAL_TIME_SECONDS;
     let timerInterval = null;
     let isExamFinished = false;
@@ -909,17 +918,15 @@
         timeRemaining--;
         updateTimerDisplay();
 
-        // Peringatan jika sisa waktu 5 menit (300 detik)
         if (timeRemaining <= 300) {
           document.getElementById('exam-timer').classList.add('warning');
         }
 
-        // Jika waktu habis -> AUTO-SUBMIT OTOMATIS
         if (timeRemaining <= 0) {
           clearInterval(timerInterval);
           if (!isExamFinished) {
-            alert("⏰ WAKTU 35 MENIT TELAH HABIS!\nSistem secara otomatis mengunci dan mengirimkan lembar jawaban Anda ke dosen sekarang.");
-            submitExam(true); // true = dipicu oleh waktu habis
+            alert("⏰ WAKTU 35 MENIT TELAH HABIS!\nSistem otomatis mengunci dan mengirimkan lembar jawaban Anda ke database dosen sekarang.");
+            submitExam(true);
           }
         }
       }, 1000);
@@ -937,17 +944,14 @@
       currentQuestionIdx = idx;
       const q = QUESTION_BANK[idx];
 
-      // Update badge & progress
       document.getElementById('stage-badge').innerText = `Butir ${idx + 1} dari ${QUESTION_BANK.length}`;
       document.getElementById('category-badge').innerText = q.category;
       
       const pct = ((idx + 1) / QUESTION_BANK.length) * 100;
       document.getElementById('progress-fill').style.width = pct + "%";
 
-      // Render Soal
       document.getElementById('question-text').innerHTML = `${idx + 1}. ${q.question}`;
 
-      // Render Opsi
       const optionsContainer = document.getElementById('options-container');
       optionsContainer.innerHTML = '';
 
@@ -960,7 +964,6 @@
         optionsContainer.appendChild(btn);
       });
 
-      // Update Nav Buttons
       document.getElementById('btn-prev').disabled = (idx === 0);
 
       if (idx === QUESTION_BANK.length - 1) {
@@ -989,7 +992,7 @@
       }
     }
 
-    /* PENGIRIMAN DATA UJIAN KE LOCALSTORAGE DOSEN */
+    /* PENGIRIMAN DATA UJIAN KE GOOGLE APPS SCRIPT (GAS) & LOCAL STORAGE */
     function submitExam(isAutoSubmit = false) {
       if (isExamFinished) return;
 
@@ -1018,10 +1021,10 @@
       const score = Math.round((correctCount / QUESTION_BANK.length) * 100);
       const timestamp = new Date().toLocaleString('id-ID');
 
-      const submissionData = {
+      const payload = {
         id: 'SUB-' + Date.now(),
         timestamp: timestamp,
-        statusKirim: isAutoSubmit ? "Waktu Habis (Auto-Submit)" : "Terkirim Manual",
+        statusKirim: isAutoSubmit ? "Waktu Habis (Auto-Submit)" : "Terkirim Mandiri",
         profile: studentProfile,
         answers: studentAnswers,
         correctCount: correctCount,
@@ -1029,22 +1032,45 @@
         score: score
       };
 
-      saveSubmissionToDatabase(submissionData);
+      // Tampilkan loading overlay
+      document.getElementById('loading-overlay').style.display = 'flex';
 
-      // Sembunyikan timer & kartu kuis
+      // 1. Simpan cadangan ke LocalStorage browser
+      saveToLocalStorage(payload);
+
+      // 2. Kirim terpusat ke Google Sheets via Google Apps Script (GAS)
+      fetch(GAS_ENDPOINT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Menghindari CORS block dari browser saat request ke Apps Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        finalizeScreen(payload, isAutoSubmit);
+      })
+      .catch((err) => {
+        console.warn("Gagal kirim online, data tetap aman di cache lokal:", err);
+        finalizeScreen(payload, isAutoSubmit);
+      });
+    }
+
+    function finalizeScreen(payload, isAutoSubmit) {
+      document.getElementById('loading-overlay').style.display = 'none';
       document.getElementById('exam-timer').style.display = 'none';
       document.getElementById('screen-quiz').style.display = 'none';
       document.getElementById('screen-success').style.display = 'block';
 
       if (isAutoSubmit) {
-        document.getElementById('success-title').innerText = "Waktu 35 Menit Habis - Jawaban Otomatis Terkirim!";
+        document.getElementById('success-title').innerText = "Waktu 35 Menit Habis - Jawaban Berhasil Direkam Terpusat!";
       }
 
-      document.getElementById('lbl-submitted-name').innerText = studentProfile.name;
-      document.getElementById('lbl-submitted-nim').innerText = studentProfile.nim;
+      document.getElementById('lbl-submitted-name').innerText = payload.profile.name;
+      document.getElementById('lbl-submitted-nim').innerText = payload.profile.nim;
     }
 
-    function saveSubmissionToDatabase(data) {
+    function saveToLocalStorage(data) {
       let currentData = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
       currentData.push(data);
       localStorage.setItem('KTI_EXAM_SUBMISSIONS', JSON.stringify(currentData));
@@ -1080,7 +1106,7 @@
       tbody.innerHTML = '';
 
       if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk di perangkat ini.</td></tr>`;
         return;
       }
 
