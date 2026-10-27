@@ -353,8 +353,8 @@
 
   <!-- LOADING OVERLAY -->
   <div id="loading-overlay">
-    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📤</div>
-    <div>Menyimpan & Merekam ke Database Spreadsheet Dosen...</div>
+    <div style="font-size: 2.5rem; margin-bottom: 0.5rem; animation: pulse 1s infinite alternate;">📤</div>
+    <div id="loading-text">Menghubungkan ke Database...</div>
   </div>
 
   <div class="container">
@@ -386,8 +386,8 @@
 
       <div class="locked-notice">
         ⚠️ <strong>Aturan Pewaktu & Integrasi Terpusat:</strong><br>
-        1. Pewaktu mundur 35 menit akan berjalan otomatis saat tombol mulai diklik.<br>
-        2. Jika waktu habis, <strong>sistem akan langsung mengirimkan jawaban ke Google Sheets Dosen secara otomatis</strong>.<br>
+        1. Pewaktu mundur 35 menit akan berjalan otomatis begitu tombol mulai diklik.<br>
+        2. Jika waktu habis, <strong>sistem akan langsung mengirimkan jawaban ke Google Sheets Dosen</strong> secara otomatis.<br>
         3. Skor dan lembar penilaian dirahasiakan dan hanya terdata pada portal dosen.
       </div>
 
@@ -484,24 +484,25 @@
         <div id="lecturer-auth-box" style="text-align: center; padding: 2rem 1rem;">
           <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Autentikasi Hak Akses Dosen</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-            Masukkan kata sandi pengampu mata kuliah untuk memeriksa lembar jawaban dan rekapitulasi nilai mahasiswa.
+            Masukkan kata sandi pengampu mata kuliah untuk memeriksa lembar jawaban dan rekapitulasi nilai mahasiswa secara online dari Google Sheets.
           </p>
           <div style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
             <input type="password" id="lecturer-password" placeholder="Sandi Otoritas Dosen..." style="padding: 0.6rem 0.85rem; border: 2px solid var(--border); border-radius: 8px; text-align: center; font-weight: 700;">
             <button class="btn btn-primary" onclick="verifyLecturerPassword()">Buka Data Evaluasi</button>
           </div>
-          <small style="display: block; margin-top: 1rem; color: #94A3B8;">Kunci Akses Dosen: <code>none</code></small>
+          <small style="display: block; margin-top: 1rem; color: #94A3B8;">Kunci Akses Dosen: <code>NONE</code></small>
         </div>
 
         <div id="lecturer-dashboard" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
             <div>
-              <h3 style="font-size: 1.1rem; font-weight: 800;">Rekap Hasil Ujian Mandiri Mahasiswa (Cadangan Lokal)</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">Data utama tetap tersinkronisasi otomatis ke Google Sheets.</p>
+              <h3 style="font-size: 1.1rem; font-weight: 800;">Rekap Hasil Ujian Mandiri Mahasiswa (Sinkron Cloud)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);" id="data-source-status">Memuat data terbaru dari Google Sheets...</p>
             </div>
-            <div style="display: flex; gap: 0.5rem;">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn" style="background: #2563EB; color: white;" onclick="fetchFromGAS()">🔄 Refresh Data Cloud</button>
               <button class="btn" style="background: #059669; color: white;" onclick="exportToCSV()">📥 Ekspor Spreadsheet (CSV)</button>
-              <button class="btn" style="background: #DC2626; color: white;" onclick="clearAllData()">🗑️ Kosongkan Data</button>
+              <button class="btn" style="background: #DC2626; color: white;" onclick="clearAllData()">🗑️ Kosongkan Data Lokal</button>
             </div>
           </div>
 
@@ -522,7 +523,7 @@
               </thead>
               <tbody id="results-tbody">
                 <tr>
-                  <td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk di perangkat ini.</td>
+                  <td colspan="9" style="text-align: center; color: var(--text-muted);">Memuat data dari Google Sheets...</td>
                 </tr>
               </tbody>
             </table>
@@ -568,7 +569,7 @@
   <script>
     /* ==========================================================================
        KONFIGURASI BACKEND GAS (GOOGLE APPS SCRIPT)
-       Ganti URL di bawah dengan Web App URL hasil deployment Anda!
+       Pastikan memasukkan URL Deployment Web App (/exec) yang aktif
        ========================================================================== */
     const GAS_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwXm3NkpAwfJDjTCLJjHz2lbMQhruairQIclVazuVfdajWFhNtVCQ4iCWeQBhFzftfjxA/exec";
 
@@ -879,16 +880,19 @@
     ];
 
     /* ==========================================================================
-       LOGIKA GAME, TIMER 35 MENIT & INTEGRASI BACKEND GAS (TEXT/PLAIN)
+       LOGIKA GAME & TIMER 35 MENIT
        ========================================================================== */
     let currentQuestionIdx = 0;
     let studentAnswers = new Array(QUESTION_BANK.length).fill(null);
     let studentProfile = { name: "", nim: "", studentClass: "", token: "" };
 
-    const TOTAL_TIME_SECONDS = 35 * 60; // 35 Menit = 2100 Detik
+    const TOTAL_TIME_SECONDS = 35 * 60;
     let timeRemaining = TOTAL_TIME_SECONDS;
     let timerInterval = null;
     let isExamFinished = false;
+
+    // Cache data untuk ekspor CSV
+    let cachedCloudData = [];
 
     function startQuiz() {
       const name = document.getElementById('student-name').value.trim();
@@ -991,7 +995,7 @@
       }
     }
 
-    /* PENGIRIMAN DATA UJIAN KE GOOGLE APPS SCRIPT (GAS) & LOCAL STORAGE */
+    /* PENGIRIMAN DATA UJIAN KE GOOGLE APPS SCRIPT (GAS) */
     function submitExam(isAutoSubmit = false) {
       if (isExamFinished) return;
 
@@ -1009,7 +1013,6 @@
       isExamFinished = true;
       clearInterval(timerInterval);
 
-      // Hitung skor otomatis
       let correctCount = 0;
       QUESTION_BANK.forEach((q, i) => {
         if (studentAnswers[i] === q.answer) {
@@ -1031,13 +1034,13 @@
         score: score
       };
 
-      // Tampilkan overlay loading
+      document.getElementById('loading-text').innerText = "Mengirim data ke Google Sheets...";
       document.getElementById('loading-overlay').style.display = 'flex';
 
-      // 1. Simpan backup lokal ke browser
+      // 1. Simpan cadangan lokal di browser mahasiswa
       saveToLocalStorage(payload);
 
-      // 2. Kirim ke Google Apps Script dengan text/plain (Anti-CORS error)
+      // 2. Kirim ke GAS via text/plain agar bebas hambatan CORS
       fetch(GAS_ENDPOINT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -1050,7 +1053,7 @@
         finalizeScreen(payload, isAutoSubmit);
       })
       .catch((err) => {
-        console.warn("Koneksi online gagal, data tersimpan di backup lokal:", err);
+        console.warn("Gagal terhubung ke GAS, data tetap aman di cache lokal:", err);
         finalizeScreen(payload, isAutoSubmit);
       });
     }
@@ -1062,7 +1065,7 @@
       document.getElementById('screen-success').style.display = 'block';
 
       if (isAutoSubmit) {
-        document.getElementById('success-title').innerText = "Waktu 35 Menit Habis - Jawaban Otomatis Terkirim!";
+        document.getElementById('success-title').innerText = "Waktu 35 Menit Habis - Jawaban Berhasil Direkam Terpusat!";
       }
 
       document.getElementById('lbl-submitted-name').innerText = payload.profile.name;
@@ -1076,7 +1079,7 @@
     }
 
     /* ==========================================================================
-       PORTAL & SISTEM AUTENTIKASI DOSEN
+       PORTAL DOSEN: MENGAMBIL DATA LANGSUNG DARI GOOGLE APPS SCRIPT (GAS)
        ========================================================================== */
     const LECTURER_PASS = "DOSENKTI123";
 
@@ -1093,83 +1096,142 @@
       if (inputPass === LECTURER_PASS) {
         document.getElementById('lecturer-auth-box').style.display = 'none';
         document.getElementById('lecturer-dashboard').style.display = 'block';
-        loadLecturerTable();
+        fetchFromGAS(); // Panggil data dari cloud spreadsheet
       } else {
         alert("Autentikasi gagal! Sandi akses hanya diperuntukkan bagi Dosen Pengampu.");
       }
     }
 
-    function loadLecturerTable() {
-      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+    // Mengambil data terpusat dari GAS (metode doGet)
+    function fetchFromGAS() {
+      const statusLbl = document.getElementById('data-source-status');
+      const tbody = document.getElementById('results-tbody');
+      statusLbl.innerText = "⏳ Sedang menyinkronkan data dengan Google Sheets...";
+      tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--primary);">Menghubungi Google Sheets, mohon tunggu...</td></tr>`;
+
+      fetch(GAS_ENDPOINT_URL)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("HTTP Status " + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (Array.isArray(data)) {
+            cachedCloudData = data;
+            statusLbl.innerText = `✅ Data tersinkronisasi langsung dari Google Sheets (${data.length} pengiriman)`;
+            renderLecturerTable(data, true);
+          } else if (data.error) {
+            throw new Error(data.error);
+          }
+        })
+        .catch(err => {
+          console.warn("Gagal mengambil data dari Google Sheets, beralih ke cache lokal:", err);
+          statusLbl.innerText = "⚠️ Koneksi online gagal / doGet belum aktif. Menampilkan data cadangan lokal perangkat ini.";
+          loadLocalTable();
+        });
+    }
+
+    function renderLecturerTable(dataArray, isCloud = true) {
       const tbody = document.getElementById('results-tbody');
       tbody.innerHTML = '';
 
-      if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk di perangkat ini.</td></tr>`;
+      if (!dataArray || dataArray.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--text-muted);">Belum ada berkas mahasiswa yang masuk di spreadsheet.</td></tr>`;
         return;
       }
 
-      data.forEach((sub, idx) => {
+      dataArray.forEach((sub, idx) => {
         const tr = document.createElement('tr');
+        const nim = isCloud ? sub.nim : (sub.profile ? sub.profile.nim : '-');
+        const name = isCloud ? sub.name : (sub.profile ? sub.profile.name : '-');
+        const sClass = isCloud ? sub.studentClass : (sub.profile ? sub.profile.studentClass : '-');
+        const statusKirim = sub.statusKirim || 'Terkirim';
+        const score = sub.score !== undefined ? sub.score : 0;
+        const correctCount = sub.correctCount !== undefined ? sub.correctCount : 0;
+        const total = sub.totalQuestions || 25;
+        const timestamp = sub.timestamp || '-';
+
         tr.innerHTML = `
           <td>${idx + 1}</td>
-          <td><small>${sub.timestamp}</small></td>
-          <td><strong>${sub.profile.nim}</strong></td>
-          <td>${sub.profile.name}</td>
-          <td>${sub.profile.studentClass}</td>
-          <td><span style="font-size:0.75rem; padding:2px 6px; border-radius:4px; background:${sub.statusKirim.includes('Auto') ? '#FEE2E2; color:#DC2626' : '#DCFCE7; color:#166534'}">${sub.statusKirim}</span></td>
-          <td style="font-weight: 800; color: ${sub.score >= 75 ? '#059669' : '#DC2626'};">${sub.score}</td>
-          <td>${sub.correctCount} / ${sub.totalQuestions}</td>
+          <td><small>${timestamp}</small></td>
+          <td><strong>${nim}</strong></td>
+          <td>${name}</td>
+          <td>${sClass}</td>
+          <td><span style="font-size:0.75rem; padding:2px 6px; border-radius:4px; background:${String(statusKirim).includes('Auto') ? '#FEE2E2; color:#DC2626' : '#DCFCE7; color:#166534'}">${statusKirim}</span></td>
+          <td style="font-weight: 800; color: ${score >= 75 ? '#059669' : '#DC2626'};">${score}</td>
+          <td>${correctCount} / ${total}</td>
           <td>
-            <button class="btn" style="padding: 0.2rem 0.55rem; font-size: 0.75rem;" onclick="viewDetail('${sub.id}')">🔍 Rincian</button>
+            <button class="btn" style="padding: 0.2rem 0.55rem; font-size: 0.75rem;" onclick="viewCloudDetail(${idx}, ${isCloud})">🔍 Detail</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    function viewDetail(submissionId) {
-      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
-      const item = data.find(s => s.id === submissionId);
+    function loadLocalTable() {
+      const localData = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
+      cachedCloudData = localData;
+      renderLecturerTable(localData, false);
+    }
+
+    function viewCloudDetail(idx, isCloud) {
+      const item = cachedCloudData[idx];
       if (!item) return;
 
-      let summary = `LEMBAR VERIFIKASI DOSEN:\nNama: ${item.profile.name}\nNIM: ${item.profile.nim}\nKelas: ${item.profile.studentClass}\nWaktu: ${item.timestamp}\nStatus: ${item.statusKirim}\nNilai Akhir: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\nRincian Analisis Pilihan Mahasiswa:`;
-      
-      const letters = ['A', 'B', 'C', 'D'];
-      item.answers.forEach((ans, i) => {
-        const q = QUESTION_BANK[i];
-        const isCorrect = (ans === q.answer);
-        summary += `\nNo ${i+1}: Jawaban Mahasiswa: ${ans !== null ? letters[ans] : '(Kosong)'} | Kunci: ${letters[q.answer]} [${isCorrect ? 'BENAR' : 'SALAH'}]`;
-      });
-
-      alert(summary);
+      if (isCloud) {
+        let msg = `RINCIAN PENGIRIMAN MAHASISWA (GOOGLE SHEETS):\n`;
+        msg += `Nama: ${item.name}\n`;
+        msg += `NIM: ${item.nim}\n`;
+        msg += `Kelas: ${item.studentClass}\n`;
+        msg += `Token: ${item.token || '-'}\n`;
+        msg += `Waktu: ${item.timestamp}\n`;
+        msg += `Status: ${item.statusKirim}\n`;
+        msg += `Nilai Akhir: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\n`;
+        msg += `Jawaban Mahasiswa:\n${item.answersDetail || '-'}`;
+        alert(msg);
+      } else {
+        let summary = `LEMBAR VERIFIKASI CADANGAN LOKAL:\nNama: ${item.profile.name}\nNIM: ${item.profile.nim}\nKelas: ${item.profile.studentClass}\nWaktu: ${item.timestamp}\nNilai: ${item.score} (Benar: ${item.correctCount}/${item.totalQuestions})\n\nRincian Analisis Pilihan Mahasiswa:`;
+        const letters = ['A', 'B', 'C', 'D'];
+        item.answers.forEach((ans, i) => {
+          const q = QUESTION_BANK[i];
+          const isCorrect = (ans === q.answer);
+          summary += `\nNo ${i+1}: Jawaban Mahasiswa: ${ans !== null ? letters[ans] : '(Kosong)'} | Kunci: ${letters[q.answer]} [${isCorrect ? 'BENAR' : 'SALAH'}]`;
+        });
+        alert(summary);
+      }
     }
 
     function exportToCSV() {
-      const data = JSON.parse(localStorage.getItem('KTI_EXAM_SUBMISSIONS') || '[]');
-      if (data.length === 0) {
+      if (!cachedCloudData || cachedCloudData.length === 0) {
         alert("Tidak ada data untuk diekspor!");
         return;
       }
 
-      let csv = "ID,Waktu_Kirim,Status_Kirim,NIM,Nama,Kelas,Token,Nilai_Akhir,Jumlah_Benar,Total_Soal\n";
-      data.forEach(s => {
-        csv += `"${s.id}","${s.timestamp}","${s.statusKirim}","${s.profile.nim}","${s.profile.name}","${s.profile.studentClass}","${s.profile.token || '-'}",${s.score},${s.correctCount},${s.totalQuestions}\n`;
+      let csv = "No,Waktu_Kirim,NIM,Nama,Kelas,Token,Status_Kirim,Nilai_Akhir,Jumlah_Benar,Total_Soal,Detail_Jawaban\n";
+      cachedCloudData.forEach((s, idx) => {
+        const nim = s.nim || (s.profile ? s.profile.nim : '-');
+        const name = s.name || (s.profile ? s.profile.name : '-');
+        const sClass = s.studentClass || (s.profile ? s.profile.studentClass : '-');
+        const token = s.token || (s.profile ? s.profile.token : '-');
+        const detail = s.answersDetail || (s.answers ? s.answers.join(';') : '-');
+
+        csv += `"${idx + 1}","${s.timestamp}","${nim}","${name}","${sClass}","${token}","${s.statusKirim}",${s.score},${s.correctCount},${s.totalQuestions},"${detail}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Rekap_Ujian_KTI_Bab1_3_${Date.now()}.csv`;
+      a.download = `Rekap_Nilai_KTI_Cloud_${Date.now()}.csv`;
       a.click();
     }
 
     function clearAllData() {
-      if (confirm("Apakah Bapak/Ibu Dosen yakin ingin mereset seluruh data lembar ujian mahasiswa di perangkat ini?")) {
+      if (confirm("Apakah Bapak/Ibu Dosen yakin ingin mereset data lokal di perangkat ini? (Data di Google Sheets tetap aman)")) {
         localStorage.removeItem('KTI_EXAM_SUBMISSIONS');
-        loadLecturerTable();
-        alert("Seluruh data rekaman mahasiswa telah berhasil dibersihkan.");
+        fetchFromGAS();
+        alert("Cache data lokal telah dibersihkan.");
       }
     }
   </script>
